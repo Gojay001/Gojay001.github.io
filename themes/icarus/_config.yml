@@ -5,7 +5,7 @@ favicon: /images/head.jpg
 # Path or URL to RSS atom.xml
 rss: 
 # Path or URL to the website's logo to be shown on the left of the navigation bar or footer
-logo: /images/head.jpg
+logo: /images/logo.svg
 # Open Graph metadata
 # https://hexo.io/docs/helpers.html#open-graph
 open_graph:
@@ -27,6 +27,7 @@ navbar:
         Archives: /archives/
         Categories: /categories/
         Tags: /tags/
+        ZhiHu: https://www.zhihu.com/people/gojay/activities
         About: /about/
     # Navigation bar links to be shown on the right
     links:
@@ -65,8 +66,12 @@ search:
 # http://ppoffice.github.io/hexo-theme-icarus/categories/Configuration/Comment-Plugins
 comment:
     # Name of the comment plugin
-    type: disqus
-    shortname: gojay-blog
+    type: gitalk
+    owner: Gojay001
+    repo: Gojay001.github.io
+    client_id: e5ebf9a6ac62b38d2489
+    client_secret: 482bd1e973a44873a86304ca5b6e42f686766b9a
+    admin: Gojay
 # Donation entries
 # http://ppoffice.github.io/hexo-theme-icarus/categories/Donation/
 #donate:
@@ -183,10 +188,10 @@ widgets:
         # Where should the widget be placed, left or right
         position: right
     #-
-    #    # Widget name
-    #    type: tag
-    #    # Where should the widget be placed, left or right
-    #    position: right
+       # Widget name
+       # type: tag
+       # Where should the widget be placed, left or right
+       # position: right
 # Other plugin settings
 plugins:
     # Enable page animations

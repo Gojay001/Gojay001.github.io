@@ -2,7 +2,7 @@
     <% if (has_thumbnail(post, true)) { %>
     <div class="card-image">
         <%- index ? '<a href="' + url_for(post.link ? post.link : post.path) + '"' : '<span ' %> class="image is-7by1">
-            <img class="thumbnail" src="<%= get_thumbnail(post) %>" alt="<%= post.title %>">
+            <img class="thumbnail lazy" data-src="<%= get_thumbnail(post) %>" alt="<%= post.title %>">
         <%- index ? '</a>' : '</span>' %>
     </div>
     <% } %>

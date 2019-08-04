@@ -1,1 +1,53 @@
-<svg xmlns="http://www.w3.org/2000/svg" height="385" viewBox="0 0 288 288" width="385" stroke-linecap="butt" stroke-linejoin="round"><path d="M0 288h288V0H0z" fill="#fff"/><path clip-path="url(#A)" d="M58.32 143.28l66.96-66.972M58.32 143.28l66.96 66.972m22.32-22.614l89.28-88.716m-89.28 0l33.48 33.486m33.48 32.616l22.32 22.614" stroke-linecap="square" fill="none" stroke="#00a4ef" stroke-width="28"/><defs><clipPath id="A"><path d="M36 34.56h223.2V252H36z"/></clipPath></defs></svg>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with matplotlib (https://matplotlib.org/) -->
+<svg height="288pt" version="1.1" viewBox="0 0 288 288" width="288pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+*{stroke-linecap:butt;stroke-linejoin:round;white-space:pre;}
+  </style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 288 
+L 288 288 
+L 288 0 
+L 0 0 
+z
+" style="fill:#ffffff;"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path clip-path="url(#p32427b3d19)" d="M 58.32 145.44 
+L 125.28 77.13792 
+" style="fill:none;stroke:#00a4ef;stroke-linecap:square;stroke-width:28;"/>
+   </g>
+   <g id="line2d_2">
+    <path clip-path="url(#p32427b3d19)" d="M 58.32 145.44 
+L 125.28 213.74208 
+" style="fill:none;stroke:#00a4ef;stroke-linecap:square;stroke-width:28;"/>
+   </g>
+   <g id="line2d_3">
+    <path clip-path="url(#p32427b3d19)" d="M 147.6 190.67904 
+L 236.88 100.20096 
+" style="fill:none;stroke:#00a4ef;stroke-linecap:square;stroke-width:28;"/>
+   </g>
+   <g id="line2d_4">
+    <path clip-path="url(#p32427b3d19)" d="M 147.6 100.20096 
+L 181.08 134.352 
+" style="fill:none;stroke:#00a4ef;stroke-linecap:square;stroke-width:28;"/>
+   </g>
+   <g id="line2d_5">
+    <path clip-path="url(#p32427b3d19)" d="M 214.56 167.616 
+L 236.88 190.67904 
+" style="fill:none;stroke:#00a4ef;stroke-linecap:square;stroke-width:28;"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p32427b3d19">
+   <rect height="221.76" width="223.2" x="36" y="34.56"/>
+  </clipPath>
+ </defs>
+</svg>
