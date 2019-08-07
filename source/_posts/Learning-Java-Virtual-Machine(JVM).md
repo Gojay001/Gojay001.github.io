@@ -1,6 +1,7 @@
 ---
 title: Learning Java Virtual Machine(JVM)  
 date: 2017-12-09 10:01:31  
+thumbnail: /gallery/thumbnails/JVM.jpg  
 categories:  
 	- JavaWeb  
 	- JVM  

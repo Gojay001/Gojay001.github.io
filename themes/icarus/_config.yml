@@ -69,9 +69,9 @@ comment:
     type: gitalk
     owner: Gojay001
     repo: Gojay001.github.io
-    client_id: e5ebf9a6ac62b38d2489
-    client_secret: 482bd1e973a44873a86304ca5b6e42f686766b9a
-    admin: Gojay
+    client_id: b510f7e60523563e18a7
+    client_secret: b826aeb894cbad8194c9cededa8c83d512d05855
+    admin: Gojay001
 # Donation entries
 # http://ppoffice.github.io/hexo-theme-icarus/categories/Donation/
 #donate:
@@ -216,7 +216,7 @@ plugins:
     # http://ppoffice.github.io/hexo-theme-icarus/Plugins/General/site-analytics-plugin/#Baidu-Analytics
     baidu-analytics:
         # Baidu Analytics tracking id
-        tracking_id: 
+        tracking_id: f29d95e89a802be01b6ea105a1b4e115
     # Hotjar user feedback plugin
     # http://ppoffice.github.io/hexo-theme-icarus/Plugins/General/site-analytics-plugin/#Hotjar
     hotjar:

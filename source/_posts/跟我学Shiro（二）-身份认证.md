@@ -1,6 +1,7 @@
 ---
 title: 跟我学Shiro（二）-身份认证  
 date: 2017-11-22 11:16:43  
+thumbnail: /gallery/thumbnails/shiro.png  
 categories:   
     - JavaWeb  
     - Shiro  

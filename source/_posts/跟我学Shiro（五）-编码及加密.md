@@ -1,6 +1,7 @@
 ---
 title: 跟我学Shiro（五）-编码及加密  
 date: 2017-11-29 14:54:50  
+thumbnail: /gallery/thumbnails/shiro.png  
 categories:  
 	- JavaWeb  
 	- Shiro  

@@ -6,14 +6,14 @@
 title: Gojay's Records
 subtitle: 
 description: Keep Moving
-keywords:
+keywords: Gojay, Blog, Java, MachineLearning, DeepLearning
 author: Gojay
 language: en
 timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://gojay.top
+url: https://gojay.top
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -41,7 +41,7 @@ relative_link: false
 future: true
 highlight:
   enable: true
-  line_number: true
+  line_number: false
   auto_detect: false
   tab_replace:
   
@@ -81,13 +81,24 @@ theme: icarus
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: git@github.com:Gojay001/Gojay001.github.io.git
-  branch: master
+  - type: git
+    repo: 
+      github: git@github.com:Gojay001/Gojay001.github.io.git
+      coding: git@git.coding.net:Gojay001/Gojay001.coding.me.git
+    branch: master
+  - type: baidu_url_submitter
 
 # Sitemap
+sitemap:
+  path: sitemap.xml
 baidusitemap:
   path: baidusitemap.xml
+
+baidu_url_submit:
+  count: 10 
+  host: gojay.top 
+  token: 9ZN6BffdOceFx7V3 
+  path: baidu_urls.txt 
 
 # Heading index settings
 heading_index:

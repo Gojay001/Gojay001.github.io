@@ -1,6 +1,7 @@
 ---
 title: 跟我学Shiro（一）-Shiro简介  
 date: 2017-11-19 11:06:53  
+thumbnail: /gallery/thumbnails/shiro.png  
 categories:   
 	- JavaWeb  
 	- Shiro  

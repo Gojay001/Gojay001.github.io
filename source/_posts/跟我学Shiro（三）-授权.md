@@ -1,6 +1,7 @@
 ---
 title: 跟我学Shiro（三）-授权  
 date: 2017-11-23 11:41:24  
+thumbnail: /gallery/thumbnails/shiro.png  
 categories:   
     - JavaWeb  
     - Shiro  
