@@ -5,7 +5,8 @@ favicon: /images/head.jpg
 # Path or URL to RSS atom.xml
 rss: 
 # Path or URL to the website's logo to be shown on the left of the navigation bar or footer
-logo: /images/logo.svg
+logo: 
+    text: Gojay's Records
 # Open Graph metadata
 # https://hexo.io/docs/helpers.html#open-graph
 open_graph:
@@ -29,6 +30,7 @@ navbar:
         Tags: /tags/
         ZhiHu: https://www.zhihu.com/people/gojay/activities
         About: /about/
+        RSS: /rss.xml
     # Navigation bar links to be shown on the right
     links:
         Gojay GitHub:
@@ -66,12 +68,19 @@ search:
 # http://ppoffice.github.io/hexo-theme-icarus/categories/Configuration/Comment-Plugins
 comment:
     # Name of the comment plugin
-    type: gitalk
-    owner: Gojay001
-    repo: Gojay001.github.io
-    client_id: b510f7e60523563e18a7
-    client_secret: b826aeb894cbad8194c9cededa8c83d512d05855
-    admin: Gojay001
+    type: valine
+    app_id: 6kgdHh2dtxHKbi9fwyPjsA7t-gzGzoHsz
+    app_key: N4XHHmLsjyHwx2ENVEGEn9Br 
+    notify: true 
+    verify: true 
+    placeholder: 
+    # type: gitalk
+    # owner: Gojay001
+    # repo: Gojay001.github.io
+    # client_id: b510f7e60523563e18a7
+    # client_secret: b826aeb894cbad8194c9cededa8c83d512d05855
+    # admin: Gojay001
+    
 # Donation entries
 # http://ppoffice.github.io/hexo-theme-icarus/categories/Donation/
 #donate:
