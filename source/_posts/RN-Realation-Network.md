@@ -13,6 +13,7 @@ tags: [DL, FSL, RN]
 <!-- more -->
 
 # Contents
+---
 - **[Paper & Code & note](#Paper&Code&note)**
 - **[Paper understanding](#Paper)**
 - **[Code understanding](#Code)**
@@ -20,6 +21,7 @@ tags: [DL, FSL, RN]
 - **[Note](#Note)**
 
 # Paper & Code & note
+---
 > **Paper**: [Learning to Compare: Relation Network for Few-Shot Learning](https://arxiv.org/abs/1711.06025)(CVPR 2018 paper)  
 > **Code**: [PyTorch](https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Few-Shot%20Learning/RN/Code/README.md)(Few-Shot Learning part)  
 > **Note**: [RN for FSL](https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Few-Shot%20Learning/RN/Note)
@@ -27,13 +29,13 @@ tags: [DL, FSL, RN]
 # Paper
 ---
 ## Abstract
-![RN_abstract.png](https://i.loli.net/2019/08/24/aLX7PFhACpGuKg9.png)  
+![RN_abstract.png](https://i.loli.net/2019/08/24/rmHGwBoZKsxAT2U.png)  
 As `abstract` of the paper, their work mainly proposed a method called **Realation Network** (RN) to recognise new classes given only few examples from each.  
 > 1. It based on **meta-learning**. That is to say, the RN learns a `deep distance metric` to compare a number of images with episodes, and it is a `episode-based` method.  
 > 2. It classify images of new classes by computing **relation scores**. That is to say, there is a score in each `query` image with their relations of `sample` images in each class.  
 
 ## Problem Description
-![RN_PD.png](https://i.loli.net/2019/08/24/U3SJiXmMIHcQWPl.png)  
+![RN_PD.png](https://i.loli.net/2019/08/24/FkOWoMGP7dmp2T4.png) 
 > It shows the task of **few-shot learning** and the **exists model**.
 
 ## Problem Solution
@@ -52,7 +54,7 @@ References: [36, 39], RNNs: [39, 32, 29], Fine-tuning: [29, 10].
 
 ## Core Conception
 ![RN_CC.png](https://i.loli.net/2019/08/24/q1TDicJkyjeQUaL.png)  
-> It denotes the *most important* conception of **Relation Network** (RN) and explains the **Embedding** module and **Relation** module respectively.  
+> It denotes the `most important` conception of **Relation Network** (RN) and explains the **Embedding** module and **Relation** module respectively.  
 
 Besides, the **network architecture** shows below.
 ![RN_RN.png](https://i.loli.net/2019/08/24/ERIMHV2C4T9XqzZ.png)  

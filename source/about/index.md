@@ -7,5 +7,5 @@ tags:
 ---
 
 - A Master of Chongqing University
-- A Computer Vision Practier
+- A Computer Vision Practicer
 - Keep Moving
