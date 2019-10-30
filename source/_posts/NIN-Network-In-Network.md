@@ -32,7 +32,7 @@ tags: [DL, Classification, NIN]
 ![NIN_Abstract.png](https://i.loli.net/2019/08/31/TahN9BAIMoEcbQm.png)
 As `abstract` of the paper, their work mainly build a "micro network" called **Network In Network** (NIN) to replace traditional Convolutional Nerual Network(CNNs) and utilize **global average pooling** (GAP) instead of fully-connected layer(FC) to classify images.  
 > 1. build `micro neural networks` with more complex structures to abstract the data within the receptive field.  
-> 2. utilize `global average pooling` over feature maps in the classification layer, which is easier to interpret and less prone to overfitting than traditional fully connected lay- ers.  
+> 2. utilize `global average pooling` over feature maps in the classification layer, which is easier to interpret and less prone to overfitting than traditional fully connected layers.  
 
 ## Problem Description
 ![NIN_PD.png](https://i.loli.net/2019/08/31/uBxZzFv6HVGILJs.png)
