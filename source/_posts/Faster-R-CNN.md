@@ -17,8 +17,8 @@ tags: [DL, Detection, Faster R-CNN]
 - **[Paper & Code & note](#Paper&Code&note)**
 - **[Paper understanding](#Paper)**
 - **[Code understanding](#Code)**
-- **[References](#References)**
 - **[Note](#Note)**
+- **[References](#References)**
 
 # Paper & Code & note
 ---
