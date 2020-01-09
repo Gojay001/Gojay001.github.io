@@ -32,7 +32,7 @@ tags: [DL, Tracking, wo_bnw]
 ![tracking_Abstract.png](https://i.loli.net/2019/11/09/g1R4zUjKkCfbieo.png)    
 As `abstract` of the paper, their work mainly converted a detector into a **Tracktor**, which exploit the **bounding box regression** of an object detector to predict the position of an object in the next frame.  
 > 1. It extended a straightforward **re-identification** and **camera motion compensation** to improving `identity preservation` across frames.  
-> 2. It achieved **state-of-the-art** on tackling most of the `easy tracking scenarios`. Besides, it also got ideal effect in tackling `complex tracking scenarios`. Therefore, it point out promising future research **directions**..
+> 2. It achieved **state-of-the-art** on tackling most of the `easy tracking scenarios`. Besides, it also got ideal effect in tackling `complex tracking scenarios`. Therefore, it point out promising future research **directions**.
 
 ## Problem Description
 ![tracking_PD.png](https://i.loli.net/2019/11/09/7C6jrXBRAn1dveg.png) 
