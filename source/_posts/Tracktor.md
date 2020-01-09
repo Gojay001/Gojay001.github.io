@@ -1,12 +1,12 @@
 ---
-title: Tracking without bells and wistles
-thumbnail: /gallery/thumbnails/Tracking_wo_bnw.png
+title: Tracktor
+thumbnail: /gallery/thumbnails/Tracktor.png
 date: 2019-11-09 08:21:49
 categories:
     - DeepLearning  
     - Object Tracking  
-    - without bnw  
-tags: [DL, Tracking, wo_bnw]
+    - Tracktor  
+tags: [DL, Tracking, Tracktor]
 ---
 
 > **Tracking without bells and wistles**[[1]](https://arxiv.org/abs/1903.05625) is used to **detect objects** from videos in each frame, while **forming tracks** by linking corresponding detections across time. There are some details of reading and implementing it.  
@@ -24,7 +24,7 @@ tags: [DL, Tracking, wo_bnw]
 ---
 > **Paper**: [[Tracking without bells and whistles](https://arxiv.org/pdf/1903.05625.pdf)(ICCV 2019 paper)  
 > **Code**: [PyTorch](https://github.com/Gojay001/tracking_wo_bnw)  
-> **Note**: [tracking_wo_bnw](https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Tracking/tracking_wo_bnw/Note)
+> **Note**: [tracking_wo_bnw](https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Tracking/tracktor/Note)
 
 # Paper
 ---
