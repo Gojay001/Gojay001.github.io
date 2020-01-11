@@ -81,6 +81,6 @@ More experienment results shows below.
 
 # References
 ---
-> [1] Wang, Qiang, et al. "Fast online object tracking and segmentation: A unifying approach." Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2019.
-> [2] SiamMask. https://github.com/foolwood/SiamMask
+> [1] Wang, Qiang, et al. "Fast online object tracking and segmentation: A unifying approach." Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2019.  
+> [2] SiamMask. https://github.com/foolwood/SiamMask  
 > [3] Qiang Wang. "Thinking about SiamMask." https://zhuanlan.zhihu.com/p/58154634
