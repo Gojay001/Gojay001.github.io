@@ -19,7 +19,7 @@ tags:
 
 # Paper & Code & note
 ---
-> **Paper**: [[]()(paper)  
+> **Paper**: []()(paper)  
 > **Code**: []()  
 > **Note**: []()
 

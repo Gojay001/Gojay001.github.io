@@ -6,10 +6,10 @@ categories:
     - DeepLearning  
     - Object Tracking  
     - Tracktor  
-tags: [DL, Tracking, Tracktor]
+tags: [DL, Tracking, MOT]
 ---
 
-> **Tracking without bells and wistles**[[1]](https://arxiv.org/abs/1903.05625) is used to **detect objects** from videos in each frame, while **forming tracks** by linking corresponding detections across time. There are some details of reading and implementing it.  
+> **Tracktor**[[1]](https://arxiv.org/abs/1903.05625) is used to **detect objects** from videos in each frame, while **forming tracks** by linking corresponding detections across time. There are some details of reading and implementing it.  
 <!-- more -->
 
 # Contents

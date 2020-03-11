@@ -6,7 +6,7 @@ categories:
     - DeepLearning
     - Object Tracking
     - GlobalTrack
-tags: [DL, Tracking, GlobalTrack]
+tags: [DL, Tracking, VOT]
 ---
 
 > **GlobalTrack**[[1]](https://arxiv.org/pdf/1912.08531.pdf) is a pure global tracker for **long-term tracking**, without temporal consistency assumption making cumulative errors. There are some details of reading and implementing it.

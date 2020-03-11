@@ -6,7 +6,7 @@ categories:
     - DeepLearning
     - Object Tracking
     - SiamMask
-tags: [DL, Tracking, SiamMask]
+tags: [DL, Tracking, VOT]
 ---
 
 > **SiamMask**[[1]](http://openaccess.thecvf.com/content_CVPR_2019/papers/Wang_Fast_Online_Object_Tracking_and_Segmentation_A_Unifying_Approach_CVPR_2019_paper.pdf) is used to **detect and segment objects** from videos in each frame, **initializing** a single bounding box and **outputing** binary segmentation mask and rotated objects boxes. There are some details of reading and implementing it. 

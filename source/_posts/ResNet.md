@@ -22,7 +22,7 @@ tags: [DL, Classification, ResNet]
 
 # Paper & Code & note
 ---
-> **Paper**: [[Deep Residual Learning for Image Recognition](http://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf)(paper)  
+> **Paper**: [[Deep Residual Learning for Image Recognition](http://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf)(CVPR 2016 paper)  
 > **Code**: [PyTorch](https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Classification/ResNet/Code)  
 > **Note**: [ResNet](https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Classification/ResNet/Note)
 
