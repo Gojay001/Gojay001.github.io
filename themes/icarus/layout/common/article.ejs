@@ -17,6 +17,9 @@
         <% if (post.layout != 'page') { %>
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <% if(post.top > 0) { %>
+                <div class="level-item tag is-danger" style="background-color: #3273dc;">Pin</div>
+                <%} %>
                 <time class="level-item has-text-grey" datetime="<%= date_xml(post.date) %>"><i class="far fa-calendar-alt">&nbsp;</i><%= date(post.date) %></time>
                 <% if (post.updated && post.updated > post.date) { %>
                 <time class="level-item has-text-grey is-hidden-mobile" datetime="<%= date_xml(post.updated) %>"><i class="far fa-calendar-check">&nbsp;</i><%= date(post.updated) %></time>
@@ -54,11 +57,11 @@
         </div>
         <% if (!index && post.layout === 'post' && post.copyright !== false) { %>
             <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="<%= post.permalink %>"><%= page.title %></a></li>
-            <li><strong>本文作者：</strong><a href="<%= theme.url %>"><%= theme.author %></a></li>
-            <li><strong>本文链接：</strong><a href="<%= post.permalink %>"><%= post.permalink %></a></li>
-            <li><strong>发布时间：</strong><%= post.date.format("YYYY-MM-DD") %></li>
-            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            <li><strong>Title：</strong><a href="<%= post.permalink %>"><%= page.title %></a></li>
+            <li><strong>Author：</strong><a href="<%= theme.url %>"><%= theme.author %></a></li>
+            <li><strong>Link：</strong><a href="<%= post.permalink %>"><%= post.permalink %></a></li>
+            <li><strong>Date：</strong><%= post.date.format("YYYY-MM-DD") %></li>
+            <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
             </li>
             </ul>
         <% } %>
