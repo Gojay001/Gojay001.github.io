@@ -41,7 +41,7 @@ tags: [DL, Tracking, MOT]
 
 ## Problem Solution
 ![JRMOT_PS.png](https://i.loli.net/2020/03/07/HfmgSq3XZUKW9Rw.png)
-> [1] It integrates 2D detection from `Mask R-CNN` and 3D information from `F-PointNet`.
+> 1. It integrates 2D detection from `Mask R-CNN` and 3D information from `F-PointNet`.
 > 2. It fuses the 3D shape descriptor with a 2D RGB descriptor through `Aligned-ReID`.  
 > 3. It uses optimal joint probabilistic `data association` step.  
 > 4. A novel multi-modal `recursive Kalman filter` was proposed.

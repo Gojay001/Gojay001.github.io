@@ -2,23 +2,25 @@
 title: Overview
 top: 10
 thumbnail: /gallery/thumbnails/DL.jpg
-date: 2020-03-24 10:32:41
+date: 2020-03-01 10:32:41
 categories: 
     - DeepLearning
     - View
 tags: [DL, Overview]
 ---
 
-> There are the overall of papers about **deep learning**.
+> There are the overall of papers about **Deep Learning**.
 <!-- more -->
 
 # Contents
 ```
 |- Classification
+    |- LeNet-5
     |- NIN(Network In Network)
     |- GoogLeNet(Inception v1)
     |- ResNet
 |- Detection
+    |- RCNN
     |- Faster R-CNN
 |- Tracking
     |- DepthTrack
@@ -29,6 +31,7 @@ tags: [DL, Overview]
     |- PAMCC-AOT
     |- Flow-Fuse Tracker
     |- JRMOT
+    |- Tracklet
 |- Few-Shot Learning
     |- RN(Relation Network)
 |- GAN
@@ -60,13 +63,14 @@ tags: [DL, Overview]
 | [PAMCC-AOT](https://gojay.top/2020/02/25/PAMCC-AOT/) | [Pose-Assisted Multi-Camera Collaboration for Active Object Tracking](https://arxiv.org/pdf/2001.05161.pdf) | AAAI(2020) | [code]
 | [FFT](https://gojay.top/2020/03/05/FFT-Flow-Fuse-Tracker/) | [Multiple Object Tracking by Flowing and Fusing](https://arxiv.org/abs/2001.11180) | arXiv(2020) | [code]
 | [JRMOT](https://gojay.top/2020/02/28/JRMOT/) | [JRMOT: A Real-Time 3D Multi-Object Tracker and a New Large-Scale Dataset](https://arxiv.org/pdf/2002.08397.pdf) | arXiv(2020) | [code]
+| [Tracklet](https://gojay.top/2020/03/26/Tracklet/) | [Multi-object Tracking via End-to-end Tracklet Searching and Ranking](https://arxiv.org/abs/2003.02795) | arXiv(2020) | [code]
 
 ## Few-Shot Learning
 | Title | Paper | Conf | Code |
 |:--------|:--------:|:--------:|:--------:|
 | [RN](https://gojay.top/2019/08/21/RN-Realation-Network/) | [Learning to Compare: Relation Network for Few-Shot Learning](https://arxiv.org/abs/1711.06025) | CVPR(2018) | [code](https://github.com/Gojay001/LearningToCompare_FSL)
 
-## GAN
+## Generative Adversarial Network
 | Title | Paper | Conf | Code |
 |:--------|:--------:|:--------:|:--------:|
 | BeautyGAN | [Beautygan: Instance-level facial makeup transfer with deep generative adversarial network](http://colalab.org/media/paper/BeautyGAN-camera-ready.pdf) | ACM(2018) | [code](http://liusi-group.com/projects/BeautyGAN)
