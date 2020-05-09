@@ -170,20 +170,12 @@ widgets:
         position: left
     -
         # Widget name
-        type: links
-        # Where should the widget be placed, left or right
-        position: left
-        # Links to be shown in the links widget
-        links:
-            #Hexo: 'https://hexo.io'
-    -
-        # Widget name
         type: tagcloud
         # Where should the widget be placed, left or right
         position: left
     -
         # Widget name
-        type: archive
+        type: category
         # Where should the widget be placed, left or right
         position: left
     -
@@ -193,9 +185,17 @@ widgets:
         position: right
     -
         # Widget name
-        type: category
+        type: archive
         # Where should the widget be placed, left or right
         position: right
+    -
+        # Widget name
+        type: links
+        # Where should the widget be placed, left or right
+        position: right
+        # Links to be shown in the links widget
+        links:
+            daluzi: 'http://daluzi.top/'
     #-
        # Widget name
        # type: tag
