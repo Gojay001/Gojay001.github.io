@@ -5,7 +5,7 @@ thumbnail: /gallery/thumbnails/DL.jpg
 date: 2020-03-01 10:32:41
 categories: 
     - DeepLearning
-    - View
+    - Overview
 tags: [DL, Overview]
 ---
 
@@ -37,6 +37,8 @@ tags: [DL, Overview]
     |- RN(Relation Network)
 |- GAN
     |- BeautyGAN
+|- Image Generation
+    |- ImageTransformer
 ```
 
 ## Image Classification
@@ -76,3 +78,8 @@ tags: [DL, Overview]
 | Title | Paper | Conf | Code |
 |:--------|:--------:|:--------:|:--------:|
 | BeautyGAN | [Beautygan: Instance-level facial makeup transfer with deep generative adversarial network](http://colalab.org/media/paper/BeautyGAN-camera-ready.pdf) | ACM(2018) | [TensorFlow](http://liusi-group.com/projects/BeautyGAN)
+
+## Image Generation
+| Title | Paper | Conf | Code |
+|:--------|:--------:|:--------:|:--------:|
+| [ImageTransformer](https://gojay.top/2020/05/15/Image-Transformer/) | [Image Transformer](https://arxiv.org/abs/1802.05751) | arXiv(2018) | [code]
