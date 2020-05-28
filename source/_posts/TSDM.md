@@ -73,13 +73,15 @@ tags: [DL, Tracking, VOT]
 
 # Code
 ---
+> The **complete code** can be found in [here](https://github.com/Gojay001/TSDM) with citing TSDM[[3]](https://github.com/lql-team/TSDM).  
 [Updating]
 
 # Note
 ---
-> How to use depth information on MOT tasks, detection or re_ID.
+> How to use depth information on MOT tasks, detection or re-ID.
 
 # References
 ---
 > [1] ZHAO, Pengyao, et al. TSDM: Tracking by SiamRPN++ with a Depth-refiner and a Mask-generator. arXiv preprint arXiv:2005.04063, 2020.
 > [2] Gojay. "SiamRPN++." https://gojay.top/2020/05/09/SiamRPN++/
+> [3] TSDM. https://github.com/lql-team/TSDM
