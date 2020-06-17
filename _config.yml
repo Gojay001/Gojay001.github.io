@@ -85,8 +85,8 @@ theme: icarus
 deploy:
   - type: git
     repo: 
-      github: git@github.com:Gojay001/Gojay001.github.io.git
-      coding: git@git.coding.net:Gojay001/Gojay001.coding.me.git
+      github: git@github.com:Gojay001/Gojay001.github.io.git,master
+      coding: git@git.coding.net:Gojay001/Gojay001.coding.me.git,master
     branch: master
   - type: baidu_url_submitter
 
