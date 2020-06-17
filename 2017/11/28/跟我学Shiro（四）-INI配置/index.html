@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<meta name="baidu-site-verification" content="y4OgBadCWI">
+<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA">
+<title>跟我学Shiro（四）-INI配置 - Gojay&#39;s Records</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="SecurityManagerShiro是从根对象 SecurityManager 进行身份验证和授权的，这个对象是线程安全且真个应用只需要一个即可，因此Shiro提供了 SecurityUtils 让我们绑定它为全局的，方便后续操作。">
+<meta name="keywords" content="Java,Shiro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跟我学Shiro（四）-INI配置">
+<meta property="og:url" content="https://gojay.top/2017/11/28/跟我学Shiro（四）-INI配置/index.html">
+<meta property="og:site_name" content="Gojay&#39;s Records">
+<meta property="og:description" content="SecurityManagerShiro是从根对象 SecurityManager 进行身份验证和授权的，这个对象是线程安全且真个应用只需要一个即可，因此Shiro提供了 SecurityUtils 让我们绑定它为全局的，方便后续操作。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://gojay.top/gallery/thumbnails/shiro.png">
+<meta property="og:updated_time" content="2020-06-17T12:26:30.909Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="跟我学Shiro（四）-INI配置">
+<meta name="twitter:description" content="SecurityManagerShiro是从根对象 SecurityManager 进行身份验证和授权的，这个对象是线程安全且真个应用只需要一个即可，因此Shiro提供了 SecurityUtils 让我们绑定它为全局的，方便后续操作。">
+<meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/shiro.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/head.jpg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?f29d95e89a802be01b6ea105a1b4e115";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                Gojay&#39;s Records
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives/">Archives</a>
+                
+                <a class="navbar-item" href="/categories/">Categories</a>
+                
+                <a class="navbar-item" href="/tags/">Tags</a>
+                
+                <a class="navbar-item" href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
+                
+                <a class="navbar-item" href="/about/">About</a>
+                
+                <a class="navbar-item" href="/rss.xml">RSS</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Gojay GitHub" href="https://www.github.com/Gojay001">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail lazy" data-src="/gallery/thumbnails/shiro.png" alt="跟我学Shiro（四）-INI配置">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>跟我学Shiro（四）-INI配置
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                <time class="level-item has-text-grey" datetime="2017-11-28T06:50:37.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2017-11-28</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-06-17T12:26:30.909Z"><i class="far fa-calendar-check">&nbsp;</i>2020-06-17</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/JavaWeb/">JavaWeb</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/JavaWeb/Shiro/">Shiro</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    9 minutes read (About 1390 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1 id="SecurityManager"><a href="#SecurityManager" class="headerlink" title="SecurityManager"></a>SecurityManager</h1><p>Shiro是从根对象 <code>SecurityManager</code> 进行身份验证和授权的，这个对象是线程安全且真个应用只需要一个即可，因此Shiro提供了 <code>SecurityUtils</code> 让我们绑定它为<code>全局</code>的，方便后续操作。</p>
+<a id="more"></a>
+<blockquote>
+<p>因为Shiro的类都是POJO的，因此都很容易放到任何IoC容器管理。<br>但是和一般的IoC容器的区别在于，Shiro从根对象securityManager开始导航。<br>Shiro支持的依赖注入：public空参构造器对象的创建、setter依赖注入。</p>
+</blockquote>
+<h2 id="纯Java代码写法"><a href="#纯Java代码写法" class="headerlink" title="纯Java代码写法"></a>纯Java代码写法</h2><blockquote>
+<p>com.github.gojay001.test.NonConfigurationCreateTest</p>
+</blockquote>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">DefaultSecurityManager securityManager = new DefaultSecurityManager();</span><br><span class="line"></span><br><span class="line">//设置authenticator</span><br><span class="line">ModularRealmAuthenticator authenticator = new ModularRealmAuthenticator();</span><br><span class="line">authenticator.setAuthenticationStrategy(new AtLeastOneSuccessfulStrategy());</span><br><span class="line">securityManager.setAuthenticator(authenticator);</span><br><span class="line"></span><br><span class="line">//设置authorizer</span><br><span class="line">ModularRealmAuthorizer authorizer = new ModularRealmAuthorizer();</span><br><span class="line">authorizer.setPermissionResolver(new WildcardPermissionResolver());</span><br><span class="line">securityManager.setAuthorizer(authorizer);</span><br><span class="line"></span><br><span class="line">//设置Realm</span><br><span class="line">DruidDataSource ds = new DruidDataSource();</span><br><span class="line">ds.setDriverClassName(&quot;com.mysql.jdbc.Driver&quot;);</span><br><span class="line">ds.setUrl(&quot;jdbc:mysql://localhost:3306/shiro&quot;);</span><br><span class="line">ds.setUsername(&quot;root&quot;);</span><br><span class="line">ds.setPassword(&quot;root&quot;);</span><br><span class="line"></span><br><span class="line">JdbcRealm jdbcRealm = new JdbcRealm();</span><br><span class="line">jdbcRealm.setDataSource(ds);</span><br><span class="line">jdbcRealm.setPermissionsLookupEnabled(true);</span><br><span class="line">securityManager.setRealms(Arrays.asList((Realm) jdbcRealm));</span><br><span class="line"></span><br><span class="line">//将SecurityManager设置到SecurityUtils 方便全局使用</span><br><span class="line">SecurityUtils.setSecurityManager(securityManager);</span><br><span class="line"></span><br><span class="line">Subject subject = SecurityUtils.getSubject();</span><br><span class="line"></span><br><span class="line">UsernamePasswordToken token = new UsernamePasswordToken(&quot;root&quot;, &quot;root&quot;);</span><br><span class="line">subject.login(token);</span><br><span class="line"></span><br><span class="line">Assert.assertTrue(subject.isAuthenticated());</span><br></pre></td></tr></table></figure>
+
+<h2 id="等价的INI配置"><a href="#等价的INI配置" class="headerlink" title="等价的INI配置"></a>等价的INI配置</h2><h3 id="shiro-config-ini："><a href="#shiro-config-ini：" class="headerlink" title="shiro-config.ini："></a>shiro-config.ini：</h3><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">[main]</span><br><span class="line">#覆盖默认的securityManager</span><br><span class="line">#securityManager=org.apache.shiro.mgt.DefaultSecurityManager</span><br><span class="line"></span><br><span class="line">#authenticator</span><br><span class="line">authenticator=org.apache.shiro.authc.pam.ModularRealmAuthenticator</span><br><span class="line">authenticationStrategy=org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy</span><br><span class="line">authenticator.authenticationStrategy=$authenticationStrategy</span><br><span class="line">securityManager.authenticator=$authenticator</span><br><span class="line"></span><br><span class="line">#authorizer</span><br><span class="line">authorizer=org.apache.shiro.authz.ModularRealmAuthorizer</span><br><span class="line">permissionResolver=org.apache.shiro.authz.permission.WildcardPermissionResolver</span><br><span class="line">authorizer.permissionResolver=$permissionResolver</span><br><span class="line">securityManager.authorizer=$authorizer</span><br><span class="line"></span><br><span class="line">#realm</span><br><span class="line">dataSource=com.alibaba.druid.pool.DruidDataSource</span><br><span class="line">dataSource.driverClassName=com.mysql.jdbc.Driver</span><br><span class="line">dataSource.url=jdbc:mysql://localhost:3306/shiro</span><br><span class="line">dataSource.username=root</span><br><span class="line">dataSource.password=root</span><br><span class="line"></span><br><span class="line">jdbcRealm=org.apache.shiro.realm.jdbc.JdbcRealm</span><br><span class="line">jdbcRealm.dataSource=$dataSource</span><br><span class="line">jdbcRealm.permissionsLookupEnabled=true</span><br><span class="line">securityManager.realms=$jdbcRealm</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>对象名=全限定类名</code>  相对于调用public无参构造器创建对象<br><code>对象名.属性名=值</code>    相当于调用setter方法设置常量值<br><code>对象名.属性名=$对象引用</code>    相当于调用setter方法设置对象引用</p>
+</blockquote>
+<h3 id="com-github-gojay001-test-ConfigurationCreateTest："><a href="#com-github-gojay001-test-ConfigurationCreateTest：" class="headerlink" title="com.github.gojay001.test.ConfigurationCreateTest："></a>com.github.gojay001.test.ConfigurationCreateTest：</h3><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">Factory&lt;SecurityManager&gt; factory =</span><br><span class="line">    new IniSecurityManagerFactory(&quot;classpath:shiro-config.ini&quot;);</span><br><span class="line"></span><br><span class="line">SecurityManager securityManager = factory.getInstance();</span><br><span class="line"></span><br><span class="line">//将SecurityManager设置到SecurityUtils 方便全局使用</span><br><span class="line">SecurityUtils.setSecurityManager(securityManager);</span><br><span class="line"></span><br><span class="line">Subject subject = SecurityUtils.getSubject();</span><br><span class="line"></span><br><span class="line">UsernamePasswordToken token = new UsernamePasswordToken(&quot;root&quot;, &quot;root&quot;);</span><br><span class="line">subject.login(token);</span><br><span class="line"></span><br><span class="line">Assert.assertTrue(subject.isAuthenticated());</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如上代码是从Shiro <code>INI配置</code>中获取相应的<code>securityManager</code>实例：  </p>
+<ol>
+<li>默认情况先创建一个名字为 <code>securityManager</code> ，类型为 <code>org.apache.shiro.mgt.DefaultSecurityManager</code> 的默认的 <code>SecurityManager</code> ，如果想<code>自定义</code>，只需要在ini配置文件中指定“securityManager=SecurityManager实现类”即可，名字必须为securityManager，它是起始的根；  </li>
+<li><code>IniSecurityManagerFactory</code> 是创建 <code>securityManager</code> 的工厂，其需要一个ini配置文件路径，其支持<code>classpath:</code>（类路径）、<code>file:</code>（文件系统）、<code>url:</code>（网络）三种路径格式，默认是<code>文件系统</code>；  </li>
+<li>接着获取<code>SecuriyManager实例</code>，后续步骤和之前的一样。</li>
+</ol>
+</blockquote>
+<p>如上可以看出Shiro INI配置方式本身提供了一个简单的<code>IoC/DI机制</code>方便在配置文件配置，但是是从 <code>securityManager</code> 这个根对象开始导航。</p>
+<h1 id="INI配置"><a href="#INI配置" class="headerlink" title="INI配置"></a>INI配置</h1><p><code>ini配置文件</code>类似于Java中的 <code>properties（key=value）</code> ，不过提供了将key/value分类的特性，key是每个部分不重复即可，而不是整个配置文件。如下是INI配置分类：</p>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">[main]  </span><br><span class="line">#提供了对根对象securityManager及其依赖的配置  </span><br><span class="line">securityManager=org.apache.shiro.mgt.DefaultSecurityManager  </span><br><span class="line">…………  </span><br><span class="line">securityManager.realms=$jdbcRealm  </span><br><span class="line">  </span><br><span class="line">[users]  </span><br><span class="line">#提供了对用户/密码及其角色的配置，用户名=密码，角色1，角色2  </span><br><span class="line">username=password,role1,role2  </span><br><span class="line">  </span><br><span class="line">[roles]  </span><br><span class="line">#提供了角色及权限之间关系的配置，角色=权限1，权限2  </span><br><span class="line">role1=permission1,permission2  </span><br><span class="line">  </span><br><span class="line">[urls]  </span><br><span class="line">#用于web，提供了对web url拦截相关的配置，url=拦截器[参数]，拦截器  </span><br><span class="line">/index.html = anon  </span><br><span class="line">/admin/** = authc, roles[admin], perms[&quot;permission1&quot;]</span><br></pre></td></tr></table></figure>
+
+<h2 id="main-部分"><a href="#main-部分" class="headerlink" title="[main]部分"></a>[main]部分</h2><p>提供了对根对象 <strong>securityManager</strong> 及其依赖对象的配置。</p>
+<h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">securityManager=org.apache.shiro.mgt.DefaultSecurityManager</span><br></pre></td></tr></table></figure>
+
+<p>其构造器必须是<code>public空参构造器</code>，通过反射创建相应的实例。</p>
+<h3 id="常量值setter注入"><a href="#常量值setter注入" class="headerlink" title="常量值setter注入"></a>常量值setter注入</h3><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">dataSource.driverClassName=com.mysql.jdbc.Driver  </span><br><span class="line">jdbcRealm.permissionsLookupEnabled=true</span><br></pre></td></tr></table></figure>
+
+<p>会自动调用 <code>jdbcRealm.setPermissionsLookupEnabled(true)</code> ，对于这种常量值会自动类型转换。</p>
+<h3 id="对象引用setter注入"><a href="#对象引用setter注入" class="headerlink" title="对象引用setter注入"></a>对象引用setter注入</h3><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">authenticator=org.apache.shiro.authc.pam.ModularRealmAuthenticator  </span><br><span class="line">authenticationStrategy=org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy  </span><br><span class="line">authenticator.authenticationStrategy=$authenticationStrategy  </span><br><span class="line">securityManager.authenticator=$authenticator</span><br></pre></td></tr></table></figure>
+
+<p>会自动通过 <code>securityManager.setAuthenticator(authenticator)</code> 注入引用依赖。</p>
+<h3 id="嵌套属性setter注入"><a href="#嵌套属性setter注入" class="headerlink" title="嵌套属性setter注入"></a>嵌套属性setter注入</h3><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">securityManager.authenticator.authenticationStrategy=$authenticationStrategy</span><br></pre></td></tr></table></figure>
+
+<p>支持这种嵌套方式的setter注入。</p>
+<h3 id="byte数组setter注入"><a href="#byte数组setter注入" class="headerlink" title="byte数组setter注入"></a>byte数组setter注入</h3><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">#base64 byte[]  </span><br><span class="line">authenticator.bytes=aGVsbG8=  </span><br><span class="line">#hex byte[]  </span><br><span class="line">authenticator.bytes=0x68656c6c6f</span><br></pre></td></tr></table></figure>
+
+<p>默认需要使用Base64进行编码，也可以使用0x十六进制。</p>
+<h3 id="Array-Set-List-setter注入"><a href="#Array-Set-List-setter注入" class="headerlink" title="Array/Set/List setter注入"></a>Array/Set/List setter注入</h3><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">authenticator.array=1,2,3  </span><br><span class="line">authenticator.set=$jdbcRealm,$jdbcRealm</span><br></pre></td></tr></table></figure>
+
+<p>多个之间通过“，”分割。</p>
+<h3 id="Map-setter注入"><a href="#Map-setter注入" class="headerlink" title="Map setter注入"></a>Map setter注入</h3><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">authenticator.map=$jdbcRealm:$jdbcRealm,1:1,key:abc</span><br></pre></td></tr></table></figure>
+
+<p>格式是： <code>map=key：value，key：value</code> ，可以注入常量及引用值，常量的话都看作字符串（即使有泛型也不会自动造型）。  </p>
+<h3 id="实例化-注入顺序"><a href="#实例化-注入顺序" class="headerlink" title="实例化/注入顺序"></a>实例化/注入顺序</h3><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">realm=Realm1  </span><br><span class="line">realm=Realm12  </span><br><span class="line">  </span><br><span class="line">authenticator.bytes=aGVsbG8=  </span><br><span class="line">authenticator.bytes=0x68656c6c6f</span><br></pre></td></tr></table></figure>
+
+<p>后边的<code>覆盖</code>前边的注入。</p>
+<h2 id="users-部分"><a href="#users-部分" class="headerlink" title="[users]部分"></a>[users]部分</h2><p>配置用户名/密码及其角色，格式：<code>用户名=密码，角色1，角色2</code>，角色部分可省略。如：</p>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">[users]</span><br><span class="line">root=root,role1,role2</span><br><span class="line">gojay=test</span><br></pre></td></tr></table></figure>
+
+<p>密码一般生成其摘要/加密存储。</p>
+<h2 id="roles-部分"><a href="#roles-部分" class="headerlink" title="[roles]部分"></a>[roles]部分</h2><p>配置角色及权限之间的关系，格式：<code>角色=权限1，权限2</code>；如：</p>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">[roles]  </span><br><span class="line">role1=user:create,user:update  </span><br><span class="line">role2=*</span><br></pre></td></tr></table></figure>
+
+<p>如果只有角色没有对应的权限，可以不配roles。</p>
+<h2 id="urls-部分"><a href="#urls-部分" class="headerlink" title="[urls]部分"></a>[urls]部分</h2><p>配置url及相应的拦截器之间的关系，格式：<code>url=拦截器[参数]，拦截器[参数]</code>，如：</p>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">[urls]  </span><br><span class="line">/admin/** = authc, roles[admin], perms[&quot;permission1&quot;]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参考代码： <code>https://github.com/Gojay001/Demo/tree/master/ShiroTest/ShiroTest-chapter4</code></p>
+</blockquote>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>Title：</strong><a href="https://gojay.top/2017/11/28/跟我学Shiro（四）-INI配置/">跟我学Shiro（四）-INI配置</a></li>
+            <li><strong>Author：</strong><a href="https://gojay.top">Gojay</a></li>
+            <li><strong>Link：</strong><a href="https://gojay.top/2017/11/28/跟我学Shiro（四）-INI配置/">https://gojay.top/2017/11/28/跟我学Shiro（四）-INI配置/</a></li>
+            <li><strong>Date：</strong>2017-11-28</li>
+            <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/Java/">Java</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Shiro/">Shiro</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2017/11/29/跟我学Shiro（五）-编码及加密/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">跟我学Shiro（五）-编码及加密</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2017/11/23/跟我学Shiro（三）-授权/">
+                <span class="level-item">跟我学Shiro（三）-授权</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: '6kgdHh2dtxHKbi9fwyPjsA7t-gzGzoHsz',
+        app_key: 'N4XHHmLsjyHwx2ENVEGEn9Br',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu" style="max-height: 800px; overflow: auto;">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#SecurityManager">
+        <span class="has-mr-6">1</span>
+        <span>SecurityManager</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#纯Java代码写法">
+        <span class="has-mr-6">1.1</span>
+        <span>纯Java代码写法</span>
+        </a></li><li>
+        <a class="is-flex" href="#等价的INI配置">
+        <span class="has-mr-6">1.2</span>
+        <span>等价的INI配置</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#shiro-config-ini：">
+        <span class="has-mr-6">1.2.1</span>
+        <span>shiro-config.ini：</span>
+        </a></li><li>
+        <a class="is-flex" href="#com-github-gojay001-test-ConfigurationCreateTest：">
+        <span class="has-mr-6">1.2.2</span>
+        <span>com.github.gojay001.test.ConfigurationCreateTest：</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#INI配置">
+        <span class="has-mr-6">2</span>
+        <span>INI配置</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#main-部分">
+        <span class="has-mr-6">2.1</span>
+        <span>[main]部分</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#创建对象">
+        <span class="has-mr-6">2.1.1</span>
+        <span>创建对象</span>
+        </a></li><li>
+        <a class="is-flex" href="#常量值setter注入">
+        <span class="has-mr-6">2.1.2</span>
+        <span>常量值setter注入</span>
+        </a></li><li>
+        <a class="is-flex" href="#对象引用setter注入">
+        <span class="has-mr-6">2.1.3</span>
+        <span>对象引用setter注入</span>
+        </a></li><li>
+        <a class="is-flex" href="#嵌套属性setter注入">
+        <span class="has-mr-6">2.1.4</span>
+        <span>嵌套属性setter注入</span>
+        </a></li><li>
+        <a class="is-flex" href="#byte数组setter注入">
+        <span class="has-mr-6">2.1.5</span>
+        <span>byte数组setter注入</span>
+        </a></li><li>
+        <a class="is-flex" href="#Array-Set-List-setter注入">
+        <span class="has-mr-6">2.1.6</span>
+        <span>Array/Set/List setter注入</span>
+        </a></li><li>
+        <a class="is-flex" href="#Map-setter注入">
+        <span class="has-mr-6">2.1.7</span>
+        <span>Map setter注入</span>
+        </a></li><li>
+        <a class="is-flex" href="#实例化-注入顺序">
+        <span class="has-mr-6">2.1.8</span>
+        <span>实例化/注入顺序</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#users-部分">
+        <span class="has-mr-6">2.2</span>
+        <span>[users]部分</span>
+        </a></li><li>
+        <a class="is-flex" href="#roles-部分">
+        <span class="has-mr-6">2.3</span>
+        <span>[roles]部分</span>
+        </a></li><li>
+        <a class="is-flex" href="#urls-部分">
+        <span class="has-mr-6">2.4</span>
+        <span>[urls]部分</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    Gojay&#39;s Records
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Gojay&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                <span id="busuanzi_value_site_pv">0</span> visits
+                </span>
+                
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">1</span> users
+                </span>
+                
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Gojay GitHub" href="https://www.github.com/Gojay001">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.0.0/dist/lazyload.min.js"></script>
+<script>
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy",
+    load_delay: 300,
+});
+</script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

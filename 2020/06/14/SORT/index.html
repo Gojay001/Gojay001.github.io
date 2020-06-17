@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<meta name="baidu-site-verification" content="y4OgBadCWI">
+<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA">
+<title>SORT - Gojay&#39;s Records</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="SORT[1] is pragmatic approach for online and realtime applications. It achieves SOTA with using Kalman filter and Hungarian algorithm. There are some details of reading and implementing it.">
+<meta name="keywords" content="DL,Tracking,MOT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SORT">
+<meta property="og:url" content="https://gojay.top/2020/06/14/SORT/index.html">
+<meta property="og:site_name" content="Gojay&#39;s Records">
+<meta property="og:description" content="SORT[1] is pragmatic approach for online and realtime applications. It achieves SOTA with using Kalman filter and Hungarian algorithm. There are some details of reading and implementing it.">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://gojay.top/gallery/thumbnails/SORT.png">
+<meta property="og:updated_time" content="2020-06-17T12:26:30.902Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SORT">
+<meta name="twitter:description" content="SORT[1] is pragmatic approach for online and realtime applications. It achieves SOTA with using Kalman filter and Hungarian algorithm. There are some details of reading and implementing it.">
+<meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/SORT.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/head.jpg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?f29d95e89a802be01b6ea105a1b4e115";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                Gojay&#39;s Records
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives/">Archives</a>
+                
+                <a class="navbar-item" href="/categories/">Categories</a>
+                
+                <a class="navbar-item" href="/tags/">Tags</a>
+                
+                <a class="navbar-item" href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
+                
+                <a class="navbar-item" href="/about/">About</a>
+                
+                <a class="navbar-item" href="/rss.xml">RSS</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Gojay GitHub" href="https://www.github.com/Gojay001">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail lazy" data-src="/gallery/thumbnails/SORT.png" alt="SORT">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>SORT
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                <time class="level-item has-text-grey" datetime="2020-06-14T04:47:54.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-06-14</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-06-17T12:26:30.902Z"><i class="far fa-calendar-check">&nbsp;</i>2020-06-17</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/DeepLearning/">DeepLearning</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/DeepLearning/Object-Tracking/">Object Tracking</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/DeepLearning/Object-Tracking/SORT/">SORT</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    4 minutes read (About 546 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p><strong>SORT</strong><a href="https://arxiv.org/abs/1602.00763" target="_blank" rel="noopener">[1]</a> is pragmatic approach for <strong>online and realtime</strong> applications. It achieves SOTA with using <code>Kalman filter</code> and <code>Hungarian algorithm</code>. There are some details of reading and implementing it. </p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h1><hr>
+<ul>
+<li><strong><a href="#Paper&Code&note">Paper &amp; Code &amp; note</a></strong></li>
+<li><strong><a href="#Paper">Paper understanding</a></strong></li>
+<li><strong><a href="#Code">Code understanding</a></strong></li>
+<li><strong><a href="#Note">Note</a></strong></li>
+<li><strong><a href="#References">References</a></strong></li>
+</ul>
+<h1 id="Paper-amp-Code-amp-note"><a href="#Paper-amp-Code-amp-note" class="headerlink" title="Paper &amp; Code &amp; note"></a>Paper &amp; Code &amp; note</h1><hr>
+<blockquote>
+<p><strong>Paper</strong>: <a href="https://arxiv.org/abs/1602.00763" target="_blank" rel="noopener">Simple Online and Realtime Tracking</a>(ICIP 2016 paper)<br><strong>Code</strong>: <a href="https://github.com/abewley/sort" target="_blank" rel="noopener">PyTorch</a><br><strong>Note</strong>: <a href="https://www.mendeley.com/viewer/?fileId=13481f42-a600-524f-08b2-c16d48b76b2c&documentId=a3d58906-82b5-3454-b0db-173e8bedc4e0" target="_blank" rel="noopener">Mendeley</a></p>
+</blockquote>
+<h1 id="Paper"><a href="#Paper" class="headerlink" title="Paper"></a>Paper</h1><hr>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p><img src="https://i.loli.net/2020/06/15/u7SPa1cqrkLZOiy.png" alt="SORT_Abstract.png"></p>
+<blockquote>
+<ol>
+<li>THis paper explores a pragmatic approach to multiple object tracking where the main focus is to <code>associate objects</code>.  </li>
+<li>To this end, <code>detection quality</code> is identified as a key factor influencing tracking performance.  </li>
+<li>It only use the <code>Kalman filter</code> and <code>Hungarian algorithm</code> for the tracking components.  </li>
+<li>It achieves an accuracy comparable to <code>state-of-the-art</code> online trackers.</li>
+</ol>
+</blockquote>
+<h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><blockquote>
+<ol>
+<li>Traditionally methods delay making difficult decisions while there is <code>high uncertainty</code> over the object assignments.  </li>
+<li>Recent developments still delay the <code>decision making</code> which makes them unsuitable for online tracking.  </li>
+</ol>
+</blockquote>
+<h2 id="Problem-Solution"><a href="#Problem-Solution" class="headerlink" title="Problem Solution"></a>Problem Solution</h2><p><img src="https://i.loli.net/2020/06/15/BiferdJYLpGm96F.png" alt="SORT_Simple.png"><br><img src="https://i.loli.net/2020/06/15/av8bwNkBlYFPgzf.png" alt="SORT_PS.png"></p>
+<blockquote>
+<ol>
+<li><strong>Occam’s Razor</strong>: Only the <code>bounding box</code> position and size are used for both motion estimation and data association.  </li>
+<li><strong>Detection</strong>: CNN based, like Faster R-CNN<a href="https://gojay.top/2019/10/19/Faster-R-CNN/">[2]</a>.  </li>
+<li><strong>Motion estimation</strong>: Kalman filter<a href="https://zhuanlan.zhihu.com/p/39912633" target="_blank" rel="noopener">[3]</a>.  </li>
+<li><strong>Data association</strong>: Hungarian algorithm<a href="https://zhuanlan.zhihu.com/p/62981901" target="_blank" rel="noopener">[4]</a>.</li>
+</ol>
+</blockquote>
+<h2 id="Core-Conception"><a href="#Core-Conception" class="headerlink" title="Core Conception"></a>Core Conception</h2><h3 id="Detection"><a href="#Detection" class="headerlink" title="Detection"></a>Detection</h3><p><img src="https://i.loli.net/2020/06/15/TDyNnBFciJKQm1z.png" alt="SORT_Comparison.png"></p>
+<blockquote>
+<p>To this end, <strong>detection quality</strong> is identified as a <code>key factor</code> influencing tracking performance, where changing the detector can improve tracking by up to 18.9%. </p>
+</blockquote>
+<h3 id="Estimation-Model"><a href="#Estimation-Model" class="headerlink" title="Estimation Model"></a>Estimation Model</h3><p><img src="https://i.loli.net/2020/06/15/LVa2uc4lARBEjS6.png" alt="SORT_Estimation.png"></p>
+<blockquote>
+<ol>
+<li>It used to <code>propagate</code> a target’s identity into the next frame.  </li>
+<li>It uses <code>Kalman filter</code> with a linear constant velocity model.  </li>
+<li>The state of each target is modelled as: $x=[u,v,s,r,\dot{u},\dot{v},\dot{s}]^T$.  </li>
+</ol>
+</blockquote>
+<h3 id="Data-Association"><a href="#Data-Association" class="headerlink" title="Data Association"></a>Data Association</h3><p><img src="https://i.loli.net/2020/06/15/iFpybWmC3dcqseY.png" alt="SORT_Association.png"></p>
+<blockquote>
+<ol>
+<li>It used to <code>assign detections</code> to existing targets.  </li>
+<li>The assignment cost matrix is then computed as the intersection-over-union <code>(IOU) distance</code>.  </li>
+<li>The assignment is solved optimally using the <code>Hungarian algorithm</code>.</li>
+</ol>
+</blockquote>
+<h3 id="Creation-and-Deletion-of-Track-Identities"><a href="#Creation-and-Deletion-of-Track-Identities" class="headerlink" title="Creation and Deletion of Track Identities"></a>Creation and Deletion of Track Identities</h3><p><img src="https://i.loli.net/2020/06/15/1oW98fgSUrXFsKk.png" alt="SORT_Management.png"></p>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p><img src="https://i.loli.net/2020/06/15/ifJtZF2CWT6LHme.png" alt="SORT_Performance.png"><br><img src="https://i.loli.net/2020/06/15/vcXpkKJVNtWoaP4.png" alt="SORT_MOT.png"></p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><hr>
+<blockquote>
+<p>The <strong>complete code</strong> can be found in SORT<a href="https://github.com/abewley/sort" target="_blank" rel="noopener">[5]</a>.  </p>
+</blockquote>
+<p>[Updating]</p>
+<h1 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h1><hr>
+<blockquote>
+<ol>
+<li>Allowing for new methods to focus on object <code>re-identification</code> to handle long term occlusion.  </li>
+<li>Future work will investigate a tightly coupled <code>detection</code> and tracking framework.</li>
+</ol>
+</blockquote>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><hr>
+<blockquote>
+<p>[1] Bewley, Alex, et al. “Simple online and realtime tracking.” 2016 IEEE International Conference on Image Processing (ICIP). IEEE, 2016.<br>[2] gojay. “Faster R-CNN.” <a href="https://gojay.top/2019/10/19/Faster-R-CNN/">https://gojay.top/2019/10/19/Faster-R-CNN/</a><br>[3] Bzarg, Bot. “How a Kalman filter works in pictures.” <a href="https://zhuanlan.zhihu.com/p/39912633" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/39912633</a><br>[4] ZihaoZhao. “Hungarian algorithm and Kuhn-Munkres algorithm.” <a href="https://zhuanlan.zhihu.com/p/62981901" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/62981901</a><br>[5] SORT. <a href="https://github.com/abewley/sort" target="_blank" rel="noopener">https://github.com/abewley/sort</a></p>
+</blockquote>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>Title：</strong><a href="https://gojay.top/2020/06/14/SORT/">SORT</a></li>
+            <li><strong>Author：</strong><a href="https://gojay.top">Gojay</a></li>
+            <li><strong>Link：</strong><a href="https://gojay.top/2020/06/14/SORT/">https://gojay.top/2020/06/14/SORT/</a></li>
+            <li><strong>Date：</strong>2020-06-14</li>
+            <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/DL/">DL</a>,&nbsp;<a class="has-link-grey -link" href="/tags/MOT/">MOT</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Tracking/">Tracking</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/25/FairMOT/">
+                <span class="level-item">FairMOT</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: '6kgdHh2dtxHKbi9fwyPjsA7t-gzGzoHsz',
+        app_key: 'N4XHHmLsjyHwx2ENVEGEn9Br',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu" style="max-height: 800px; overflow: auto;">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Contents">
+        <span class="has-mr-6">1</span>
+        <span>Contents</span>
+        </a></li><li>
+        <a class="is-flex" href="#Paper-amp-Code-amp-note">
+        <span class="has-mr-6">2</span>
+        <span>Paper &amp; Code &amp; note</span>
+        </a></li><li>
+        <a class="is-flex" href="#Paper">
+        <span class="has-mr-6">3</span>
+        <span>Paper</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Abstract">
+        <span class="has-mr-6">3.1</span>
+        <span>Abstract</span>
+        </a></li><li>
+        <a class="is-flex" href="#Problem-Description">
+        <span class="has-mr-6">3.2</span>
+        <span>Problem Description</span>
+        </a></li><li>
+        <a class="is-flex" href="#Problem-Solution">
+        <span class="has-mr-6">3.3</span>
+        <span>Problem Solution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Core-Conception">
+        <span class="has-mr-6">3.4</span>
+        <span>Core Conception</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Detection">
+        <span class="has-mr-6">3.4.1</span>
+        <span>Detection</span>
+        </a></li><li>
+        <a class="is-flex" href="#Estimation-Model">
+        <span class="has-mr-6">3.4.2</span>
+        <span>Estimation Model</span>
+        </a></li><li>
+        <a class="is-flex" href="#Data-Association">
+        <span class="has-mr-6">3.4.3</span>
+        <span>Data Association</span>
+        </a></li><li>
+        <a class="is-flex" href="#Creation-and-Deletion-of-Track-Identities">
+        <span class="has-mr-6">3.4.4</span>
+        <span>Creation and Deletion of Track Identities</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Experiments">
+        <span class="has-mr-6">3.5</span>
+        <span>Experiments</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Code">
+        <span class="has-mr-6">4</span>
+        <span>Code</span>
+        </a></li><li>
+        <a class="is-flex" href="#Note">
+        <span class="has-mr-6">5</span>
+        <span>Note</span>
+        </a></li><li>
+        <a class="is-flex" href="#References">
+        <span class="has-mr-6">6</span>
+        <span>References</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    Gojay&#39;s Records
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Gojay&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                <span id="busuanzi_value_site_pv">0</span> visits
+                </span>
+                
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">1</span> users
+                </span>
+                
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Gojay GitHub" href="https://www.github.com/Gojay001">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.0.0/dist/lazyload.min.js"></script>
+<script>
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy",
+    load_delay: 300,
+});
+</script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

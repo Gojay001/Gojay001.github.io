@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<meta name="baidu-site-verification" content="y4OgBadCWI">
+<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA">
+<title>Java Back-end Interview - Gojay&#39;s Records</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="写在前面 在大三上的期末时间段，偶然得知某滴信息安全部的后端开发实习岗位。由于厂牌和待遇的吸引，便抱着试一试的心态投了简历。下面就一面的提问进行技术总结，答案仅为个人理解，问题没有详细解释只提出大概要点。">
+<meta name="keywords" content="Java,interview">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Back-end Interview">
+<meta property="og:url" content="https://gojay.top/2018/02/01/Java-Back-end-Interview/index.html">
+<meta property="og:site_name" content="Gojay&#39;s Records">
+<meta property="og:description" content="写在前面 在大三上的期末时间段，偶然得知某滴信息安全部的后端开发实习岗位。由于厂牌和待遇的吸引，便抱着试一试的心态投了简历。下面就一面的提问进行技术总结，答案仅为个人理解，问题没有详细解释只提出大概要点。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://gojay.top/gallery/thumbnails/interview.jpg">
+<meta property="og:updated_time" content="2020-06-17T12:26:30.898Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java Back-end Interview">
+<meta name="twitter:description" content="写在前面 在大三上的期末时间段，偶然得知某滴信息安全部的后端开发实习岗位。由于厂牌和待遇的吸引，便抱着试一试的心态投了简历。下面就一面的提问进行技术总结，答案仅为个人理解，问题没有详细解释只提出大概要点。">
+<meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/interview.jpg">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/head.jpg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?f29d95e89a802be01b6ea105a1b4e115";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                Gojay&#39;s Records
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives/">Archives</a>
+                
+                <a class="navbar-item" href="/categories/">Categories</a>
+                
+                <a class="navbar-item" href="/tags/">Tags</a>
+                
+                <a class="navbar-item" href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
+                
+                <a class="navbar-item" href="/about/">About</a>
+                
+                <a class="navbar-item" href="/rss.xml">RSS</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Gojay GitHub" href="https://www.github.com/Gojay001">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail lazy" data-src="/gallery/thumbnails/interview.jpg" alt="Java Back-end Interview">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>Java Back-end Interview
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                <time class="level-item has-text-grey" datetime="2018-02-01T02:01:31.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2018-02-01</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-06-17T12:26:30.898Z"><i class="far fa-calendar-check">&nbsp;</i>2020-06-17</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/JavaWeb/">JavaWeb</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/JavaWeb/Interview/">Interview</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    8 minutes read (About 1269 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><hr>
+<p>在大三上的期末时间段，偶然得知某滴信息安全部的后端开发实习岗位。由于厂牌和待遇的吸引，便抱着试一试的心态投了简历。下面就一面的提问进行技术总结，答案仅为个人理解，问题没有详细解释只提出大概要点。</p>
+<a id="more"></a>
+
+<h1 id="面试细节"><a href="#面试细节" class="headerlink" title="面试细节"></a>面试细节</h1><hr>
+<h2 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h2><p>首先是介绍自己，包括求职岗位，个人情况（比如学校、年级、专业等），技术学习情况（技术栈、技术能力、项目等）。</p>
+<h2 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h2><ul>
+<li>项目架构</li>
+<li>细节处理及实现</li>
+</ul>
+<p>由于在简历的项目经历必不可少，首先就选了一个项目进行细节剖析。这个就是把自己的实现思路表达出来，毕竟自己写的项目对所运用到的东西心里也有点数。针对这次面试，面试官对安全方面可能看得比较重，所以从头到尾一直在挖这边的细节。</p>
+<h2 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h2><h3 id="String、StringBuffered"><a href="#String、StringBuffered" class="headerlink" title="String、StringBuffered"></a>String、StringBuffered</h3><ul>
+<li>二者区别</li>
+<li>存储在JVM哪里</li>
+</ul>
+<blockquote>
+<p>可变，线程安全；<br>存储在常量池。</p>
+</blockquote>
+<h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><ul>
+<li>Class文件编码</li>
+<li>谈谈遇到过的乱码问题及如何解决</li>
+<li>UTF-8和UTF-16区别</li>
+</ul>
+<blockquote>
+<p>Class文件采用Unicode编码(UTF-16)；<br>乱码问题： <strong>页面乱码</strong>（HTML、JSP）， <strong>传值乱码</strong>（配置过滤器）， <strong>数据库乱码</strong>（检查Tomcat、Mysql配置）<br>其他相关： <code>http://www.qianxingzhem.com/post-1499.html</code></p>
+</blockquote>
+<h3 id="abstract、interface"><a href="#abstract、interface" class="headerlink" title="abstract、interface"></a>abstract、interface</h3><ul>
+<li>两者区别</li>
+</ul>
+<blockquote>
+<p>多继承实现，全部抽象；</p>
+</blockquote>
+<h3 id="JDK8"><a href="#JDK8" class="headerlink" title="JDK8"></a>JDK8</h3><blockquote>
+<p>这个暂时不太了解，下面贴出关于新特性的官方说明和博客链接：<br>官方说明： <code>http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html</code><br>博客： <code>http://blog.csdn.net/qiubabin/article/details/70256683</code></p>
+</blockquote>
+<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><ul>
+<li>简述集合以及底层实现</li>
+<li>HashMap、HashTable，如何改进</li>
+<li>ArrayList、LinkedList，区别</li>
+<li>HashMap、TreeMap、LinkedHashMap，区别</li>
+</ul>
+<blockquote>
+<p>线程安全、效率；<br>数组查询，链表增删；<br><strong>HashMap</strong>：允许一条记录键为空，多条记录值为空，不同步；<br><strong>HashTable</strong>：不允许键值为空，同步，效率低；<br><strong>LinkedHashMap</strong>：保存记录的插入顺序；<br><strong>TreeMap</strong>：可以根据键排序。<br>参考： <code>http://blog.csdn.net/xin_jmail/article/details/25975085</code></p>
+</blockquote>
+<h3 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h3><blockquote>
+<p>(1)全盘负责(2)父类委托(3)缓存机制<br>参考： <code>https://www.cnblogs.com/ityouknow/p/5603287.html</code></p>
+</blockquote>
+<h3 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h3><ul>
+<li>内存模型</li>
+<li>数据存储位置（如int i=0;）</li>
+<li>GC（判断GC root，GC分区）</li>
+</ul>
+<blockquote>
+<p>JVM相关： <code>http://blog.gojay.xin/2017/12/09/初识Java虚拟机/</code></p>
+</blockquote>
+<h2 id="专业相关"><a href="#专业相关" class="headerlink" title="专业相关"></a>专业相关</h2><ul>
+<li><strong>如何保证信息没有被更改</strong></li>
+<li><strong>认证、授权</strong></li>
+<li><strong>数据加密</strong></li>
+</ul>
+<h2 id="后端相关"><a href="#后端相关" class="headerlink" title="后端相关"></a>后端相关</h2><h3 id="Servlet生命周期"><a href="#Servlet生命周期" class="headerlink" title="Servlet生命周期"></a>Servlet生命周期</h3><blockquote>
+<p>容器加载类<br>实例化<br>init()<br>service()<br>destroy()</p>
+</blockquote>
+<h3 id="GET、POST"><a href="#GET、POST" class="headerlink" title="GET、POST"></a>GET、POST</h3><ul>
+<li>二者区别</li>
+</ul>
+<blockquote>
+<p>body，参数，安全性。</p>
+</blockquote>
+<h3 id="cookie、session"><a href="#cookie、session" class="headerlink" title="cookie、session"></a>cookie、session</h3><ul>
+<li>二者区别</li>
+<li>两台服务器负载均衡处理session</li>
+</ul>
+<blockquote>
+<p>客户端（浏览器）、服务器；<br>session保持、复制、共享；</p>
+</blockquote>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><ul>
+<li>Stack特性</li>
+<li>用stack实现时间复杂度为O(1)的getMin()方法</li>
+</ul>
+<blockquote>
+<p>后进先出；<br>使用辅助栈<code>http://blog.csdn.net/sheepmu/article/details/38459165</code></p>
+</blockquote>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><ul>
+<li>事务及特性</li>
+</ul>
+<blockquote>
+<p><strong>ACID</strong> <code>https://www.cnblogs.com/nobounds/p/5409472.html</code></p>
+</blockquote>
+<h2 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h2><p>后面就根据简历上面写的东西对其他方面提了一些问题，比如看过哪些技术书籍，平时怎么学习以及解决问题等等。</p>
+<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><hr>
+<p>这次面试整体来说，主要是简历上写了哪些就问的相关技术点，熟悉、掌握、了解都基本会提到一点。感触较大的是什么问题他都能够一直往深处挖，到最后确实不知道或者自己看情况直接说不了解。由于这次招人比较紧急，要求不算太高，所以也就放得比较宽，没有太严格。我也是匆忙投简历，加上当天考英语六级，基本上就没怎么准备。后期会结合自身再改改简历，最重要的还是提升自己，针对技术方面还是需要稳扎稳打，夯实基础。过了几天换了一个人打电话来约二面的时候再次提到了入职和任职时间，最终因为没有协调好时间就没有进行二面。虽然有点遗憾，但是我也更加了解自己现在的水平，以及正式入职所需要具备的能力。这也算是一个转折点吧，最终我决定了考研，技术方面自然也会落下不少，技术博客最近一年也不会怎么更了吧，包括这一篇本应该一个多月前更的也拖到了现在。最后的最后，祝自己考研顺利吧，不忘初心，方能始终。</p>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>Title：</strong><a href="https://gojay.top/2018/02/01/Java-Back-end-Interview/">Java Back-end Interview</a></li>
+            <li><strong>Author：</strong><a href="https://gojay.top">Gojay</a></li>
+            <li><strong>Link：</strong><a href="https://gojay.top/2018/02/01/Java-Back-end-Interview/">https://gojay.top/2018/02/01/Java-Back-end-Interview/</a></li>
+            <li><strong>Date：</strong>2018-02-01</li>
+            <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/Java/">Java</a>,&nbsp;<a class="has-link-grey -link" href="/tags/interview/">interview</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/07/Hexo-Blog-Pages/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Hexo+Blog+Pages</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2017/12/09/Learning-Java-Virtual-Machine(JVM)/">
+                <span class="level-item">Learning Java Virtual Machine(JVM)</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: '6kgdHh2dtxHKbi9fwyPjsA7t-gzGzoHsz',
+        app_key: 'N4XHHmLsjyHwx2ENVEGEn9Br',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu" style="max-height: 800px; overflow: auto;">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#写在前面">
+        <span class="has-mr-6">1</span>
+        <span>写在前面</span>
+        </a></li><li>
+        <a class="is-flex" href="#面试细节">
+        <span class="has-mr-6">2</span>
+        <span>面试细节</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#自我介绍">
+        <span class="has-mr-6">2.1</span>
+        <span>自我介绍</span>
+        </a></li><li>
+        <a class="is-flex" href="#项目">
+        <span class="has-mr-6">2.2</span>
+        <span>项目</span>
+        </a></li><li>
+        <a class="is-flex" href="#Java基础">
+        <span class="has-mr-6">2.3</span>
+        <span>Java基础</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#String、StringBuffered">
+        <span class="has-mr-6">2.3.1</span>
+        <span>String、StringBuffered</span>
+        </a></li><li>
+        <a class="is-flex" href="#编码">
+        <span class="has-mr-6">2.3.2</span>
+        <span>编码</span>
+        </a></li><li>
+        <a class="is-flex" href="#abstract、interface">
+        <span class="has-mr-6">2.3.3</span>
+        <span>abstract、interface</span>
+        </a></li><li>
+        <a class="is-flex" href="#JDK8">
+        <span class="has-mr-6">2.3.4</span>
+        <span>JDK8</span>
+        </a></li><li>
+        <a class="is-flex" href="#集合">
+        <span class="has-mr-6">2.3.5</span>
+        <span>集合</span>
+        </a></li><li>
+        <a class="is-flex" href="#类加载机制">
+        <span class="has-mr-6">2.3.6</span>
+        <span>类加载机制</span>
+        </a></li><li>
+        <a class="is-flex" href="#JVM">
+        <span class="has-mr-6">2.3.7</span>
+        <span>JVM</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#专业相关">
+        <span class="has-mr-6">2.4</span>
+        <span>专业相关</span>
+        </a></li><li>
+        <a class="is-flex" href="#后端相关">
+        <span class="has-mr-6">2.5</span>
+        <span>后端相关</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Servlet生命周期">
+        <span class="has-mr-6">2.5.1</span>
+        <span>Servlet生命周期</span>
+        </a></li><li>
+        <a class="is-flex" href="#GET、POST">
+        <span class="has-mr-6">2.5.2</span>
+        <span>GET、POST</span>
+        </a></li><li>
+        <a class="is-flex" href="#cookie、session">
+        <span class="has-mr-6">2.5.3</span>
+        <span>cookie、session</span>
+        </a></li><li>
+        <a class="is-flex" href="#算法">
+        <span class="has-mr-6">2.5.4</span>
+        <span>算法</span>
+        </a></li><li>
+        <a class="is-flex" href="#数据库">
+        <span class="has-mr-6">2.5.5</span>
+        <span>数据库</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#其他问题">
+        <span class="has-mr-6">2.6</span>
+        <span>其他问题</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#写在最后">
+        <span class="has-mr-6">3</span>
+        <span>写在最后</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    Gojay&#39;s Records
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Gojay&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                <span id="busuanzi_value_site_pv">0</span> visits
+                </span>
+                
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">1</span> users
+                </span>
+                
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Gojay GitHub" href="https://www.github.com/Gojay001">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.0.0/dist/lazyload.min.js"></script>
+<script>
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy",
+    load_delay: 300,
+});
+</script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

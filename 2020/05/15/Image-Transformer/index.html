@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<meta name="baidu-site-verification" content="y4OgBadCWI">
+<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA">
+<title>Image Transformer - Gojay&#39;s Records</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="Image Transformer[1] is a sequence modeling formulation of image generation generalized by Transformer, which restricting the self-attention mechanism to attend to local neighborhoods, while maintain">
+<meta name="keywords" content="DL,Attention">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Image Transformer">
+<meta property="og:url" content="https://gojay.top/2020/05/15/Image-Transformer/index.html">
+<meta property="og:site_name" content="Gojay&#39;s Records">
+<meta property="og:description" content="Image Transformer[1] is a sequence modeling formulation of image generation generalized by Transformer, which restricting the self-attention mechanism to attend to local neighborhoods, while maintain">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://gojay.top/gallery/thumbnails/ImageTransformer.png">
+<meta property="og:updated_time" content="2020-06-17T12:26:30.897Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Image Transformer">
+<meta name="twitter:description" content="Image Transformer[1] is a sequence modeling formulation of image generation generalized by Transformer, which restricting the self-attention mechanism to attend to local neighborhoods, while maintain">
+<meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/ImageTransformer.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/head.jpg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?f29d95e89a802be01b6ea105a1b4e115";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                Gojay&#39;s Records
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives/">Archives</a>
+                
+                <a class="navbar-item" href="/categories/">Categories</a>
+                
+                <a class="navbar-item" href="/tags/">Tags</a>
+                
+                <a class="navbar-item" href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
+                
+                <a class="navbar-item" href="/about/">About</a>
+                
+                <a class="navbar-item" href="/rss.xml">RSS</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Gojay GitHub" href="https://www.github.com/Gojay001">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail lazy" data-src="/gallery/thumbnails/ImageTransformer.png" alt="Image Transformer">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>Image Transformer
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                <time class="level-item has-text-grey" datetime="2020-05-15T08:15:09.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-15</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-06-17T12:26:30.897Z"><i class="far fa-calendar-check">&nbsp;</i>2020-06-17</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/DeepLearning/">DeepLearning</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/DeepLearning/Image-Generation/">Image Generation</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/DeepLearning/Image-Generation/ImageTransformer/">ImageTransformer</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    5 minutes read (About 740 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p><strong>Image Transformer</strong><a href="https://arxiv.org/abs/1802.05751" target="_blank" rel="noopener">[1]</a> is a sequence modeling formulation of image generation generalized by <code>Transformer</code>, which restricting the <strong>self-attention mechanism</strong> to attend to local neighborhoods, while maintaining <code>large receptive field</code>. There are some details of reading and implementing it. </p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h1><hr>
+<ul>
+<li><strong><a href="#Paper&Code&note">Paper &amp; Code &amp; note</a></strong></li>
+<li><strong><a href="#Paper">Paper understanding</a></strong></li>
+<li><strong><a href="#Code">Code understanding</a></strong></li>
+<li><strong><a href="#Note">Note</a></strong></li>
+<li><strong><a href="#References">References</a></strong></li>
+</ul>
+<h1 id="Paper-amp-Code-amp-note"><a href="#Paper-amp-Code-amp-note" class="headerlink" title="Paper &amp; Code &amp; note"></a>Paper &amp; Code &amp; note</h1><hr>
+<blockquote>
+<p><strong>Paper</strong>: <a href="https://arxiv.org/abs/1802.05751" target="_blank" rel="noopener">Image Transformer</a>(2018 arXiv paper)<br><strong>Code</strong>: [Code]<br><strong>Note</strong>: <a href="https://www.mendeley.com/viewer/?fileId=33fbf9ab-c19c-f9e1-01a8-eb0c466a248c&documentId=29df54a6-2fd3-3d8a-8172-398e996de1f5" target="_blank" rel="noopener">Mendeley</a></p>
+</blockquote>
+<h1 id="Paper"><a href="#Paper" class="headerlink" title="Paper"></a>Paper</h1><hr>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p><img src="https://i.loli.net/2020/05/15/aolzun27SwJmFGZ.png" alt="ImageTrans_Abstract.png"></p>
+<blockquote>
+<ol>
+<li><strong>Image generation</strong> has been successfully cast as an autoregressive sequence generation or transformation problem.  </li>
+<li>In this work, they generalize the <code>Transformer</code> to a sequence modeling formulation of image generation.  </li>
+<li>By restricting the <strong>self-attention</strong> mechanism to attend to local neighborhoods while maintaining <code>large receptive field</code>.  </li>
+<li>outperform the current <strong>state of the art</strong> in image generation and super-resolution.</li>
+</ol>
+</blockquote>
+<h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p><img src="https://i.loli.net/2020/05/15/Z2ok45xiMILATOD.png" alt="ImageTrans_PD.png"></p>
+<blockquote>
+<ol>
+<li>Training <strong>RNNs</strong>(recurrent neural networks) to sequentially predict each pixel of even a small image is <code>computationally</code> very challenging. Thus, <code>parallelizable</code> models that use <strong>CNNs</strong>(convolutional neural networks) such as the PixelCNN have recently received much more attention, and have now surpassed the PixelRNN in quality.  </li>
+<li>One disadvantage of <strong>CNNs</strong> compared to RNNs is their typically fairly <code>limited receptive field</code>. This can adversely affect their ability to model long-range phenomena common in images, such as symmetry and occlusion, especially with a small number of layers.  </li>
+</ol>
+</blockquote>
+<h2 id="Problem-Solution"><a href="#Problem-Solution" class="headerlink" title="Problem Solution"></a>Problem Solution</h2><p><img src="https://i.loli.net/2020/05/15/XdJgzIWvAaT2cQr.png" alt="ImageTrans_PS.png"></p>
+<blockquote>
+<ol>
+<li><strong>self-attention</strong> can achieve a better <code>balance in the trade-off</code> between the virtually unlimited receptive field of the necessarily sequential <code>PixelRNN</code> and the limited receptive field of the much more parallelizable <code>PixelCNN</code> and its various extensions.<br>We.</li>
+<li>Image Transformer which is a model based entirely on a self-attention mechanism allows us to use significantly <strong>larger receptive fields</strong> than the PixelCNN.  </li>
+<li><strong>Increasing the size</strong> of the receptive field plays a significant role in experiments improvement.  </li>
+</ol>
+</blockquote>
+<h2 id="Conceptual-Understanding"><a href="#Conceptual-Understanding" class="headerlink" title="Conceptual Understanding"></a>Conceptual Understanding</h2><h3 id="Self-Attention"><a href="#Self-Attention" class="headerlink" title="Self-Attention"></a>Self-Attention</h3><p><img src="https://i.loli.net/2020/05/15/PxnZoR4Q3dawgTJ.png" alt="ImageTrans_SelfAttention.png"></p>
+<blockquote>
+<ol>
+<li>Each self-attention layer computes a <code>d-dimensional representation</code> for each position.  </li>
+<li>it first compares the position’s current representation to other positions’ representations, obtaining an <code>attention distribution</code> over the other positions.  </li>
+<li>This distribution is then used to <code>weight the contribution</code> of the other positions’ representations to the next representation for the position. </li>
+</ol>
+</blockquote>
+<h3 id="Local-Self-Attention"><a href="#Local-Self-Attention" class="headerlink" title="Local Self-Attention"></a>Local Self-Attention</h3><p><img src="https://i.loli.net/2020/05/15/BKF6Dw1yWQLzhIH.png" alt="ImageTrans_LocalAttention.png"></p>
+<blockquote>
+<ol>
+<li>Inspired by CNNs, they address this by adopting a notion of <strong>locality</strong>, restricting the positions in the <code>memory matrix M</code> to a local neighborhood around the query position.  </li>
+<li>They partition the image into <strong>query blocks</strong> and associate each of these with a larger <code>memory block</code>.  </li>
+<li>The model attends to the <strong>same memory matrix</strong>, the self-attention is then computed for all query blocks in parallel.  </li>
+</ol>
+</blockquote>
+<h2 id="Core-Conception"><a href="#Core-Conception" class="headerlink" title="Core Conception"></a>Core Conception</h2><p><img src="https://i.loli.net/2020/05/15/u2wic7FlBJG31LQ.png" alt="ImageTrans_details.png"></p>
+<blockquote>
+<ol>
+<li><strong>Recomputing</strong> the representation $q’$ of a single channel of one pixel $q$ by attending to a memory of previously generated pixels $m_1,m_2,…$.  </li>
+<li>After performing <strong>local self-attention</strong> we apply a two-layer position- wise <strong>feed-forward neural network</strong> with the <code>same parameters</code> for all positions in a given layer.  </li>
+<li>Self-attention and the feed-forward networks are followed by <code>dropout</code> and bypassed by a <code>residual connection</code> with subsequent <code>layer normalization</code>.</li>
+</ol>
+</blockquote>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p><img src="https://i.loli.net/2020/05/15/6a3DBNMGqXIJ2bt.png" alt="ImageTrans_Experiments.png"><br><img src="https://i.loli.net/2020/05/15/szybrG49R6w7Cd3.png" alt="ImageTrans_results.png"><br><img src="https://i.loli.net/2020/05/15/cYl3pPF2v4AbW8B.png" alt="ImageTrans_Comparison.png"></p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><hr>
+<p>[Updating]</p>
+<h1 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h1><hr>
+<p><img src="https://i.loli.net/2020/05/15/5RjOb8AcJiDPhYr.png" alt="ImageTrans_future1.png"><br><img src="https://i.loli.net/2020/05/15/i2a3zUuM7bFNjBx.png" alt="ImageTrans_future2.png"></p>
+<blockquote>
+<ol>
+<li>We further hope to have provided additional evidence that even in the light of <strong>GANs</strong>(generative adversarial networks), <strong>likelihood-based</strong> models of images is very much a promising area for further research.  </li>
+<li>We would like to explore a broader variety of <strong>conditioning information</strong> including free-form text, and tasks combining modalities such as language-driven editing of images.  </li>
+<li>Fundamentally, we aim to move beyond still images <strong>to video</strong> and towards applications in model-based <code>reinforcement learning</code>.</li>
+</ol>
+</blockquote>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><hr>
+<p>[1] Parmar, Niki, et al. “Image transformer.” arXiv preprint arXiv:1802.05751 (2018).</p>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>Title：</strong><a href="https://gojay.top/2020/05/15/Image-Transformer/">Image Transformer</a></li>
+            <li><strong>Author：</strong><a href="https://gojay.top">Gojay</a></li>
+            <li><strong>Link：</strong><a href="https://gojay.top/2020/05/15/Image-Transformer/">https://gojay.top/2020/05/15/Image-Transformer/</a></li>
+            <li><strong>Date：</strong>2020-05-15</li>
+            <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/Attention/">Attention</a>,&nbsp;<a class="has-link-grey -link" href="/tags/DL/">DL</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/23/TSDM/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">TSDM</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/09/SiamRPN++/">
+                <span class="level-item">SiamRPN++</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: '6kgdHh2dtxHKbi9fwyPjsA7t-gzGzoHsz',
+        app_key: 'N4XHHmLsjyHwx2ENVEGEn9Br',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu" style="max-height: 800px; overflow: auto;">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Contents">
+        <span class="has-mr-6">1</span>
+        <span>Contents</span>
+        </a></li><li>
+        <a class="is-flex" href="#Paper-amp-Code-amp-note">
+        <span class="has-mr-6">2</span>
+        <span>Paper &amp; Code &amp; note</span>
+        </a></li><li>
+        <a class="is-flex" href="#Paper">
+        <span class="has-mr-6">3</span>
+        <span>Paper</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Abstract">
+        <span class="has-mr-6">3.1</span>
+        <span>Abstract</span>
+        </a></li><li>
+        <a class="is-flex" href="#Problem-Description">
+        <span class="has-mr-6">3.2</span>
+        <span>Problem Description</span>
+        </a></li><li>
+        <a class="is-flex" href="#Problem-Solution">
+        <span class="has-mr-6">3.3</span>
+        <span>Problem Solution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Conceptual-Understanding">
+        <span class="has-mr-6">3.4</span>
+        <span>Conceptual Understanding</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Self-Attention">
+        <span class="has-mr-6">3.4.1</span>
+        <span>Self-Attention</span>
+        </a></li><li>
+        <a class="is-flex" href="#Local-Self-Attention">
+        <span class="has-mr-6">3.4.2</span>
+        <span>Local Self-Attention</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Core-Conception">
+        <span class="has-mr-6">3.5</span>
+        <span>Core Conception</span>
+        </a></li><li>
+        <a class="is-flex" href="#Experiments">
+        <span class="has-mr-6">3.6</span>
+        <span>Experiments</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Code">
+        <span class="has-mr-6">4</span>
+        <span>Code</span>
+        </a></li><li>
+        <a class="is-flex" href="#Note">
+        <span class="has-mr-6">5</span>
+        <span>Note</span>
+        </a></li><li>
+        <a class="is-flex" href="#References">
+        <span class="has-mr-6">6</span>
+        <span>References</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    Gojay&#39;s Records
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Gojay&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                <span id="busuanzi_value_site_pv">0</span> visits
+                </span>
+                
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">1</span> users
+                </span>
+                
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Gojay GitHub" href="https://www.github.com/Gojay001">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.0.0/dist/lazyload.min.js"></script>
+<script>
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy",
+    load_delay: 300,
+});
+</script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<meta name="baidu-site-verification" content="y4OgBadCWI">
+<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA">
+<title>跟我学Shiro（六）-Realm及相关对象 - Gojay&#39;s Records</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="Realm 定义实体及关系">
+<meta name="keywords" content="Java,Shiro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跟我学Shiro（六）-Realm及相关对象">
+<meta property="og:url" content="https://gojay.top/2017/11/30/跟我学Shiro（六）-Realm及相关对象/index.html">
+<meta property="og:site_name" content="Gojay&#39;s Records">
+<meta property="og:description" content="Realm 定义实体及关系">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://gojay.top/gallery/thumbnails/shiro.png">
+<meta property="og:updated_time" content="2020-06-17T12:26:30.908Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="跟我学Shiro（六）-Realm及相关对象">
+<meta name="twitter:description" content="Realm 定义实体及关系">
+<meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/shiro.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/head.jpg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?f29d95e89a802be01b6ea105a1b4e115";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                Gojay&#39;s Records
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives/">Archives</a>
+                
+                <a class="navbar-item" href="/categories/">Categories</a>
+                
+                <a class="navbar-item" href="/tags/">Tags</a>
+                
+                <a class="navbar-item" href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
+                
+                <a class="navbar-item" href="/about/">About</a>
+                
+                <a class="navbar-item" href="/rss.xml">RSS</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Gojay GitHub" href="https://www.github.com/Gojay001">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail lazy" data-src="/gallery/thumbnails/shiro.png" alt="跟我学Shiro（六）-Realm及相关对象">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>跟我学Shiro（六）-Realm及相关对象
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                <time class="level-item has-text-grey" datetime="2017-11-30T09:18:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2017-11-30</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-06-17T12:26:30.908Z"><i class="far fa-calendar-check">&nbsp;</i>2020-06-17</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/JavaWeb/">JavaWeb</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/JavaWeb/Shiro/">Shiro</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    17 minutes read (About 2509 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1 id="Realm"><a href="#Realm" class="headerlink" title="Realm"></a>Realm</h1><hr>
+<h2 id="定义实体及关系"><a href="#定义实体及关系" class="headerlink" title="定义实体及关系"></a>定义实体及关系</h2><p><img src="https://i.loli.net/2019/08/04/9IzlrkhGxKUiEab.png" alt="6-1.png"></p>
+<a id="more"></a>
+<p><strong>用户-角色</strong>之间是多对多关系，<strong>角色-权限</strong>之间是多对多关系；且<code>用户</code>和<code>权限</code>之间通过<code>角色</code>建立关系。<br>在系统中验证时通过<code>权限验证</code>，角色只是权限集合，即所谓的显式角色。</p>
+<ul>
+<li><strong>用户</strong>实体包括：编号<code>id</code>、用户名<code>username</code>、密码<code>password</code>、盐<code>salt</code>、是否锁定<code>locked</code>；</li>
+<li><strong>角色</strong>实体包括：、编号<code>id</code>、角色标识符<code>role</code>、描述<code>description</code>、是否可用<code>available</code>；</li>
+<li><strong>权限</strong>实体包括：编号<code>id</code>、权限标识符<code>permission</code>、描述<code>description</code>、是否可用<code>available</code>。</li>
+</ul>
+<blockquote>
+<p>另外还有两个<strong>关系实体</strong>：<br><strong>用户-角色</strong>实体：用户编号、角色编号，且组合为复合主键）；<br><strong>角色-权限</strong>实体：角色编号、权限编号，且组合为复合主键）。</p>
+</blockquote>
+<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>为了方便数据库操作，使用 <code>org.springframework: spring-jdbc: 4.0.0.RELEASE</code> 依赖。</p>
+<h3 id="定义Service及Dao"><a href="#定义Service及Dao" class="headerlink" title="定义Service及Dao"></a>定义Service及Dao</h3><blockquote>
+<p>为了实现的简单性，只实现必须的功能，其他的可以自己实现即可。</p>
+</blockquote>
+<h4 id="PermissionService"><a href="#PermissionService" class="headerlink" title="PermissionService"></a>PermissionService</h4><p>实现基本的<strong>创建/删除</strong>权限。</p>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">public interface PermissionService &#123;  </span><br><span class="line">    public Permission createPermission(Permission permission);  </span><br><span class="line">    public void deletePermission(Long permissionId);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="RoleService"><a href="#RoleService" class="headerlink" title="RoleService"></a>RoleService</h4><p>相对于PermissionService多了<strong>关联/移除关联角色-权限</strong>功能。</p>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">public interface RoleService &#123;  </span><br><span class="line">    public Role createRole(Role role);  </span><br><span class="line">    public void deleteRole(Long roleId);  </span><br><span class="line">    // 添加角色-权限之间关系  </span><br><span class="line">    public void correlationPermissions(Long roleId, Long... permissionIds);  </span><br><span class="line">    // 移除角色-权限之间关系  </span><br><span class="line">    public void uncorrelationPermissions(Long roleId, Long... permissionIds);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="UserService"><a href="#UserService" class="headerlink" title="UserService"></a>UserService</h4><p>使用 <strong>findByUsername</strong> 、 <strong>findRoles</strong> 及 <strong>findPermissions</strong> 来查找用户名对应的帐号、角色及权限信息。  </p>
+<blockquote>
+<p>之后的Realm就使用这些方法来查找相关信息。</p>
+</blockquote>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">public interface UserService &#123;  </span><br><span class="line">    // 创建账户</span><br><span class="line">    public User createUser(User user);   </span><br><span class="line">    // 修改密码</span><br><span class="line">    public void changePassword(Long userId, String newPassword);  </span><br><span class="line">    // 添加用户-角色关系</span><br><span class="line">    public void correlationRoles(Long userId, Long... roleIds);   </span><br><span class="line">    // 移除用户-角色关系</span><br><span class="line">    public void uncorrelationRoles(Long userId, Long... roleIds);  </span><br><span class="line">    // 根据用户名查找用户</span><br><span class="line">    public User findByUsername(String username);  </span><br><span class="line">    // 根据用户名查找其角色</span><br><span class="line">    public Set&lt;String&gt; findRoles(String username); </span><br><span class="line">    // 根据用户名查找其权限  </span><br><span class="line">    public Set&lt;String&gt; findPermissions(String username); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="UserServiceImpl"><a href="#UserServiceImpl" class="headerlink" title="UserServiceImpl"></a>UserServiceImpl</h4><p>在创建账户及修改密码时直接把<strong>生成密码操作</strong>委托给 <code>PasswordHelper</code>。</p>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">public User createUser(User user) &#123;  </span><br><span class="line">    // 加密密码  </span><br><span class="line">    passwordUtils.encryptPassword(user);  </span><br><span class="line">    return userDao.createUser(user);  </span><br><span class="line">&#125;  </span><br><span class="line">public void changePassword(Long userId, String newPassword) &#123;  </span><br><span class="line">    User user =userDao.findOne(userId);  </span><br><span class="line">    user.setPassword(newPassword);  </span><br><span class="line">    passwordUtils.encryptPassword(user);  </span><br><span class="line">    userDao.updateUser(user);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="PasswordUtils"><a href="#PasswordUtils" class="headerlink" title="PasswordUtils"></a>PasswordUtils</h4><p>之后的CredentialsMatcher需要和此处加密的算法一样。<br>user.getCredentialsSalt()辅助方法返回username+salt。</p>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">public class PasswordUtils &#123;  </span><br><span class="line">    private RandomNumberGenerator randomNumberGenerator =  </span><br><span class="line">     new SecureRandomNumberGenerator();  </span><br><span class="line">    private String algorithmName = &quot;md5&quot;;  </span><br><span class="line">    private final int hashIterations = 2;  </span><br><span class="line">    public void encryptPassword(User user) &#123;  </span><br><span class="line">        user.setSalt(randomNumberGenerator.nextBytes().toHex());  </span><br><span class="line">        String newPassword = new SimpleHash(  </span><br><span class="line">                algorithmName,  </span><br><span class="line">                user.getPassword(),  </span><br><span class="line">                ByteSource.Util.bytes(user.getCredentialsSalt()),  </span><br><span class="line">                hashIterations).toHex();  </span><br><span class="line">        user.setPassword(newPassword);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>为了节省篇幅，对于<strong>DAO/Service</strong>的接口及实现，具体请参考源码 <code>com.github.gojay001</code> ；<br>另外参考Service层的测试用例 <code>com.github.gojay001.service.ServiceTest</code> 。</p>
+</blockquote>
+<h3 id="定义Realm"><a href="#定义Realm" class="headerlink" title="定义Realm"></a>定义Realm</h3><h4 id="RetryLimitHashedCredentialsMatcher"><a href="#RetryLimitHashedCredentialsMatcher" class="headerlink" title="RetryLimitHashedCredentialsMatcher"></a>RetryLimitHashedCredentialsMatcher</h4><blockquote>
+<p>com.github.gojay001.credentials</p>
+</blockquote>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher &#123;</span><br><span class="line"></span><br><span class="line">    private Ehcache passwordRetryCache;</span><br><span class="line"></span><br><span class="line">    public RetryLimitHashedCredentialsMatcher() &#123;</span><br><span class="line">        CacheManager cacheManager = CacheManager.newInstance(CacheManager.class.getClassLoader().getResource(&quot;ehcache.xml&quot;));</span><br><span class="line">        passwordRetryCache = cacheManager.getCache(&quot;passwordRetryCache&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) &#123;</span><br><span class="line">        String username = (String)token.getPrincipal();</span><br><span class="line">        // retry count + 1</span><br><span class="line">        Element element = passwordRetryCache.get(username);</span><br><span class="line">        if(element == null) &#123;</span><br><span class="line">            element = new Element(username , new AtomicInteger(0));</span><br><span class="line">            passwordRetryCache.put(element);</span><br><span class="line">        &#125;</span><br><span class="line">        AtomicInteger retryCount = (AtomicInteger)element.getObjectValue();</span><br><span class="line">        if(retryCount.incrementAndGet() &gt; 5) &#123;</span><br><span class="line">            // if retry count &gt; 5 throw</span><br><span class="line">            throw new ExcessiveAttemptsException();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        boolean matches = super.doCredentialsMatch(token, info);</span><br><span class="line">        if(matches) &#123;</span><br><span class="line">            // clear retry count</span><br><span class="line">            passwordRetryCache.remove(username);</span><br><span class="line">        &#125;</span><br><span class="line">        return matches;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="UserRealm"><a href="#UserRealm" class="headerlink" title="UserRealm"></a>UserRealm</h4><blockquote>
+<p>com.github.gojay001.realm</p>
+</blockquote>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">public class UserRealm extends AuthorizingRealm &#123;</span><br><span class="line">    private UserService userService = new UserServiceImpl();</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) &#123;</span><br><span class="line">        String username = (String)principals.getPrimaryPrincipal();</span><br><span class="line"></span><br><span class="line">        SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();</span><br><span class="line">        authorizationInfo.setRoles(userService.findRoles(username));</span><br><span class="line">        authorizationInfo.setStringPermissions(userService.findPermissions(username));</span><br><span class="line"></span><br><span class="line">        return authorizationInfo;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException &#123;</span><br><span class="line"></span><br><span class="line">        String username = (String)token.getPrincipal();</span><br><span class="line"></span><br><span class="line">        User user = userService.findByUsername(username);</span><br><span class="line"></span><br><span class="line">        //没找到帐号</span><br><span class="line">        if(user == null) &#123;</span><br><span class="line">            throw new UnknownAccountException();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //帐号锁定</span><br><span class="line">        if(Boolean.TRUE.equals(user.getLocked())) &#123;</span><br><span class="line">            throw new LockedAccountException();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配，如果觉得人家的不好可以自定义实现</span><br><span class="line">        return new SimpleAuthenticationInfo(</span><br><span class="line">                user.getUsername(),</span><br><span class="line">                user.getPassword(),</span><br><span class="line">                // salt=username+salt</span><br><span class="line">                ByteSource.Util.bytes(user.getCredentialsSalt()),</span><br><span class="line">                //realm name</span><br><span class="line">                getName()</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>UserRealm父类AuthorizingRealm将获取Subject相关信息分成两步</strong>：获取身份验证信息 <code>doGetAuthenticationInfo</code> 及授权信息 <code>doGetAuthorizationInfo</code> ；</li>
+<li><strong>doGetAuthenticationInfo</strong>：首先根据传入的用户名获取User信息；在组装SimpleAuthenticationInfo信息时，需要传入：身份信息<code>用户名</code>、凭据<code>密文密码</code>、盐<code>username+salt</code>， <em>CredentialsMatcher</em> 使用盐加密传入的明文密码和此处的密文密码进行匹配。</li>
+<li><strong>doGetAuthorizationInfo</strong>：<code>PrincipalCollection</code> 是一个身份集合，因为我们现在就一个Realm，所以直接调用getPrimaryPrincipal得到之前传入的<code>用户名</code>即可；然后根据用户名<code>调用UserService接口</code>获取角色及权限信息。</li>
+</ul>
+<h1 id="AuthenticationToken"><a href="#AuthenticationToken" class="headerlink" title="AuthenticationToken"></a>AuthenticationToken</h1><hr>
+<p><img src="https://i.loli.net/2019/08/04/QgMFCh1X7aeAEI6.png" alt="6-2.png"></p>
+<p><strong>AuthenticationToken</strong>用于收集用户提交的身份 <code>用户名</code> 及凭据 <code>密码</code> ：</p>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">public interface AuthenticationToken extends Serializable &#123;  </span><br><span class="line">    Object getPrincipal(); </span><br><span class="line">    Object getCredentials(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>RememberMeAuthenticationToken</strong>：提供了 <code>boolean isRememberMe()</code> <strong>记住我</strong>的功能；</li>
+<li><strong>HostAuthenticationToken</strong>：提供了 <code>String getHost()</code> 方法用于获取用户<strong>主机</strong>的功能。</li>
+</ul>
+<blockquote>
+<p>Shiro提供了一个直接拿来用的<strong>UsernamePasswordToken</strong>，用于实现用户名/密码Token组。实现了 <code>RememberMeAuthenticationToken</code> 和 <code>HostAuthenticationToken</code> ，可以实现记住我及主机验证的支持。</p>
+</blockquote>
+<h1 id="AuthenticationInfo"><a href="#AuthenticationInfo" class="headerlink" title="AuthenticationInfo"></a>AuthenticationInfo</h1><hr>
+<p><img src="https://i.loli.net/2019/08/04/FxzAB7hVGevZ5cl.png" alt="6-3.png"></p>
+<p><strong>AuthenticationInfo</strong>有两个作用：</p>
+<ul>
+<li>如果Realm是 <code>AuthenticatingRealm</code> 子类，则提供给 <code>AuthenticatingRealm</code> 内部使用的 <code>CredentialsMatcher</code> 进行凭据验证；（如果没有继承它需要在自己的Realm中自己实现验证）。</li>
+<li>提供给 <code>SecurityManager</code> 来创建 <code>Subject</code> （提供身份信息）。</li>
+</ul>
+<blockquote>
+<p><strong>MergableAuthenticationInfo</strong>用于提供在多Realm时<code>合并AuthenticationInfo的功能</code>，主要合并Principal。<br>比如 <code>HashedCredentialsMatcher</code> ，在验证时会判断 <code>AuthenticationInfo</code> 是否是<strong>SaltedAuthenticationInfo</strong>子类，来获取盐信息。<br><strong>Account</strong>相当于我们之前的 <code>User</code> ， <code>SimpleAccount</code> 是其一个实现。<br>其他情况一般返回<strong>SimpleAuthenticationInfo</strong>即可。</p>
+</blockquote>
+<h1 id="PrincipalCollection"><a href="#PrincipalCollection" class="headerlink" title="PrincipalCollection"></a>PrincipalCollection</h1><hr>
+<p><img src="https://i.loli.net/2019/08/04/OPzuYTWsefwZ2gX.png" alt="6-4.png"></p>
+<p>因为我们可以在Shiro中同时配置多个Realm，所以身份信息可能就有多个；因此其提供了<strong>PrincipalCollection</strong>用于<code>聚合这些身份信息</code>：  </p>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">public interface PrincipalCollection extends Iterable, Serializable &#123;  </span><br><span class="line">    // 得到主要的身份</span><br><span class="line">    Object getPrimaryPrincipal();   </span><br><span class="line">    // 根据身份类型获取第一个</span><br><span class="line">    &lt;T&gt; T oneByType(Class&lt;T&gt; type);   </span><br><span class="line">    // 根据身份类型获取一组</span><br><span class="line">    &lt;T&gt; Collection&lt;T&gt; byType(Class&lt;T&gt; type);   </span><br><span class="line">    // 转换为List</span><br><span class="line">    List asList();   </span><br><span class="line">    // 转换为Set</span><br><span class="line">    Set asSet();</span><br><span class="line">    // 根据Realm名字获取</span><br><span class="line">    Collection fromRealm(String realmName);   </span><br><span class="line">    // 获取所有身份验证通过的Realm名字</span><br><span class="line">    Set&lt;String&gt; getRealmNames();   </span><br><span class="line">    // 判断是否为空</span><br><span class="line">    boolean isEmpty();  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>getPrimaryPrincipal</strong>：如果只有一个Principal那么直接返回即可，如果有多个Principal，则返回第一个（因为内部使用Map存储，所以可以认为是返回任意一个）；<br><strong>oneByType/byType</strong>：根据<code>凭据的类型</code>返回相应的Principal；<br><strong>fromRealm</strong>根据<code>Realm名字</code>（每个Principal都与一个Realm关联）获取相应的Principal。</p>
+</blockquote>
+<p><strong>MutablePrincipalCollection</strong>是一个可变的PrincipalCollection接口，即提供了如下可变方法：</p>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">public interface MutablePrincipalCollection extends PrincipalCollection &#123;  </span><br><span class="line">    // 添加Realm-Principal的关联</span><br><span class="line">    void add(Object principal, String realmName);   </span><br><span class="line">    // 添加一组Realm-Principal的关联</span><br><span class="line">    void addAll(Collection principals, String realmName);</span><br><span class="line">    // 添加PrincipalCollection</span><br><span class="line">    void addAll(PrincipalCollection principals);</span><br><span class="line">    // 清空</span><br><span class="line">    void clear();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="AuthorizationInfo"><a href="#AuthorizationInfo" class="headerlink" title="AuthorizationInfo"></a>AuthorizationInfo</h1><hr>
+<p><img src="https://i.loli.net/2019/08/04/sCxRSW21bDFd7Gz.png" alt="6-5.png"></p>
+<p><strong>AuthorizationInfo</strong>用于<code>聚合授权信息</code>的：</p>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">public interface AuthorizationInfo extends Serializable &#123;  </span><br><span class="line">    // 获取角色字符串信息</span><br><span class="line">    Collection&lt;String&gt; getRoles();</span><br><span class="line">    // 获取权限字符串信息</span><br><span class="line">    Collection&lt;String&gt; getStringPermissions(); </span><br><span class="line">    // 获取Permission对象信息</span><br><span class="line">    Collection&lt;Permission&gt; getObjectPermissions(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当我们使用 <code>AuthorizingRealm</code> 时，如果身份验证成功，在进行授权时就通过 <code>doGetAuthorizationInfo</code> 方法获取角色/权限信息用于授权验证。  </p>
+<blockquote>
+<p>Shiro提供了一个实现 <strong>SimpleAuthorizationInfo</strong> ，大多数时候使用这个即可。</p>
+</blockquote>
+<h1 id="Subject"><a href="#Subject" class="headerlink" title="Subject"></a>Subject</h1><hr>
+<p><img src="https://i.loli.net/2019/08/04/fBt62JiSgTW1ex4.png" alt="6-6.png"></p>
+<p><strong>Subject</strong>是Shiro的核心对象，基本所有<code>身份验证</code>、<code>授权</code>都是通过Subject完成。</p>
+<h2 id="身份信息获取"><a href="#身份信息获取" class="headerlink" title="身份信息获取"></a>身份信息获取</h2><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">// Primary Principal</span><br><span class="line">Object getPrincipal(); </span><br><span class="line">// PrincipalCollection</span><br><span class="line">PrincipalCollection getPrincipals();</span><br></pre></td></tr></table></figure>
+
+<h2 id="身份验证"><a href="#身份验证" class="headerlink" title="身份验证"></a>身份验证</h2><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">void login(AuthenticationToken token) throws AuthenticationException;  </span><br><span class="line">boolean isAuthenticated();  </span><br><span class="line">boolean isRemembered();</span><br></pre></td></tr></table></figure>
+
+<h2 id="角色授权验证"><a href="#角色授权验证" class="headerlink" title="角色授权验证"></a>角色授权验证</h2><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">boolean hasRole(String roleIdentifier);  </span><br><span class="line">boolean[] hasRoles(List&lt;String&gt; roleIdentifiers);  </span><br><span class="line">boolean hasAllRoles(Collection&lt;String&gt; roleIdentifiers);  </span><br><span class="line">void checkRole(String roleIdentifier) throws AuthorizationException;  </span><br><span class="line">void checkRoles(Collection&lt;String&gt; roleIdentifiers) throws AuthorizationException;  </span><br><span class="line">void checkRoles(String... roleIdentifiers) throws AuthorizationException;</span><br></pre></td></tr></table></figure>
+
+<h2 id="权限授权验证"><a href="#权限授权验证" class="headerlink" title="权限授权验证"></a>权限授权验证</h2><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">boolean isPermitted(String permission);  </span><br><span class="line">boolean isPermitted(Permission permission);  </span><br><span class="line">boolean[] isPermitted(String... permissions);  </span><br><span class="line">boolean[] isPermitted(List&lt;Permission&gt; permissions);  </span><br><span class="line">boolean isPermittedAll(String... permissions);  </span><br><span class="line">boolean isPermittedAll(Collection&lt;Permission&gt; permissions);  </span><br><span class="line">void checkPermission(String permission) throws AuthorizationException;  </span><br><span class="line">void checkPermission(Permission permission) throws AuthorizationException;  </span><br><span class="line">void checkPermissions(String... permissions) throws AuthorizationException;  </span><br><span class="line">void checkPermissions(Collection&lt;Permission&gt; permissions) throws AuthorizationException;</span><br></pre></td></tr></table></figure>
+
+<h2 id="会话"><a href="#会话" class="headerlink" title="会话"></a>会话</h2><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">// 相当于getSession(true)</span><br><span class="line">Session getSession(); </span><br><span class="line">Session getSession(boolean create);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果 <code>create=false</code> 如果没有会话将<code>返回null</code>；而 <code>create=true</code> 如果没有会话会强制<code>创建一个</code>。</p>
+</blockquote>
+<h2 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h2><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">void logout();</span><br></pre></td></tr></table></figure>
+
+<h2 id="RunAs"><a href="#RunAs" class="headerlink" title="RunAs"></a>RunAs</h2><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">void runAs(PrincipalCollection principals) throws NullPointerException, IllegalStateException;  </span><br><span class="line">boolean isRunAs();  </span><br><span class="line">PrincipalCollection getPreviousPrincipals();  </span><br><span class="line">PrincipalCollection releaseRunAs();</span><br></pre></td></tr></table></figure>
+
+<p><strong>RunAs</strong>即实现<strong>允许A假设为B身份进行访问</strong>：  </p>
+<blockquote>
+<p>通过调用 <code>subject.runAs(b)</code> 进行访问；<br>接着调用 <code>subject.getPrincipals</code> 将获取到B的身份；<br>此时调用 <code>isRunAs</code> 将返回true，而a的身份需要通过 <code>subject.getPreviousPrincipals</code> 获取；<br>如果不需要RunAs了调用 <code>subject.releaseRunAs</code> 即可。</p>
+</blockquote>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">&lt;V&gt; V execute(Callable&lt;V&gt; callable) throws ExecutionException;  </span><br><span class="line">void execute(Runnable runnable);  </span><br><span class="line">&lt;V&gt; Callable&lt;V&gt; associateWith(Callable&lt;V&gt; callable);  </span><br><span class="line">Runnable associateWith(Runnable runnable);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在多线程执行中需要传播到相应的线程才能获取到相应的Subject。<br>最简单的办法就是通过 <code>execute(runnable/callable实例)</code> 直接调用；<br>或者通过 <code>associateWith(runnable/callable实例)</code> 得到一个包装后的实例；<br>它们都是通过：把当前线程的Subject绑定过去；在线程执行结束后自动释放。</p>
+</blockquote>
+<p>Subject自己不会实现相应的身份验证/授权逻辑，而是通过DelegatingSubject委托给SecurityManager实现。</p>
+<p>如果想自定义创建，可以通过：</p>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">new Subject.Builder().principals(身份).authenticated(true/false).buildSubject()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Subject一般流程"><a href="#Subject一般流程" class="headerlink" title="Subject一般流程"></a>Subject一般流程</h2><ul>
+<li><strong>身份验证</strong>（login）</li>
+<li><strong>授权</strong>（hasRole*/isPermitted*或checkRole*/checkPermission*）</li>
+<li>将相应的数据存储到<strong>会话</strong>（Session）</li>
+<li><strong>切换身份</strong>（RunAs）/<strong>多线程</strong>身份传播</li>
+<li><strong>退出</strong></li>
+</ul>
+<blockquote>
+<p>必须的功能就是1、2、5。到目前为止我们就可以使用Shiro进行应用程序的安全控制了，但是还是缺少如对Web验证、Java方法验证等的一些简化实现。</p>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
+<h2 id="Realm-1"><a href="#Realm-1" class="headerlink" title="Realm"></a>Realm</h2><ul>
+<li>Permission</li>
+<li>Role</li>
+<li>User</li>
+<li>User-Role</li>
+<li>Role-Permission</li>
+</ul>
+<h2 id="AuthenticationToken-1"><a href="#AuthenticationToken-1" class="headerlink" title="AuthenticationToken"></a>AuthenticationToken</h2><ul>
+<li>Principal</li>
+<li>Credentials</li>
+<li>RemeberMeAuthenticationToken</li>
+<li>HostAuthenticationToken</li>
+<li>UsernamePasswordToken</li>
+</ul>
+<h2 id="AuthenticationInfo-1"><a href="#AuthenticationInfo-1" class="headerlink" title="AuthenticationInfo"></a>AuthenticationInfo</h2><ul>
+<li>提供身份信息</li>
+<li>提供凭据验证</li>
+<li>SimpleAuthenticationInfo</li>
+</ul>
+<h2 id="PrincipalCollection-1"><a href="#PrincipalCollection-1" class="headerlink" title="PrincipalCollection"></a>PrincipalCollection</h2><ul>
+<li>Principal</li>
+<li>MutablePrincipalCollection</li>
+<li>PrincipalMap</li>
+</ul>
+<h2 id="AuthorizationInfo-1"><a href="#AuthorizationInfo-1" class="headerlink" title="AuthorizationInfo"></a>AuthorizationInfo</h2><ul>
+<li>Roles</li>
+<li>StringPermissions</li>
+<li>ObjectPermissions</li>
+<li>SimpleAuthorizationInfo</li>
+</ul>
+<h2 id="Subject-1"><a href="#Subject-1" class="headerlink" title="Subject"></a>Subject</h2><ul>
+<li>身份获取</li>
+<li>身份验证</li>
+<li>角色授权</li>
+<li>权限授权</li>
+<li>会话</li>
+<li>退出</li>
+<li>RunAs</li>
+<li>多线程</li>
+</ul>
+<blockquote>
+<p>参考代码： <code>https://github.com/Gojay001/Demo/tree/master/ShiroTest/ShiroTest-chapter6</code></p>
+</blockquote>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>Title：</strong><a href="https://gojay.top/2017/11/30/跟我学Shiro（六）-Realm及相关对象/">跟我学Shiro（六）-Realm及相关对象</a></li>
+            <li><strong>Author：</strong><a href="https://gojay.top">Gojay</a></li>
+            <li><strong>Link：</strong><a href="https://gojay.top/2017/11/30/跟我学Shiro（六）-Realm及相关对象/">https://gojay.top/2017/11/30/跟我学Shiro（六）-Realm及相关对象/</a></li>
+            <li><strong>Date：</strong>2017-11-30</li>
+            <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/Java/">Java</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Shiro/">Shiro</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2017/12/09/Learning-Java-Virtual-Machine(JVM)/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Learning Java Virtual Machine(JVM)</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2017/11/29/跟我学Shiro（五）-编码及加密/">
+                <span class="level-item">跟我学Shiro（五）-编码及加密</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: '6kgdHh2dtxHKbi9fwyPjsA7t-gzGzoHsz',
+        app_key: 'N4XHHmLsjyHwx2ENVEGEn9Br',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu" style="max-height: 800px; overflow: auto;">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Realm">
+        <span class="has-mr-6">1</span>
+        <span>Realm</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#定义实体及关系">
+        <span class="has-mr-6">1.1</span>
+        <span>定义实体及关系</span>
+        </a></li><li>
+        <a class="is-flex" href="#环境准备">
+        <span class="has-mr-6">1.2</span>
+        <span>环境准备</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#定义Service及Dao">
+        <span class="has-mr-6">1.2.1</span>
+        <span>定义Service及Dao</span>
+        </a></li><li>
+        <a class="is-flex" href="#定义Realm">
+        <span class="has-mr-6">1.2.2</span>
+        <span>定义Realm</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#AuthenticationToken">
+        <span class="has-mr-6">2</span>
+        <span>AuthenticationToken</span>
+        </a></li><li>
+        <a class="is-flex" href="#AuthenticationInfo">
+        <span class="has-mr-6">3</span>
+        <span>AuthenticationInfo</span>
+        </a></li><li>
+        <a class="is-flex" href="#PrincipalCollection">
+        <span class="has-mr-6">4</span>
+        <span>PrincipalCollection</span>
+        </a></li><li>
+        <a class="is-flex" href="#AuthorizationInfo">
+        <span class="has-mr-6">5</span>
+        <span>AuthorizationInfo</span>
+        </a></li><li>
+        <a class="is-flex" href="#Subject">
+        <span class="has-mr-6">6</span>
+        <span>Subject</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#身份信息获取">
+        <span class="has-mr-6">6.1</span>
+        <span>身份信息获取</span>
+        </a></li><li>
+        <a class="is-flex" href="#身份验证">
+        <span class="has-mr-6">6.2</span>
+        <span>身份验证</span>
+        </a></li><li>
+        <a class="is-flex" href="#角色授权验证">
+        <span class="has-mr-6">6.3</span>
+        <span>角色授权验证</span>
+        </a></li><li>
+        <a class="is-flex" href="#权限授权验证">
+        <span class="has-mr-6">6.4</span>
+        <span>权限授权验证</span>
+        </a></li><li>
+        <a class="is-flex" href="#会话">
+        <span class="has-mr-6">6.5</span>
+        <span>会话</span>
+        </a></li><li>
+        <a class="is-flex" href="#退出">
+        <span class="has-mr-6">6.6</span>
+        <span>退出</span>
+        </a></li><li>
+        <a class="is-flex" href="#RunAs">
+        <span class="has-mr-6">6.7</span>
+        <span>RunAs</span>
+        </a></li><li>
+        <a class="is-flex" href="#多线程">
+        <span class="has-mr-6">6.8</span>
+        <span>多线程</span>
+        </a></li><li>
+        <a class="is-flex" href="#Subject一般流程">
+        <span class="has-mr-6">6.9</span>
+        <span>Subject一般流程</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#总结">
+        <span class="has-mr-6">7</span>
+        <span>总结</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Realm-1">
+        <span class="has-mr-6">7.1</span>
+        <span>Realm</span>
+        </a></li><li>
+        <a class="is-flex" href="#AuthenticationToken-1">
+        <span class="has-mr-6">7.2</span>
+        <span>AuthenticationToken</span>
+        </a></li><li>
+        <a class="is-flex" href="#AuthenticationInfo-1">
+        <span class="has-mr-6">7.3</span>
+        <span>AuthenticationInfo</span>
+        </a></li><li>
+        <a class="is-flex" href="#PrincipalCollection-1">
+        <span class="has-mr-6">7.4</span>
+        <span>PrincipalCollection</span>
+        </a></li><li>
+        <a class="is-flex" href="#AuthorizationInfo-1">
+        <span class="has-mr-6">7.5</span>
+        <span>AuthorizationInfo</span>
+        </a></li><li>
+        <a class="is-flex" href="#Subject-1">
+        <span class="has-mr-6">7.6</span>
+        <span>Subject</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    Gojay&#39;s Records
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Gojay&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                <span id="busuanzi_value_site_pv">0</span> visits
+                </span>
+                
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">1</span> users
+                </span>
+                
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Gojay GitHub" href="https://www.github.com/Gojay001">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.0.0/dist/lazyload.min.js"></script>
+<script>
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy",
+    load_delay: 300,
+});
+</script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
