@@ -44,7 +44,8 @@ As `abstract` of the paper, their work mainly present a residual learning framew
 ## Problem Solution
 ![ResNet_PS.png](https://i.loli.net/2020/02/03/TnPYl9WzCZJKHIG.png)
 ![ResNet_Residual.png](https://i.loli.net/2020/02/03/pOEIhJM4FS1A3sT.png)  
-> It presents a deep residual learning as **building block** that combined identity mapping and CNN features.  
+> 1. Intuitively, the residual learning needs `less to learn`, because the residual is generally smaller. Therefore, the learning difficulty is smaller.  
+> 2. Mathematically speaking, the gradients will not be vanished due to the `shortcut connection`, that is why residual is easier to learn.
 
 ## Conceptual Understanding
 ![ResNet_CU.png](https://i.loli.net/2020/02/03/8JrsHxhlRZBCMtq.png)
@@ -52,6 +53,11 @@ As `abstract` of the paper, their work mainly present a residual learning framew
 > 1. It presents two version of **building block** for ResNet, including `BasicBlock` and `Bottleneck`.    
 > 2. It describes the choise about different dimensions, as to input and output with `same dimensions` or `dimensions increase`.  
 > 3. It shows the function of `1x1` and `3x3` convolution layers works.  
+
+## Core Concept
+![ResNet_Network.png](https://i.loli.net/2020/02/03/IqQ7JZr5uBLktFD.png) 
+![ResNet_Design.png](https://i.loli.net/2020/06/18/hzUBHQwcVE7RM2l.png)
+![ResNet_RN.png](https://i.loli.net/2020/06/18/mXtacPyw31of9Ts.png)
 
 ## Experiments
 ![ResNet_ImageNet.png](https://i.loli.net/2020/02/03/ZaPFoCcN7xeOgip.png)
@@ -63,7 +69,6 @@ As `abstract` of the paper, their work mainly present a residual learning framew
 > The **complete code** can be found in [ResNet][[2]](https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Classification/ResNet/Code).  
 
 ## Details of implementation
-![ResNet_Network.png](https://i.loli.net/2020/02/03/IqQ7JZr5uBLktFD.png) 
 ![ResNet_Architectures.png](https://i.loli.net/2020/02/03/aQcSEiLFmr96Vg2.png)
 
 ## Convolution layer
@@ -304,10 +309,11 @@ def resnet152(pretrained=False, progress=True, **kwargs):
 
 # Note
 ---
-> More details about code implementation can be found in [[3]](https://blog.csdn.net/darkeyers/article/details/90475475).
+> More details about code implementation can be found in [[3]](https://blog.csdn.net/darkeyers/article/details/90475475), [[4]](https://zhuanlan.zhihu.com/p/31852747).
 
 # References
 ---
 > [1] He, Kaiming, et al. "Deep residual learning for image recognition." Proceedings of the IEEE conference on computer vision and pattern recognition. 2016.  
 > [2] ResNet. https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Classification/ResNet/Code  
-> [3] ResNet implementaion by Pytorch official. https://blog.csdn.net/darkeyers/article/details/90475475
+> [3] Darkeyers. ResNet implementaion by Pytorch official. https://blog.csdn.net/darkeyers/article/details/90475475
+> [4] Little teenager. CNN model you have to know: ResNet. https://zhuanlan.zhihu.com/p/31852747

@@ -2,10 +2,10 @@
 title: Hexo+Blog+Pages  
 date: 2019-08-07 00:21:43  
 thumbnail: /gallery/thumbnails/hexo.jpg  
-categories:   
-    - Blog  
+categories: 
+    - Toolkit    
     - Hexo  
-tags: [hexo, icarus]  
+tags: [blog, hexo, icarus]  
 ---
 
 > This blog records the details about **building hexo blogs**, as well as deploying it to Github and Coding **Pages**.  
