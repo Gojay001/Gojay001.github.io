@@ -1,3 +1,4 @@
+https://gojay.top/2020/06/18/Toolkit-for-DL/
 https://gojay.top/2020/06/14/SORT/
 https://gojay.top/2020/05/25/FairMOT/
 https://gojay.top/2020/05/23/TSDM/
@@ -7,4 +8,3 @@ https://gojay.top/2020/04/01/Overview/
 https://gojay.top/2020/03/26/Tracklet/
 https://gojay.top/2020/03/05/FFT-Flow-Fuse-Tracker/
 https://gojay.top/2020/02/28/JRMOT/
-https://gojay.top/2020/02/25/PAMCC-AOT/

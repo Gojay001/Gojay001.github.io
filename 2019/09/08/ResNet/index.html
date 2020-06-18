@@ -18,7 +18,7 @@
 <meta property="og:description" content="ResNet[1] is used to classify images with deep residual learning. There are some details of reading and implementing it.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://gojay.top/gallery/thumbnails/ResNet.png">
-<meta property="og:updated_time" content="2020-06-17T12:26:30.902Z">
+<meta property="og:updated_time" content="2020-06-18T06:43:59.824Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ResNet">
 <meta name="twitter:description" content="ResNet[1] is used to classify images with deep residual learning. There are some details of reading and implementing it.">
@@ -183,7 +183,7 @@ var _hmt = _hmt || [];
                 
                 <time class="level-item has-text-grey" datetime="2019-09-08T04:45:35.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-09-08</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-06-17T12:26:30.902Z"><i class="far fa-calendar-check">&nbsp;</i>2020-06-17</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-06-18T06:43:59.824Z"><i class="far fa-calendar-check">&nbsp;</i>2020-06-18</time>
                 
                 
                 <div class="level-item">
@@ -196,7 +196,7 @@ var _hmt = _hmt || [];
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    9 minutes read (About 1420 words)
+                    10 minutes read (About 1489 words)
                 </span>
                 
                 
@@ -244,7 +244,10 @@ var _hmt = _hmt || [];
 </blockquote>
 <h2 id="Problem-Solution"><a href="#Problem-Solution" class="headerlink" title="Problem Solution"></a>Problem Solution</h2><p><img src="https://i.loli.net/2020/02/03/TnPYl9WzCZJKHIG.png" alt="ResNet_PS.png"><br><img src="https://i.loli.net/2020/02/03/pOEIhJM4FS1A3sT.png" alt="ResNet_Residual.png">  </p>
 <blockquote>
-<p>It presents a deep residual learning as <strong>building block</strong> that combined identity mapping and CNN features.  </p>
+<ol>
+<li>Intuitively, the residual learning needs <code>less to learn</code>, because the residual is generally smaller. Therefore, the learning difficulty is smaller.  </li>
+<li>Mathematically speaking, the gradients will not be vanished due to the <code>shortcut connection</code>, that is why residual is easier to learn.</li>
+</ol>
 </blockquote>
 <h2 id="Conceptual-Understanding"><a href="#Conceptual-Understanding" class="headerlink" title="Conceptual Understanding"></a>Conceptual Understanding</h2><p><img src="https://i.loli.net/2020/02/03/8JrsHxhlRZBCMtq.png" alt="ResNet_CU.png"><br><img src="https://i.loli.net/2020/02/03/81rBlvAth5nw3GP.png" alt="ResNet_BuildingBlock.png"> </p>
 <blockquote>
@@ -254,6 +257,7 @@ var _hmt = _hmt || [];
 <li>It shows the function of <code>1x1</code> and <code>3x3</code> convolution layers works.  </li>
 </ol>
 </blockquote>
+<h2 id="Core-Concept"><a href="#Core-Concept" class="headerlink" title="Core Concept"></a>Core Concept</h2><p><img src="https://i.loli.net/2020/02/03/IqQ7JZr5uBLktFD.png" alt="ResNet_Network.png"><br><img src="https://i.loli.net/2020/06/18/hzUBHQwcVE7RM2l.png" alt="ResNet_Design.png"><br><img src="https://i.loli.net/2020/06/18/mXtacPyw31of9Ts.png" alt="ResNet_RN.png"></p>
 <h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p><img src="https://i.loli.net/2020/02/03/ZaPFoCcN7xeOgip.png" alt="ResNet_ImageNet.png"><br><img src="https://i.loli.net/2020/02/03/yKv4EIaN6Spk2TM.png" alt="ResNet_Experiments.png"></p>
 <blockquote>
 <p>It includes image classification datasets ImageNet, CIFAR-10, and objection detection datasets PASCAL VOC, COCO.  </p>
@@ -262,7 +266,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>The <strong>complete code</strong> can be found in [ResNet]<a href="https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Classification/ResNet/Code" target="_blank" rel="noopener">[2]</a>.  </p>
 </blockquote>
-<h2 id="Details-of-implementation"><a href="#Details-of-implementation" class="headerlink" title="Details of implementation"></a>Details of implementation</h2><p><img src="https://i.loli.net/2020/02/03/IqQ7JZr5uBLktFD.png" alt="ResNet_Network.png"><br><img src="https://i.loli.net/2020/02/03/aQcSEiLFmr96Vg2.png" alt="ResNet_Architectures.png"></p>
+<h2 id="Details-of-implementation"><a href="#Details-of-implementation" class="headerlink" title="Details of implementation"></a>Details of implementation</h2><p><img src="https://i.loli.net/2020/02/03/aQcSEiLFmr96Vg2.png" alt="ResNet_Architectures.png"></p>
 <h2 id="Convolution-layer"><a href="#Convolution-layer" class="headerlink" title="Convolution layer"></a>Convolution layer</h2><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">conv3x3</span><span class="hljs-params">(in_planes, out_planes, stride=<span class="hljs-number">1</span>, groups=<span class="hljs-number">1</span>, dilation=<span class="hljs-number">1</span>)</span>:</span></span><br><span class="line">    <span class="hljs-string">"""3x3 convolution with padding"""</span></span><br><span class="line">    <span class="hljs-keyword">return</span> nn.Conv2d(in_planes, out_planes, kernel_size=<span class="hljs-number">3</span>, stride=stride,</span><br><span class="line">                     padding=dilation, groups=groups, bias=<span class="hljs-literal">False</span>, dilation=dilation)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">conv1x1</span><span class="hljs-params">(in_planes, out_planes, stride=<span class="hljs-number">1</span>)</span>:</span></span><br><span class="line">    <span class="hljs-string">"""1x1 convolution"""</span></span><br><span class="line">    <span class="hljs-keyword">return</span> nn.Conv2d(in_planes, out_planes, kernel_size=<span class="hljs-number">1</span>, stride=stride, bias=<span class="hljs-literal">False</span>)</span><br></pre></td></tr></table></figure>
 
 <h2 id="Building-block"><a href="#Building-block" class="headerlink" title="Building block"></a>Building block</h2><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BasicBlock</span><span class="hljs-params">(nn.Module)</span>:</span></span><br><span class="line">    expansion = <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, inplanes, planes, stride=<span class="hljs-number">1</span>, downsample=None, groups=<span class="hljs-number">1</span>,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">                 base_width=<span class="hljs-number">64</span>, dilation=<span class="hljs-number">1</span>, norm_layer=None)</span>:</span></span><br><span class="line">        super(BasicBlock, self).__init__()</span><br><span class="line">        <span class="hljs-keyword">if</span> norm_layer <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:</span><br><span class="line">            norm_layer = nn.BatchNorm2d</span><br><span class="line">        <span class="hljs-keyword">if</span> groups != <span class="hljs-number">1</span> <span class="hljs-keyword">or</span> base_width != <span class="hljs-number">64</span>:</span><br><span class="line">            <span class="hljs-keyword">raise</span> ValueError(</span><br><span class="line">                <span class="hljs-string">'BasicBlock only supports groups=1 and base_width=64'</span>)</span><br><span class="line">        <span class="hljs-keyword">if</span> dilation &gt; <span class="hljs-number">1</span>:</span><br><span class="line">            <span class="hljs-keyword">raise</span> NotImplementedError(</span><br><span class="line">                <span class="hljs-string">"Dilation &gt; 1 not supported in BasicBlock"</span>)</span><br><span class="line">        <span class="hljs-comment"># Both self.conv1 and self.downsample layers downsample the input when stride != 1</span></span><br><span class="line">        self.conv1 = conv3x3(inplanes, planes, stride)</span><br><span class="line">        self.bn1 = norm_layer(planes)</span><br><span class="line">        self.relu = nn.ReLU(inplace=<span class="hljs-literal">True</span>)</span><br><span class="line">        self.conv2 = conv3x3(planes, planes)</span><br><span class="line">        self.bn2 = norm_layer(planes)</span><br><span class="line">        self.downsample = downsample</span><br><span class="line">        self.stride = stride</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(self, x)</span>:</span></span><br><span class="line">        identity = x</span><br><span class="line"></span><br><span class="line">        out = self.conv1(x)</span><br><span class="line">        out = self.bn1(out)</span><br><span class="line">        out = self.relu(out)</span><br><span class="line"></span><br><span class="line">        out = self.conv2(out)</span><br><span class="line">        out = self.bn2(out)</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> self.downsample <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:</span><br><span class="line">            identity = self.downsample(x)</span><br><span class="line"></span><br><span class="line">        out += identity</span><br><span class="line">        out = self.relu(out)</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> out</span><br></pre></td></tr></table></figure>
@@ -277,11 +281,11 @@ var _hmt = _hmt || [];
 
 <h1 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h1><hr>
 <blockquote>
-<p>More details about code implementation can be found in <a href="https://blog.csdn.net/darkeyers/article/details/90475475" target="_blank" rel="noopener">[3]</a>.</p>
+<p>More details about code implementation can be found in <a href="https://blog.csdn.net/darkeyers/article/details/90475475" target="_blank" rel="noopener">[3]</a>, <a href="https://zhuanlan.zhihu.com/p/31852747" target="_blank" rel="noopener">[4]</a>.</p>
 </blockquote>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><hr>
 <blockquote>
-<p>[1] He, Kaiming, et al. “Deep residual learning for image recognition.” Proceedings of the IEEE conference on computer vision and pattern recognition. 2016.<br>[2] ResNet. <a href="https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Classification/ResNet/Code" target="_blank" rel="noopener">https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Classification/ResNet/Code</a><br>[3] ResNet implementaion by Pytorch official. <a href="https://blog.csdn.net/darkeyers/article/details/90475475" target="_blank" rel="noopener">https://blog.csdn.net/darkeyers/article/details/90475475</a></p>
+<p>[1] He, Kaiming, et al. “Deep residual learning for image recognition.” Proceedings of the IEEE conference on computer vision and pattern recognition. 2016.<br>[2] ResNet. <a href="https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Classification/ResNet/Code" target="_blank" rel="noopener">https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Classification/ResNet/Code</a><br>[3] Darkeyers. ResNet implementaion by Pytorch official. <a href="https://blog.csdn.net/darkeyers/article/details/90475475" target="_blank" rel="noopener">https://blog.csdn.net/darkeyers/article/details/90475475</a><br>[4] Little teenager. CNN model you have to know: ResNet. <a href="https://zhuanlan.zhihu.com/p/31852747" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/31852747</a></p>
 </blockquote>
 
         </div>
@@ -407,8 +411,12 @@ var _hmt = _hmt || [];
         <span class="has-mr-6">3.4</span>
         <span>Conceptual Understanding</span>
         </a></li><li>
-        <a class="is-flex" href="#Experiments">
+        <a class="is-flex" href="#Core-Concept">
         <span class="has-mr-6">3.5</span>
+        <span>Core Concept</span>
+        </a></li><li>
+        <a class="is-flex" href="#Experiments">
+        <span class="has-mr-6">3.6</span>
         <span>Experiments</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#Code">
