@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://gojay.top/2020/06/20/DeepSORT/</loc>
+    <lastmod>2020-06-21</lastmod>
+  </url>  <url>
+    <loc>https://gojay.top/2020/06/14/SORT/</loc>
+    <lastmod>2020-06-21</lastmod>
+  </url>  <url>
+    <loc>https://gojay.top/2020/04/01/Overview/</loc>
+    <lastmod>2020-06-20</lastmod>
+  </url>  <url>
     <loc>https://gojay.top/2020/06/18/Toolkit-for-DL/</loc>
     <lastmod>2020-06-18</lastmod>
   </url>  <url>
@@ -43,25 +52,19 @@
     <loc>https://gojay.top/2020/05/09/SiamRPN++/</loc>
     <lastmod>2020-06-17</lastmod>
   </url>  <url>
-    <loc>https://gojay.top/2020/06/14/SORT/</loc>
+    <loc>https://gojay.top/2020/02/25/PAMCC-AOT/</loc>
     <lastmod>2020-06-17</lastmod>
   </url>  <url>
     <loc>https://gojay.top/2019/08/21/RN-Realation-Network/</loc>
     <lastmod>2020-06-17</lastmod>
   </url>  <url>
-    <loc>https://gojay.top/2020/02/25/PAMCC-AOT/</loc>
-    <lastmod>2020-06-17</lastmod>
-  </url>  <url>
-    <loc>https://gojay.top/2020/04/01/Overview/</loc>
-    <lastmod>2020-06-17</lastmod>
-  </url>  <url>
     <loc>https://gojay.top/2019/08/31/NIN-Network-In-Network/</loc>
     <lastmod>2020-06-17</lastmod>
   </url>  <url>
-    <loc>https://gojay.top/2017/11/18/Learning-JavaWeb-Path/</loc>
+    <loc>https://gojay.top/2017/11/15/Learning-JavaWeb-Encoding/</loc>
     <lastmod>2020-06-17</lastmod>
   </url>  <url>
-    <loc>https://gojay.top/2017/11/15/Learning-JavaWeb-Encoding/</loc>
+    <loc>https://gojay.top/2017/11/18/Learning-JavaWeb-Path/</loc>
     <lastmod>2020-06-17</lastmod>
   </url>  <url>
     <loc>https://gojay.top/2018/02/01/Java-Back-end-Interview/</loc>
@@ -70,16 +73,16 @@
     <loc>https://gojay.top/2017/12/09/Learning-Java-Virtual-Machine(JVM)/</loc>
     <lastmod>2020-06-17</lastmod>
   </url>  <url>
-    <loc>https://gojay.top/2020/02/28/JRMOT/</loc>
-    <lastmod>2020-06-17</lastmod>
-  </url>  <url>
     <loc>https://gojay.top/2020/05/15/Image-Transformer/</loc>
     <lastmod>2020-06-17</lastmod>
   </url>  <url>
-    <loc>https://gojay.top/2019/09/05/GoogLeNet/</loc>
+    <loc>https://gojay.top/2020/02/28/JRMOT/</loc>
     <lastmod>2020-06-17</lastmod>
   </url>  <url>
     <loc>https://gojay.top/2020/01/04/GlobalTrack/</loc>
+    <lastmod>2020-06-17</lastmod>
+  </url>  <url>
+    <loc>https://gojay.top/2019/09/05/GoogLeNet/</loc>
     <lastmod>2020-06-17</lastmod>
   </url>  <url>
     <loc>https://gojay.top/2019/10/19/Faster-R-CNN/</loc>

@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://gojay.top/2020/06/20/DeepSORT/</loc>
+    
+    <lastmod>2020-06-21T02:56:28.022Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/06/14/SORT/</loc>
+    
+    <lastmod>2020-06-21T02:52:58.254Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/04/01/Overview/</loc>
+    
+    <lastmod>2020-06-20T12:23:58.013Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://gojay.top/2020/06/18/Toolkit-for-DL/</loc>
     
     <lastmod>2020-06-18T07:01:40.584Z</lastmod>
@@ -107,9 +128,9 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/06/14/SORT/</loc>
+    <loc>https://gojay.top/2020/02/25/PAMCC-AOT/</loc>
     
-    <lastmod>2020-06-17T12:26:30.902Z</lastmod>
+    <lastmod>2020-06-17T12:26:30.901Z</lastmod>
     
   </url>
   
@@ -121,20 +142,6 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/02/25/PAMCC-AOT/</loc>
-    
-    <lastmod>2020-06-17T12:26:30.901Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/04/01/Overview/</loc>
-    
-    <lastmod>2020-06-17T12:26:30.900Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://gojay.top/2019/08/31/NIN-Network-In-Network/</loc>
     
     <lastmod>2020-06-17T12:26:30.900Z</lastmod>
@@ -142,14 +149,14 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2017/11/18/Learning-JavaWeb-Path/</loc>
+    <loc>https://gojay.top/2017/11/15/Learning-JavaWeb-Encoding/</loc>
     
     <lastmod>2020-06-17T12:26:30.899Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://gojay.top/2017/11/15/Learning-JavaWeb-Encoding/</loc>
+    <loc>https://gojay.top/2017/11/18/Learning-JavaWeb-Path/</loc>
     
     <lastmod>2020-06-17T12:26:30.899Z</lastmod>
     
@@ -170,13 +177,6 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/02/28/JRMOT/</loc>
-    
-    <lastmod>2020-06-17T12:26:30.897Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://gojay.top/2020/05/15/Image-Transformer/</loc>
     
     <lastmod>2020-06-17T12:26:30.897Z</lastmod>
@@ -184,14 +184,21 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2019/09/05/GoogLeNet/</loc>
+    <loc>https://gojay.top/2020/02/28/JRMOT/</loc>
+    
+    <lastmod>2020-06-17T12:26:30.897Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/01/04/GlobalTrack/</loc>
     
     <lastmod>2020-06-17T12:26:30.895Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/01/04/GlobalTrack/</loc>
+    <loc>https://gojay.top/2019/09/05/GoogLeNet/</loc>
     
     <lastmod>2020-06-17T12:26:30.895Z</lastmod>
     
