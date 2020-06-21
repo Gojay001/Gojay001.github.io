@@ -101,4 +101,4 @@ Besides, the **network architecture** shows below.
 ---
 > [1] Ren, Shaoqing, et al. "Faster r-cnn: Towards real-time object detection with region proposal networks." Advances in neural information processing systems. 2015.  
 > [2] faster-rcnn.pytorch. https://github.com/jwyang/faster-rcnn.pytorch  
-> [3] Shang Bai. "A paer understanding Faster R-CNN." https://zhuanlan.zhihu.com/p/31426458.  
+> [3] Shang Bai. "A paper understanding Faster R-CNN." https://zhuanlan.zhihu.com/p/31426458.  

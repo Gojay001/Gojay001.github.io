@@ -82,7 +82,7 @@ tags: [DL, Tracking, MOT]
 # References
 ---
 > [1] Bewley, Alex, et al. "Simple online and realtime tracking." 2016 IEEE International Conference on Image Processing (ICIP). IEEE, 2016.  
-> [2] gojay. "Faster R-CNN." https://gojay.top/2019/10/19/Faster-R-CNN/  
+> [2] Gojay. "Faster R-CNN." https://gojay.top/2019/10/19/Faster-R-CNN/  
 > [3] Bzarg, Bot. "How a Kalman filter works in pictures." https://zhuanlan.zhihu.com/p/39912633  
 > [4] ZihaoZhao. "Hungarian algorithm and Kuhn-Munkres algorithm." https://zhuanlan.zhihu.com/p/62981901
 > [5] SORT. https://github.com/abewley/sort
