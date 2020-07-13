@@ -59,6 +59,7 @@ tags: [DL, Overview]
         - TSDM
 - [Few-Shot Learning](#Few-Shot-Learning)
     - RN(Relation Network)
+    - CRNet(Cross-Reference Networks)
 - [GAN](#Generative-Adversarial-Network)
     - BeautyGAN
 - [Image Generation](#Image-Generation)
@@ -125,6 +126,7 @@ tags: [DL, Overview]
 | Title | Paper | Conf | Code |
 |:--------|:--------:|:--------:|:--------:|
 | [RN](https://gojay.top/2019/08/21/RN-Realation-Network/) | [Learning to Compare: Relation Network for Few-Shot Learning](https://arxiv.org/abs/1711.06025) | CVPR(2018) | [PyTorch](https://github.com/Gojay001/LearningToCompare_FSL)
+| [CRNet](https://gojay.top/2019/07/10/CRNet/) | [CRNet: Cross-Reference Networks for Few-Shot Segmentation](https://openaccess.thecvf.com/content_CVPR_2020/papers/Liu_CRNet_Cross-Reference_Networks_for_Few-Shot_Segmentation_CVPR_2020_paper.pdf) | CVPR(2020) | [code]
 
 ## Generative Adversarial Network
 | Title | Paper | Conf | Code |
