@@ -4,9 +4,9 @@ thumbnail: /gallery/thumbnails/CRNet.png
 date: 2020-07-10 15:56:24
 categories:
     - DeepLearning  
-    - Few-Shot Learning  
+    - Few-Shot Segmentation  
     - CRNet  
-tags: [DL, FSL, CRNet]
+tags: [DL, FSS, CRNet]
 ---
 
 > **CRNet**(Cross-Reference Networks)[[1]](https://openaccess.thecvf.com/content_CVPR_2020/papers/Liu_CRNet_Cross-Reference_Networks_for_Few-Shot_Segmentation_CVPR_2020_paper.pdf) make predictions for both the support image and the query image. It can better find the `co-occurrent objects` in the two images, thus helping the few-shot segmentation task. There are some details of reading and implementing it. 
