@@ -6,7 +6,7 @@
   <link href="/rss.xml" rel="self"/>
   
   <link href="https://gojay.top/"/>
-  <updated>2020-08-19T15:05:10.355Z</updated>
+  <updated>2020-08-21T03:35:54.295Z</updated>
   <id>https://gojay.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>剑指Offer-03-数组中重复的数字</title>
+    <link href="https://gojay.top/2020/08/21/%E5%89%91%E6%8C%87Offer-03-%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/"/>
+    <id>https://gojay.top/2020/08/21/剑指Offer-03-数组中重复的数字/</id>
+    <published>2020-08-21T01:46:07.000Z</published>
+    <updated>2020-08-21T03:35:54.295Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><strong>题目</strong>：<a href="https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/" target="_blank" rel="noopener">剑指Offer-03-数组中重复的数字</a><br><strong>题解</strong>：<a href>Blog</a></p></blockquote><a id="more"></a><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><blockquote><p>找出数组中重复的数字。<br>在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。</p></blockquote><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><blockquote><p><strong>输入</strong>：<br>[2, 3, 1, 0, 2, 5, 3].<br><strong>输出</strong>：2 或 3 </p></blockquote><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr><h2 id="排序后查看相邻元素"><a href="#排序后查看相邻元素" class="headerlink" title="排序后查看相邻元素"></a>排序后查看相邻元素</h2><blockquote><p>先<code>排序，然后查看相邻元素是否相同</code>；若相同则元素重复，return。该方法运行时间慢。<br><strong>时间复杂度</strong>：O(nlogn)<br><strong>空间复杂度</strong>：O(1)  </p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">findRepeatNumber</span><span class="hljs-params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        nums.sort()</span><br><span class="line">        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="hljs-keyword">if</span> nums[i] == nums[i+<span class="hljs-number">1</span>]:</span><br><span class="line">                <span class="hljs-keyword">return</span> nums[i]</span><br></pre></td></tr></table></figure><h2 id="辅助空间"><a href="#辅助空间" class="headerlink" title="辅助空间"></a>辅助空间</h2><blockquote><p>开辟一个新的列表或字典，<code>将nums数值作为新列表的索引并赋值为1</code>；若该索引已经复制则元素重复，return。<br><strong>时间复杂度</strong>：O(n)<br><strong>空间复杂度</strong>：O(n)  </p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">findRepeatNumber</span><span class="hljs-params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        repeatDict = &#123;&#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> nums:</span><br><span class="line">            <span class="hljs-keyword">if</span> num <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> repeatDict:</span><br><span class="line">                repeatDict[num] = <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-keyword">else</span>:</span><br><span class="line">                <span class="hljs-keyword">return</span> num</span><br></pre></td></tr></table></figure><h2 id="原地交换"><a href="#原地交换" class="headerlink" title="原地交换"></a>原地交换</h2><blockquote><p>与辅助空间思路类似，<code>让索引i位置存放数值i</code>。如果索引位置i的元素不是i，将把i元素放在对应位置，即nums[nums[i]]与nums[i]交换。若交换时发现索引nums[i]的元素与索引相同，则元素重复，return。<br><strong>时间复杂度</strong>：O(n)<br><strong>空间复杂度</strong>：O(1) </p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">findRepeatNumber</span><span class="hljs-params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="hljs-keyword">while</span> i != nums[i]:</span><br><span class="line">                <span class="hljs-keyword">if</span> nums[i] == nums[nums[i]]:</span><br><span class="line">                    <span class="hljs-keyword">return</span> nums[i]</span><br><span class="line">                nums[nums[i]], nums[i] = nums[i], nums[nums[i]]</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;题目&lt;/strong&gt;：&lt;a href=&quot;https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;剑指Offer-03-数组中重复的数字&lt;/a&gt;&lt;br&gt;&lt;strong&gt;题解&lt;/strong&gt;：&lt;a href&gt;Blog&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="https://gojay.top/categories/Algorithm/"/>
+    
+      <category term="剑指Offer" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/"/>
+    
+      <category term="3" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/3/"/>
+    
+    
+      <category term="Algorithm" scheme="https://gojay.top/tags/Algorithm/"/>
+    
+      <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
+    
+  </entry>
   
   <entry>
     <title>Mask R-CNN</title>
