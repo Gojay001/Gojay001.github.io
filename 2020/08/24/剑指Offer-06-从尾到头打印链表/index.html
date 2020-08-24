@@ -4,24 +4,24 @@
     <meta charset="utf-8">
 <meta name="baidu-site-verification" content="y4OgBadCWI">
 <meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA">
-<title>剑指Offer-05-替换空格 - Gojay&#39;s Records</title>
+<title>剑指Offer-06-从尾到头打印链表 - Gojay&#39;s Records</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="题目 题目描述 请实现一个函数，把 字符串 s 中的每个空格替换成&amp;quot;%20&amp;quot; 。">
+    <meta name="description" content="题目 题目描述 输入一个链表的头节点， 从尾到头反过来返回每个节点的值 （用数组返回）。">
 <meta name="keywords" content="Algorithm,Offer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="剑指Offer-05-替换空格">
-<meta property="og:url" content="https://gojay.top/2020/08/24/剑指Offer-05-替换空格/index.html">
+<meta property="og:title" content="剑指Offer-06-从尾到头打印链表">
+<meta property="og:url" content="https://gojay.top/2020/08/24/剑指Offer-06-从尾到头打印链表/index.html">
 <meta property="og:site_name" content="Gojay&#39;s Records">
-<meta property="og:description" content="题目 题目描述 请实现一个函数，把 字符串 s 中的每个空格替换成&amp;quot;%20&amp;quot; 。">
+<meta property="og:description" content="题目 题目描述 输入一个链表的头节点， 从尾到头反过来返回每个节点的值 （用数组返回）。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
-<meta property="og:updated_time" content="2020-08-24T07:35:45.580Z">
+<meta property="og:updated_time" content="2020-08-24T07:36:34.093Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="剑指Offer-05-替换空格">
-<meta name="twitter:description" content="题目 题目描述 请实现一个函数，把 字符串 s 中的每个空格替换成&amp;quot;%20&amp;quot; 。">
+<meta name="twitter:title" content="剑指Offer-06-从尾到头打印链表">
+<meta name="twitter:description" content="题目 题目描述 输入一个链表的头节点， 从尾到头反过来返回每个节点的值 （用数组返回）。">
 <meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
 
 
@@ -167,28 +167,28 @@ var _hmt = _hmt || [];
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail lazy" data-src="/gallery/thumbnails/剑指Offer.jpg" alt="剑指Offer-05-替换空格">
+            <img class="thumbnail lazy" data-src="/gallery/thumbnails/剑指Offer.jpg" alt="剑指Offer-06-从尾到头打印链表">
         </span>
     </div>
     
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>剑指Offer-05-替换空格
+                <i class="fas fa-angle-double-right"></i>剑指Offer-06-从尾到头打印链表
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
                 
-                <time class="level-item has-text-grey" datetime="2020-08-24T06:35:47.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-08-24</time>
+                <time class="level-item has-text-grey" datetime="2020-08-24T07:09:34.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-08-24</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-08-24T07:35:45.580Z"><i class="far fa-calendar-check">&nbsp;</i>2020-08-24</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-08-24T07:36:34.093Z"><i class="far fa-calendar-check">&nbsp;</i>2020-08-24</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/剑指Offer/">剑指Offer</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/剑指Offer/5/">5</a>
+                <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/剑指Offer/">剑指Offer</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/剑指Offer/6/">6</a>
                 </div>
                 
                 
@@ -196,7 +196,7 @@ var _hmt = _hmt || [];
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    2 minutes read (About 291 words)
+                    2 minutes read (About 306 words)
                 </span>
                 
                 
@@ -211,31 +211,31 @@ var _hmt = _hmt || [];
         <div class="content">
             <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr>
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><blockquote>
-<p>请实现一个函数，把 <code>字符串 s 中的每个空格替换成&quot;%20&quot;</code> 。</p>
+<p>输入一个链表的头节点， <code>从尾到头反过来返回每个节点的值</code> （用数组返回）。</p>
 </blockquote>
 <a id="more"></a>
 
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><blockquote>
-<p><strong>输入</strong>：s = “We are happy.”<br><strong>输出</strong>：”We%20are%20happy.”  </p>
+<p><strong>输入</strong>：head = [1,3,2]<br><strong>输出</strong>：[2,3,1]  </p>
 </blockquote>
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr>
-<h2 id="新建字符串"><a href="#新建字符串" class="headerlink" title="新建字符串"></a>新建字符串</h2><blockquote>
-<p>在Python语言中， <code>字符串被设计成不可变类型</code> ，即无法直接修改字符串的某一位字符，需要 <code>新建一个字符串</code> 实现。<br>初始化一个list； <code>遍历字符串s中每个字符c</code> ，若c为空格，则在list中添加”%20”；若c不为空格，则在list中添加字符c。<br><strong>时间复杂度</strong>：O(n)，遍历O(n)，每轮添加O(1)。<br><strong>空间复杂度</strong>：O(n)，新建list使用线性大小空间。  </p>
+<h2 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h2><blockquote>
+<p>先走到链表末端，回溯时依次将节点元素加入列表。<br><strong>递推</strong>：每次传入 <code>head.next</code> ，以 <code>head == None</code> 为终止条件，此时返回空列表 <code>[]</code> 。<br><strong>回溯</strong>：每次返回 <code>当前list + 当前节点元素[head.val]</code> 。<br><strong>时间复杂度</strong>：O(n)，遍历链表，递归n次。<br><strong>空间复杂度</strong>：O(n)，递归使用O(n)空间。  </p>
 </blockquote>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">replaceSpace</span><span class="hljs-params">(self, s: str)</span> -&gt; str:</span></span><br><span class="line">        res = []</span><br><span class="line">        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> s:</span><br><span class="line">            <span class="hljs-keyword">if</span> c == <span class="hljs-string">' '</span>: </span><br><span class="line">                res.append(<span class="hljs-string">"%20"</span>)</span><br><span class="line">            <span class="hljs-keyword">else</span>: </span><br><span class="line">                res.append(c)</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>.join(res)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># Definition for singly-linked list.</span></span><br><span class="line"><span class="hljs-comment"># class ListNode:</span></span><br><span class="line"><span class="hljs-comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="hljs-comment">#         self.val = x</span></span><br><span class="line"><span class="hljs-comment">#         self.next = None</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">reversePrint</span><span class="hljs-params">(self, head: ListNode)</span> -&gt; List[int]:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> head <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> []</span><br><span class="line">        <span class="hljs-keyword">return</span> self.reversePrint(head.next) + [head.val]</span><br></pre></td></tr></table></figure>
 
-<h2 id="Python特性"><a href="#Python特性" class="headerlink" title="Python特性"></a>Python特性</h2><blockquote>
-<p>使用Python字符串中的replace方法： <code>str.replace(old, new[, max])</code> ，将字符串中的 str1 替换成 str2,如果 max 指定，则替换不超过 max 次。<br><strong>时间复杂度</strong>：O(n)<br><strong>空间复杂度</strong>：O(n)  </p>
+<h2 id="辅助栈"><a href="#辅助栈" class="headerlink" title="辅助栈"></a>辅助栈</h2><blockquote>
+<p>使用Python列表中的reverse方法： <code>list.reverse()</code> 或 <code>list[::-1]</code> ，反向列表中元素。<br>遍历链表，依次将节点元素 <code>push入栈</code> （使用append方法实现）；然后将节点元素 <code>pop出栈</code> （反向）。<br><strong>时间复杂度</strong>：O(n)<br><strong>空间复杂度</strong>：O(n)  </p>
 </blockquote>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">replaceSpace</span><span class="hljs-params">(self, s: str)</span> -&gt; str:</span></span><br><span class="line">        <span class="hljs-keyword">return</span> s.replace(<span class="hljs-string">" "</span>, <span class="hljs-string">"%20"</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">reversePrint</span><span class="hljs-params">(self, head: ListNode)</span> -&gt; List[int]:</span></span><br><span class="line">        stack = []</span><br><span class="line">        <span class="hljs-keyword">while</span> head:</span><br><span class="line">            stack.append(head.val)</span><br><span class="line">            head = head.next</span><br><span class="line">        <span class="hljs-keyword">return</span> stack[::<span class="hljs-number">-1</span>]</span><br></pre></td></tr></table></figure>
 
 
         </div>
         
             <ul class="post-copyright">
-            <li><strong>Title：</strong><a href="https://gojay.top/2020/08/24/剑指Offer-05-替换空格/">剑指Offer-05-替换空格</a></li>
+            <li><strong>Title：</strong><a href="https://gojay.top/2020/08/24/剑指Offer-06-从尾到头打印链表/">剑指Offer-06-从尾到头打印链表</a></li>
             <li><strong>Author：</strong><a href="https://gojay.top">Gojay</a></li>
-            <li><strong>Link：</strong><a href="https://gojay.top/2020/08/24/剑指Offer-05-替换空格/">https://gojay.top/2020/08/24/剑指Offer-05-替换空格/</a></li>
+            <li><strong>Link：</strong><a href="https://gojay.top/2020/08/24/剑指Offer-06-从尾到头打印链表/">https://gojay.top/2020/08/24/剑指Offer-06-从尾到头打印链表/</a></li>
             <li><strong>Date：</strong>2020-08-24</li>
             <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
             </li>
@@ -268,17 +268,10 @@ var _hmt = _hmt || [];
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/08/24/剑指Offer-06-从尾到头打印链表/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">剑指Offer-06-从尾到头打印链表</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/08/21/剑指Offer-04-二维数组中的查找/">
-                <span class="level-item">剑指Offer-04-二维数组中的查找</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/08/24/剑指Offer-05-替换空格/">
+                <span class="level-item">剑指Offer-05-替换空格</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -341,13 +334,13 @@ var _hmt = _hmt || [];
         <span class="has-mr-6">2</span>
         <span>题解</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#新建字符串">
+        <a class="is-flex" href="#递归解法">
         <span class="has-mr-6">2.1</span>
-        <span>新建字符串</span>
+        <span>递归解法</span>
         </a></li><li>
-        <a class="is-flex" href="#Python特性">
+        <a class="is-flex" href="#辅助栈">
         <span class="has-mr-6">2.2</span>
-        <span>Python特性</span>
+        <span>辅助栈</span>
         </a></li></ul></li></ul>
         </div>
     </div>
