@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<meta name="baidu-site-verification" content="y4OgBadCWI">
+<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA">
+<title>剑指Offer-09-用两个栈实现队列 - Gojay&#39;s Records</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="题目 题目描述 用两个栈实现一个队列。队列的声明如下，请实现它的两个函数 appendTail 和 deleteHead ，分别完成在队列尾部插入整数和在队列头部删除整数的功能。(若队列中没有元素，deleteHead 操作返回 -1 ).">
+<meta name="keywords" content="Algorithm,Offer,栈,队列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="剑指Offer-09-用两个栈实现队列">
+<meta property="og:url" content="https://gojay.top/2020/08/26/剑指Offer-09-用两个栈实现队列/index.html">
+<meta property="og:site_name" content="Gojay&#39;s Records">
+<meta property="og:description" content="题目 题目描述 用两个栈实现一个队列。队列的声明如下，请实现它的两个函数 appendTail 和 deleteHead ，分别完成在队列尾部插入整数和在队列头部删除整数的功能。(若队列中没有元素，deleteHead 操作返回 -1 ).">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
+<meta property="og:updated_time" content="2020-08-26T08:00:05.864Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="剑指Offer-09-用两个栈实现队列">
+<meta name="twitter:description" content="题目 题目描述 用两个栈实现一个队列。队列的声明如下，请实现它的两个函数 appendTail 和 deleteHead ，分别完成在队列尾部插入整数和在队列头部删除整数的功能。(若队列中没有元素，deleteHead 操作返回 -1 ).">
+<meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/head.jpg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?f29d95e89a802be01b6ea105a1b4e115";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                Gojay&#39;s Records
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives/">Archives</a>
+                
+                <a class="navbar-item" href="/categories/">Categories</a>
+                
+                <a class="navbar-item" href="/tags/">Tags</a>
+                
+                <a class="navbar-item" href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
+                
+                <a class="navbar-item" href="/about/">About</a>
+                
+                <a class="navbar-item" href="/rss.xml">RSS</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Gojay GitHub" href="https://www.github.com/Gojay001">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail lazy" data-src="/gallery/thumbnails/剑指Offer.jpg" alt="剑指Offer-09-用两个栈实现队列">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>剑指Offer-09-用两个栈实现队列
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                <time class="level-item has-text-grey" datetime="2020-08-26T06:59:35.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-08-26</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-08-26T08:00:05.864Z"><i class="far fa-calendar-check">&nbsp;</i>2020-08-26</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/剑指Offer/">剑指Offer</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/剑指Offer/09/">09</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    2 minutes read (About 344 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><blockquote>
+<p><strong>用两个栈实现一个队列</strong>。队列的声明如下，请实现它的两个函数 <code>appendTail</code> 和 <code>deleteHead</code> ，分别完成在队列尾部插入整数和在队列头部删除整数的功能。(若队列中没有元素，<code>deleteHead</code> 操作返回 <code>-1</code> ).</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><blockquote>
+<p><strong>输入</strong>：<br>[“CQueue”,”appendTail”,”deleteHead”,”deleteHead”]<br>[[],[3],[],[]]<br><strong>输出</strong>：[null,null,3,-1]</p>
+</blockquote>
+<h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><blockquote>
+<p><strong>输入</strong>：<br>[“CQueue”,”deleteHead”,”appendTail”,”appendTail”,”deleteHead”,”deleteHead”]<br>[[],[],[5],[2],[],[]]<br><strong>输出</strong>：[null,-1,null,null,5,2]</p>
+</blockquote>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr>
+<h2 id="双栈分别正序和逆序"><a href="#双栈分别正序和逆序" class="headerlink" title="双栈分别正序和逆序"></a>双栈分别正序和逆序</h2><blockquote>
+<p><strong>栈</strong>：后入先出；<strong>队列</strong>：先入先出。<br><strong>栈1</strong>：正序（后入先出）；<strong>栈2</strong>：栈1的逆序。<br><strong>实现逆序</strong>：循环执行将栈1的元素出栈，并将其入栈至栈2，直到栈1为空。即 <code>stack2.append(stack1.pop())</code> 。<br><strong>appendTail()</strong>：直接将元素 <code>入栈至栈1</code> 。<br><strong>deleteHead()</strong>：1. 栈2不为空， <code>return stack2.pop()</code> ；2. 栈1为空， <code>return -1</code> ；3. 将栈1逆序输出到栈2， <code>return stack2.pop()</code> 。<br><strong>时间复杂度</strong>： <code>appendTail()</code> 为O(1)； <code>deleteTail()</code> 为O(n)，先遍历输出逆序。<br><strong>空间复杂度</strong>：O(n)，栈1和栈2共保存n个元素。</p>
+</blockquote>
+<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CQueue</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        self.stack1, self.stack2 = [], []</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">appendTail</span><span class="hljs-params">(self, value: int)</span> -&gt; <span class="hljs-keyword">None</span>:</span></span><br><span class="line">        self.stack1.append(value)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">deleteHead</span><span class="hljs-params">(self)</span> -&gt; int:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> self.stack2:</span><br><span class="line">            <span class="hljs-keyword">return</span> self.stack2.pop()</span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> self.stack1:</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span></span><br><span class="line">        <span class="hljs-keyword">while</span> self.stack1:</span><br><span class="line">            self.stack2.append(self.stack1.pop())</span><br><span class="line">        <span class="hljs-keyword">return</span> self.stack2.pop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Your CQueue object will be instantiated and called as such:</span></span><br><span class="line"><span class="hljs-comment"># obj = CQueue()</span></span><br><span class="line"><span class="hljs-comment"># obj.appendTail(value)</span></span><br><span class="line"><span class="hljs-comment"># param_2 = obj.deleteHead()</span></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>Title：</strong><a href="https://gojay.top/2020/08/26/剑指Offer-09-用两个栈实现队列/">剑指Offer-09-用两个栈实现队列</a></li>
+            <li><strong>Author：</strong><a href="https://gojay.top">Gojay</a></li>
+            <li><strong>Link：</strong><a href="https://gojay.top/2020/08/26/剑指Offer-09-用两个栈实现队列/">https://gojay.top/2020/08/26/剑指Offer-09-用两个栈实现队列/</a></li>
+            <li><strong>Date：</strong>2020-08-26</li>
+            <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/Algorithm/">Algorithm</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Offer/">Offer</a>,&nbsp;<a class="has-link-grey -link" href="/tags/栈/">栈</a>,&nbsp;<a class="has-link-grey -link" href="/tags/队列/">队列</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/08/25/剑指Offer-07-重建二叉树/">
+                <span class="level-item">剑指Offer-07-重建二叉树</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: '6kgdHh2dtxHKbi9fwyPjsA7t-gzGzoHsz',
+        app_key: 'N4XHHmLsjyHwx2ENVEGEn9Br',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu" style="max-height: 800px; overflow: auto;">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#题目">
+        <span class="has-mr-6">1</span>
+        <span>题目</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述">
+        <span class="has-mr-6">1.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#示例1">
+        <span class="has-mr-6">1.2</span>
+        <span>示例1</span>
+        </a></li><li>
+        <a class="is-flex" href="#示例2">
+        <span class="has-mr-6">1.3</span>
+        <span>示例2</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#题解">
+        <span class="has-mr-6">2</span>
+        <span>题解</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#双栈分别正序和逆序">
+        <span class="has-mr-6">2.1</span>
+        <span>双栈分别正序和逆序</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    Gojay&#39;s Records
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Gojay&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                <span id="busuanzi_value_site_pv">0</span> visits
+                </span>
+                
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">1</span> users
+                </span>
+                
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Gojay GitHub" href="https://www.github.com/Gojay001">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.0.0/dist/lazyload.min.js"></script>
+<script>
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy",
+    load_delay: 300,
+});
+</script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
