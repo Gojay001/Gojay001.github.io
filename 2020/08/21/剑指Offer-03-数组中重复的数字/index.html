@@ -9,19 +9,19 @@
 
 
 
-    <meta name="description" content="题目 题目描述 找出数组中重复的数字。在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。">
-<meta name="keywords" content="Algorithm,Offer">
+    <meta name="description" content="题目 题目描述 找出 数组中重复的数字 。在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。">
+<meta name="keywords" content="Algorithm,Offer,数组,字典">
 <meta property="og:type" content="article">
 <meta property="og:title" content="剑指Offer-03-数组中重复的数字">
 <meta property="og:url" content="https://gojay.top/2020/08/21/剑指Offer-03-数组中重复的数字/index.html">
 <meta property="og:site_name" content="Gojay&#39;s Records">
-<meta property="og:description" content="题目 题目描述 找出数组中重复的数字。在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。">
+<meta property="og:description" content="题目 题目描述 找出 数组中重复的数字 。在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
-<meta property="og:updated_time" content="2020-08-23T10:14:58.329Z">
+<meta property="og:updated_time" content="2020-08-24T07:42:30.757Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指Offer-03-数组中重复的数字">
-<meta name="twitter:description" content="题目 题目描述 找出数组中重复的数字。在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。">
+<meta name="twitter:description" content="题目 题目描述 找出 数组中重复的数字 。在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。">
 <meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
 
 
@@ -183,7 +183,7 @@ var _hmt = _hmt || [];
                 
                 <time class="level-item has-text-grey" datetime="2020-08-21T01:46:07.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-08-21</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-08-23T10:14:58.329Z"><i class="far fa-calendar-check">&nbsp;</i>2020-08-23</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-08-24T07:42:30.757Z"><i class="far fa-calendar-check">&nbsp;</i>2020-08-24</time>
                 
                 
                 <div class="level-item">
@@ -211,7 +211,7 @@ var _hmt = _hmt || [];
         <div class="content">
             <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr>
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><blockquote>
-<p>找出<code>数组中重复的数字</code>。<br>在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。</p>
+<p>找出 <code>数组中重复的数字</code> 。<br>在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。</p>
 </blockquote>
 <a id="more"></a>
 
@@ -220,17 +220,17 @@ var _hmt = _hmt || [];
 </blockquote>
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr>
 <h2 id="排序后查看相邻元素"><a href="#排序后查看相邻元素" class="headerlink" title="排序后查看相邻元素"></a>排序后查看相邻元素</h2><blockquote>
-<p>先<code>排序，然后查看相邻元素是否相同</code>；若相同则元素重复，return。该方法运行时间慢。<br><strong>时间复杂度</strong>：O(nlogn)<br><strong>空间复杂度</strong>：O(1)  </p>
+<p>先 <code>排序，然后查看相邻元素是否相同</code> ；若相同则元素重复，return。该方法运行时间慢。<br><strong>时间复杂度</strong>：O(nlogn)<br><strong>空间复杂度</strong>：O(1)  </p>
 </blockquote>
 <figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">findRepeatNumber</span><span class="hljs-params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        nums.sort()</span><br><span class="line">        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="hljs-keyword">if</span> nums[i] == nums[i+<span class="hljs-number">1</span>]:</span><br><span class="line">                <span class="hljs-keyword">return</span> nums[i]</span><br></pre></td></tr></table></figure>
 
 <h2 id="辅助空间"><a href="#辅助空间" class="headerlink" title="辅助空间"></a>辅助空间</h2><blockquote>
-<p>开辟一个新的列表或字典，<code>将nums数值作为新列表的索引并赋值为1</code>；若该索引已经复制则元素重复，return。<br><strong>时间复杂度</strong>：O(n)<br><strong>空间复杂度</strong>：O(n)  </p>
+<p>开辟一个新的列表或字典， <code>将nums数值作为新列表的索引并赋值为1</code> ；若该索引已经复制则元素重复，return。<br><strong>时间复杂度</strong>：O(n)<br><strong>空间复杂度</strong>：O(n)  </p>
 </blockquote>
 <figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">findRepeatNumber</span><span class="hljs-params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        repeatDict = &#123;&#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> nums:</span><br><span class="line">            <span class="hljs-keyword">if</span> num <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> repeatDict:</span><br><span class="line">                repeatDict[num] = <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-keyword">else</span>:</span><br><span class="line">                <span class="hljs-keyword">return</span> num</span><br></pre></td></tr></table></figure>
 
 <h2 id="原地交换"><a href="#原地交换" class="headerlink" title="原地交换"></a>原地交换</h2><blockquote>
-<p>与辅助空间思路类似，<code>让索引i位置存放数值i</code>。如果索引位置i的元素不是i，将把i元素放在对应位置，即nums[nums[i]]与nums[i]交换。若交换时发现索引nums[i]的元素与索引相同，则元素重复，return。<br><strong>时间复杂度</strong>：O(n)<br><strong>空间复杂度</strong>：O(1) </p>
+<p>与辅助空间思路类似， <code>让索引i位置存放数值i</code> 。如果索引位置i的元素不是i，将把i元素放在对应位置，即nums[nums[i]]与nums[i]交换。若交换时发现索引nums[i]的元素与索引相同，则元素重复，return。<br><strong>时间复杂度</strong>：O(n)<br><strong>空间复杂度</strong>：O(1) </p>
 </blockquote>
 <figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">findRepeatNumber</span><span class="hljs-params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="hljs-keyword">while</span> i != nums[i]:</span><br><span class="line">                <span class="hljs-keyword">if</span> nums[i] == nums[nums[i]]:</span><br><span class="line">                    <span class="hljs-keyword">return</span> nums[i]</span><br><span class="line">                nums[nums[i]], nums[i] = nums[i], nums[nums[i]]</span><br></pre></td></tr></table></figure>
 
@@ -252,7 +252,7 @@ var _hmt = _hmt || [];
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/Algorithm/">Algorithm</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Offer/">Offer</a>
+                    <a class="has-link-grey -link" href="/tags/Algorithm/">Algorithm</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Offer/">Offer</a>,&nbsp;<a class="has-link-grey -link" href="/tags/字典/">字典</a>,&nbsp;<a class="has-link-grey -link" href="/tags/数组/">数组</a>
                 </div>
             </div>
         </div>
