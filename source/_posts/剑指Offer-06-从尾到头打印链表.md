@@ -6,7 +6,7 @@ categories:
     - Algorithm  
     - 剑指Offer  
     - 06
-tags: [Algorithm, Offer]
+tags: [Algorithm, Offer, 链表, 递归, 栈]
 ---
 
 # 题目
