@@ -6,7 +6,7 @@
   <link href="/rss.xml" rel="self"/>
   
   <link href="https://gojay.top/"/>
-  <updated>2020-08-29T07:17:59.581Z</updated>
+  <updated>2020-08-29T07:52:36.590Z</updated>
   <id>https://gojay.top/</id>
   
   <author>
@@ -17,11 +17,46 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>剑指Offer-10-II.青蛙跳台阶问题</title>
+    <link href="https://gojay.top/2020/08/29/%E5%89%91%E6%8C%87Offer-10-II-%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98/"/>
+    <id>https://gojay.top/2020/08/29/剑指Offer-10-II-青蛙跳台阶问题/</id>
+    <published>2020-08-29T07:23:39.000Z</published>
+    <updated>2020-08-29T07:52:36.590Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>写一个函数，输入 <code>n</code> ，求斐波那契（Fibonacci）数列的第 <code>n</code> 项。斐波那契数列的定义如下：  </p><blockquote><p>F(0) = 0,   F(1) = 1<br>F(N) = F(N - 1) + F(N - 2), 其中 N &gt; 1.  </p></blockquote><p><strong>斐波那契数列</strong>由 0 和 1 开始，之后的斐波那契数就是由之前的两数相加而得出。<br>答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。</p><a id="more"></a><h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><blockquote><p><strong>输入</strong>：n = 2<br><strong>输出</strong>：1</p></blockquote><h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><blockquote><p><strong>输入</strong>：n = 5<br><strong>输出</strong>：5</p></blockquote><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr><h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><blockquote><p>可以跳1级和2级，则最终n级台阶可有 <code>两种跳法</code> 到达，即从 <code>n-1</code> 和 <code>n-2</code> 级台阶跳上来。  </p></blockquote><ul><li><strong>状态定义</strong>：dp为一维数组，dp[i]为第i个台阶时的跳法种数。  </li><li><strong>转移方程</strong>：dp[i] = dp[i-1] + dp[i-2]。  </li><li><strong>初始状态</strong>：dp[0] = 1, dp[1] = 1。</li></ul><blockquote><p><strong>时间复杂度</strong>：O(n)，循环n次，每次O(1)。<br><strong>空间复杂度</strong>：O(n)，dp[n]占用O(n)。</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">numWays</span><span class="hljs-params">(self, n: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> n &lt;= <span class="hljs-number">1</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span></span><br><span class="line">        dp = []</span><br><span class="line">        dp.append(<span class="hljs-number">1</span>)</span><br><span class="line">        dp.append(<span class="hljs-number">1</span>)</span><br><span class="line">        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>, n+<span class="hljs-number">1</span>):</span><br><span class="line">            dp_tmp = (dp[i<span class="hljs-number">-1</span>] + dp[i<span class="hljs-number">-2</span>]) % <span class="hljs-number">1000000007</span></span><br><span class="line">            dp.append(dp_tmp)</span><br><span class="line">        <span class="hljs-keyword">return</span> dp[n]</span><br></pre></td></tr></table></figure><h2 id="动态规划（空间优化）"><a href="#动态规划（空间优化）" class="headerlink" title="动态规划（空间优化）"></a>动态规划（空间优化）</h2><blockquote><p>利用 <code>辅助变量使a, b</code> 交替前进，节省了dp[]列表空间。<br><strong>时间复杂度</strong>：O(n)，循环n次，每次O(1)。<br><strong>空间复杂度</strong>：O(1)，变量占用O(1)。</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">numWays</span><span class="hljs-params">(self, n: int)</span> -&gt; int:</span></span><br><span class="line">        a, b = <span class="hljs-number">1</span>, <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(n):</span><br><span class="line">            a, b = b, a + b</span><br><span class="line">        <span class="hljs-keyword">return</span> a % <span class="hljs-number">1000000007</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;写一个函数，输入 &lt;code&gt;n&lt;/code&gt; ，求斐波那契（Fibonacci）数列的第 &lt;code&gt;n&lt;/code&gt; 项。斐波那契数列的定义如下：  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;F(0) = 0,   F(1) = 1&lt;br&gt;F(N) = F(N - 1) + F(N - 2), 其中 N &amp;gt; 1.  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;斐波那契数列&lt;/strong&gt;由 0 和 1 开始，之后的斐波那契数就是由之前的两数相加而得出。&lt;br&gt;答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="https://gojay.top/categories/Algorithm/"/>
+    
+      <category term="剑指Offer" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/"/>
+    
+      <category term="10" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/10/"/>
+    
+    
+      <category term="Algorithm" scheme="https://gojay.top/tags/Algorithm/"/>
+    
+      <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
+    
+      <category term="动态规划" scheme="https://gojay.top/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
     <title>剑指Offer-10-I.斐波那契数列</title>
     <link href="https://gojay.top/2020/08/27/%E5%89%91%E6%8C%87Offer-10-I-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/"/>
     <id>https://gojay.top/2020/08/27/剑指Offer-10-I-斐波那契数列/</id>
     <published>2020-08-27T07:01:45.000Z</published>
-    <updated>2020-08-29T07:17:59.581Z</updated>
+    <updated>2020-08-29T07:51:22.139Z</updated>
     
     <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>写一个函数，输入 <code>n</code> ，求斐波那契（Fibonacci）数列的第 <code>n</code> 项。斐波那契数列的定义如下：  </p><blockquote><p>F(0) = 0,   F(1) = 1<br>F(N) = F(N - 1) + F(N - 2), 其中 N &gt; 1.  </p></blockquote><p><strong>斐波那契数列</strong>由 0 和 1 开始，之后的斐波那契数就是由之前的两数相加而得出。<br>答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。</p><a id="more"></a><h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><blockquote><p><strong>输入</strong>：n = 2<br><strong>输出</strong>：1</p></blockquote><h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><blockquote><p><strong>输入</strong>：n = 5<br><strong>输出</strong>：5</p></blockquote><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><blockquote><p>把f(n) <code>拆解</code> 为f(n-1)和f(n-2)递归计算，以f(1)和f(0)为终止条件。<br>大量重复递归计算，会直接超时。<br><strong>时间复杂度</strong>：O($2^n$)<br><strong>空间复杂度</strong>：O(n)</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fib</span><span class="hljs-params">(self, n: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> n &lt;= <span class="hljs-number">0</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> n</span><br><span class="line">        <span class="hljs-keyword">return</span> self.fib(n<span class="hljs-number">-1</span>) + self.fib(n<span class="hljs-number">-2</span>)</span><br></pre></td></tr></table></figure><h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><ul><li><strong>状态定义</strong>：dp为一维数组，dp[i]为斐波那契数列的第i个值。  </li><li><strong>转移方程</strong>：dp[i] = dp[i-1] + dp[i-2]。  </li><li><strong>初始状态</strong>：dp[0] = 0, dp[1] = 1。</li></ul><blockquote><p><strong>时间复杂度</strong>：O(n)，循环n次，每次O(1)。<br><strong>空间复杂度</strong>：O(n)，dp[n]占用O(n)。</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fib</span><span class="hljs-params">(self, n: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> n &lt;= <span class="hljs-number">0</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> n</span><br><span class="line">        dp = []</span><br><span class="line">        dp.append(<span class="hljs-number">0</span>)</span><br><span class="line">        dp.append(<span class="hljs-number">1</span>)</span><br><span class="line">        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>, n+<span class="hljs-number">1</span>):</span><br><span class="line">            dp_tmp = (dp[i<span class="hljs-number">-1</span>] + dp[i<span class="hljs-number">-2</span>]) % <span class="hljs-number">1000000007</span></span><br><span class="line">            dp.append(dp_tmp)</span><br><span class="line">        <span class="hljs-keyword">return</span> dp[n]</span><br></pre></td></tr></table></figure><h2 id="动态规划（空间优化）"><a href="#动态规划（空间优化）" class="headerlink" title="动态规划（空间优化）"></a>动态规划（空间优化）</h2><blockquote><p>利用 <code>辅助变量使a, b</code> 交替前进，节省了dp[]列表空间。<br><strong>时间复杂度</strong>：O(n)，循环n次，每次O(1)。<br><strong>空间复杂度</strong>：O(1)，变量占用O(1)。</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fib</span><span class="hljs-params">(self, n: int)</span> -&gt; int:</span></span><br><span class="line">        a, b = <span class="hljs-number">0</span>, <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(n):</span><br><span class="line">            a, b = b, a + b</span><br><span class="line">        <span class="hljs-keyword">return</span> a % <span class="hljs-number">1000000007</span></span><br></pre></td></tr></table></figure>]]></content>
     
@@ -156,9 +191,9 @@
     
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
-      <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
-    
       <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
     
   </entry>
   
