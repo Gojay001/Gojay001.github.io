@@ -9,19 +9,19 @@
 
 
 
-    <meta name="description" content="题目 题目描述写一个函数，输入 n ，求斐波那契（Fibonacci）数列的第 n 项。斐波那契数列的定义如下：    F(0) = 0,   F(1) = 1F(N) = F(N - 1) + F(N - 2), 其中 N &amp;gt; 1.    斐波那契数列由 0 和 1 开始，之后的斐波那契数就是由之前的两数相加而得出。答案需要取模 1e9+7（1000000007），如计算初始结果为：100">
+    <meta name="description" content="题目 题目描述一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。    答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。">
 <meta name="keywords" content="Algorithm,Offer,动态规划">
 <meta property="og:type" content="article">
 <meta property="og:title" content="剑指Offer-10-II.青蛙跳台阶问题">
 <meta property="og:url" content="https://gojay.top/2020/08/29/剑指Offer-10-II-青蛙跳台阶问题/index.html">
 <meta property="og:site_name" content="Gojay&#39;s Records">
-<meta property="og:description" content="题目 题目描述写一个函数，输入 n ，求斐波那契（Fibonacci）数列的第 n 项。斐波那契数列的定义如下：    F(0) = 0,   F(1) = 1F(N) = F(N - 1) + F(N - 2), 其中 N &amp;gt; 1.    斐波那契数列由 0 和 1 开始，之后的斐波那契数就是由之前的两数相加而得出。答案需要取模 1e9+7（1000000007），如计算初始结果为：100">
+<meta property="og:description" content="题目 题目描述一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。    答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
-<meta property="og:updated_time" content="2020-08-29T07:52:36.590Z">
+<meta property="og:updated_time" content="2020-08-29T07:56:32.280Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指Offer-10-II.青蛙跳台阶问题">
-<meta name="twitter:description" content="题目 题目描述写一个函数，输入 n ，求斐波那契（Fibonacci）数列的第 n 项。斐波那契数列的定义如下：    F(0) = 0,   F(1) = 1F(N) = F(N - 1) + F(N - 2), 其中 N &amp;gt; 1.    斐波那契数列由 0 和 1 开始，之后的斐波那契数就是由之前的两数相加而得出。答案需要取模 1e9+7（1000000007），如计算初始结果为：100">
+<meta name="twitter:description" content="题目 题目描述一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。    答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。">
 <meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
 
 
@@ -183,7 +183,7 @@ var _hmt = _hmt || [];
                 
                 <time class="level-item has-text-grey" datetime="2020-08-29T07:23:39.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-08-29</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-08-29T07:52:36.590Z"><i class="far fa-calendar-check">&nbsp;</i>2020-08-29</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-08-29T07:56:32.280Z"><i class="far fa-calendar-check">&nbsp;</i>2020-08-29</time>
                 
                 
                 <div class="level-item">
@@ -196,7 +196,7 @@ var _hmt = _hmt || [];
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    2 minutes read (About 374 words)
+                    2 minutes read (About 347 words)
                 </span>
                 
                 
@@ -210,18 +210,18 @@ var _hmt = _hmt || [];
         
         <div class="content">
             <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>写一个函数，输入 <code>n</code> ，求斐波那契（Fibonacci）数列的第 <code>n</code> 项。斐波那契数列的定义如下：  </p>
-<blockquote>
-<p>F(0) = 0,   F(1) = 1<br>F(N) = F(N - 1) + F(N - 2), 其中 N &gt; 1.  </p>
-</blockquote>
-<p><strong>斐波那契数列</strong>由 0 和 1 开始，之后的斐波那契数就是由之前的两数相加而得出。<br>答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个 <code>n</code> 级的台阶总共有多少种跳法。   </p>
+<p>答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。</p>
 <a id="more"></a>
 
 <h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><blockquote>
-<p><strong>输入</strong>：n = 2<br><strong>输出</strong>：1</p>
+<p><strong>输入</strong>：n = 2<br><strong>输出</strong>：2</p>
 </blockquote>
 <h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><blockquote>
-<p><strong>输入</strong>：n = 5<br><strong>输出</strong>：5</p>
+<p><strong>输入</strong>：n = 7<br><strong>输出</strong>：21</p>
+</blockquote>
+<h2 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h2><blockquote>
+<p><strong>输入</strong>：n = 0<br><strong>输出</strong>：1</p>
 </blockquote>
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr>
 <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><blockquote>
@@ -346,6 +346,10 @@ var _hmt = _hmt || [];
         <a class="is-flex" href="#示例2">
         <span class="has-mr-6">1.3</span>
         <span>示例2</span>
+        </a></li><li>
+        <a class="is-flex" href="#示例3">
+        <span class="has-mr-6">1.4</span>
+        <span>示例3</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#题解">
         <span class="has-mr-6">2</span>
