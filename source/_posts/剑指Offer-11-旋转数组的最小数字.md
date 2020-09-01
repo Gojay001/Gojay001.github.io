@@ -37,6 +37,7 @@ class Solution:
 ```
 
 ## 二分查找
+([引用Krahets](https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/solution/mian-shi-ti-07-zhong-jian-er-cha-shu-di-gui-fa-qin/))
 > 每次取数组 `中间元素` 与左（右）排序数组中 `最右侧的元素` 比较，最终返回数组最小值。  
 > 左排序数组：mid左边的数组；右排序数组：mid右边的数组。  
 
