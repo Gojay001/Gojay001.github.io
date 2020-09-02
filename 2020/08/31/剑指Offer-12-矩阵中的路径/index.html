@@ -9,19 +9,19 @@
 
 
 
-    <meta name="description" content="题目 题目描述把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个递增排序的数组的一个旋转， 输出旋转数组的最小元素 。例如，数组 [3,4,5,1,2] 为 [1,2,3,4,5] 的一个旋转，该数组的最小值为1。">
+    <meta name="description" content="题目 题目描述请设计一个函数，用来判断在 一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一格开始，每一步可以在矩阵中向左、右、上、下移动一格。如果一条路径经过了矩阵的某一格，那么该路径不能再次进入该格子。例如，在下面的3×4的矩阵中包含一条字符串“bfce”的路径（路径中的字母用加粗标出）。">
 <meta name="keywords" content="Algorithm,Offer,DFS,回溯">
 <meta property="og:type" content="article">
 <meta property="og:title" content="剑指Offer-12-矩阵中的路径">
 <meta property="og:url" content="https://gojay.top/2020/08/31/剑指Offer-12-矩阵中的路径/index.html">
 <meta property="og:site_name" content="Gojay&#39;s Records">
-<meta property="og:description" content="题目 题目描述把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个递增排序的数组的一个旋转， 输出旋转数组的最小元素 。例如，数组 [3,4,5,1,2] 为 [1,2,3,4,5] 的一个旋转，该数组的最小值为1。">
+<meta property="og:description" content="题目 题目描述请设计一个函数，用来判断在 一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一格开始，每一步可以在矩阵中向左、右、上、下移动一格。如果一条路径经过了矩阵的某一格，那么该路径不能再次进入该格子。例如，在下面的3×4的矩阵中包含一条字符串“bfce”的路径（路径中的字母用加粗标出）。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
-<meta property="og:updated_time" content="2020-09-01T15:29:02.824Z">
+<meta property="og:updated_time" content="2020-09-02T07:55:48.241Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指Offer-12-矩阵中的路径">
-<meta name="twitter:description" content="题目 题目描述把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个递增排序的数组的一个旋转， 输出旋转数组的最小元素 。例如，数组 [3,4,5,1,2] 为 [1,2,3,4,5] 的一个旋转，该数组的最小值为1。">
+<meta name="twitter:description" content="题目 题目描述请设计一个函数，用来判断在 一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一格开始，每一步可以在矩阵中向左、右、上、下移动一格。如果一条路径经过了矩阵的某一格，那么该路径不能再次进入该格子。例如，在下面的3×4的矩阵中包含一条字符串“bfce”的路径（路径中的字母用加粗标出）。">
 <meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
 
 
@@ -183,7 +183,7 @@ var _hmt = _hmt || [];
                 
                 <time class="level-item has-text-grey" datetime="2020-08-31T12:53:18.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-08-31</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-09-01T15:29:02.824Z"><i class="far fa-calendar-check">&nbsp;</i>2020-09-01</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-09-02T07:55:48.241Z"><i class="far fa-calendar-check">&nbsp;</i>2020-09-02</time>
                 
                 
                 <div class="level-item">
@@ -196,7 +196,7 @@ var _hmt = _hmt || [];
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    6 minutes read (About 963 words)
+                    8 minutes read (About 1207 words)
                 </span>
                 
                 
@@ -210,14 +210,16 @@ var _hmt = _hmt || [];
         
         <div class="content">
             <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个递增排序的数组的一个旋转， <strong>输出旋转数组的最小元素</strong> 。例如，数组 <code>[3,4,5,1,2]</code> 为 <code>[1,2,3,4,5]</code> 的一个旋转，该数组的最小值为1。</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>请设计一个函数，用来判断在 <strong>一个矩阵中是否存在一条包含某字符串所有字符的路径</strong>。路径可以从矩阵中的任意一格开始，每一步可以在矩阵中向左、右、上、下移动一格。如果一条路径经过了矩阵的某一格，那么该路径不能再次进入该格子。例如，在下面的3×4的矩阵中包含一条字符串“bfce”的路径（路径中的字母用加粗标出）。</p>
 <a id="more"></a>
 
+<p>[[“a”,”b”,”c”,”e”],<br>[“s”,”f”,”c”,”s”],<br>[“a”,”d”,”e”,”e”]]</p>
+<p>但矩阵中不包含字符串“abfb”的路径，因为字符串的第一个字符b占据了矩阵中的第一行第二个格子之后，路径不能再次进入这个格子。</p>
 <h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><blockquote>
-<p><strong>输入</strong>：[3,4,5,1,2]<br><strong>输出</strong>：1</p>
+<p><strong>输入</strong>：board = [[“A”,”B”,”C”,”E”],[“S”,”F”,”C”,”S”],[“A”,”D”,”E”,”E”]], word = “ABCCED”<br><strong>输出</strong>：true</p>
 </blockquote>
 <h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><blockquote>
-<p><strong>输入</strong>：[2,2,2,0,1]<br><strong>输出</strong>：0</p>
+<p><strong>输入</strong>：board = [[“a”,”b”],[“c”,”d”]], word = “abcd”<br><strong>输出</strong>：false</p>
 </blockquote>
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr>
 <h2 id="回溯算法"><a href="#回溯算法" class="headerlink" title="回溯算法"></a>回溯算法</h2><p>（<a href="https://leetcode-cn.com/problems/ju-zhen-zhong-de-lu-jing-lcof/solution/mian-shi-ti-12-ju-zhen-zhong-de-lu-jing-shen-du-yo/" target="_blank" rel="noopener">引用Krahets</a>）</p>
@@ -233,7 +235,7 @@ var _hmt = _hmt || [];
 <li><strong>递推过程</strong>：1）<code>标记当前矩阵元素</code>：将 board[i][j]值暂存tmp，并重新赋值为’’，标记其已被访问过；2）<code>搜索下一单元格</code>：分别对当前元素的上下左右四个方向进行DFS递归搜索；3）<code>还原当前矩阵元素</code>：若从矩阵左上角未搜索到word，将循环i,j进行后续搜索，故需还原矩阵元素。</li>
 </ul>
 <blockquote>
-<p><strong>时间复杂度</strong>：O($mn3^k$)<br><strong>空间复杂度</strong>：O(k)</p>
+<p><strong>时间复杂度</strong>：O($mn3^k$)，遍历矩阵中k字符串所有方案，包含上下左右四个方向，舍弃回头方向，剩下三种选择，时间复杂度为O($3^k$)；矩阵共有mn个初始点，时间复杂度为O(mn)；<br><strong>空间复杂度</strong>：O(mn)，递归深度不超过k，最坏情况下k=mn。</p>
 </blockquote>
 <figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">exist</span><span class="hljs-params">(self, board: List[List[str]], word: str)</span> -&gt; bool:</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dfs</span><span class="hljs-params">(i, j, k)</span>:</span></span><br><span class="line">            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-number">0</span> &lt;= i &lt; len(board) <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> <span class="hljs-number">0</span> &lt;= j &lt; len(board[i]) <span class="hljs-keyword">or</span> board[i][j] != word[k]:</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span></span><br><span class="line">            <span class="hljs-keyword">if</span> k == len(word) - <span class="hljs-number">1</span>:</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span></span><br><span class="line">            tmp, board[i][j] = board[i][j], <span class="hljs-string">''</span></span><br><span class="line">            flag = dfs(i+<span class="hljs-number">1</span>, j, k+<span class="hljs-number">1</span>) <span class="hljs-keyword">or</span> dfs(i<span class="hljs-number">-1</span>, j, k+<span class="hljs-number">1</span>) <span class="hljs-keyword">or</span> dfs(i, j+<span class="hljs-number">1</span>, k+<span class="hljs-number">1</span>) <span class="hljs-keyword">or</span> dfs(i, j<span class="hljs-number">-1</span>, k+<span class="hljs-number">1</span>)</span><br><span class="line">            board[i][j] = tmp</span><br><span class="line">            <span class="hljs-keyword">return</span> flag</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(board)):</span><br><span class="line">            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(len(board[i])):</span><br><span class="line">                <span class="hljs-keyword">if</span> dfs(i, j, <span class="hljs-number">0</span>):</span><br><span class="line">                    <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span></span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span></span><br></pre></td></tr></table></figure>
 
