@@ -1,3 +1,4 @@
+https://gojay.top/2020/09/04/剑指Offer-14-I-剪绳子/
 https://gojay.top/2020/09/03/剑指Offer-13-机器人的运动范围/
 https://gojay.top/2020/08/31/剑指Offer-12-矩阵中的路径/
 https://gojay.top/2020/08/30/剑指Offer-11-旋转数组的最小数字/
@@ -7,4 +8,3 @@ https://gojay.top/2020/08/26/剑指Offer-09-用两个栈实现队列/
 https://gojay.top/2020/08/25/剑指Offer-07-重建二叉树/
 https://gojay.top/2020/08/24/剑指Offer-06-从尾到头打印链表/
 https://gojay.top/2020/08/24/剑指Offer-05-替换空格/
-https://gojay.top/2020/08/21/剑指Offer-04-二维数组中的查找/
