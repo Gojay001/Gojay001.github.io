@@ -6,7 +6,7 @@
   <link href="/rss.xml" rel="self"/>
   
   <link href="https://gojay.top/"/>
-  <updated>2020-09-02T07:55:48.241Z</updated>
+  <updated>2020-09-04T07:29:59.995Z</updated>
   <id>https://gojay.top/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>剑指Offer-13-机器人的运动范围</title>
+    <link href="https://gojay.top/2020/09/03/%E5%89%91%E6%8C%87Offer-13-%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/"/>
+    <id>https://gojay.top/2020/09/03/剑指Offer-13-机器人的运动范围/</id>
+    <published>2020-09-03T07:22:22.000Z</published>
+    <updated>2020-09-04T07:29:59.995Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>地上有一个m行n列的方格，从坐标 <code>[0,0]</code> 到坐标 <code>[m-1,n-1]</code> 。一个机器人从坐标 <code>[0, 0]</code> 的格子开始移动，它每次可以向左、右、上、下移动一格（不能移动到方格外），也不能进入行坐标和列坐标的数位之和大于k的格子。例如，当k为18时，机器人能够进入方格 [35, 37] ，因为3+5+3+7=18。但它不能进入方格 [35, 38]，因为3+5+3+8=19。请问 <strong>该机器人能够到达多少个格子</strong>？</p><a id="more"></a><h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><blockquote><p><strong>输入</strong>：m = 2, n = 3, k = 1<br><strong>输出</strong>：3</p></blockquote><h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><blockquote><p><strong>输入</strong>：m = 3, n = 1, k = 0<br><strong>输出</strong>：0</p></blockquote><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr><p>（<a href="https://leetcode-cn.com/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof/solution/mian-shi-ti-13-ji-qi-ren-de-yun-dong-fan-wei-dfs-b/" target="_blank" rel="noopener">引用Krahets</a>）  </p><blockquote><p><strong>数位和</strong>：数字中个位及十位数值的和（题目给出 1 &lt;= n,m &lt;=100）；<br><strong>数位和增量公式</strong>：机器人每次只能移动一格，即x到x+1(x-1)，设x的数位和为 $s_x$，x+1的数位和为 $s_{x+1}$；1) 当 <code>(x+1)%10!=0</code> : $s_{x+1} = s_x + 1$ ; 2) 当 <code>(x+1)%10==0</code> : $s_{x+1} = s_x - 8$ (例如，19的数位和为10，20的数位和为2)。<br><strong>可达解结构</strong>：根据可达解的结构，机器人可 <code>仅通过向右和向下移动，访问所有可达解</code>。</p></blockquote><h2 id="深度优先搜索DFS"><a href="#深度优先搜索DFS" class="headerlink" title="深度优先搜索DFS"></a>深度优先搜索DFS</h2><blockquote><p>矩阵搜索问题，可使用 <strong>DFS+剪枝</strong> 解决。  </p></blockquote><ul><li><strong>递归参数</strong>：<code>i, j</code> 为矩阵行列索引，索引的数位和 <code>si, sj</code> 。</li><li><strong>终止条件</strong>：1)行列索引越界；2)数位和超过目标值k；3)当前元素已经访问过； <code>return 0</code>。</li><li><strong>递推过程</strong>：1）<code>标记当前矩阵元素</code>：将索引(i,j)存入集合visited中；2）<code>搜索下一单元格</code>：分别对当前元素的下、右两个方向进行DFS递归搜索；  </li><li><strong>回溯返回值</strong>：返回 <code>1 + 下方可达解 + 右方可达解</code>。</li></ul><blockquote><p><strong>时间复杂度</strong>：O(mn)，遍历矩阵中所有单元格；<br><strong>空间复杂度</strong>：O(mn)，visited 存储矩阵所有单元格。</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">movingCount</span><span class="hljs-params">(self, m: int, n: int, k: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dfs</span><span class="hljs-params">(i, j, si, sj)</span>:</span></span><br><span class="line">            <span class="hljs-keyword">if</span> i &gt;= m <span class="hljs-keyword">or</span> j &gt;= n <span class="hljs-keyword">or</span> k &lt; si+sj <span class="hljs-keyword">or</span> (i,j) <span class="hljs-keyword">in</span> visited:</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span></span><br><span class="line">            visited.add((i,j))</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + dfs(i+<span class="hljs-number">1</span>, j, si+<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> (i+<span class="hljs-number">1</span>)%<span class="hljs-number">10</span> <span class="hljs-keyword">else</span> si<span class="hljs-number">-8</span>, sj) + dfs(i, j+<span class="hljs-number">1</span>, si, sj+<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> (j+<span class="hljs-number">1</span>)%<span class="hljs-number">10</span> <span class="hljs-keyword">else</span> sj<span class="hljs-number">-8</span>)</span><br><span class="line"></span><br><span class="line">        visited = set()</span><br><span class="line">        <span class="hljs-keyword">return</span> dfs(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</span><br></pre></td></tr></table></figure><h2 id="广度优先搜索BFS"><a href="#广度优先搜索BFS" class="headerlink" title="广度优先搜索BFS"></a>广度优先搜索BFS</h2><blockquote><p>用 <strong>队列实现BFS</strong>，按所有方向向前搜索。</p></blockquote><ul><li><strong>初始化</strong>：将 <code>初始点(0,0)</code> 加入队列 queue；</li><li><strong>终止条件</strong>：<code>queue为空</code>，即所有可达解全部遍历出队；</li><li><strong>递推过程</strong>：1)<code>单元格出队</code>：队首单元格弹出，作为当前搜索单元格；2)<code>判断是否跳过</code>：a)行列索引越界; b)数位和超过目标值k; c)当前元素已经访问过; 3)<code>标记当前单元格</code>：将索引(i,j)存入集合visited中；4)<code>单元格入队</code>：将当前元素的下、右两个方向的元素加入 queue；</li><li><strong>返回值</strong>：集合 <code>visited的长度</code> 为可达解数量。</li></ul><blockquote><p><strong>时间复杂度</strong>：O(mn)，遍历矩阵中所有单元格；<br><strong>空间复杂度</strong>：O(mn)，visited 存储矩阵所有单元格。</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">movingCount</span><span class="hljs-params">(self, m: int, n: int, k: int)</span> -&gt; int:</span></span><br><span class="line">        queue, visited = [(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)], set()</span><br><span class="line">        <span class="hljs-keyword">while</span> queue:</span><br><span class="line">            i, j, si, sj = queue.pop(<span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-keyword">if</span> i &gt;= m <span class="hljs-keyword">or</span> j &gt;= n <span class="hljs-keyword">or</span> k &lt; si+sj <span class="hljs-keyword">or</span> (i,j) <span class="hljs-keyword">in</span> visited:</span><br><span class="line">                <span class="hljs-keyword">continue</span></span><br><span class="line">            visited.add((i,j))</span><br><span class="line">            queue.append((i+<span class="hljs-number">1</span>, j, si+<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> (i+<span class="hljs-number">1</span>)%<span class="hljs-number">10</span> <span class="hljs-keyword">else</span> si<span class="hljs-number">-8</span>, sj))</span><br><span class="line">            queue.append((i, j+<span class="hljs-number">1</span>, si, sj+<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> (j+<span class="hljs-number">1</span>)%<span class="hljs-number">10</span> <span class="hljs-keyword">else</span> sj<span class="hljs-number">-8</span>))</span><br><span class="line">        <span class="hljs-keyword">return</span> len(visited)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;地上有一个m行n列的方格，从坐标 &lt;code&gt;[0,0]&lt;/code&gt; 到坐标 &lt;code&gt;[m-1,n-1]&lt;/code&gt; 。一个机器人从坐标 &lt;code&gt;[0, 0]&lt;/code&gt; 的格子开始移动，它每次可以向左、右、上、下移动一格（不能移动到方格外），也不能进入行坐标和列坐标的数位之和大于k的格子。例如，当k为18时，机器人能够进入方格 [35, 37] ，因为3+5+3+7=18。但它不能进入方格 [35, 38]，因为3+5+3+8=19。请问 &lt;strong&gt;该机器人能够到达多少个格子&lt;/strong&gt;？&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="https://gojay.top/categories/Algorithm/"/>
+    
+      <category term="剑指Offer" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/"/>
+    
+      <category term="13" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/13/"/>
+    
+    
+      <category term="Algorithm" scheme="https://gojay.top/tags/Algorithm/"/>
+    
+      <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
+    
+      <category term="DFS" scheme="https://gojay.top/tags/DFS/"/>
+    
+      <category term="回溯" scheme="https://gojay.top/tags/%E5%9B%9E%E6%BA%AF/"/>
+    
+      <category term="BFS" scheme="https://gojay.top/tags/BFS/"/>
+    
+  </entry>
   
   <entry>
     <title>剑指Offer-12-矩阵中的路径</title>
@@ -252,9 +287,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
     
