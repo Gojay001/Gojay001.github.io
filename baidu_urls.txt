@@ -1,4 +1,4 @@
-https://gojay.top/2020/09/04/剑指Offer-14-I-剪绳子/
+https://gojay.top/2020/09/04/剑指Offer-14-剪绳子/
 https://gojay.top/2020/09/03/剑指Offer-13-机器人的运动范围/
 https://gojay.top/2020/08/31/剑指Offer-12-矩阵中的路径/
 https://gojay.top/2020/08/30/剑指Offer-11-旋转数组的最小数字/
