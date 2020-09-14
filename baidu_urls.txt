@@ -1,3 +1,4 @@
+https://gojay.top/2020/09/14/剑指Offer-18-删除链表的节点/
 https://gojay.top/2020/09/11/剑指Offer-17-打印从1到最大的n位数/
 https://gojay.top/2020/09/07/剑指Offer-16-数值的整数次方/
 https://gojay.top/2020/09/07/剑指Offer-15-二进制中1的个数/
@@ -7,4 +8,3 @@ https://gojay.top/2020/08/31/剑指Offer-12-矩阵中的路径/
 https://gojay.top/2020/08/30/剑指Offer-11-旋转数组的最小数字/
 https://gojay.top/2020/08/29/剑指Offer-10-II-青蛙跳台阶问题/
 https://gojay.top/2020/08/27/剑指Offer-10-I-斐波那契数列/
-https://gojay.top/2020/08/26/剑指Offer-09-用两个栈实现队列/
