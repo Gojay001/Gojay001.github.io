@@ -18,7 +18,7 @@
 <meta property="og:description" content="题目 题目描述请实现一个函数用来匹配包含&amp;#39;.&amp;#39;和&amp;#39;*&amp;#39;的正则表达式。模式中的字符’.’表示任意一个字符，而&amp;#39;*&amp;#39;表示它前面的字符可以出现任意次（含0次）。在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串”aaa”与模式&amp;quot;a.a&amp;quot;和&amp;quot;ab*ac*a&amp;quot;匹配，但与&amp;quot;aa.a&amp;quot;和&amp;quo">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
-<meta property="og:updated_time" content="2020-09-18T03:15:09.889Z">
+<meta property="og:updated_time" content="2020-09-18T03:18:42.494Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指Offer-19-正则表达式匹配">
 <meta name="twitter:description" content="题目 题目描述请实现一个函数用来匹配包含&amp;#39;.&amp;#39;和&amp;#39;*&amp;#39;的正则表达式。模式中的字符’.’表示任意一个字符，而&amp;#39;*&amp;#39;表示它前面的字符可以出现任意次（含0次）。在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串”aaa”与模式&amp;quot;a.a&amp;quot;和&amp;quot;ab*ac*a&amp;quot;匹配，但与&amp;quot;aa.a&amp;quot;和&amp;quo">
@@ -183,7 +183,7 @@ var _hmt = _hmt || [];
                 
                 <time class="level-item has-text-grey" datetime="2020-09-14T14:17:01.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-09-14</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-09-18T03:15:09.889Z"><i class="far fa-calendar-check">&nbsp;</i>2020-09-18</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-09-18T03:18:42.494Z"><i class="far fa-calendar-check">&nbsp;</i>2020-09-18</time>
                 
                 
                 <div class="level-item">
@@ -217,10 +217,10 @@ var _hmt = _hmt || [];
 <p><strong>输入</strong>：s = “aa”, p = “a”<br><strong>输出</strong>：false<br><strong>解释</strong>：”a” 无法匹配 “aa” 整个字符串。</p>
 </blockquote>
 <h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><blockquote>
-<p><strong>输入</strong>：s = “aa”, p = “a*”<br><strong>输出</strong>：true<br><strong>解释</strong>：因为 ‘*’ 代表可以匹配零个或多个前面的那一个元素, 在这里前面的元素就是 ‘a’。因此，字符串 “aa” 可被视为 ‘a’ 重复了一次。</p>
+<p><strong>输入</strong>：s = “aa”, p = “a*“<br><strong>输出</strong>：true<br><strong>解释</strong>：因为 ‘*‘ 代表可以匹配零个或多个前面的那一个元素, 在这里前面的元素就是 ‘a’。因此，字符串 “aa” 可被视为 ‘a’ 重复了一次。</p>
 </blockquote>
 <h2 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h2><blockquote>
-<p><strong>输入</strong>：s = “ab”, p = “.*”<br><strong>输出</strong>：true<br><strong>解释</strong>：”.*” 表示可匹配零个或多个（’*’）任意字符（’.’）。</p>
+<p><strong>输入</strong>：s = “ab”, p = “.*“<br><strong>输出</strong>：true<br><strong>解释</strong>：”.*“ 表示可匹配零个或多个（’*‘）任意字符（’.’）。</p>
 </blockquote>
 <h2 id="示例4"><a href="#示例4" class="headerlink" title="示例4"></a>示例4</h2><blockquote>
 <p><strong>输入</strong>：s = “aab”, p = “c*a*b”<br><strong>输出</strong>：true<br><strong>解释</strong>：因为 ‘*’ 表示零个或多个，这里 ‘c’ 为 0 个, ‘a’ 被重复一次。因此可以匹配字符串 “aab”。</p>
@@ -239,7 +239,7 @@ var _hmt = _hmt || [];
 <p>核心思路：遇到 <code>x*</code> 的情况其实只有2种，只需分别处理这两种情况。</p>
 </blockquote>
 <ul>
-<li><strong>当x不匹配时</strong>：抛弃掉整个x*；</li>
+<li><strong>当x不匹配时</strong>：抛弃掉整个 x*；</li>
 <li><strong>当x匹配时</strong>：要么抵消掉一个s，x* 保留；要么整个 x* 抛弃掉。</li>
 </ul>
 <figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isMatch</span><span class="hljs-params">(self, s: str, p: str)</span> -&gt; bool:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> p: </span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">not</span> s</span><br><span class="line">        first_match = bool(s) <span class="hljs-keyword">and</span> p[<span class="hljs-number">0</span>] <span class="hljs-keyword">in</span> (<span class="hljs-string">"."</span>, s[<span class="hljs-number">0</span>])</span><br><span class="line">        <span class="hljs-keyword">if</span> len(p) &gt;= <span class="hljs-number">2</span> <span class="hljs-keyword">and</span> p[<span class="hljs-number">1</span>] == <span class="hljs-string">"*"</span>:</span><br><span class="line">            <span class="hljs-keyword">if</span> first_match:</span><br><span class="line">                <span class="hljs-keyword">return</span> self.isMatch(s[<span class="hljs-number">1</span>:], p) <span class="hljs-keyword">or</span> self.isMatch(s, p[<span class="hljs-number">2</span>:])</span><br><span class="line">            <span class="hljs-keyword">else</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> self.isMatch(s, p[<span class="hljs-number">2</span>:])   </span><br><span class="line">        <span class="hljs-keyword">return</span> first_match <span class="hljs-keyword">and</span> self.isMatch(s[<span class="hljs-number">1</span>:], p[<span class="hljs-number">1</span>:])</span><br></pre></td></tr></table></figure>
@@ -251,9 +251,9 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>状态定义</strong>：dp为二维数组，dp[i][j]表示<code>s的前i个</code>字符和<code>p的前j个</code>字符是否匹配。</li>
 <li><strong>初始状态</strong>：<code>dp[0][0] = True</code>，两个空字符是匹配的。</li>
-<li><strong>转移方程1</strong>：<code>i == 0</code>时，表示以空字符串去匹配p的前j个字符，仅当p的字符为x*时为True。</li>
+<li><strong>转移方程1</strong>：<code>i == 0</code>时，表示以空字符串去匹配p的前j个字符，仅当p的字符为 ‘x*’ 时为True。</li>
 <li><strong>转移方程2</strong>：当<code>p的当前j字符为&#39;.&#39;</code>或者与s的当前i字符相同时，只需看dp[i-1][j-1]是否匹配。</li>
-<li><strong>转移方程3</strong>：当<code>p的当前j字符为&#39;*&#39;</code>时，1)p的前一个字符x与s的当前i字符不匹配，且x不为’.’，则抛弃掉p中的’x*‘，只需看dp[i][j-2]是否匹配；2)否则，保留’x*‘，当dp[i][j-2]，dp[i][j-1]，dp[i-1][j]任一满足时为True。</li>
+<li><strong>转移方程3</strong>：当<code>p的当前j字符为&#39;*&#39;</code>时，1)p的前一个字符x与s的当前i字符不匹配，且x不为’.’，则抛弃掉p中的 ‘x*‘，只需看dp[i][j-2]是否匹配；2)否则，保留 ‘x*‘，当dp[i][j-2]，dp[i][j-1]，dp[i-1][j]任一满足时为True。</li>
 </ul>
 <blockquote>
 <p><strong>时间复杂度</strong>：O(mn)，计算二维数组dp[m][n]；<br><strong>空间复杂度</strong>：O(mn)，保存二维数组dp[m][n]。</p>
