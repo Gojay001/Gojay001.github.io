@@ -6,7 +6,7 @@ categories:
     - Algorithm  
     - 剑指Offer  
     - 20
-tags: [Algorithm, Offer,字符串, 有限状态自动机]
+tags: [Algorithm, Offer, 字符串, 有限状态自动机]
 ---
 
 # 题目
