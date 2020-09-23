@@ -6,7 +6,7 @@
   <link href="/rss.xml" rel="self"/>
   
   <link href="https://gojay.top/"/>
-  <updated>2020-09-22T14:03:38.696Z</updated>
+  <updated>2020-09-23T07:48:09.758Z</updated>
   <id>https://gojay.top/</id>
   
   <author>
@@ -15,6 +15,49 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>剑指Offer-26-树的子结构</title>
+    <link href="https://gojay.top/2020/09/23/%E5%89%91%E6%8C%87Offer-26-%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/"/>
+    <id>https://gojay.top/2020/09/23/剑指Offer-26-树的子结构/</id>
+    <published>2020-09-23T06:47:18.000Z</published>
+    <updated>2020-09-23T07:48:09.758Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入两棵二叉树A和B，判断B是不是A的子结构。(约定空树不是任意一个树的子结构)</p><p>B是A的子结构， 即 A中有出现和B相同的结构和节点值。</p><p>例如:<br>给定的树 A:</p><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">    3  </span><br><span class="line">   / \  </span><br><span class="line">  4   5  </span><br><span class="line"> / \  </span><br><span class="line">1   2</span><br></pre></td></tr></table></figure><p>给定的树 B：</p><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">  4 </span><br><span class="line"> /</span><br><span class="line">1</span><br></pre></td></tr></table></figure><p>返回 true，因为 B 与 A 的一个子树拥有相同的结构和节点值。</p><a id="more"></a><h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><blockquote><p><strong>输入</strong>: A = [1,2,3], B = [3,1]<br><strong>输出</strong>: false</p></blockquote><h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><blockquote><p><strong>输入</strong>: A = [3,4,5,1,2], B = [4,1]<br><strong>输出</strong>: true</p></blockquote><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr><h2 id="递归-DFS"><a href="#递归-DFS" class="headerlink" title="递归+DFS"></a>递归+DFS</h2><blockquote><p>遍历两棵树，<strong>左右子树分别递归</strong>判断是否为子结构。</p></blockquote><p><strong>若B树为A树的子结构，则有如下三种情况</strong>：</p><ol><li><code>A树与B树</code>完全相等</li><li>A的<code>左子树</code>与B树完全相等</li><li>A的<code>右子树</code>与B树完全相等</li></ol><p><strong>DFS搜索两树是否相等</strong>：</p><ol><li>若A树为空，返回False；若B树为空，则说明B树为A树子结构，返回True;</li><li>两棵树都不为空，则需比较如下三种情况：</li></ol><ul><li>A的<code>根节点</code>与B的根节点是否相同</li><li>A的<code>左子树</code>与B的左子树是否相同</li><li>A的<code>右子树</code>与B的右子树是否相同 </li></ul><blockquote><p><strong>时间复杂度</strong>：O(mn)，先序遍历树A占用O(m)，每次调用DFS判断占用O(n)；<br><strong>空间复杂度</strong>：O(m)，递归占用额外空间。</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="hljs-comment"># class TreeNode:</span></span><br><span class="line"><span class="hljs-comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="hljs-comment">#         self.val = x</span></span><br><span class="line"><span class="hljs-comment">#         self.left = None</span></span><br><span class="line"><span class="hljs-comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isSubStructure</span><span class="hljs-params">(self, A: TreeNode, B: TreeNode)</span> -&gt; bool:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> A <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> B:</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span></span><br><span class="line">        <span class="hljs-keyword">return</span> self.dfs(A, B) <span class="hljs-keyword">or</span> self.isSubStructure(A.left, B) <span class="hljs-keyword">or</span> self.isSubStructure(A.right, B)</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dfs</span><span class="hljs-params">(self, A, B)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> A:</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span></span><br><span class="line">        <span class="hljs-keyword">elif</span> <span class="hljs-keyword">not</span> B:</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span></span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> A.val == B.val <span class="hljs-keyword">and</span> self.dfs(A.left, B.left) <span class="hljs-keyword">and</span> self.dfs(A.right, B.right)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;输入两棵二叉树A和B，判断B是不是A的子结构。(约定空树不是任意一个树的子结构)&lt;/p&gt;
+&lt;p&gt;B是A的子结构， 即 A中有出现和B相同的结构和节点值。&lt;/p&gt;
+&lt;p&gt;例如:&lt;br&gt;给定的树 A:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain hljs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    3  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   / \  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  4   5  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; / \  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1   2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;给定的树 B：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain hljs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;  4 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; /&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;返回 true，因为 B 与 A 的一个子树拥有相同的结构和节点值。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="https://gojay.top/categories/Algorithm/"/>
+    
+      <category term="剑指Offer" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/"/>
+    
+      <category term="26" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/26/"/>
+    
+    
+      <category term="Algorithm" scheme="https://gojay.top/tags/Algorithm/"/>
+    
+      <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="DFS" scheme="https://gojay.top/tags/DFS/"/>
+    
+      <category term="树" scheme="https://gojay.top/tags/%E6%A0%91/"/>
+    
+  </entry>
   
   <entry>
     <title>剑指Offer-25-合并两个排序的链表</title>
@@ -212,9 +255,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="动态规划" scheme="https://gojay.top/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
@@ -280,9 +323,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="DFS" scheme="https://gojay.top/tags/DFS/"/>
     
@@ -414,9 +457,9 @@
     
       <category term="DFS" scheme="https://gojay.top/tags/DFS/"/>
     
-      <category term="回溯" scheme="https://gojay.top/tags/%E5%9B%9E%E6%BA%AF/"/>
-    
       <category term="BFS" scheme="https://gojay.top/tags/BFS/"/>
+    
+      <category term="回溯" scheme="https://gojay.top/tags/%E5%9B%9E%E6%BA%AF/"/>
     
   </entry>
   
