@@ -6,7 +6,7 @@
   <link href="/rss.xml" rel="self"/>
   
   <link href="https://gojay.top/"/>
-  <updated>2020-09-24T09:19:39.177Z</updated>
+  <updated>2020-10-14T07:24:25.943Z</updated>
   <id>https://gojay.top/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>剑指Offer-29-顺时针打印矩阵</title>
+    <link href="https://gojay.top/2020/10/14/%E5%89%91%E6%8C%87Offer-29-%E9%A1%BA%E6%97%B6%E9%92%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5/"/>
+    <id>https://gojay.top/2020/10/14/剑指Offer-29-顺时针打印矩阵/</id>
+    <published>2020-10-14T07:36:16.000Z</published>
+    <updated>2020-10-14T07:24:25.943Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字。</p><a id="more"></a><h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><blockquote><p><strong>输入</strong>: matrix = [[1,2,3],[4,5,6],[7,8,9]]<br><strong>输出</strong>: [1,2,3,6,9,8,7,4,5]</p></blockquote><h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><blockquote><p><strong>输入</strong>: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]<br><strong>输出</strong>: [1,2,3,4,8,12,11,10,9,5,6,7]</p></blockquote><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr><h2 id="逆时针旋转"><a href="#逆时针旋转" class="headerlink" title="逆时针旋转"></a>逆时针旋转</h2><p>(<a href="https://leetcode-cn.com/problems/shun-shi-zhen-da-yin-ju-zhen-lcof/comments/" target="_blank" rel="noopener">引用SolitudeRain</a>)</p><blockquote><p>提取最前面的元素，然后将剩下元素逆时针旋转90度，再依次循环进行。 </p></blockquote><ul><li>沿主对角线对称+沿水平方向对称= <strong>将原矩阵逆时针旋转90度</strong> ，所以每次只要pop出第一行就可以了。</li></ul><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">spiralOrder</span><span class="hljs-params">(self, matrix: List[List[int]])</span> -&gt; List[int]:</span></span><br><span class="line">        result = []</span><br><span class="line">        <span class="hljs-keyword">while</span> matrix:</span><br><span class="line">            result.extend(list(matrix.pop(<span class="hljs-number">0</span>)))</span><br><span class="line">            matrix = list(zip(*matrix))</span><br><span class="line">            matrix.reverse()</span><br><span class="line">        <span class="hljs-keyword">return</span> result</span><br></pre></td></tr></table></figure><h1 id="设定边界"><a href="#设定边界" class="headerlink" title="设定边界"></a>设定边界</h1><blockquote><p>设定矩阵的“上、下、左、右”四个边界，模拟题目要求遍历顺序。 </p></blockquote><ol><li><strong>空值处理</strong>: 当 <code>matrix</code> 为空时，直接return;</li><li><strong>初始化</strong>: 矩阵 左、右、上、下边界标志 <code>l,r,t,b</code> 及最终结果 <code>res</code>;</li><li><strong>循环遍历</strong>: 按照“左到右、上到下、右到左、下到上”循环，每个方向进行如下操作，</li></ol><ul><li>输出当前元素到res，即打印矩阵;</li><li>边界向内收缩，即该行或该列已被打印;</li><li>判断是否越界，是否打印完毕；</li></ul><blockquote><p><strong>时间复杂度</strong>：O(mn)，每遍历一圈占用O(max{m,n})，共需便利min{m,n}轮；<br><strong>空间复杂度</strong>：O(1)，四个边界标志占用常数大小的额外空间。</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">spiralOrder</span><span class="hljs-params">(self, matrix:[[int]])</span> -&gt; [int]:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> matrix: </span><br><span class="line">            <span class="hljs-keyword">return</span> []</span><br><span class="line">        l, r, t, b, res = <span class="hljs-number">0</span>, len(matrix[<span class="hljs-number">0</span>])<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, len(matrix)<span class="hljs-number">-1</span>, []</span><br><span class="line">        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:</span><br><span class="line">            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(l, r+<span class="hljs-number">1</span>): </span><br><span class="line">                res.append(matrix[t][i]) <span class="hljs-comment"># left to right</span></span><br><span class="line">            t += <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-keyword">if</span> t &gt; b: </span><br><span class="line">                <span class="hljs-keyword">break</span></span><br><span class="line">            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(t, b + <span class="hljs-number">1</span>): </span><br><span class="line">                res.append(matrix[i][r]) <span class="hljs-comment"># top to bottom</span></span><br><span class="line">            r -= <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-keyword">if</span> l &gt; r: </span><br><span class="line">                <span class="hljs-keyword">break</span></span><br><span class="line">            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(r, l - <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>): </span><br><span class="line">                res.append(matrix[b][i]) <span class="hljs-comment"># right to left</span></span><br><span class="line">            b -= <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-keyword">if</span> t &gt; b: </span><br><span class="line">                <span class="hljs-keyword">break</span></span><br><span class="line">            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(b, t - <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>): </span><br><span class="line">                res.append(matrix[i][l]) <span class="hljs-comment"># bottom to top</span></span><br><span class="line">            l += <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-keyword">if</span> l &gt; r: </span><br><span class="line">                <span class="hljs-keyword">break</span></span><br><span class="line">        <span class="hljs-keyword">return</span> res</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="https://gojay.top/categories/Algorithm/"/>
+    
+      <category term="剑指Offer" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/"/>
+    
+      <category term="29" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/29/"/>
+    
+    
+      <category term="Algorithm" scheme="https://gojay.top/tags/Algorithm/"/>
+    
+      <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
+    
+      <category term="数组" scheme="https://gojay.top/tags/%E6%95%B0%E7%BB%84/"/>
+    
+  </entry>
   
   <entry>
     <title>剑指Offer-28-对称的二叉树</title>
@@ -88,9 +119,9 @@
     
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
-      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
       <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
+    
+      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
       <category term="队列" scheme="https://gojay.top/tags/%E9%98%9F%E5%88%97/"/>
     
@@ -166,9 +197,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="指针" scheme="https://gojay.top/tags/%E6%8C%87%E9%92%88/"/>
     
@@ -201,9 +232,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="指针" scheme="https://gojay.top/tags/%E6%8C%87%E9%92%88/"/>
     
@@ -335,9 +366,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
       <category term="动态规划" scheme="https://gojay.top/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
@@ -370,9 +401,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
   </entry>
   
@@ -403,9 +434,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
       <category term="DFS" scheme="https://gojay.top/tags/DFS/"/>
     
@@ -779,9 +810,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
     
