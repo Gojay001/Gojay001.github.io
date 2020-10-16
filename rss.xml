@@ -6,7 +6,7 @@
   <link href="/rss.xml" rel="self"/>
   
   <link href="https://gojay.top/"/>
-  <updated>2020-10-14T08:57:58.715Z</updated>
+  <updated>2020-10-16T08:02:38.047Z</updated>
   <id>https://gojay.top/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>剑指Offer-31-栈的压入、弹出序列</title>
+    <link href="https://gojay.top/2020/10/16/%E5%89%91%E6%8C%87Offer-31-%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E3%80%81%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97/"/>
+    <id>https://gojay.top/2020/10/16/剑指Offer-31-栈的压入、弹出序列/</id>
+    <published>2020-10-16T06:52:51.000Z</published>
+    <updated>2020-10-16T08:02:38.047Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入两个整数序列，<strong>第一个序列表示栈的压入顺序，请判断第二个序列是否为该栈的弹出顺序</strong>。假设压入栈的所有数字均不相等。例如，序列 {1,2,3,4,5} 是某栈的压栈序列，序列 {4,5,3,2,1} 是该压栈序列对应的一个弹出序列，但 {4,3,5,1,2} 就不可能是该压栈序列的弹出序列。</p><a id="more"></a><h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><blockquote><p><strong>输入</strong>: pushed = [1,2,3,4,5], popped = [4,5,3,2,1]<br><strong>输出</strong>: true<br><strong>解释</strong>: 我们可以按以下顺序执行：<br>push(1), push(2), push(3), push(4), pop() -&gt; 4,<br>push(5), pop() -&gt; 5, pop() -&gt; 3, pop() -&gt; 2, pop() -&gt; 1</p></blockquote><h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><blockquote><p><strong>输入</strong>: pushed = [1,2,3,4,5], popped = [4,3,5,1,2]<br><strong>输出</strong>: false<br><strong>解释</strong>: 1 不能在 2 之前弹出。</p></blockquote><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr><h2 id="辅助栈"><a href="#辅助栈" class="headerlink" title="辅助栈"></a>辅助栈</h2><blockquote><p>借用一个 <strong>辅助栈，模拟压入/弹出操作</strong> 的排列，根据是否模拟成功，即可得到结果。</p></blockquote><ul><li><strong>入栈操作</strong>: 按照压栈序列的顺序执行;</li><li><strong>出栈操作</strong>: 每次入栈后，循环判断 <code>“栈顶元素 == 弹出序列的当前元素”</code> 是否成立，将符合弹出序列顺序的栈顶元素全部弹出。</li></ul><blockquote><p><strong>时间复杂度</strong>：O(n)，每个元素最多入栈与出栈一次，即2n次出入栈操作；<br><strong>空间复杂度</strong>：O(n)，辅助栈最多存储n个元素。</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">validateStackSequences</span><span class="hljs-params">(self, pushed: List[int], popped: List[int])</span> -&gt; bool:</span></span><br><span class="line">        stack, i = [], <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> pushed:</span><br><span class="line">            stack.append(num)</span><br><span class="line">            <span class="hljs-keyword">while</span> stack <span class="hljs-keyword">and</span> stack[<span class="hljs-number">-1</span>] == popped[i]:</span><br><span class="line">                stack.pop()</span><br><span class="line">                i += <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">not</span> stack</span><br></pre></td></tr></table></figure><h2 id="原地辅助栈"><a href="#原地辅助栈" class="headerlink" title="原地辅助栈"></a>原地辅助栈</h2><blockquote><p><strong>将压栈序列pushed作为辅助栈</strong>，指针i,j分别指向pushed栈顶及poped首位元素。 </p></blockquote><ul><li>将pushed作为辅助栈，入栈出栈操作转为对指针操作。</li></ul><blockquote><p><strong>时间复杂度</strong>：O(n)，每个元素最多入栈与出栈一次，即2n次出入栈操作；<br><strong>空间复杂度</strong>：O(1)，pushed作为辅助栈，指针i,j只需常数额外空间。</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">validateStackSequences</span><span class="hljs-params">(self, pushed: List[int], popped: List[int])</span> -&gt; bool:</span></span><br><span class="line">        i, j = <span class="hljs-number">0</span>, <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> pushed:</span><br><span class="line">            pushed[i] = num</span><br><span class="line">            <span class="hljs-keyword">while</span> i &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> pushed[i] == popped[j]:</span><br><span class="line">                j += <span class="hljs-number">1</span></span><br><span class="line">                i -= <span class="hljs-number">1</span></span><br><span class="line">            i += <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">return</span> i == <span class="hljs-number">0</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;输入两个整数序列，&lt;strong&gt;第一个序列表示栈的压入顺序，请判断第二个序列是否为该栈的弹出顺序&lt;/strong&gt;。假设压入栈的所有数字均不相等。例如，序列 {1,2,3,4,5} 是某栈的压栈序列，序列 {4,5,3,2,1} 是该压栈序列对应的一个弹出序列，但 {4,3,5,1,2} 就不可能是该压栈序列的弹出序列。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="https://gojay.top/categories/Algorithm/"/>
+    
+      <category term="剑指Offer" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/"/>
+    
+      <category term="31" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/31/"/>
+    
+    
+      <category term="Algorithm" scheme="https://gojay.top/tags/Algorithm/"/>
+    
+      <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
+    
+      <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
+    
+  </entry>
   
   <entry>
     <title>剑指Offer-30-包含min函数的栈</title>
