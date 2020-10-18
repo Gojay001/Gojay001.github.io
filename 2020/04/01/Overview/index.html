@@ -18,7 +18,7 @@
 <meta property="og:description" content="There are the overall of papers about Deep Learning.https://github.com/Gojay001/DeepLearning-pwcn">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://gojay.top/gallery/thumbnails/DL.jpg">
-<meta property="og:updated_time" content="2020-09-23T08:46:12.680Z">
+<meta property="og:updated_time" content="2020-10-18T14:29:40.338Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Overview">
 <meta name="twitter:description" content="There are the overall of papers about Deep Learning.https://github.com/Gojay001/DeepLearning-pwcn">
@@ -185,7 +185,7 @@ var _hmt = _hmt || [];
                 
                 <time class="level-item has-text-grey" datetime="2020-04-01T02:32:41.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-04-01</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-09-23T08:46:12.680Z"><i class="far fa-calendar-check">&nbsp;</i>2020-09-23</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-10-18T14:29:40.338Z"><i class="far fa-calendar-check">&nbsp;</i>2020-10-18</time>
                 
                 
                 <div class="level-item">
@@ -198,7 +198,7 @@ var _hmt = _hmt || [];
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    12 minutes read (About 1793 words)
+                    14 minutes read (About 2128 words)
                 </span>
                 
                 
@@ -239,6 +239,7 @@ var _hmt = _hmt || [];
 <li>YOLOv2</li>
 <li>YOLOv3</li>
 <li>CornerNet</li>
+<li>CenterNet</li>
 <li>YOLOv4</li>
 </ul>
 </li>
@@ -252,7 +253,15 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 <li><a href="#Object-Segmentation">Segmentation</a><ul>
+<li>FCN</li>
+<li>U-Net</li>
+<li>Seg-Net</li>
+<li>DeepLab V1</li>
+<li>PSPNet</li>
+<li>DeepLab V2</li>
 <li>Mask R-CNN</li>
+<li>DeepLab V3</li>
+<li>DeepLab V3+</li>
 </ul>
 </li>
 <li><a href="#Object-Tracking">Tracking</a><ul>
@@ -281,11 +290,13 @@ var _hmt = _hmt || [];
 </li>
 <li><a href="#Few-Shot-Segmentation">FSS</a><ul>
 <li>OSLSM</li>
+<li>co-FCN</li>
+<li>AMP(Adaptive Masked Proxies)</li>
 <li>SG-One(Similarity Guidance)</li>
 <li>CENet(Combinatorial Embedding Network)</li>
 <li>PANet(Prototype Alignment)</li>
+<li>CANet(Class Agnostic)</li>
 <li>PGNet(Pyramid Graph Network)</li>
-<li>AMP(Adaptive Masked Proxies)</li>
 <li>CRNet(Cross-Reference Network)</li>
 <li>FGN(Fully Guided Network)</li>
 <li>OTB(On the Texture Bias)</li>
@@ -293,6 +304,7 @@ var _hmt = _hmt || [];
 <li>SimPropNet(Similarity Propagation)</li>
 <li>PFENet(Prior Guided Feature Enrichment Network)</li>
 <li>PMMs(Prototype Mixture Models)</li>
+<li>GFS-Seg(Generalized Few-Shot)</li>
 </ul>
 </li>
 <li><a href="#3D-Object-Detection">Detection-3D</a><ul>
@@ -461,6 +473,12 @@ var _hmt = _hmt || [];
 <td align="center"><a href="https://github.com/princeton-vl/CornerNet" target="_blank" rel="noopener">PyTorch</a></td>
 </tr>
 <tr>
+<td align="left">CenterNet</td>
+<td align="center"><a href="https://arxiv.org/abs/1904.07850" target="_blank" rel="noopener">Objects as Points</a></td>
+<td align="center">arXiv(2019)</td>
+<td align="center"><a href="https://github.com/xingyizhou/CenterNet" target="_blank" rel="noopener">PyTorch</a></td>
+</tr>
+<tr>
 <td align="left">YOLOv4</td>
 <td align="center"><a href="https://arxiv.org/abs/2004.10934" target="_blank" rel="noopener">YOLOv4: Optimal Speed and Accuracy of Object Detection</a></td>
 <td align="center">arXiv(2020)</td>
@@ -480,10 +498,58 @@ var _hmt = _hmt || [];
 </tr>
 </thead>
 <tbody><tr>
+<td align="left">FCN</td>
+<td align="center"><a href="https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Long_Fully_Convolutional_Networks_2015_CVPR_paper.pdf" target="_blank" rel="noopener">Fully convolutional networks for semantic segmentation</a></td>
+<td align="center">CVPR(2015)</td>
+<td align="center"><a href="https://github.com/yassouali/pytorch_segmentation" target="_blank" rel="noopener">PyTorch</a></td>
+</tr>
+<tr>
+<td align="left">U-Net</td>
+<td align="center"><a href="https://arxiv.org/abs/1505.04597" target="_blank" rel="noopener">U-Net: Convolutional Networks for Biomedical Image Segmentation</a></td>
+<td align="center">MICCAI(2015)</td>
+<td align="center"><a href="https://github.com/yassouali/pytorch_segmentation" target="_blank" rel="noopener">PyTorch</a></td>
+</tr>
+<tr>
+<td align="left">Seg-Net</td>
+<td align="center"><a href="https://arxiv.org/abs/1505.07293" target="_blank" rel="noopener">SegNet: A Deep Convolutional Encoder-Decoder Architecture for Robust Semantic Pixel-Wise Labelling</a></td>
+<td align="center">arXiv(2015)</td>
+<td align="center"><a href="https://github.com/yassouali/pytorch_segmentation" target="_blank" rel="noopener">PyTorch</a></td>
+</tr>
+<tr>
+<td align="left">DeepLab V1</td>
+<td align="center"><a href="https://arxiv.org/abs/1412.7062" target="_blank" rel="noopener">Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs</a></td>
+<td align="center">arXiv(2014) / ICLR(2015)</td>
+<td align="center"><a href="https://github.com/yassouali/pytorch_segmentation" target="_blank" rel="noopener">PyTorch</a></td>
+</tr>
+<tr>
+<td align="left">PSPNet</td>
+<td align="center"><a href="https://openaccess.thecvf.com/content_cvpr_2017/papers/Zhao_Pyramid_Scene_Parsing_CVPR_2017_paper.pdf" target="_blank" rel="noopener">Pyramid Scene Parsing Network</a></td>
+<td align="center">CVPR(2017)</td>
+<td align="center"><a href="https://github.com/yassouali/pytorch_segmentation" target="_blank" rel="noopener">PyTorch</a></td>
+</tr>
+<tr>
+<td align="left">DeepLab V2</td>
+<td align="center"><a href="https://arxiv.org/abs/1606.00915" target="_blank" rel="noopener">DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs</a></td>
+<td align="center">arXiv(2016) / TPAMI(2017)</td>
+<td align="center"><a href="https://github.com/yassouali/pytorch_segmentation" target="_blank" rel="noopener">PyTorch</a></td>
+</tr>
+<tr>
 <td align="left"><a href="https://gojay.top/2020/08/17/Mask-R-CNN/">Mask R-CNN</a></td>
 <td align="center"><a href="http://openaccess.thecvf.com/content_ICCV_2017/papers/He_Mask_R-CNN_ICCV_2017_paper.pdf" target="_blank" rel="noopener">Mask R-CNN</a></td>
-<td align="center">ICCV(2017)</td>
+<td align="center">ICCV / TPAMI(2017)</td>
 <td align="center"><a href="https://github.com/facebookresearch/detectron2" target="_blank" rel="noopener">PyTorch</a></td>
+</tr>
+<tr>
+<td align="left">DeepLab V3</td>
+<td align="center"><a href="https://arxiv.org/abs/1706.05587" target="_blank" rel="noopener">Rethinking Atrous Convolution for Semantic Image Segmentation</a></td>
+<td align="center">arXiv(2017)</td>
+<td align="center"><a href="https://github.com/yassouali/pytorch_segmentation" target="_blank" rel="noopener">PyTorch</a></td>
+</tr>
+<tr>
+<td align="left">DeepLab V3+</td>
+<td align="center"><a href="https://openaccess.thecvf.com/content_ECCV_2018/papers/Liang-Chieh_Chen_Encoder-Decoder_with_Atrous_ECCV_2018_paper.pdf" target="_blank" rel="noopener">Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation</a></td>
+<td align="center">ECCV(2018)</td>
+<td align="center"><a href="https://github.com/yassouali/pytorch_segmentation" target="_blank" rel="noopener">PyTorch</a></td>
 </tr>
 </tbody></table>
 <h2 id="Object-Tracking"><a href="#Object-Tracking" class="headerlink" title="Object Tracking"></a>Object Tracking</h2><table>
@@ -602,6 +668,18 @@ var _hmt = _hmt || [];
 <td align="center"><a href="https://github.com/lzzcd001/OSLSM" target="_blank" rel="noopener">Caffe</a></td>
 </tr>
 <tr>
+<td align="left">co-FCN</td>
+<td align="center"><a href="https://openreview.net/pdf?id=SkMjFKJwG" target="_blank" rel="noopener">Conditional Networks for Few-Shot Semantic Segmentation</a></td>
+<td align="center">ICLR(2018)</td>
+<td align="center">[code]</td>
+</tr>
+<tr>
+<td align="left">AMP</td>
+<td align="center"><a href="https://openaccess.thecvf.com/content_ICCV_2019/papers/Siam_AMP_Adaptive_Masked_Proxies_for_Few-Shot_Segmentation_ICCV_2019_paper.pdf" target="_blank" rel="noopener">AMP: Adaptive Masked Proxies for Few-Shot Segmentation</a></td>
+<td align="center">ICCV(2019)</td>
+<td align="center"><a href="https://github.com/MSiam/AdaptiveMaskedProxies" target="_blank" rel="noopener">Pytorch</a></td>
+</tr>
+<tr>
 <td align="left">SG-One</td>
 <td align="center"><a href="https://arxiv.org/abs/1810.09091" target="_blank" rel="noopener">SG-One: Similarity Guidance Network for One-Shot Semantic Segmentation</a></td>
 <td align="center">arXiv(2018) / ITC(2020)</td>
@@ -620,16 +698,16 @@ var _hmt = _hmt || [];
 <td align="center"><a href="https://github.com/kaixin96/PANet" target="_blank" rel="noopener">PyTorch</a></td>
 </tr>
 <tr>
+<td align="left">CANet</td>
+<td align="center"><a href="https://openaccess.thecvf.com/content_CVPR_2019/papers/Zhang_CANet_Class-Agnostic_Segmentation_Networks_With_Iterative_Refinement_and_Attentive_Few-Shot_CVPR_2019_paper.pdf" target="_blank" rel="noopener">CANet: Class-Agnostic Segmentation Networks with Iterative Refinement and Attentive Few-Shot Learning</a></td>
+<td align="center">CVPR(2019)</td>
+<td align="center"><a href="https://github.com/icoz69/CaNet" target="_blank" rel="noopener">PyTorch</a></td>
+</tr>
+<tr>
 <td align="left"><a href="https://gojay.top/2020/07/28/PGNet/">PGNet</a></td>
 <td align="center"><a href="https://openaccess.thecvf.com/content_ICCV_2019/papers/Zhang_Pyramid_Graph_Networks_With_Connection_Attentions_for_Region-Based_One-Shot_Semantic_ICCV_2019_paper.pdf" target="_blank" rel="noopener">Pyramid Graph Networks with Connection Attentions for Region-Based One-Shot Semantic Segmentation</a></td>
 <td align="center">ICCV(2019)</td>
 <td align="center">[code]</td>
-</tr>
-<tr>
-<td align="left">AMP</td>
-<td align="center"><a href="https://openaccess.thecvf.com/content_ICCV_2019/papers/Siam_AMP_Adaptive_Masked_Proxies_for_Few-Shot_Segmentation_ICCV_2019_paper.pdf" target="_blank" rel="noopener">AMP: Adaptive Masked Proxies for Few-Shot Segmentation</a></td>
-<td align="center">ICCV(2019)</td>
-<td align="center"><a href="https://github.com/MSiam/AdaptiveMaskedProxies" target="_blank" rel="noopener">Pytorch</a></td>
 </tr>
 <tr>
 <td align="left"><a href="https://gojay.top/2020/07/10/CRNet/">CRNet</a></td>
@@ -672,6 +750,12 @@ var _hmt = _hmt || [];
 <td align="center"><a href="https://arxiv.org/abs/2008.03898" target="_blank" rel="noopener">Prototype Mixture Models for Few-shot Semantic Segmentation</a></td>
 <td align="center">ECCV(2020)</td>
 <td align="center"><a href="https://github.com/Yang-Bob/PMMs" target="_blank" rel="noopener">PyTorch</a></td>
+</tr>
+<tr>
+<td align="left">GFS-Seg</td>
+<td align="center"><a href="https://arxiv.org/abs/2010.05210" target="_blank" rel="noopener">Generalized Few-Shot Semantic Segmentation</a></td>
+<td align="center">arXiv(2020)</td>
+<td align="center">[code]</td>
 </tr>
 </tbody></table>
 <blockquote>
