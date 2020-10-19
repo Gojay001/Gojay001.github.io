@@ -166,7 +166,7 @@ tags: [DL, Overview]
 ## Few-Shot Segmentation
 | Title | Paper | Conf | Code |
 |:--------|:--------:|:--------:|:--------:|
-| OSLSM | [One-Shot Learning for Semantic Segmentation](https://arxiv.org/abs/1709.03410) | arXiv(2017) | [Caffe](https://github.com/lzzcd001/OSLSM)
+| [OSLSM](https://gojay.top/2020/10/19/OSLSM/) | [One-Shot Learning for Semantic Segmentation](https://arxiv.org/abs/1709.03410) | arXiv(2017) | [Caffe](https://github.com/lzzcd001/OSLSM)
 | co-FCN | [Conditional Networks for Few-Shot Semantic Segmentation](https://openreview.net/pdf?id=SkMjFKJwG) | ICLR(2018) | [code]
 | AMP | [AMP: Adaptive Masked Proxies for Few-Shot Segmentation](https://openaccess.thecvf.com/content_ICCV_2019/papers/Siam_AMP_Adaptive_Masked_Proxies_for_Few-Shot_Segmentation_ICCV_2019_paper.pdf) | ICCV(2019) | [Pytorch](https://github.com/MSiam/AdaptiveMaskedProxies)
 | SG-One | [SG-One: Similarity Guidance Network for One-Shot Semantic Segmentation](https://arxiv.org/abs/1810.09091) | arXiv(2018) / ITC(2020) | [PyTorch](https://github.com/xiaomengyc/SG-One)
