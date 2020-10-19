@@ -1,4 +1,4 @@
-https://gojay.top/2020/10/18/剑指Offer-32-I-从上到下打印二叉树/
+https://gojay.top/2020/10/18/剑指Offer-32-从上到下打印二叉树/
 https://gojay.top/2020/10/16/剑指Offer-31-栈的压入、弹出序列/
 https://gojay.top/2020/10/14/剑指Offer-30-包含min函数的栈/
 https://gojay.top/2020/10/14/剑指Offer-29-顺时针打印矩阵/
