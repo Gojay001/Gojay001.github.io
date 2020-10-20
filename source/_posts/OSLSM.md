@@ -22,7 +22,7 @@ tags: [DL, FSS, OSLSM]
 
 # Paper & Code & note
 ---
-> **Paper**: [One-Shot Learning for Semantic Segmentation](https://arxiv.org/abs/1709.03410)(arXiv 2017 paper)  
+> **Paper**: [One-Shot Learning for Semantic Segmentation](https://arxiv.org/abs/1709.03410)(BMVC 2017 paper)  
 > **Code**: [Caffe](https://github.com/lzzcd001/OSLSM)  
 > **Note**: [Mendeley](https://www.mendeley.com/reference-manager/reader/749c31e5-39de-3a41-85cf-c9c50faff3b0/74624f4d-d2bb-41e9-59ce-5d602eab798c)
 
