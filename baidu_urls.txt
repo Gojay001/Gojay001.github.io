@@ -1,3 +1,4 @@
+https://gojay.top/2020/10/20/CANet/
 https://gojay.top/2020/10/20/SG-One/
 https://gojay.top/2020/10/19/co-FCN/
 https://gojay.top/2020/10/19/OSLSM/
@@ -7,4 +8,3 @@ https://gojay.top/2020/10/14/剑指Offer-30-包含min函数的栈/
 https://gojay.top/2020/10/14/剑指Offer-29-顺时针打印矩阵/
 https://gojay.top/2020/09/24/剑指Offer-28-对称的二叉树/
 https://gojay.top/2020/09/23/剑指Offer-27-二叉树的镜像/
-https://gojay.top/2020/09/23/剑指Offer-26-树的子结构/
