@@ -6,7 +6,7 @@
   <link href="/rss.xml" rel="self"/>
   
   <link href="https://gojay.top/"/>
-  <updated>2020-10-20T14:13:01.453Z</updated>
+  <updated>2020-10-22T08:48:42.273Z</updated>
   <id>https://gojay.top/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>剑指Offer-34-二叉树中和为某一值的路径</title>
+    <link href="https://gojay.top/2020/10/22/%E5%89%91%E6%8C%87Offer-34-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/"/>
+    <id>https://gojay.top/2020/10/22/剑指Offer-34-二叉树中和为某一值的路径/</id>
+    <published>2020-10-22T08:12:14.000Z</published>
+    <updated>2020-10-22T08:48:42.273Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入一棵二叉树和一个整数，打印出二叉树中节点值的和为输入整数的所有路径。从树的根节点开始往下一直到叶节点所经过的节点形成一条路径。</p><a id="more"></a><h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><blockquote><p><strong>给定二叉树</strong>: </p></blockquote><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">      5</span><br><span class="line">     / \</span><br><span class="line">    4   8</span><br><span class="line">   /   / \</span><br><span class="line">  11  13  4</span><br><span class="line"> /  \    / \</span><br><span class="line">7    2  5   1</span><br></pre></td></tr></table></figure><p><strong>返回</strong>: </p><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">[</span><br><span class="line">   [5,4,11,2],</span><br><span class="line">   [5,8,4,5]</span><br><span class="line">]</span><br></pre></td></tr></table></figure><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr><h2 id="DFS回溯"><a href="#DFS回溯" class="headerlink" title="DFS回溯"></a>DFS回溯</h2><blockquote><p>二叉树搜索问题，使用<strong>回溯算法</strong>，先序遍历搜索节点，同时记录节点路径。</p></blockquote><ul><li><strong>先序遍历</strong>: [根节点, 左子树, 右子树];  </li><li><strong>路径记录</strong>: 记录根节点到当前节点的路径; 1)当前节点为叶子节点; 2)节点值和为sum;</li></ul><p>从根节点向下搜索子树:  </p><ol><li><strong>路径更新</strong>: 当当前节点加入路径;  </li><li><strong>目标值更新</strong>: 目标值-当前值;  </li><li><strong>路径记录</strong>: 当该路径满足目标值，则将其路径加入到res;  </li><li><strong>子树遍历</strong>: 递归搜素左、右子树;  </li><li><strong>路径恢复</strong>: 向上回溯前，将当前节点从路径中删除。</li></ol><blockquote><p><strong>时间复杂度</strong>：O(n)，先序遍历所有节点；<br><strong>空间复杂度</strong>：O(n)，递归占用辅助空间O(n)。</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="hljs-comment"># class TreeNode:</span></span><br><span class="line"><span class="hljs-comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="hljs-comment">#         self.val = x</span></span><br><span class="line"><span class="hljs-comment">#         self.left = None</span></span><br><span class="line"><span class="hljs-comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pathSum</span><span class="hljs-params">(self, root: TreeNode, sum: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">        res, path = [], []</span><br><span class="line"></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dfs</span><span class="hljs-params">(root, sum)</span>:</span></span><br><span class="line">            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:</span><br><span class="line">                <span class="hljs-keyword">return</span></span><br><span class="line">            path.append(root.val)</span><br><span class="line">            sum -= root.val</span><br><span class="line">            <span class="hljs-keyword">if</span> sum == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> root.left <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> root.right:</span><br><span class="line">                res.append(list(path))</span><br><span class="line">            dfs(root.left, sum)</span><br><span class="line">            dfs(root.right, sum)</span><br><span class="line">            path.pop()</span><br><span class="line"></span><br><span class="line">        dfs(root, sum)</span><br><span class="line">        <span class="hljs-keyword">return</span> res</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;输入一棵二叉树和一个整数，打印出二叉树中节点值的和为输入整数的所有路径。从树的根节点开始往下一直到叶节点所经过的节点形成一条路径。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="https://gojay.top/categories/Algorithm/"/>
+    
+      <category term="剑指Offer" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/"/>
+    
+      <category term="34" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/34/"/>
+    
+    
+      <category term="Algorithm" scheme="https://gojay.top/tags/Algorithm/"/>
+    
+      <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    
+      <category term="DFS" scheme="https://gojay.top/tags/DFS/"/>
+    
+  </entry>
   
   <entry>
     <title>剑指Offer-33-二叉搜索树的后序遍历序列</title>
@@ -375,11 +410,11 @@
     
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
+      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    
       <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
     
       <category term="队列" scheme="https://gojay.top/tags/%E9%98%9F%E5%88%97/"/>
-    
-      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
   </entry>
   
@@ -453,9 +488,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
-    
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
     
       <category term="指针" scheme="https://gojay.top/tags/%E6%8C%87%E9%92%88/"/>
     
@@ -488,9 +523,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
-    
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
     
       <category term="指针" scheme="https://gojay.top/tags/%E6%8C%87%E9%92%88/"/>
     
@@ -622,11 +657,11 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
+      <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="动态规划" scheme="https://gojay.top/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-      <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
   </entry>
   
@@ -657,9 +692,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
-    
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
     
   </entry>
   
@@ -690,9 +725,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="DFS" scheme="https://gojay.top/tags/DFS/"/>
     
@@ -1066,9 +1101,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
-    
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
     
       <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
     
