@@ -18,7 +18,7 @@
 <meta property="og:description" content="题目 题目描述输入一棵二叉树和一个整数，打印出二叉树中节点值的和为输入整数的所有路径。从树的根节点开始往下一直到叶节点所经过的节点形成一条路径。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
-<meta property="og:updated_time" content="2020-10-22T08:48:42.273Z">
+<meta property="og:updated_time" content="2020-10-22T12:44:21.405Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指Offer-34-二叉树中和为某一值的路径">
 <meta name="twitter:description" content="题目 题目描述输入一棵二叉树和一个整数，打印出二叉树中节点值的和为输入整数的所有路径。从树的根节点开始往下一直到叶节点所经过的节点形成一条路径。">
@@ -183,7 +183,7 @@ var _hmt = _hmt || [];
                 
                 <time class="level-item has-text-grey" datetime="2020-10-22T08:12:14.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-10-22</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-10-22T08:48:42.273Z"><i class="far fa-calendar-check">&nbsp;</i>2020-10-22</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-10-22T12:44:21.405Z"><i class="far fa-calendar-check">&nbsp;</i>2020-10-22</time>
                 
                 
                 <div class="level-item">
@@ -223,7 +223,7 @@ var _hmt = _hmt || [];
 
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr>
 <h2 id="DFS回溯"><a href="#DFS回溯" class="headerlink" title="DFS回溯"></a>DFS回溯</h2><blockquote>
-<p>二叉树搜索问题，使用<strong>回溯算法</strong>，先序遍历搜索节点，同时记录节点路径。</p>
+<p>二叉树搜索问题，使用 <strong>回溯算法</strong>，先序遍历搜索节点，同时记录节点路径。</p>
 </blockquote>
 <ul>
 <li><strong>先序遍历</strong>: [根节点, 左子树, 右子树];  </li>
@@ -231,7 +231,7 @@ var _hmt = _hmt || [];
 </ul>
 <p>从根节点向下搜索子树:  </p>
 <ol>
-<li><strong>路径更新</strong>: 当当前节点加入路径;  </li>
+<li><strong>路径更新</strong>: 将当前节点加入路径;  </li>
 <li><strong>目标值更新</strong>: 目标值-当前值;  </li>
 <li><strong>路径记录</strong>: 当该路径满足目标值，则将其路径加入到res;  </li>
 <li><strong>子树遍历</strong>: 递归搜素左、右子树;  </li>
@@ -280,6 +280,13 @@ var _hmt = _hmt || [];
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/10/22/剑指Offer-35-复杂链表的复制/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">剑指Offer-35-复杂链表的复制</span>
+            </a>
+        </div>
         
         
         <div class="level-end">

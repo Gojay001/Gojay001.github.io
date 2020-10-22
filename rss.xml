@@ -6,7 +6,7 @@
   <link href="/rss.xml" rel="self"/>
   
   <link href="https://gojay.top/"/>
-  <updated>2020-10-22T08:48:42.273Z</updated>
+  <updated>2020-10-22T12:59:29.681Z</updated>
   <id>https://gojay.top/</id>
   
   <author>
@@ -17,13 +17,48 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>剑指Offer-35-复杂链表的复制</title>
+    <link href="https://gojay.top/2020/10/22/%E5%89%91%E6%8C%87Offer-35-%E5%A4%8D%E6%9D%82%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%8D%E5%88%B6/"/>
+    <id>https://gojay.top/2020/10/22/剑指Offer-35-复杂链表的复制/</id>
+    <published>2020-10-22T09:08:34.000Z</published>
+    <updated>2020-10-22T12:59:29.681Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>请实现 <code>copyRandomList</code> 函数，复制一个复杂链表。在复杂链表中，每个节点除了有一个 <code>next</code> 指针指向下一个节点，还有一个 <code>random</code> 指针指向链表中的任意节点或者 <code>null</code>。</p><a id="more"></a><h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p><img src="https://i.loli.net/2020/10/22/lRY2sNQLDyguI4e.png" alt="剑指Offer-35-1.png"></p><blockquote><p><strong>输入</strong>: head = [[7,null],[13,0],[11,4],[10,2],[1,0]]<br><strong>输出</strong>: [[7,null],[13,0],[11,4],[10,2],[1,0]]</p></blockquote><h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><p><img src="https://i.loli.net/2020/10/22/8IPEYoQgqrR5U3b.png" alt="剑指Offer-35-2.png"></p><blockquote><p><strong>输入</strong>: head = [[1,1],[2,1]]<br><strong>输出</strong>: [[1,1],[2,1]]</p></blockquote><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr><h2 id="Python深拷贝"><a href="#Python深拷贝" class="headerlink" title="Python深拷贝"></a>Python深拷贝</h2><blockquote><p>直接调用Python深拷贝函数。</p></blockquote><ul><li><strong>浅拷贝</strong>: 只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存;  </li><li><strong>深拷贝</strong>: 创造一个一模一样的对象，新对象跟原对象不共享内存;</li></ul><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-string"># Definition for a Node.</span></span><br><span class="line"><span class="hljs-string">class Node:</span></span><br><span class="line"><span class="hljs-string">    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):</span></span><br><span class="line"><span class="hljs-string">        self.val = int(x)</span></span><br><span class="line"><span class="hljs-string">        self.next = next</span></span><br><span class="line"><span class="hljs-string">        self.random = random</span></span><br><span class="line"><span class="hljs-string">"""</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">copyRandomList</span><span class="hljs-params">(self, head: <span class="hljs-string">'Node'</span>)</span> -&gt; 'Node':</span></span><br><span class="line">        <span class="hljs-keyword">return</span> copy.deepcopy(head)</span><br></pre></td></tr></table></figure><h2 id="哈希表迭代"><a href="#哈希表迭代" class="headerlink" title="哈希表迭代"></a>哈希表迭代</h2><blockquote><p>先 <strong>遍历存储</strong> 链表所有节点到 <code>哈希表visited</code>， <strong>再次遍历</strong> 为visited中拷贝的节点分配next和random指针。</p></blockquote><ul><li><strong>哈希表visited</strong>: <code>{原节点: 拷贝节点}</code>;  </li><li><strong>第一次遍历</strong>: 为将每个节点存储到哈希表中，并对应其拷贝节点;  </li><li><strong>第二次遍历</strong>: 为每个拷贝节点分配 next 和 random 指针;</li></ul><blockquote><p><strong>时间复杂度</strong>：O(n)，遍历两次，每次遍历所有节点；<br><strong>空间复杂度</strong>：O(n)，新建大小为n的哈希表。</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">copyRandomList</span><span class="hljs-params">(self, head: <span class="hljs-string">'Node'</span>)</span> -&gt; 'Node':</span></span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> head:</span><br><span class="line">            <span class="hljs-keyword">return</span></span><br><span class="line">        visited = &#123;<span class="hljs-literal">None</span>: <span class="hljs-literal">None</span>&#125;</span><br><span class="line">        temp = head</span><br><span class="line">        <span class="hljs-keyword">while</span> temp:</span><br><span class="line">            visited[temp] = Node(temp.val, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>)</span><br><span class="line">            temp = temp.next</span><br><span class="line">        temp = head</span><br><span class="line">        <span class="hljs-keyword">while</span> temp:</span><br><span class="line">            visited[temp].next = visited[temp.next]</span><br><span class="line">            visited[temp].random = visited[temp.random]</span><br><span class="line">            temp = temp.next</span><br><span class="line">        <span class="hljs-keyword">return</span> visited[head]</span><br></pre></td></tr></table></figure><h2 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h2><blockquote><p>先递归分配所有节点的 <strong>next</strong> 指针，再次递归返回每个节点的 <strong>random</strong> 指针。</p></blockquote><p>从头节点依次递归所有节点:  </p><ol><li>从头节点开始拷贝，<strong>将拷贝节点对应存储到哈希表</strong>中;  </li><li>由于一个节点可能被多个指针指到，如果 <strong>该节点已被拷贝</strong>，则不需要重复拷贝;  </li><li>若 <strong>还没拷贝该节点</strong>，则创建一个新的节点进行拷贝，并将拷贝过的节点保存在哈希表中;  </li><li>递归拷贝所有的 <strong>next</strong> 节点，再递归拷贝所有的 <strong>random</strong> 节点;  </li></ol><blockquote><p><strong>时间复杂度</strong>：O(n)，递归遍历所有节点；<br><strong>空间复杂度</strong>：O(n)，递归占用辅助空间O(n)。</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">copyRandomList</span><span class="hljs-params">(self, head: <span class="hljs-string">'Node'</span>)</span> -&gt; 'Node':</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dfs</span><span class="hljs-params">(node)</span>:</span></span><br><span class="line">            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> node:</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span></span><br><span class="line">            <span class="hljs-keyword">if</span> node <span class="hljs-keyword">in</span> visited:</span><br><span class="line">                <span class="hljs-keyword">return</span> visited[node]</span><br><span class="line">            copy = Node(node.val, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>)</span><br><span class="line">            visited[node] = copy</span><br><span class="line">            copy.next = dfs(node.next)</span><br><span class="line">            copy.random = dfs(node.random)</span><br><span class="line">            <span class="hljs-keyword">return</span> copy</span><br><span class="line">        </span><br><span class="line">        visited = &#123;&#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> dfs(head)</span><br></pre></td></tr></table></figure><h2 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h2><blockquote><p>依次为每个节点分配next和random指针，并将其指针 <strong>指向节点加入队列</strong>，循环遍历所有节点。</p></blockquote><p>从头节点依次递归所有节点:  </p><ol><li>创建 <strong>哈希表</strong>，存储头节点及其拷贝节点;  </li><li>创建 <strong>队列</strong>，并将头节点入队;  </li><li>当 <strong>队列不为空</strong> 时，弹出一个结点:  </li></ol><ul><li>如果该结点的 <code>next</code> 结点未被拷贝过，则拷贝 next 结点并加入队列;  </li><li>如果该结点的 <code>random</code> 结点未被拷贝过，则拷贝 random 结点并加入队列;  </li></ul><ol start="4"><li>为 <strong>拷贝节点</strong> 分配 next 和 random 指针;</li></ol><blockquote><p><strong>时间复杂度</strong>：O(n)，递归遍历所有节点；<br><strong>空间复杂度</strong>：O(n)，递归占用辅助空间O(n)。</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">copyRandomList</span><span class="hljs-params">(self, head: <span class="hljs-string">'Node'</span>)</span> -&gt; 'Node':</span></span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> head:</span><br><span class="line">            <span class="hljs-keyword">return</span></span><br><span class="line">        visited = &#123;head: Node(head.val)&#125;</span><br><span class="line">        queue = collections.deque()</span><br><span class="line">        queue.append(head)</span><br><span class="line">        <span class="hljs-keyword">while</span> queue:</span><br><span class="line">            node = queue.popleft()</span><br><span class="line">            <span class="hljs-keyword">if</span> node.next <span class="hljs-keyword">and</span> node.next <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> visited:</span><br><span class="line">                visited[node.next] = Node(node.next.val, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>)</span><br><span class="line">                queue.append(node.next)</span><br><span class="line">            <span class="hljs-keyword">if</span> node.random <span class="hljs-keyword">and</span> node.random <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> visited:</span><br><span class="line">                visited[node.random] = Node(node.random.val, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>)</span><br><span class="line">                queue.append(node.random)</span><br><span class="line">            visited[node].next = visited[node.next] <span class="hljs-keyword">if</span> node.next <span class="hljs-keyword">in</span> visited <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span></span><br><span class="line">            visited[node].random = visited[node.random] <span class="hljs-keyword">if</span> node.random <span class="hljs-keyword">in</span> visited <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span></span><br><span class="line">        <span class="hljs-keyword">return</span> visited[head]</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;请实现 &lt;code&gt;copyRandomList&lt;/code&gt; 函数，复制一个复杂链表。在复杂链表中，每个节点除了有一个 &lt;code&gt;next&lt;/code&gt; 指针指向下一个节点，还有一个 &lt;code&gt;random&lt;/code&gt; 指针指向链表中的任意节点或者 &lt;code&gt;null&lt;/code&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="https://gojay.top/categories/Algorithm/"/>
+    
+      <category term="剑指Offer" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/"/>
+    
+      <category term="35" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/35/"/>
+    
+    
+      <category term="Algorithm" scheme="https://gojay.top/tags/Algorithm/"/>
+    
+      <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    
+      <category term="DFS" scheme="https://gojay.top/tags/DFS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>剑指Offer-34-二叉树中和为某一值的路径</title>
     <link href="https://gojay.top/2020/10/22/%E5%89%91%E6%8C%87Offer-34-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/"/>
     <id>https://gojay.top/2020/10/22/剑指Offer-34-二叉树中和为某一值的路径/</id>
     <published>2020-10-22T08:12:14.000Z</published>
-    <updated>2020-10-22T08:48:42.273Z</updated>
+    <updated>2020-10-22T12:44:21.405Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入一棵二叉树和一个整数，打印出二叉树中节点值的和为输入整数的所有路径。从树的根节点开始往下一直到叶节点所经过的节点形成一条路径。</p><a id="more"></a><h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><blockquote><p><strong>给定二叉树</strong>: </p></blockquote><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">      5</span><br><span class="line">     / \</span><br><span class="line">    4   8</span><br><span class="line">   /   / \</span><br><span class="line">  11  13  4</span><br><span class="line"> /  \    / \</span><br><span class="line">7    2  5   1</span><br></pre></td></tr></table></figure><p><strong>返回</strong>: </p><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">[</span><br><span class="line">   [5,4,11,2],</span><br><span class="line">   [5,8,4,5]</span><br><span class="line">]</span><br></pre></td></tr></table></figure><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr><h2 id="DFS回溯"><a href="#DFS回溯" class="headerlink" title="DFS回溯"></a>DFS回溯</h2><blockquote><p>二叉树搜索问题，使用<strong>回溯算法</strong>，先序遍历搜索节点，同时记录节点路径。</p></blockquote><ul><li><strong>先序遍历</strong>: [根节点, 左子树, 右子树];  </li><li><strong>路径记录</strong>: 记录根节点到当前节点的路径; 1)当前节点为叶子节点; 2)节点值和为sum;</li></ul><p>从根节点向下搜索子树:  </p><ol><li><strong>路径更新</strong>: 当当前节点加入路径;  </li><li><strong>目标值更新</strong>: 目标值-当前值;  </li><li><strong>路径记录</strong>: 当该路径满足目标值，则将其路径加入到res;  </li><li><strong>子树遍历</strong>: 递归搜素左、右子树;  </li><li><strong>路径恢复</strong>: 向上回溯前，将当前节点从路径中删除。</li></ol><blockquote><p><strong>时间复杂度</strong>：O(n)，先序遍历所有节点；<br><strong>空间复杂度</strong>：O(n)，递归占用辅助空间O(n)。</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="hljs-comment"># class TreeNode:</span></span><br><span class="line"><span class="hljs-comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="hljs-comment">#         self.val = x</span></span><br><span class="line"><span class="hljs-comment">#         self.left = None</span></span><br><span class="line"><span class="hljs-comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pathSum</span><span class="hljs-params">(self, root: TreeNode, sum: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">        res, path = [], []</span><br><span class="line"></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dfs</span><span class="hljs-params">(root, sum)</span>:</span></span><br><span class="line">            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:</span><br><span class="line">                <span class="hljs-keyword">return</span></span><br><span class="line">            path.append(root.val)</span><br><span class="line">            sum -= root.val</span><br><span class="line">            <span class="hljs-keyword">if</span> sum == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> root.left <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> root.right:</span><br><span class="line">                res.append(list(path))</span><br><span class="line">            dfs(root.left, sum)</span><br><span class="line">            dfs(root.right, sum)</span><br><span class="line">            path.pop()</span><br><span class="line"></span><br><span class="line">        dfs(root, sum)</span><br><span class="line">        <span class="hljs-keyword">return</span> res</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入一棵二叉树和一个整数，打印出二叉树中节点值的和为输入整数的所有路径。从树的根节点开始往下一直到叶节点所经过的节点形成一条路径。</p><a id="more"></a><h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><blockquote><p><strong>给定二叉树</strong>: </p></blockquote><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">      5</span><br><span class="line">     / \</span><br><span class="line">    4   8</span><br><span class="line">   /   / \</span><br><span class="line">  11  13  4</span><br><span class="line"> /  \    / \</span><br><span class="line">7    2  5   1</span><br></pre></td></tr></table></figure><p><strong>返回</strong>: </p><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">[</span><br><span class="line">   [5,4,11,2],</span><br><span class="line">   [5,8,4,5]</span><br><span class="line">]</span><br></pre></td></tr></table></figure><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr><h2 id="DFS回溯"><a href="#DFS回溯" class="headerlink" title="DFS回溯"></a>DFS回溯</h2><blockquote><p>二叉树搜索问题，使用 <strong>回溯算法</strong>，先序遍历搜索节点，同时记录节点路径。</p></blockquote><ul><li><strong>先序遍历</strong>: [根节点, 左子树, 右子树];  </li><li><strong>路径记录</strong>: 记录根节点到当前节点的路径; 1)当前节点为叶子节点; 2)节点值和为sum;</li></ul><p>从根节点向下搜索子树:  </p><ol><li><strong>路径更新</strong>: 将当前节点加入路径;  </li><li><strong>目标值更新</strong>: 目标值-当前值;  </li><li><strong>路径记录</strong>: 当该路径满足目标值，则将其路径加入到res;  </li><li><strong>子树遍历</strong>: 递归搜素左、右子树;  </li><li><strong>路径恢复</strong>: 向上回溯前，将当前节点从路径中删除。</li></ol><blockquote><p><strong>时间复杂度</strong>：O(n)，先序遍历所有节点；<br><strong>空间复杂度</strong>：O(n)，递归占用辅助空间O(n)。</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="hljs-comment"># class TreeNode:</span></span><br><span class="line"><span class="hljs-comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="hljs-comment">#         self.val = x</span></span><br><span class="line"><span class="hljs-comment">#         self.left = None</span></span><br><span class="line"><span class="hljs-comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pathSum</span><span class="hljs-params">(self, root: TreeNode, sum: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">        res, path = [], []</span><br><span class="line"></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dfs</span><span class="hljs-params">(root, sum)</span>:</span></span><br><span class="line">            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:</span><br><span class="line">                <span class="hljs-keyword">return</span></span><br><span class="line">            path.append(root.val)</span><br><span class="line">            sum -= root.val</span><br><span class="line">            <span class="hljs-keyword">if</span> sum == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> root.left <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> root.right:</span><br><span class="line">                res.append(list(path))</span><br><span class="line">            dfs(root.left, sum)</span><br><span class="line">            dfs(root.right, sum)</span><br><span class="line">            path.pop()</span><br><span class="line"></span><br><span class="line">        dfs(root, sum)</span><br><span class="line">        <span class="hljs-keyword">return</span> res</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -410,9 +445,9 @@
     
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
-      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
       <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
+    
+      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
       <category term="队列" scheme="https://gojay.top/tags/%E9%98%9F%E5%88%97/"/>
     
@@ -488,9 +523,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="指针" scheme="https://gojay.top/tags/%E6%8C%87%E9%92%88/"/>
     
@@ -523,9 +558,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="指针" scheme="https://gojay.top/tags/%E6%8C%87%E9%92%88/"/>
     
@@ -692,9 +727,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
   </entry>
   
@@ -1101,9 +1136,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
     
