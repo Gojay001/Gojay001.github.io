@@ -18,7 +18,7 @@
 <meta property="og:description" content="题目 题目描述 输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的循环双向链表。要求不能创建任何新的节点，只能调整树中节点指针的指向。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
-<meta property="og:updated_time" content="2020-10-26T14:00:36.909Z">
+<meta property="og:updated_time" content="2020-10-26T14:32:30.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指Offer-36-二叉搜索树与双向链表">
 <meta name="twitter:description" content="题目 题目描述 输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的循环双向链表。要求不能创建任何新的节点，只能调整树中节点指针的指向。">
@@ -183,7 +183,7 @@ var _hmt = _hmt || [];
                 
                 <time class="level-item has-text-grey" datetime="2020-10-26T13:33:38.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-10-26</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-10-26T14:00:36.909Z"><i class="far fa-calendar-check">&nbsp;</i>2020-10-26</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-10-26T14:32:30.532Z"><i class="far fa-calendar-check">&nbsp;</i>2020-10-26</time>
                 
                 
                 <div class="level-item">
@@ -196,7 +196,7 @@ var _hmt = _hmt || [];
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    4 minutes read (About 563 words)
+                    4 minutes read (About 562 words)
                 </span>
                 
                 
@@ -221,12 +221,12 @@ var _hmt = _hmt || [];
 <h2 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h2><blockquote>
 <p>中序遍历实现排序链表，每个节点进行<code>前向指针和后向指针的连接</code>，最后将头节点和尾节点连接。</p>
 </blockquote>
-<p><code>dfs(cur)</code>: 递归实现中序遍历；</p>
+<p><code>dfs(cur)</code>: 递归实现中序遍历;  </p>
 <ol>
-<li><strong>终止条件</strong>: 当前节点为空时，return;</li>
-<li><strong>递归左子树</strong>: dfs(cur.left);</li>
-<li><strong>构建链表</strong>: 1) 当pre为空时，即<code>当前节点标记为头节点</code>; 2)当pre不为空，<code>更改当前节点与上一节点的双向连接关系</code>; 3) 将当前节点更新为pre;</li>
-<li><strong>递归右子树</strong>: dfs(cur.right);</li>
+<li><strong>终止条件</strong>: 当前节点为空时，return;  </li>
+<li><strong>递归左子树</strong>: dfs(cur.left);  </li>
+<li><strong>构建链表</strong>: 1) 当pre为空时，即<code>当前节点标记为头节点</code>; 2)当pre不为空，<code>更改当前节点与上一节点的双向连接关系</code>; 3) 将当前节点更新为pre;  </li>
+<li><strong>递归右子树</strong>: dfs(cur.right);  </li>
 </ol>
 <blockquote>
 <p><strong>时间复杂度</strong>: O(n)，中序遍历需遍历所有节点;<br><strong>空间复杂度</strong>: O(n)，递归占用额外空间;</p>
@@ -271,6 +271,13 @@ var _hmt = _hmt || [];
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/10/27/剑指Offer-37-序列化二叉树/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">剑指Offer-37-序列化二叉树</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
