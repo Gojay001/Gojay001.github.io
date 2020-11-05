@@ -6,7 +6,7 @@
   <link href="/rss.xml" rel="self"/>
   
   <link href="https://gojay.top/"/>
-  <updated>2020-11-05T13:52:17.633Z</updated>
+  <updated>2020-11-05T14:52:42.293Z</updated>
   <id>https://gojay.top/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>剑指Offer-39-数组中出现次数超过一半的数字</title>
+    <link href="https://gojay.top/2020/11/05/%E5%89%91%E6%8C%87Offer-39-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/"/>
+    <id>https://gojay.top/2020/11/05/剑指Offer-39-数组中出现次数超过一半的数字/</id>
+    <published>2020-11-05T14:08:34.000Z</published>
+    <updated>2020-11-05T14:52:42.293Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。  </p><p>你可以假设数组是非空的，并且给定的数组总是存在多数元素。</p><a id="more"></a><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><blockquote><p><strong>输入</strong>: [1, 2, 3, 2, 2, 2, 5, 4, 2]<br><strong>输出</strong>: 2</p></blockquote><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr><h2 id="排序找中间数"><a href="#排序找中间数" class="headerlink" title="排序找中间数"></a>排序找中间数</h2><blockquote><p>将数组排序后，目标数字个数超过数组长度一半，则中间数为目标数。</p></blockquote><blockquote><p><strong>时间复杂度</strong>: O(nlogn)，排序时间复杂度为O(nlogn);<br><strong>空间复杂度</strong>: O(1);</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        nums.sort()</span><br><span class="line">        <span class="hljs-keyword">return</span> nums[len(nums) // <span class="hljs-number">2</span>]</span><br></pre></td></tr></table></figure><h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><blockquote><p>使用 HashMap 记录每个数字出现次数，当出现次数大于数组长度一半时，则为目标数。</p></blockquote><blockquote><p><strong>时间复杂度</strong>: O(n)，遍历整个数组;<br><strong>空间复杂度</strong>: O(n)，辅助HashMap最多占用n/2额外空间;</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        count = &#123;&#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> nums:</span><br><span class="line">            <span class="hljs-keyword">if</span> num <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> count:</span><br><span class="line">                count[num] = <span class="hljs-number">0</span></span><br><span class="line">            count[num] += <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-keyword">if</span> count[num] &gt; len(nums) // <span class="hljs-number">2</span>:</span><br><span class="line">                <span class="hljs-keyword">return</span> num</span><br></pre></td></tr></table></figure><h2 id="摩尔投票法"><a href="#摩尔投票法" class="headerlink" title="摩尔投票法"></a>摩尔投票法</h2><p>(<a href="https://leetcode-cn.com/problems/shu-zu-zhong-chu-xian-ci-shu-chao-guo-yi-ban-de-shu-zi-lcof/solution/mian-shi-ti-39-shu-zu-zhong-chu-xian-ci-shu-chao-3/" target="_blank" rel="noopener">引用Krahets</a>)</p><blockquote><p>默认首位数为目标数，票数+1，当下位数字与当前目标数不同时，则票数-1；当票数为0时，重新使下一位数字为新的目标数，最终票数仍为正则当前数为目标数。</p></blockquote><p>目标数个数大于数组长度一半，则抵消其他所有数后，票数仍未正；反之，非目标数无法抵消目标数所有个数。</p><blockquote><p><strong>时间复杂度</strong>: O(n)，遍历整个数组;<br><strong>空间复杂度</strong>: O(1)，变量votes占用常数额外空间;</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        votes = <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> nums:</span><br><span class="line">            <span class="hljs-keyword">if</span> votes == <span class="hljs-number">0</span>:</span><br><span class="line">                res = num</span><br><span class="line">            votes += <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> num == res <span class="hljs-keyword">else</span> <span class="hljs-number">-1</span></span><br><span class="line">        <span class="hljs-keyword">return</span> res</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。  &lt;/p&gt;
+&lt;p&gt;你可以假设数组是非空的，并且给定的数组总是存在多数元素。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="https://gojay.top/categories/Algorithm/"/>
+    
+      <category term="剑指Offer" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/"/>
+    
+      <category term="39" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/39/"/>
+    
+    
+      <category term="Algorithm" scheme="https://gojay.top/tags/Algorithm/"/>
+    
+      <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
+    
+      <category term="HashMap" scheme="https://gojay.top/tags/HashMap/"/>
+    
+  </entry>
   
   <entry>
     <title>剑指Offer-38-字符串的排列</title>
@@ -79,9 +111,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="队列" scheme="https://gojay.top/tags/%E9%98%9F%E5%88%97/"/>
-    
       <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    
+      <category term="队列" scheme="https://gojay.top/tags/%E9%98%9F%E5%88%97/"/>
     
       <category term="BFS" scheme="https://gojay.top/tags/BFS/"/>
     
@@ -221,9 +253,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
-    
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
     
   </entry>
   
@@ -551,13 +583,13 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
-    
-      <category term="队列" scheme="https://gojay.top/tags/%E9%98%9F%E5%88%97/"/>
-    
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
+      <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
+    
       <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    
+      <category term="队列" scheme="https://gojay.top/tags/%E9%98%9F%E5%88%97/"/>
     
   </entry>
   
@@ -800,9 +832,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
       <category term="动态规划" scheme="https://gojay.top/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
@@ -868,9 +900,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
       <category term="DFS" scheme="https://gojay.top/tags/DFS/"/>
     
@@ -1244,11 +1276,11 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
-    
       <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
     
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
     
   </entry>
   
