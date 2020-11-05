@@ -6,7 +6,7 @@
   <link href="/rss.xml" rel="self"/>
   
   <link href="https://gojay.top/"/>
-  <updated>2020-10-27T12:05:37.641Z</updated>
+  <updated>2020-11-05T13:52:17.633Z</updated>
   <id>https://gojay.top/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>剑指Offer-38-字符串的排列</title>
+    <link href="https://gojay.top/2020/11/02/%E5%89%91%E6%8C%87Offer-38-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/"/>
+    <id>https://gojay.top/2020/11/02/剑指Offer-38-字符串的排列/</id>
+    <published>2020-11-02T15:32:56.000Z</published>
+    <updated>2020-11-05T13:52:17.633Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入一个字符串，打印出该字符串中字符的所有排列。  </p><p>你可以以任意顺序返回这个字符串数组，但里面不能有重复元素。</p><a id="more"></a><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><blockquote><p><strong>输入</strong>: s = “abc”<br><strong>输出</strong>: [“abc”,”acb”,”bac”,”bca”,”cab”,”cba”]</p></blockquote><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr><p>(<a href="https://leetcode-cn.com/problems/zi-fu-chuan-de-pai-lie-lcof/solution/mian-shi-ti-38-zi-fu-chuan-de-pai-lie-hui-su-fa-by/" target="_blank" rel="noopener">引用Krahets</a>)</p><h2 id="回溯DFS"><a href="#回溯DFS" class="headerlink" title="回溯DFS"></a>回溯DFS</h2><blockquote><p>深度优先搜索，先固定高位，后固定低位。当字符重复时剪枝。</p></blockquote><p>每个当前位置新建一个set，用于存储字符序列并去除重复字符。</p><blockquote><p><strong>时间复杂度</strong>: O(n!)，共有 n<em>(n-1)</em>…<em>2</em>1 种方案;<br><strong>空间复杂度</strong>: O($n^2$)，DFS递归深度为n，递归辅助set累计存储 $n+(n-1)+..+2+1=(n+1)n/2$，即占用O($n^2$)额外空间;</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">permutation</span><span class="hljs-params">(self, s: str)</span> -&gt; List[str]:</span></span><br><span class="line">        path, res = list(s), []</span><br><span class="line"></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dfs</span><span class="hljs-params">(loc)</span>:</span></span><br><span class="line">            <span class="hljs-keyword">if</span> loc == len(path) - <span class="hljs-number">1</span>:</span><br><span class="line">                res.append(<span class="hljs-string">''</span>.join(path))  <span class="hljs-comment"># 添加排列方案</span></span><br><span class="line">                <span class="hljs-keyword">return</span></span><br><span class="line">            exist = set()  <span class="hljs-comment"># 存储从第loc位开始，已经出现过的字符</span></span><br><span class="line">            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(loc, len(path)):</span><br><span class="line">                <span class="hljs-keyword">if</span> path[i] <span class="hljs-keyword">in</span> exist:  <span class="hljs-comment"># 重复，剪枝</span></span><br><span class="line">                    <span class="hljs-keyword">continue</span></span><br><span class="line">                exist.add(path[i])</span><br><span class="line">                path[i], path[loc] = path[loc], path[i]  <span class="hljs-comment"># 交换，将path[i]固定在第loc位</span></span><br><span class="line">                dfs(loc+<span class="hljs-number">1</span>)  <span class="hljs-comment"># 固定下一位字符</span></span><br><span class="line">                path[i], path[loc] = path[loc], path[i]  <span class="hljs-comment"># 恢复交换</span></span><br><span class="line"></span><br><span class="line">        dfs(<span class="hljs-number">0</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> res</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;输入一个字符串，打印出该字符串中字符的所有排列。  &lt;/p&gt;
+&lt;p&gt;你可以以任意顺序返回这个字符串数组，但里面不能有重复元素。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="https://gojay.top/categories/Algorithm/"/>
+    
+      <category term="剑指Offer" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/"/>
+    
+      <category term="38" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/38/"/>
+    
+    
+      <category term="Algorithm" scheme="https://gojay.top/tags/Algorithm/"/>
+    
+      <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="DFS" scheme="https://gojay.top/tags/DFS/"/>
+    
+  </entry>
   
   <entry>
     <title>剑指Offer-37-序列化二叉树</title>
@@ -45,9 +79,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
       <category term="队列" scheme="https://gojay.top/tags/%E9%98%9F%E5%88%97/"/>
+    
+      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
       <category term="BFS" scheme="https://gojay.top/tags/BFS/"/>
     
@@ -187,9 +221,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
   </entry>
   
@@ -517,13 +551,13 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
     
-      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
       <category term="队列" scheme="https://gojay.top/tags/%E9%98%9F%E5%88%97/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
   </entry>
   
@@ -766,9 +800,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="动态规划" scheme="https://gojay.top/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
@@ -834,9 +868,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="DFS" scheme="https://gojay.top/tags/DFS/"/>
     
@@ -1210,11 +1244,11 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
+      <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
+    
       <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
     
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
-      <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
     
   </entry>
   
