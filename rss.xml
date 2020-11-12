@@ -6,7 +6,7 @@
   <link href="/rss.xml" rel="self"/>
   
   <link href="https://gojay.top/"/>
-  <updated>2020-11-05T14:52:42.293Z</updated>
+  <updated>2020-11-12T08:05:11.180Z</updated>
   <id>https://gojay.top/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>剑指Offer-40-最小的k个数</title>
+    <link href="https://gojay.top/2020/11/09/%E5%89%91%E6%8C%87Offer-40-%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/"/>
+    <id>https://gojay.top/2020/11/09/剑指Offer-40-最小的k个数/</id>
+    <published>2020-11-09T14:51:41.000Z</published>
+    <updated>2020-11-12T08:05:11.180Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入整数数组 <code>arr</code> ，找出其中最小的 <code>k</code> 个数。例如，输入4、5、1、6、2、7、3、8这8个数字，则最小的4个数字是1、2、3、4。</p><a id="more"></a><h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><blockquote><p><strong>输入</strong>: arr = [3,2,1], k = 2<br><strong>输出</strong>: [1,2] 或者 [2,1]</p></blockquote><h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><blockquote><p><strong>输入</strong>: arr = [0,1,2,1], k = 1<br><strong>输出</strong>: [0]</p></blockquote><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr><h2 id="Python函数"><a href="#Python函数" class="headerlink" title="Python函数"></a>Python函数</h2><blockquote><p>topk: 将数组排序，选取前k个值。</p></blockquote><blockquote><p><strong>时间复杂度</strong>: O(nlogn)，排序时间复杂度为O(nlogn);<br><strong>空间复杂度</strong>: O(1);</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getLeastNumbers</span><span class="hljs-params">(self, arr: List[int], k: int)</span> -&gt; List[int]:</span></span><br><span class="line">        <span class="hljs-keyword">return</span> heapq.nsmallest(k, arr)</span><br></pre></td></tr></table></figure><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getLeastNumbers</span><span class="hljs-params">(self, arr: List[int], k: int)</span> -&gt; List[int]:</span></span><br><span class="line">        arr.sort()</span><br><span class="line">        <span class="hljs-keyword">return</span> arr[:k]</span><br></pre></td></tr></table></figure><h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><blockquote><p><strong>维护一个大小为k的大顶堆</strong>，将第k+1个元素后都与堆顶比较，当前元素小于堆顶时，则弹出堆顶并插入当前元素。</p></blockquote><ul><li><strong>初始化大顶堆</strong>: 将数组<code>前k个元素构建大顶堆</code>，即从非叶子节点向上构建，大值元素上浮;  </li><li><strong>更新大顶堆</strong>: 从数组第k+1个元素依次与堆顶元素比较，若小于堆顶，即当前元素属于topk，<code>弹出堆顶元素并插入当前元素</code>，重新构建大顶堆。</li></ul><blockquote><p><strong>时间复杂度</strong>: O(nlogn)，将一个元素插入大顶堆占用O(logn)，遍历整个数组占用O(n);<br><strong>空间复杂度</strong>: O(k)，维护大小为k的大顶堆占用k额外空间;</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">heapify</span><span class="hljs-params">(self, arr, i)</span>:</span>  <span class="hljs-comment"># 大顶堆化</span></span><br><span class="line">        left, right = <span class="hljs-number">2</span> * i + <span class="hljs-number">1</span>, <span class="hljs-number">2</span> * i + <span class="hljs-number">2</span></span><br><span class="line">        largest = i</span><br><span class="line">        <span class="hljs-keyword">if</span> left &lt; len(arr) <span class="hljs-keyword">and</span> arr[left] &gt; arr[largest]:</span><br><span class="line">            largest = left</span><br><span class="line">        <span class="hljs-keyword">if</span> right &lt; len(arr) <span class="hljs-keyword">and</span> arr[right] &gt; arr[largest]:</span><br><span class="line">            largest = right</span><br><span class="line">        <span class="hljs-keyword">if</span> largest != i:</span><br><span class="line">            arr[largest], arr[i] = arr[i], arr[largest]</span><br><span class="line">            self.heapify(arr, largest)  <span class="hljs-comment"># 交换后再次与左右子节点比较</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">build_heap</span><span class="hljs-params">(self, nums)</span>:</span>  <span class="hljs-comment"># 从非叶子节点初始化堆</span></span><br><span class="line">        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(nums) // <span class="hljs-number">2</span> - <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>):</span><br><span class="line">            self.heapify(nums, i)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getLeastNumbers</span><span class="hljs-params">(self, arr: List[int], k: int)</span> -&gt; List[int]:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> arr <span class="hljs-keyword">or</span> k &lt;= <span class="hljs-number">0</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> []</span><br><span class="line">        <span class="hljs-keyword">if</span> len(arr) &lt;= k:</span><br><span class="line">            <span class="hljs-keyword">return</span> arr</span><br><span class="line">        </span><br><span class="line">        heap = arr[:k]</span><br><span class="line">        self.build_heap(heap)</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(k, len(arr)):</span><br><span class="line">            <span class="hljs-keyword">if</span> arr[i] &lt; heap[<span class="hljs-number">0</span>]:  <span class="hljs-comment"># 当前元素比k堆顶小时，弹出堆顶并插入当前元素</span></span><br><span class="line">                heap[<span class="hljs-number">0</span>] = arr[i]</span><br><span class="line">                self.heapify(heap, <span class="hljs-number">0</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> heap</span><br></pre></td></tr></table></figure><h2 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h2><blockquote><p><strong>选取基准元素将数组分为左右两侧</strong>，根据基准元素下标和k比较递归划分，直到基准元素下标为k，则左侧k个元素为topk。</p></blockquote><ul><li><strong>基准划分</strong>: 选取数组第一个元素为基准，i 标记比基准小的元素下标，j 标记比基准大的元素下标，最后<code>将基准交换并返回</code>基准元素下标;  </li><li><strong>快速排序</strong>: 1)当基准元素下标 <code>pivot+1 == k</code> 时，则基准左侧k-1元素都比基准元素小，即为topk; 2)若不相等，根据基准元素下标对左（右）侧进一步划分。</li></ul><blockquote><p><strong>时间复杂度</strong>: O(nlogn)，每轮遍历数组与基准比较占用O(n)，共需要logn轮比较;<br><strong>空间复杂度</strong>: O(nlogn)，递归占用nlogn额外空间;</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">partition</span><span class="hljs-params">(self, arr, left, right)</span>:</span></span><br><span class="line">        pivot = left</span><br><span class="line">        i = j = pivot + <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">while</span> j &lt;= right:</span><br><span class="line">            <span class="hljs-keyword">if</span> arr[j] &lt; arr[pivot]:</span><br><span class="line">                arr[i], arr[j] = arr[j], arr[i]</span><br><span class="line">                i += <span class="hljs-number">1</span></span><br><span class="line">            j += <span class="hljs-number">1</span></span><br><span class="line">        arr[pivot], arr[i<span class="hljs-number">-1</span>] = arr[i<span class="hljs-number">-1</span>], arr[pivot]</span><br><span class="line">        <span class="hljs-keyword">return</span> i<span class="hljs-number">-1</span></span><br><span class="line">    </span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">quick_sort</span><span class="hljs-params">(self, arr, left, right, k)</span>:</span></span><br><span class="line">        pivot = self.partition(arr, left, right)</span><br><span class="line">        <span class="hljs-keyword">if</span> pivot + <span class="hljs-number">1</span> == k:</span><br><span class="line">            <span class="hljs-keyword">return</span></span><br><span class="line">        <span class="hljs-keyword">elif</span> pivot + <span class="hljs-number">1</span> &gt; k:  <span class="hljs-comment"># topk元素全在基准左侧</span></span><br><span class="line">            self.quick_sort(arr, left, pivot - <span class="hljs-number">1</span>, k)</span><br><span class="line">        <span class="hljs-keyword">else</span>:  <span class="hljs-comment"># topk元素全在基准右侧</span></span><br><span class="line">            self.quick_sort(arr, pivot + <span class="hljs-number">1</span>, right, k)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getLeastNumbers</span><span class="hljs-params">(self, arr: List[int], k: int)</span> -&gt; List[int]:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> arr <span class="hljs-keyword">or</span> k &lt;= <span class="hljs-number">0</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> []</span><br><span class="line">        <span class="hljs-keyword">if</span> len(arr) &lt;= k:</span><br><span class="line">            <span class="hljs-keyword">return</span> arr</span><br><span class="line">        self.quick_sort(arr, <span class="hljs-number">0</span>, len(arr) - <span class="hljs-number">1</span>, k)</span><br><span class="line">        <span class="hljs-keyword">return</span> arr[:k]</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;输入整数数组 &lt;code&gt;arr&lt;/code&gt; ，找出其中最小的 &lt;code&gt;k&lt;/code&gt; 个数。例如，输入4、5、1、6、2、7、3、8这8个数字，则最小的4个数字是1、2、3、4。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="https://gojay.top/categories/Algorithm/"/>
+    
+      <category term="剑指Offer" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/"/>
+    
+      <category term="40" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/40/"/>
+    
+    
+      <category term="Algorithm" scheme="https://gojay.top/tags/Algorithm/"/>
+    
+      <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
+    
+      <category term="topk" scheme="https://gojay.top/tags/topk/"/>
+    
+      <category term="排序" scheme="https://gojay.top/tags/%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>剑指Offer-39-数组中出现次数超过一半的数字</title>
@@ -111,9 +144,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
       <category term="队列" scheme="https://gojay.top/tags/%E9%98%9F%E5%88%97/"/>
+    
+      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
       <category term="BFS" scheme="https://gojay.top/tags/BFS/"/>
     
@@ -253,9 +286,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
   </entry>
   
@@ -583,13 +616,13 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
     
-      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
       <category term="队列" scheme="https://gojay.top/tags/%E9%98%9F%E5%88%97/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
   </entry>
   
@@ -832,9 +865,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="动态规划" scheme="https://gojay.top/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
@@ -900,9 +933,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="DFS" scheme="https://gojay.top/tags/DFS/"/>
     
@@ -1276,11 +1309,11 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
+      <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
+    
       <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
     
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
-      <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
     
   </entry>
   
