@@ -6,7 +6,7 @@
   <link href="/rss.xml" rel="self"/>
   
   <link href="https://gojay.top/"/>
-  <updated>2020-11-23T10:30:53.236Z</updated>
+  <updated>2020-12-02T08:10:35.512Z</updated>
   <id>https://gojay.top/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PANet</title>
+    <link href="https://gojay.top/2020/12/02/PANet/"/>
+    <id>https://gojay.top/2020/12/02/PANet/</id>
+    <published>2020-12-02T01:56:12.000Z</published>
+    <updated>2020-12-02T08:10:35.512Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><strong>PANet</strong>(PANet: Few-Shot Image Semantic Segmentation with Prototype Alignment)<a href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Wang_PANet_Few-Shot_Image_Semantic_Segmentation_With_Prototype_Alignment_ICCV_2019_paper.pdf" target="_blank" rel="noopener">[1]</a> <code>learns class-specific prototype</code> representations for images and <code>matches each pixel</code> to the learned prototypes. There are some details of reading and implementing it. </p></blockquote><a id="more"></a><h1 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h1><hr><ul><li><strong><a href="#Paper&Code&note">Paper &amp; Code &amp; note</a></strong></li><li><strong><a href="#Paper">Paper understanding</a></strong></li><li><strong><a href="#Code">Code understanding</a></strong></li><li><strong><a href="#Note">Note</a></strong></li><li><strong><a href="#References">References</a></strong></li></ul><h1 id="Paper-amp-Code-amp-note"><a href="#Paper-amp-Code-amp-note" class="headerlink" title="Paper &amp; Code &amp; note"></a>Paper &amp; Code &amp; note</h1><hr><blockquote><p><strong>Paper</strong>: <a href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Wang_PANet_Few-Shot_Image_Semantic_Segmentation_With_Prototype_Alignment_ICCV_2019_paper.pdf" target="_blank" rel="noopener">PANet: Few-Shot Image Semantic Segmentation with Prototype Alignment</a>(ICCV 2019 paper)<br><strong>Code</strong>: <a href="https://github.com/kaixin96/PANet" target="_blank" rel="noopener">PyTorch</a><br><strong>Note</strong>: <a href="https://www.mendeley.com/reference-manager/reader/2904ce4f-305b-388c-8b5a-a58259fa3cee/1e2a1138-6c0b-247b-1505-c4d7d7feab14" target="_blank" rel="noopener">Mendeley</a></p></blockquote><h1 id="Paper"><a href="#Paper" class="headerlink" title="Paper"></a>Paper</h1><hr><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p><img src="https://i.loli.net/2020/12/02/T71evCiJbcKw9F4.png" alt="PANet_Abstract.png"></p><h2 id="Problem-Solution"><a href="#Problem-Solution" class="headerlink" title="Problem Solution"></a>Problem Solution</h2><p><img src="https://i.loli.net/2020/12/02/lQvSNATpVfOk7LX.png" alt="PANet_Overview.png"><br><img src="https://i.loli.net/2020/12/02/GAFZUK46HfeqXwY.png" alt="PANet_PS.png"></p><h2 id="Conceptual-Understanding"><a href="#Conceptual-Understanding" class="headerlink" title="Conceptual Understanding"></a>Conceptual Understanding</h2><p><img src="https://i.loli.net/2020/12/02/YCfgtD2Xx9E3FsU.png" alt="PANet_network.png"></p><h3 id="Prototype-learning"><a href="#Prototype-learning" class="headerlink" title="Prototype learning"></a>Prototype learning</h3><p><img src="https://i.loli.net/2020/12/02/bSry6HqVGMsgvNO.png" alt="PANet_prototype.png"></p><h3 id="Non-parametric-metric-learning"><a href="#Non-parametric-metric-learning" class="headerlink" title="Non-parametric metric learning"></a>Non-parametric metric learning</h3><p><img src="https://i.loli.net/2020/12/02/dFK6LsP5iu4Gqmf.png" alt="PANet_metric.png"></p><h2 id="Core-Conception"><a href="#Core-Conception" class="headerlink" title="Core Conception"></a>Core Conception</h2><p><img src="https://i.loli.net/2020/12/02/rgQPTtOq7sB9jyJ.png" alt="PANet_Algorithm.png"></p><h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p><img src="https://i.loli.net/2020/12/02/etowxWrIKzAlLDc.png" alt="PANet_results.png"><br><img src="https://i.loli.net/2020/12/02/9ZvBMaT45SDerdP.png" alt="PANet_QR.png"></p><h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><hr><p>[Updating]</p><h1 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h1><hr><ul><li>provided a baseline in prototype learning for few-shot segmentation.</li></ul><h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><hr><blockquote><p>[1] Wang K, Liew J H, Zou Y, et al. Panet: Few-shot image semantic segmentation with prototype alignment[C]//Proceedings of the IEEE International Conference on Computer Vision. 2019: 9197-9206.<br>[2] PANet. <a href="https://github.com/kaixin96/PANet" target="_blank" rel="noopener">https://github.com/kaixin96/PANet</a>.</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;PANet&lt;/strong&gt;(PANet: Few-Shot Image Semantic Segmentation with Prototype Alignment)&lt;a href=&quot;http://openaccess.thecvf.com/content_ICCV_2019/papers/Wang_PANet_Few-Shot_Image_Semantic_Segmentation_With_Prototype_Alignment_ICCV_2019_paper.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;[1]&lt;/a&gt; &lt;code&gt;learns class-specific prototype&lt;/code&gt; representations for images and &lt;code&gt;matches each pixel&lt;/code&gt; to the learned prototypes. There are some details of reading and implementing it. &lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="DeepLearning" scheme="https://gojay.top/categories/DeepLearning/"/>
+    
+      <category term="Few-Shot Segmentation" scheme="https://gojay.top/categories/DeepLearning/Few-Shot-Segmentation/"/>
+    
+      <category term="PANet" scheme="https://gojay.top/categories/DeepLearning/Few-Shot-Segmentation/PANet/"/>
+    
+    
+      <category term="DL" scheme="https://gojay.top/tags/DL/"/>
+    
+      <category term="FSS" scheme="https://gojay.top/tags/FSS/"/>
+    
+      <category term="PANet" scheme="https://gojay.top/tags/PANet/"/>
+    
+  </entry>
   
   <entry>
     <title>剑指Offer-45-把数组排成最小的数</title>
@@ -302,9 +334,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
       <category term="队列" scheme="https://gojay.top/tags/%E9%98%9F%E5%88%97/"/>
+    
+      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
       <category term="BFS" scheme="https://gojay.top/tags/BFS/"/>
     
@@ -776,11 +808,11 @@
     
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
-      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
       <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
     
       <category term="队列" scheme="https://gojay.top/tags/%E9%98%9F%E5%88%97/"/>
+    
+      <category term="二叉树" scheme="https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
   </entry>
   
@@ -854,9 +886,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="指针" scheme="https://gojay.top/tags/%E6%8C%87%E9%92%88/"/>
     
@@ -889,9 +921,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="指针" scheme="https://gojay.top/tags/%E6%8C%87%E9%92%88/"/>
     
@@ -1058,9 +1090,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
   </entry>
   
@@ -1225,9 +1257,9 @@
     
       <category term="DFS" scheme="https://gojay.top/tags/DFS/"/>
     
-      <category term="BFS" scheme="https://gojay.top/tags/BFS/"/>
-    
       <category term="回溯" scheme="https://gojay.top/tags/%E5%9B%9E%E6%BA%AF/"/>
+    
+      <category term="BFS" scheme="https://gojay.top/tags/BFS/"/>
     
   </entry>
   
@@ -1467,11 +1499,11 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
+      <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="栈" scheme="https://gojay.top/tags/%E6%A0%88/"/>
-    
-      <category term="链表" scheme="https://gojay.top/tags/%E9%93%BE%E8%A1%A8/"/>
     
   </entry>
   
