@@ -6,7 +6,7 @@
   <link href="/rss.xml" rel="self"/>
   
   <link href="https://gojay.top/"/>
-  <updated>2020-12-15T07:45:00.752Z</updated>
+  <updated>2020-12-15T08:36:05.779Z</updated>
   <id>https://gojay.top/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>剑指Offer-49-丑数</title>
+    <link href="https://gojay.top/2020/12/15/%E5%89%91%E6%8C%87Offer-49-%E4%B8%91%E6%95%B0/"/>
+    <id>https://gojay.top/2020/12/15/剑指Offer-49-丑数/</id>
+    <published>2020-12-15T07:49:51.000Z</published>
+    <updated>2020-12-15T08:36:05.779Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>我们把只包含质因子 2、3 和 5 的数称作丑数（Ugly Number）。求按从小到大的顺序的第 n 个丑数。</p><a id="more"></a><h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><blockquote><p><strong>输入</strong>: n = 10<br><strong>输出</strong>: 12<br><strong>解释</strong>: 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 是前 10 个丑数。</p></blockquote><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr><h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><blockquote><p>计算当前各质数的丑数，<strong>选取最小丑数作为当前值</strong>，并将对应质数的位数加1。  </p></blockquote><ul><li>dp数组存储第i个位置的丑数;  </li><li>a,b,c分别对应2,3,5前进次数;</li><li>n2,n3,n5对应2,3,5对应的当前丑数;</li></ul><blockquote><p><strong>时间复杂度</strong>: O(n)，遍历dp数组;<br><strong>空间复杂度</strong>: O(n)，dp数组占用O(n)的额外空间;</p></blockquote><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">nthUglyNumber</span><span class="hljs-params">(self, n: int)</span> -&gt; int:</span></span><br><span class="line">        dp, a, b, c = [<span class="hljs-number">1</span>] * n, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, n):</span><br><span class="line">            n2, n3, n5 = dp[a] * <span class="hljs-number">2</span>, dp[b] * <span class="hljs-number">3</span>, dp[c] * <span class="hljs-number">5</span></span><br><span class="line">            dp[i] = min(n2, n3, n5)</span><br><span class="line">            <span class="hljs-keyword">if</span> dp[i] == n2:</span><br><span class="line">                a += <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-keyword">if</span> dp[i] == n3:</span><br><span class="line">                b += <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-keyword">if</span> dp[i] == n5:</span><br><span class="line">                c += <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">return</span> dp[<span class="hljs-number">-1</span>]</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;我们把只包含质因子 2、3 和 5 的数称作丑数（Ugly Number）。求按从小到大的顺序的第 n 个丑数。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="https://gojay.top/categories/Algorithm/"/>
+    
+      <category term="剑指Offer" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/"/>
+    
+      <category term="49" scheme="https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/49/"/>
+    
+    
+      <category term="Algorithm" scheme="https://gojay.top/tags/Algorithm/"/>
+    
+      <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
+    
+      <category term="动态规划" scheme="https://gojay.top/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
   
   <entry>
     <title>剑指Offer-48-最长不含重复字符的子字符串</title>
@@ -390,9 +421,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="排序" scheme="https://gojay.top/tags/%E6%8E%92%E5%BA%8F/"/>
-    
       <category term="topk" scheme="https://gojay.top/tags/topk/"/>
+    
+      <category term="排序" scheme="https://gojay.top/tags/%E6%8E%92%E5%BA%8F/"/>
     
   </entry>
   
@@ -1212,9 +1243,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="动态规划" scheme="https://gojay.top/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
@@ -1280,9 +1311,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="DFS" scheme="https://gojay.top/tags/DFS/"/>
     
