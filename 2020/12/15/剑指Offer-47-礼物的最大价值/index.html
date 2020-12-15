@@ -18,7 +18,7 @@
 <meta property="og:description" content="题目 题目描述在一个 m*n 的棋盘的每一格都放有一个礼物，每个礼物都有一定的价值（价值大于 0）。你可以从棋盘的左上角开始拿格子里的礼物，并每次向右或者向下移动一格、直到到达棋盘的右下角。给定一个棋盘及其上面的礼物的价值，请计算你最多能拿到多少价值的礼物？">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
-<meta property="og:updated_time" content="2020-12-15T03:25:56.774Z">
+<meta property="og:updated_time" content="2020-12-15T03:28:19.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指Offer-47-礼物的最大价值">
 <meta name="twitter:description" content="题目 题目描述在一个 m*n 的棋盘的每一格都放有一个礼物，每个礼物都有一定的价值（价值大于 0）。你可以从棋盘的左上角开始拿格子里的礼物，并每次向右或者向下移动一格、直到到达棋盘的右下角。给定一个棋盘及其上面的礼物的价值，请计算你最多能拿到多少价值的礼物？">
@@ -183,7 +183,7 @@ var _hmt = _hmt || [];
                 
                 <time class="level-item has-text-grey" datetime="2020-12-15T03:14:27.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-12-15</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-12-15T03:25:56.774Z"><i class="far fa-calendar-check">&nbsp;</i>2020-12-15</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-12-15T03:28:19.707Z"><i class="far fa-calendar-check">&nbsp;</i>2020-12-15</time>
                 
                 
                 <div class="level-item">
@@ -222,7 +222,7 @@ var _hmt = _hmt || [];
 </blockquote>
 <ul>
 <li><strong>边界</strong>: dp[0][i] = dp[0][i-1] + grid[0][i]; dp[i][0] = dp[i-1][0] + grid[i][0];  </li>
-<li>转移方程: dp[i][j] = max(dp[i-1][j], dp[i][j-1]) + grid[i][j];  </li>
+<li><strong>转移方程</strong>: dp[i][j] = max(dp[i-1][j], dp[i][j-1]) + grid[i][j];  </li>
 </ul>
 <blockquote>
 <p><strong>时间复杂度</strong>: O(mn)，遍历grid矩阵;<br><strong>空间复杂度</strong>: O(mn)，dp数组占用O(mn)额外空间;</p>
@@ -275,6 +275,13 @@ var _hmt = _hmt || [];
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/12/15/剑指Offer-48-最长不含重复字符的子字符串/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">剑指Offer-48-最长不含重复字符的子字符串</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
