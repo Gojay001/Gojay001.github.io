@@ -141,38 +141,6 @@
   </entry>
   
   <entry>
-    <title>PMMs</title>
-    <link href="https://gojay.top/2020/12/03/PMMs/"/>
-    <id>https://gojay.top/2020/12/03/PMMs/</id>
-    <published>2020-12-03T03:57:26.000Z</published>
-    <updated>2020-12-03T04:00:58.584Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p><strong>PPNet</strong>(Part-aware Prototype Network for Few-shot Semantic Segmentation)<a href="https://arxiv.org/abs/2007.06309" target="_blank" rel="noopener">[1]</a> decompose the holistic class representation into a set of <code>part-aware prototypes</code>, and leverage <code>unlabeled data</code> to better modeling of intra-class variations. Besides, <code>graph neural network</code> model is used to generate and enhance the proposed part-aware prototypes. There are some details of reading and implementing it. </p></blockquote><a id="more"></a><h1 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h1><hr><ul><li><strong><a href="#Paper&Code&note">Paper &amp; Code &amp; note</a></strong></li><li><strong><a href="#Paper">Paper understanding</a></strong></li><li><strong><a href="#Code">Code understanding</a></strong></li><li><strong><a href="#Note">Note</a></strong></li><li><strong><a href="#References">References</a></strong></li></ul><h1 id="Paper-amp-Code-amp-note"><a href="#Paper-amp-Code-amp-note" class="headerlink" title="Paper &amp; Code &amp; note"></a>Paper &amp; Code &amp; note</h1><hr><blockquote><p><strong>Paper</strong>: <a href="https://arxiv.org/abs/2007.06309" target="_blank" rel="noopener">Part-aware Prototype Network for Few-shot Semantic Segmentation</a><br><strong>Code</strong>: <a href="https://github.com/Xiangyi1996/PPNet-PyTorch" target="_blank" rel="noopener">PyTorch</a><br><strong>Note</strong>: <a href="https://www.mendeley.com/reference-manager/reader/9123fee1-109e-3aef-8816-c59509dc2fea/44c73f8f-3a4a-c30d-4cc7-a6cb371a9a5c" target="_blank" rel="noopener">Mendeley</a></p></blockquote><h1 id="Paper"><a href="#Paper" class="headerlink" title="Paper"></a>Paper</h1><hr><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p><img src="https://i.loli.net/2020/12/03/LlRdmhB9fO5ixSv.png" alt="PPNet_Abstract.png"></p><h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p><img src="https://i.loli.net/2020/12/03/criLvj1P69WxJND.png" alt="PPNet_PD.png"></p><h2 id="Problem-Solution"><a href="#Problem-Solution" class="headerlink" title="Problem Solution"></a>Problem Solution</h2><p><img src="https://i.loli.net/2020/12/03/wbMBmctDkJAKURq.png" alt="PPNet_PS.png"></p><h2 id="Conceptual-Understanding"><a href="#Conceptual-Understanding" class="headerlink" title="Conceptual Understanding"></a>Conceptual Understanding</h2><p><img src="https://i.loli.net/2020/12/03/Ilz6AomqT9jphQD.png" alt="PPNet_network.png"></p><h2 id="Core-Conception"><a href="#Core-Conception" class="headerlink" title="Core Conception"></a>Core Conception</h2><p><img src="https://i.loli.net/2020/12/03/9ySo3GXKEUcRI1e.png" alt="PPNet_Module.png"></p><h2 id="Part-Generation"><a href="#Part-Generation" class="headerlink" title="Part Generation"></a>Part Generation</h2><p><img src="https://i.loli.net/2020/12/03/aqxTEOy6l3QIgRp.png" alt="PPNet_RartG.png"></p><h2 id="Part-Refinement"><a href="#Part-Refinement" class="headerlink" title="Part Refinement"></a>Part Refinement</h2><p><img src="https://i.loli.net/2020/12/03/QIXiajGkKLmAD9q.png" alt="PPNet_PartR.png"></p><h2 id="Mask-Generation"><a href="#Mask-Generation" class="headerlink" title="Mask Generation"></a>Mask Generation</h2><p><img src="https://i.loli.net/2020/12/03/z6sh4aSMTF3rLNd.png" alt="PPNet_MaskG.png"></p><h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p><img src="https://i.loli.net/2020/12/03/96taPl38cOeokUS.png" alt="PPNet_results.png"><br><img src="https://i.loli.net/2020/12/03/pGLQhnP43DRKlBE.png" alt="PPNet_visualization.png"></p><h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><hr><blockquote><ol><li>The <strong>complete code</strong> can be found in PPNet-PyTorch<a href="https://github.com/Xiangyi1996/PPNet-PyTorch" target="_blank" rel="noopener">[2]</a>.</li></ol></blockquote><p>[Updating]</p><h1 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h1><hr><ul><li>decomposed objects to a set of part based on prototype for few-shot segmentation.</li></ul><h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><hr><blockquote><p>[1] Liu Y, Zhang X, Zhang S, et al. Part-aware prototype network for few-shot semantic segmentation[C]//European Conference on Computer Vision. Springer, Cham, 2020: 142-158.<br>[2] PPNet-PyTorch. <a href="https://github.com/Xiangyi1996/PPNet-PyTorch" target="_blank" rel="noopener">https://github.com/Xiangyi1996/PPNet-PyTorch</a>.</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;PPNet&lt;/strong&gt;(Part-aware Prototype Network for Few-shot Semantic Segmentation)&lt;a href=&quot;https://arxiv.org/abs/2007.06309&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;[1]&lt;/a&gt; decompose the holistic class representation into a set of &lt;code&gt;part-aware prototypes&lt;/code&gt;, and leverage &lt;code&gt;unlabeled data&lt;/code&gt; to better modeling of intra-class variations. Besides, &lt;code&gt;graph neural network&lt;/code&gt; model is used to generate and enhance the proposed part-aware prototypes. There are some details of reading and implementing it. &lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="DeepLearning" scheme="https://gojay.top/categories/DeepLearning/"/>
-    
-      <category term="Few-Shot Segmentation" scheme="https://gojay.top/categories/DeepLearning/Few-Shot-Segmentation/"/>
-    
-      <category term="PMMs" scheme="https://gojay.top/categories/DeepLearning/Few-Shot-Segmentation/PMMs/"/>
-    
-    
-      <category term="DL" scheme="https://gojay.top/tags/DL/"/>
-    
-      <category term="FSS" scheme="https://gojay.top/tags/FSS/"/>
-    
-      <category term="PMMs" scheme="https://gojay.top/tags/PMMs/"/>
-    
-  </entry>
-  
-  <entry>
     <title>PPNet</title>
     <link href="https://gojay.top/2020/12/02/PPNet/"/>
     <id>https://gojay.top/2020/12/02/PPNet/</id>
@@ -1243,11 +1211,11 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="动态规划" scheme="https://gojay.top/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+      <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
   </entry>
   
@@ -1311,9 +1279,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
       <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
       <category term="DFS" scheme="https://gojay.top/tags/DFS/"/>
     
@@ -1445,9 +1413,9 @@
     
       <category term="DFS" scheme="https://gojay.top/tags/DFS/"/>
     
-      <category term="回溯" scheme="https://gojay.top/tags/%E5%9B%9E%E6%BA%AF/"/>
-    
       <category term="BFS" scheme="https://gojay.top/tags/BFS/"/>
+    
+      <category term="回溯" scheme="https://gojay.top/tags/%E5%9B%9E%E6%BA%AF/"/>
     
   </entry>
   
