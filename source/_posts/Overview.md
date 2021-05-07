@@ -83,6 +83,7 @@ tags: [DL, Overview]
     - OTB(On the Texture Bias)
     - LTM(Local Transformation Module)
     - SimPropNet(Similarity Propagation)
+    - PPNet(Part-aware Prototype)
     - PFENet(Prior Guided Feature Enrichment Network)
     - PMMs(Prototype Mixture Models)
     - GFS-Seg(Generalized Few-Shot)
@@ -179,6 +180,7 @@ tags: [DL, Overview]
 | OTB | [On the Texture Bias for Few-Shot CNN Segmentation](https://arxiv.org/abs/2003.04052) | arXiv(2020) | [TensorFlow](https://github.com/rezazad68/fewshot-segmentation)
 | [LTM](https://gojay.top/2020/07/29/LTM/) | [A New Local Transformation Module for Few-Shot Segmentation](https://arxiv.org/abs/1910.05886) | MMMM(2020) | [code]
 | SimPropNet | [SimPropNet: Improved Similarity Propagation for Few-shot Image Segmentation](https://arxiv.org/abs/2004.15014) | IJCAI(2020) | [code]
+| [PPNet](https://gojay.top/2020/12/02/PPNet/) | [Part-aware Prototype Network for Few-shot Semantic Segmentation](https://arxiv.org/abs/2007.06309) | ECCV(2020) | [PyTorch](https://github.com/Xiangyi1996/PPNet-PyTorch)
 | PFENet | [PFENet: Prior Guided Feature Enrichment Network for Few-shot Segmentation](https://arxiv.org/abs/2008.01449) | TPAMI(2020) | [PyTorch](https://github.com/Jia-Research-Lab/PFENet)
 | PMMs | [Prototype Mixture Models for Few-shot Semantic Segmentation](https://arxiv.org/abs/2008.03898) | ECCV(2020) | [PyTorch](https://github.com/Yang-Bob/PMMs)
 | GFS-Seg | [Generalized Few-Shot Semantic Segmentation](https://arxiv.org/abs/2010.05210) | arXiv(2020) | [code]
