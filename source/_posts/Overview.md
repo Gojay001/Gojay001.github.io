@@ -53,6 +53,8 @@ tags: [DL, Overview]
     - DeepLab V2
     - Mask R-CNN
     - DeepLab V3
+    - PointNet
+    - PointNet++
     - DeepLab V3+
     - DGCNet
 - [Tracking](#Object-Tracking)
@@ -158,6 +160,8 @@ tags: [DL, Overview]
 | DeepLab V2 | [DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs](https://arxiv.org/abs/1606.00915) | arXiv(2016) / TPAMI(2017) | [PyTorch](https://github.com/yassouali/pytorch_segmentation)
 | [Mask R-CNN](https://gojay.top/2020/08/17/Mask-R-CNN/) | [Mask R-CNN](http://openaccess.thecvf.com/content_ICCV_2017/papers/He_Mask_R-CNN_ICCV_2017_paper.pdf) | ICCV / TPAMI(2017) | [PyTorch](https://github.com/facebookresearch/detectron2)
 | DeepLab V3 | [Rethinking Atrous Convolution for Semantic Image Segmentation](https://arxiv.org/abs/1706.05587) | arXiv(2017) | [PyTorch](https://github.com/yassouali/pytorch_segmentation)
+| PointNet | [PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation](https://openaccess.thecvf.com/content_cvpr_2017/papers/Qi_PointNet_Deep_Learning_CVPR_2017_paper.pdf) | CVPR(2017) | [PyTorch](https://github.com/fxia22/pointnet.pytorch)
+| PointNet++ | [PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space](https://proceedings.neurips.cc/paper/2017/file/d8bf84be3800d12f74d8b05e9b89836f-Paper.pdf) | NIPS(2017) | [PyTorch](https://github.com/erikwijmans/Pointnet2_PyTorch)
 | DeepLab V3+ | [Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation](https://openaccess.thecvf.com/content_ECCV_2018/papers/Liang-Chieh_Chen_Encoder-Decoder_with_Atrous_ECCV_2018_paper.pdf) | ECCV(2018) | [PyTorch](https://github.com/yassouali/pytorch_segmentation)
 | DGCNet | [Dual Graph Convolutional Network for Semantic Segmentation](https://arxiv.org/pdf/1909.06121.pdf) | BMVC(2019) | [PyTorch](https://github.com/lxtGH/GALD-DGCNet)
 
