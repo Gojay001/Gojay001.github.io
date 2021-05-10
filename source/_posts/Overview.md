@@ -210,7 +210,7 @@ tags: [DL, Overview]
 |:--------|:--------:|:--------:|:--------:|
 | UC-Net | [UC-Net: Uncertainty Inspired RGB-D Saliency Detection via Conditional Variational Autoencoders](https://openaccess.thecvf.com/content_CVPR_2020/papers/Zhang_UC-Net_Uncertainty_Inspired_RGB-D_Saliency_Detection_via_Conditional_Variational_Autoencoders_CVPR_2020_paper.pdf) | CVPR(2020) | [PyTorch](https://github.com/JingZhang617/UCNet)
 | JL-DCF | [JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB-D Salient Object Detection](https://openaccess.thecvf.com/content_CVPR_2020/papers/Fu_JL-DCF_Joint_Learning_and_Densely-Cooperative_Fusion_Framework_for_RGB-D_Salient_CVPR_2020_paper.pdf) | CVPR(2020) | [PyTorch](https://github.com/jiangyao-scu/JL-DCF-pytorch)
-| SA-Gate | [Bi-directional Cross-Modality Feature Propagation with Separation-and-Aggregation Gate for RGB-D Semantic Segmentation](https://arxiv.org/pdf/2007.09183.pdf) | ECCV(2020) | [Code](https://github.com/charlesCXK/RGBD_Semantic_Segmentation_PyTorch)
+| SA-Gate | [Bi-directional Cross-Modality Feature Propagation with Separation-and-Aggregation Gate for RGB-D Semantic Segmentation](https://arxiv.org/pdf/2007.09183.pdf) | ECCV(2020) | [PyTorch](https://github.com/charlesCXK/RGBD_Semantic_Segmentation_PyTorch)
 | BiANet | [Bilateral Attention Network for RGB-D Salient Object Detection](https://arxiv.org/pdf/2004.14582.pdf) | TIP(2021) | [Code]
 
 ## 3D Object Detection
