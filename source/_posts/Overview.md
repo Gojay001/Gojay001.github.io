@@ -56,17 +56,21 @@ tags: [DL, Overview]
     - PointNet
     - PointNet++
     - DeepLab V3+
-    - DGCNet
+    - DGCNet(Dual GCN)
+    - SETR(SEgmentation TRansfomer)
+    - Segmenter
+    - SegFormer
+    - FTN(Fully Transformer Networks)
 - [Tracking](#Object-Tracking)
     - MOT
         - SORT
         - DeepSORT
         - Tracktor
-        - Flow-Fuse Tracker
+        - FFT(Flow-Fuse Tracker)
         - JRMOT
         - Tracklet
-        - FairMOT
         - DMCT(Deep Multi-Camera Tracking)
+        - FairMOT
         - CenterPoint
     - VOT
         - DepthTrack
@@ -81,6 +85,7 @@ tags: [DL, Overview]
         - SiamBAN
         - SiamAttn
         - TSDM
+        - SiamGAT
         - RE-SiamNets
 - [FSS](#Few-Shot-Segmentation)
     - OSLSM
@@ -103,23 +108,30 @@ tags: [DL, Overview]
     - SCL(Self-Corss Learning)
     - ASGNet(Adaptive Superpixel-guided Network)
 - [Attention](#Attention-or-Transformer)
+    - Transformer
     - Non-local
+    - Image Transformer
+    - ViT(Vision Transformer)
     - Swin Transformer
+    - ResT
+    - DS-Net(Dual Stream Network)
+    - TransCNN
+    - Shuffle Transformer
 - [RGBD-SOT](#Salient-Object-Detection)
     - UC-Net
     - JL-DCF(Joint Learning and Densely-Cooperative Fusion)
     - SA-Gate(Separation-and-Aggregation Gate)
     - BiANet(Bilateral Attention Network)
-- [Unsupervised](#Unsupervised Learning)
+    - DSA^2F(Depth-Sensitive Attention and Automatic Multi-Modal Fusion)
+- [Unsupervised](#Unsupervised-Learning)
     - SimSiam
 - [Detection-3D](#3D-Object-Detection)
     - PV-RCNN
 - [FSL](#Few-Shot-Learning)
     - RN(Relation Network)
 - [GAN](#Generative-Adversarial-Network)
+    - GAN
     - BeautyGAN
-- [Image Generation](#Image-Generation)
-    - ImageTransformer
 - [Optimization](#Optimization)
     - ReLU
     - Momentum
@@ -131,6 +143,7 @@ tags: [DL, Overview]
     - 3D-Detection-Survey-2019
     - FSL-Survey-2019
     - MOT-Survey-2020
+    - Transformer-Survey-2021
 
 ## Image Classification
 | Title | Paper | Conf | Code |
@@ -164,7 +177,7 @@ tags: [DL, Overview]
 | CornerNet | [CornerNet: Detecting Objects as Paired Keypoints](https://openaccess.thecvf.com/content_ECCV_2018/papers/Hei_Law_CornerNet_Detecting_Objects_ECCV_2018_paper.pdf) | ECCV(2018) | [PyTorch](https://github.com/princeton-vl/CornerNet)
 | CenterNet | [Objects as Points](https://arxiv.org/abs/1904.07850) | arXiv(2019) | [PyTorch](https://github.com/xingyizhou/CenterNet)
 | YOLOv4 | [YOLOv4: Optimal Speed and Accuracy of Object Detection](https://arxiv.org/abs/2004.10934) | arXiv(2020) | [Offical](https://github.com/AlexeyAB/darknet)
-| YOLOF | [You Only Look One-level Feature](https://arxiv.org/pdf/2103.09460.pdf) | arXiv(2021) | [PyTorch](https://github.com/megvii-model/YOLOF)
+| YOLOF | [You Only Look One-level Feature](https://arxiv.org/abs/2103.09460) | CVPR(2021) | [PyTorch](https://github.com/megvii-model/YOLOF)
 > More information can be found in [awesome-object-detection](https://github.com/amusi/awesome-object-detection).
 
 ## Object Segmentation
@@ -182,6 +195,10 @@ tags: [DL, Overview]
 | PointNet++ | [PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space](https://proceedings.neurips.cc/paper/2017/file/d8bf84be3800d12f74d8b05e9b89836f-Paper.pdf) | NIPS(2017) | [PyTorch](https://github.com/erikwijmans/Pointnet2_PyTorch)
 | DeepLab V3+ | [Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation](https://openaccess.thecvf.com/content_ECCV_2018/papers/Liang-Chieh_Chen_Encoder-Decoder_with_Atrous_ECCV_2018_paper.pdf) | ECCV(2018) | [PyTorch](https://github.com/yassouali/pytorch_segmentation)
 | DGCNet | [Dual Graph Convolutional Network for Semantic Segmentation](https://arxiv.org/pdf/1909.06121.pdf) | BMVC(2019) | [PyTorch](https://github.com/lxtGH/GALD-DGCNet)
+| SETR | [Rethinking Semantic Segmentation from a Sequence-to-Sequence Perspective with Transformers](http://arxiv.org/abs/2012.15840) | CVPR(2021) | [PyTorch](https://github.com/fudan-zvg/SETR)
+| Segmenter | [Segmenter: Transformer for Semantic Segmentation](http://arxiv.org/abs/2105.05633) | arXiv(2021) | [PyTorch](https://github.com/rstrudel/segmenter)
+| SegFormer | [SegFormer: Simple and Efficient Design for Semantic Segmentation with Transformers](http://arxiv.org/abs/2105.15203) | arXiv(2021) | [PyTorch](https://github.com/NVlabs/SegFormer)
+| FTN | [Fully Transformer Networks for Semantic ImageSegmentation](http://arxiv.org/abs/2106.04108) | arXiv(2021) | [code]
 
 ## Object Tracking
 | Title | Paper | Conf | Code |
@@ -203,11 +220,12 @@ tags: [DL, Overview]
 | [FFT](https://gojay.top/2020/03/05/FFT-Flow-Fuse-Tracker/) | [Multiple Object Tracking by Flowing and Fusing](https://arxiv.org/abs/2001.11180) | arXiv(2020) | [code]
 | [JRMOT](https://gojay.top/2020/02/28/JRMOT/) | [JRMOT: A Real-Time 3D Multi-Object Tracker and a New Large-Scale Dataset](https://arxiv.org/abs/2002.08397) | arXiv(2020) | [code]
 | [Tracklet](https://gojay.top/2020/03/26/Tracklet/) | [Multi-object Tracking via End-to-end Tracklet Searching and Ranking](https://arxiv.org/abs/2003.02795) | arXiv(2020) | [code]
-| [TSDM](https://gojay.top/2020/05/23/TSDM/) | [TSDM: Tracking by SiamRPN++ with a Depth-refiner and a Mask-generator](https://arxiv.org/abs/2005.04063) | arXiv(2020) | [PyTorch](https://github.com/Gojay001/TSDM)
-| [FairMOT](https://gojay.top/2020/05/25/FairMOT/) | [A Simple Baseline for Multi-Object Tracking](https://arxiv.org/abs/2004.01888) | arXiv(2020) | [PyTorch](https://github.com/Gojay001/FairMOT)
 | DMCT | [Real-time 3D Deep Multi-Camera Tracking](https://arxiv.org/abs/2003.11753) | arXiv(2020) | [code]
-| RE-SiamNets | [Rotation Equivariant Siamese Networks for Tracking](https://arxiv.org/abs/2012.13078) | CVPR(2021) | [PyTorch](https://github.com/dkgupta90/re-siamnet)
+| [FairMOT](https://gojay.top/2020/05/25/FairMOT/) | [A Simple Baseline for Multi-Object Tracking](https://arxiv.org/abs/2004.01888) | arXiv(2020) | [PyTorch](https://github.com/Gojay001/FairMOT)
+| [TSDM](https://gojay.top/2020/05/23/TSDM/) | [TSDM: Tracking by SiamRPN++ with a Depth-refiner and a Mask-generator](https://arxiv.org/abs/2005.04063) | arXiv(2020) | [PyTorch](https://github.com/Gojay001/TSDM)
 | CenterPoint | [Center-based 3D Object Detection and Tracking](https://arxiv.org/pdf/2006.11275.pdf) | CVPR(2021) | [PyTorch](https://github.com/tianweiy/CenterPoint)
+| SiamGAT | [Graph Attention Tracking](https://arxiv.org/abs/2011.11204) | CVPR(2021) | [PyTorch](https://github.com/ohhhyeahhh/SiamGAT)
+| RE-SiamNets | [Rotation Equivariant Siamese Networks for Tracking](https://arxiv.org/abs/2012.13078) | CVPR(2021) | [PyTorch](https://github.com/dkgupta90/re-siamnet)
 
 ## Few-Shot Segmentation
 | Title | Paper | Conf | Code |
@@ -236,16 +254,24 @@ tags: [DL, Overview]
 ## Attention or Transformer
 | Title | Paper | Conf | Code |
 |:--------|:--------:|:--------:|:--------:|
+| Transformer | [Attention Is All You Need](http://arxiv.org/abs/1706.03762) | arXiv(2017) | [TensorFlow](https://github.com/tensorflow/tensor2tensor)
 | Non-local | [Non-local Neural Networks](https://openaccess.thecvf.com/content_cvpr_2018/papers/Wang_Non-Local_Neural_Networks_CVPR_2018_paper.pdf) | CVPR(2018) | [PyTorch](https://github.com/facebookresearch/video-nonlocal-net)
+| [Image Transformer](https://gojay.top/2020/05/15/Image-Transformer/) | [Image Transformer](https://arxiv.org/abs/1802.05751) | arXiv(2018) | [code]
+| ViT | [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](http://arxiv.org/abs/2010.11929) | arXiv(2020) | [PyTorch](https://github.com/google-research/vision_transformer)
 | Swin Transformer | [Swin Transformer: Hierarchical Vision Transformer using Shifted Windows](https://arxiv.org/abs/2103.14030) | arXiv(2021) | [PyTorch](https://github.com/microsoft/Swin-Transformer)
+| ResT | [ResT: An Efficient Transformer for Visual Recognition](http://arxiv.org/abs/2105.13677) | arXiv(2021) | [PyTorch](https://github.com/wofmanaf/ResT)
+| DS-Net | [Dual-stream Network for Visual Recognition](http://arxiv.org/abs/2105.14734) | arXiv(2021) | [code]
+| TransCNN | [Transformer in Convolutional Neural Networks](http://arxiv.org/abs/2106.03180) | arXiv(2021) | [PyTorch](https://github.com/yun-liu/TransCNN)
+| Shuffle Transformer | [Shuffle Transformer: Rethinking Spatial Shuffle for Vision Transformer](http://arxiv.org/abs/2106.03650) | arXiv(2021) | [PyTorch](https://github.com/speedinghzl/ShuffleTransformer)
 
 ## Salient Object Detection
 | Title | Paper | Conf | Code |
 |:--------|:--------:|:--------:|:--------:|
 | UC-Net | [UC-Net: Uncertainty Inspired RGB-D Saliency Detection via Conditional Variational Autoencoders](https://openaccess.thecvf.com/content_CVPR_2020/papers/Zhang_UC-Net_Uncertainty_Inspired_RGB-D_Saliency_Detection_via_Conditional_Variational_Autoencoders_CVPR_2020_paper.pdf) | CVPR(2020) | [PyTorch](https://github.com/JingZhang617/UCNet)
 | JL-DCF | [JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB-D Salient Object Detection](https://openaccess.thecvf.com/content_CVPR_2020/papers/Fu_JL-DCF_Joint_Learning_and_Densely-Cooperative_Fusion_Framework_for_RGB-D_Salient_CVPR_2020_paper.pdf) | CVPR(2020) | [PyTorch](https://github.com/jiangyao-scu/JL-DCF-pytorch)
-| SA-Gate | [Bi-directional Cross-Modality Feature Propagation with Separation-and-Aggregation Gate for RGB-D Semantic Segmentation](https://arxiv.org/pdf/2007.09183.pdf) | ECCV(2020) | [PyTorch](https://github.com/charlesCXK/RGBD_Semantic_Segmentation_PyTorch)
-| BiANet | [Bilateral Attention Network for RGB-D Salient Object Detection](https://arxiv.org/pdf/2004.14582.pdf) | TIP(2021) | [Code]
+| SA-Gate | [Bi-directional Cross-Modality Feature Propagation with Separation-and-Aggregation Gate for RGB-D Semantic Segmentation](https://arxiv.org/abs/2007.09183) | ECCV(2020) | [PyTorch](https://github.com/charlesCXK/RGBD_Semantic_Segmentation_PyTorch)
+| BiANet | [Bilateral Attention Network for RGB-D Salient Object Detection](https://arxiv.org/abs/2004.14582) | TIP(2021) | [Code]
+| DSA^2F | [Deep RGB-D Saliency Detection with Depth-Sensitive Attention and Automatic Multi-Modal Fusion](http://arxiv.org/abs/2103.11832) | CVPR(2021) | [Code]
 
 ## Unsupervised Learning
 | Title | Paper | Conf | Code |
@@ -265,12 +291,8 @@ tags: [DL, Overview]
 ## Generative Adversarial Network
 | Title | Paper | Conf | Code |
 |:--------|:--------:|:--------:|:--------:|
-| BeautyGAN | [Beautygan: Instance-level facial makeup transfer with deep generative adversarial network](http://colalab.org/media/paper/BeautyGAN-camera-ready.pdf) | ACM(2018) | [TensorFlow](http://liusi-group.com/projects/BeautyGAN)
-
-## Image Generation
-| Title | Paper | Conf | Code |
-|:--------|:--------:|:--------:|:--------:|
-| [ImageTransformer](https://gojay.top/2020/05/15/Image-Transformer/) | [Image Transformer](https://arxiv.org/abs/1802.05751) | arXiv(2018) | [code]
+| GAN | [Generative Adversarial Networks](https://arxiv.org/abs/1406.2661) | arXiv(2014) | [code]
+| BeautyGAN | [BeautyGAN: Instance-level Facial Makeup Transfer with Deep Generative Adversarial Network](http://liusi-group.com/pdf/BeautyGAN-camera-ready_2.pdf) | ACM MM(2018) | [TensorFlow](http://liusi-group.com/projects/BeautyGAN)
 
 ## Optimization
 | Title | Paper | Conf | Code |
@@ -288,3 +310,4 @@ tags: [DL, Overview]
 | 3D-Detection-Survey-2019 | [A Survey on 3D Object Detection Methods for Autonomous Driving Applications](http://wrap.warwick.ac.uk/114314/1/WRAP-survey-3D-object-detection-methods-autonomous-driving-applications-Arnold-2019.pdf) | ITS(2019)
 | [FSL-Survey-2019](https://gojay.top/2020/07/07/FSL-Survey-2019/) | [Generalizing from a Few Examples: A Survey on Few-Shot Learning](https://arxiv.org/abs/1904.05046) | CSUR(2019)
 | MOT-Survey-2020 | [Deep Learning in Video Multi-Object Tracking: A Survey](https://arxiv.org/abs/1907.12740) | Neurocomputing(2020)
+| Transformer-Survey-2021 | [A Survey of Transformers](http://arxiv.org/abs/2106.04554) | arXiv(2021)
