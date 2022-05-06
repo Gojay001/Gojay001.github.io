@@ -107,6 +107,8 @@ tags: [DL, Overview]
     - GFS-Seg(Generalized Few-Shot)
     - SCL(Self-Corss Learning)
     - ASGNet(Adaptive Superpixel-guided Network)
+    - HSNet(Hypercorrelation Squeeze)
+    - BAM
 - [Attention](#Attention-or-Transformer)
     - Transformer
     - Non-local
@@ -155,7 +157,7 @@ tags: [DL, Overview]
 | [GoogLeNet](https://gojay.top/2019/09/05/GoogLeNet/) | [Going deeper with convolutions](https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Szegedy_Going_Deeper_With_2015_CVPR_paper.pdf) | CVPR(2015) | [PyTorch](https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Classification/GoogLeNet/Code)
 | [ResNet](https://gojay.top/2019/09/08/ResNet/) | [Deep Residual Learning for Image Recognition](http://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf) | CVPR(2016) | [PyTorch](https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Classification/ResNet/Code)
 | Inception-v4 | [Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning](https://www.aaai.org/ocs/index.php/AAAI/AAAI17/paper/viewFile/14806/14311) | AAAI(2017) | [code]
-| DenseNet | [Densely Connected Convolutional Networks](http://openaccess.thecvf.com/content_cvpr_2017/papers/Huang_Densely_Connected_Convolutional_CVPR_2017_paper.pdf) | CVPR(2017) | [code]
+| DenseNet | [Densely Connected Convolutional Networks](http://openaccess.thecvf.com/content_cvpr_2017/papers/Huang_Densely_Connected_Convolutional_CVPR_2017_paper.pdf) | CVPR(2017) | [PyTorch](https://github.com/gpleiss/efficient_densenet_pytorch)
 | DLA | [Deep Layer Aggregation](https://openaccess.thecvf.com/content_cvpr_2018/papers/Yu_Deep_Layer_Aggregation_CVPR_2018_paper.pdf) | CVPR(2018) | [PyTorch](https://github.com/ucbdrive/dla)
 | ShuffleNet | [ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices](http://openaccess.thecvf.com/content_cvpr_2018/papers/Zhang_ShuffleNet_An_Extremely_CVPR_2018_paper.pdf) | CVPR(2018) | [code]
 | MobileNetV3 | [Searching for MobileNetV3](http://openaccess.thecvf.com/content_ICCV_2019/papers/Howard_Searching_for_MobileNetV3_ICCV_2019_paper.pdf) | ICCV(2019) | [code]
@@ -194,7 +196,7 @@ tags: [DL, Overview]
 | PointNet | [PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation](https://openaccess.thecvf.com/content_cvpr_2017/papers/Qi_PointNet_Deep_Learning_CVPR_2017_paper.pdf) | CVPR(2017) | [PyTorch](https://github.com/fxia22/pointnet.pytorch)
 | PointNet++ | [PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space](https://proceedings.neurips.cc/paper/2017/file/d8bf84be3800d12f74d8b05e9b89836f-Paper.pdf) | NIPS(2017) | [PyTorch](https://github.com/erikwijmans/Pointnet2_PyTorch)
 | DeepLab V3+ | [Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation](https://openaccess.thecvf.com/content_ECCV_2018/papers/Liang-Chieh_Chen_Encoder-Decoder_with_Atrous_ECCV_2018_paper.pdf) | ECCV(2018) | [PyTorch](https://github.com/yassouali/pytorch_segmentation)
-| DGCNet | [Dual Graph Convolutional Network for Semantic Segmentation](https://arxiv.org/pdf/1909.06121.pdf) | BMVC(2019) | [PyTorch](https://github.com/lxtGH/GALD-DGCNet)
+| DGCNet | [Dual Graph Convolutional Network for Semantic Segmentation](https://arxiv.org/abs/1909.06121) | BMVC(2019) | [PyTorch](https://github.com/lxtGH/GALD-DGCNet)
 | SETR | [Rethinking Semantic Segmentation from a Sequence-to-Sequence Perspective with Transformers](http://arxiv.org/abs/2012.15840) | CVPR(2021) | [PyTorch](https://github.com/fudan-zvg/SETR)
 | Segmenter | [Segmenter: Transformer for Semantic Segmentation](http://arxiv.org/abs/2105.05633) | arXiv(2021) | [PyTorch](https://github.com/rstrudel/segmenter)
 | SegFormer | [SegFormer: Simple and Efficient Design for Semantic Segmentation with Transformers](http://arxiv.org/abs/2105.15203) | arXiv(2021) | [PyTorch](https://github.com/NVlabs/SegFormer)
@@ -249,6 +251,8 @@ tags: [DL, Overview]
 | GFS-Seg | [Generalized Few-Shot Semantic Segmentation](https://arxiv.org/abs/2010.05210) | arXiv(2020) | [code]
 | SCL | [Self-Guided and Cross-Guided Learning for Few-Shot Segmentation](https://arxiv.org/pdf/2103.16129.pdf) | CVPR(2021) | [PyTorch](https://github.com/zbf1991/SCL)
 | ASGNet | [Adaptive Prototype Learning and Allocation for Few-Shot Segmentation](https://arxiv.org/pdf/2104.01893.pdf) | CVPR(2021) | [PyTorch](https://github.com/Reagan1311/ASGNet)
+| HSNet | [Hypercorrelation Squeeze for Few-Shot Segmenation](https://openaccess.thecvf.com/content/ICCV2021/papers/Min_Hypercorrelation_Squeeze_for_Few-Shot_Segmentation_ICCV_2021_paper.pdf) | ICCV(2021) | [PyTorch](https://github.com/juhongm999/hsnet)
+| BAM | [Learning What Not to Segment: A New Perspective on Few-Shot Segmentation](https://arxiv.org/abs/2203.07615) | CVPR(2022) | [PyTorch](https://github.com/chunbolang/BAM)
 > More information can be found in [Few-Shot-Semantic-Segmentation-Papers](https://github.com/xiaomengyc/Few-Shot-Semantic-Segmentation-Papers).
 
 ## Attention or Transformer
