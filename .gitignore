@@ -1,7 +1,13 @@
+# Mac
 .DS_Store
+
 Thumbs.db
 db.json
 *.log
 node_modules/
 public/
 .deploy*/
+
+# hexo
+package-lock.json
+package.json
