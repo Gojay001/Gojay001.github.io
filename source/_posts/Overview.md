@@ -125,6 +125,7 @@ tags: [DL, Overview]
     - RingNet
     - FOCUS
     - MICA
+    - HRN
 - [Attention](#Attention-or-Transformer)
     - Transformer
     - Non-local
@@ -289,6 +290,7 @@ tags: [DL, Overview]
 | RingNet | [Learning to Regress 3D Face Shape and Expression from an Image without 3D Supervision](https://openaccess.thecvf.com/content_CVPR_2019/papers/Sanyal_Learning_to_Regress_3D_Face_Shape_and_Expression_From_an_CVPR_2019_paper.pdf) | CVPR(2019) | [Tensorflow](https://github.com/soubhiksanyal/RingNet)
 | FOCUS | [To fit or not to fit: Model-based Face Reconstruction and Occlusion Segmentation from Weak Supervision](https://arxiv.org/abs/2106.09614) | arXiv(2021) | [PyTorch](https://github.com/unibas-gravis/Occlusion-Robust-MoFA)
 | MICA | [Towards Metrical Reconstruction of Human Faces](https://arxiv.org/abs/2204.06607) | ECCV(2022) | [PyTorch](https://github.com/Zielon/MICA)
+| HRN | [A Hierarchical Representation Network for Accurate and Detailed Face Reconstruction from In-The-Wild Images](https://arxiv.org/abs/2302.14434) | CVPR(2023) | [PyTorch](https://github.com/youngLBW/HRN)
 
 ## Attention or Transformer
 | Title | Paper | Conf | Code |
