@@ -87,6 +87,7 @@ deploy:
     repo: 
       github: git@github.com:Gojay001/Gojay001.github.io.git
       # coding: git@e.coding.net:Gojay001-01/Gojay001.coding.me/Gojay001.coding.me.git
+    branch: master
   - type: baidu_url_submitter
 
 # Sitemap

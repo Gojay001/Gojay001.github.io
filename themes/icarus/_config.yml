@@ -195,7 +195,7 @@ widgets:
         position: right
         # Links to be shown in the links widget
         links:
-            daluzi: 'http://daluzi.top/'
+            # name: 'url'
     #-
        # Widget name
        # type: tag
