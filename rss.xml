@@ -1211,9 +1211,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="动态规划" scheme="https://gojay.top/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
@@ -1279,9 +1279,9 @@
     
       <category term="Offer" scheme="https://gojay.top/tags/Offer/"/>
     
-      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="字符串" scheme="https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="递归" scheme="https://gojay.top/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="DFS" scheme="https://gojay.top/tags/DFS/"/>
     
@@ -1413,9 +1413,9 @@
     
       <category term="DFS" scheme="https://gojay.top/tags/DFS/"/>
     
-      <category term="回溯" scheme="https://gojay.top/tags/%E5%9B%9E%E6%BA%AF/"/>
-    
       <category term="BFS" scheme="https://gojay.top/tags/BFS/"/>
+    
+      <category term="回溯" scheme="https://gojay.top/tags/%E5%9B%9E%E6%BA%AF/"/>
     
   </entry>
   
