@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<meta name="baidu-site-verification" content="y4OgBadCWI">
+<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA">
+<title>Python-Image-API - Gojay&#39;s Records</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="本文主要对 python 常用的几个 图像处理库 进行简单的对比分析，并对常用的函数及其参数进行总结。包括 opencv, pillow, matplotlib, skimage。">
+<meta name="keywords" content="DIP,Image,API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-Image-API">
+<meta property="og:url" content="https://gojay.top/2022/04/01/Python-Image-API/index.html">
+<meta property="og:site_name" content="Gojay&#39;s Records">
+<meta property="og:description" content="本文主要对 python 常用的几个 图像处理库 进行简单的对比分析，并对常用的函数及其参数进行总结。包括 opencv, pillow, matplotlib, skimage。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://gojay.top/gallery/thumbnails/Lenna.png">
+<meta property="og:updated_time" content="2023-06-03T10:28:36.770Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python-Image-API">
+<meta name="twitter:description" content="本文主要对 python 常用的几个 图像处理库 进行简单的对比分析，并对常用的函数及其参数进行总结。包括 opencv, pillow, matplotlib, skimage。">
+<meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/Lenna.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/head.jpg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?f29d95e89a802be01b6ea105a1b4e115";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                Gojay&#39;s Records
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives/">Archives</a>
+                
+                <a class="navbar-item" href="/categories/">Categories</a>
+                
+                <a class="navbar-item" href="/tags/">Tags</a>
+                
+                <a class="navbar-item" href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
+                
+                <a class="navbar-item" href="/about/">About</a>
+                
+                <a class="navbar-item" href="/rss.xml">RSS</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Gojay GitHub" href="https://www.github.com/Gojay001">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail lazy" data-src="/gallery/thumbnails/Lenna.png" alt="Python-Image-API">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>Python-Image-API
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                <time class="level-item has-text-grey" datetime="2022-04-01T08:52:23.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2022-04-01</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2023-06-03T10:28:36.770Z"><i class="far fa-calendar-check">&nbsp;</i>2023-06-03</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/DigitalImageProcessing/">DigitalImageProcessing</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/DigitalImageProcessing/Image-API/">Image API</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    8 minutes read (About 1270 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>本文主要对 python 常用的几个 <code>图像处理库</code> 进行简单的对比分析，并对常用的函数及其参数进行总结。包括 <code>opencv, pillow, matplotlib, skimage</code>。</p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h1><hr>
+<ul>
+<li><strong><a href="#opencv">opencv</a></strong></li>
+<li><strong><a href="#pillow">pillow</a></strong></li>
+<li><strong><a href="#matplotlib">matplotlib</a></strong></li>
+<li><strong><a href="#skimage">skimage</a></strong></li>
+<li><strong><a href="#convert">convert</a></strong></li>
+<li><strong><a href="#conclusion">conclusion</a></strong></li>
+<li><strong><a href="#reference">reference</a></strong></li>
+</ul>
+<h1 id="opencv"><a href="#opencv" class="headerlink" title="opencv"></a>opencv</h1><hr>
+<p>OpenCV (Open Source Computer Vision Library) 通道顺序为 <code>BGR</code>，可以转换为 RGB：<code>img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)</code> ;<br><code>img</code>: numpy.ndarray；<code>img.shape</code>: (H,W,C)；<code>img.size</code>: 图像的像素点数；<code>img.dtype</code>: 图像的数据类型(uint8)。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell hljs"><table><tr><td class="code"><pre><span class="line">pip install opencv-python</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Basic read and show</span></span><br><span class="line">img = cv2.imread(filename[, flags])  <span class="hljs-comment"># [H,W,C] [0-255] uint8 [BGR]</span></span><br><span class="line">img = cv2.resize(src, dsize[, dst[, fx[, fy[, interpolation]]]])  <span class="hljs-comment"># [W,H]</span></span><br><span class="line">img = cv2.cvtColor(src, code[, dst[, dstCn]])  <span class="hljs-comment"># img[:, :, ::-1]</span></span><br><span class="line">cv2.imshow(winname, mat)  <span class="hljs-comment"># [0-255] [H,W] or [H,W,C] [BGR]</span></span><br><span class="line">cv2.imwrite(filename, img[, params])</span><br><span class="line">cv2.waitKey()</span><br><span class="line">cv2.destroyAllWindows()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Channel split and merge</span></span><br><span class="line">b,g,r = cv2.split(img)</span><br><span class="line">merge_img = cv2.merge((b,g,r))</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># RoI</span></span><br><span class="line">roi = img[<span class="hljs-number">100</span>:<span class="hljs-number">300</span>, <span class="hljs-number">30</span>:<span class="hljs-number">350</span>, :]</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Rotate</span></span><br><span class="line">matrix = cv2.getRotationMatrix2D((w / <span class="hljs-number">2</span>, h / <span class="hljs-number">2</span>), <span class="hljs-number">45</span>, <span class="hljs-number">1</span>) <span class="hljs-comment"># (center point, angle, size)</span></span><br><span class="line">image = cv2.warpAffine(image, matrix, (w, h), flags=cv2.INTER_LINEAR, </span><br><span class="line">                       borderMode=cv2.BORDER_CONSTANT, borderValue=[<span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>])</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Flip</span></span><br><span class="line">image = cv2.flip(src, flipCode[, dst])  <span class="hljs-comment"># 1:horizontally, 0:vertically, -1:h&amp;v</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Bulr</span></span><br><span class="line">median_Blur = cv2.medianBlur(noise_img, <span class="hljs-number">3</span>)</span><br><span class="line">mean_Blur = cv2.blur(noise_img, (<span class="hljs-number">3</span>, <span class="hljs-number">3</span>))</span><br><span class="line">gaussian_Blur = cv2.GaussianBlur(noise_img, (<span class="hljs-number">3</span>, <span class="hljs-number">3</span>), <span class="hljs-number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Crop padding</span></span><br><span class="line">cv2.copyMakeBorder(src, top, bottom, left, right, borderType=cv2.BORDER_CONSTANT, value=[<span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>])</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># HistEqualize</span></span><br><span class="line">dst = cv2.equalizeHist(img)</span><br><span class="line">plt.hist(dst.ravel(), <span class="hljs-number">256</span>, [<span class="hljs-number">0</span>, <span class="hljs-number">256</span>], color=<span class="hljs-string">'r'</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># bite ops</span></span><br><span class="line">dst=cv2.bitwise_and(src1, src2[, dst[, mask]])</span><br><span class="line">dst=cv2.bitwise_not(src[, dst[, mask]])</span><br></pre></td></tr></table></figure>
+
+<h1 id="pillow"><a href="#pillow" class="headerlink" title="pillow"></a>pillow</h1><hr>
+<p>PIL(Python Imaging Library) 通道顺序为 <code>RGB</code>，PIL 读取图片获得的不是矩阵，而是 <code>Image</code> 格式，可以利用 numpy 进行转化。<br><code>img.format</code>: 图像格式；<code>img.mode</code>: 图像类型(L, RGB, RGBA)；<code>img.size</code>: (W, H)。</p>
+<h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell hljs"><table><tr><td class="code"><pre><span class="line">pip install pillow</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h2><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image</span><br><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Basic read and show</span></span><br><span class="line">img = Image.open(fp, mode=<span class="hljs-string">'r'</span>, formats=<span class="hljs-literal">None</span>)</span><br><span class="line">print(type(img), img.size, img.mode, img.format)  <span class="hljs-comment"># Image [W,H] [RGB] PNG</span></span><br><span class="line">img = img.convert(mode=<span class="hljs-literal">None</span>, matrix=<span class="hljs-literal">None</span>, dither=<span class="hljs-literal">None</span>, palette=Palette.WEB, colors=<span class="hljs-number">256</span>)  <span class="hljs-comment"># '1', 'L', 'RGB'</span></span><br><span class="line">img = img.resize(size, resample=<span class="hljs-literal">None</span>, box=<span class="hljs-literal">None</span>, reducing_gap=<span class="hljs-literal">None</span>)  <span class="hljs-comment"># [W,H]</span></span><br><span class="line">img.show(title=<span class="hljs-literal">None</span>)  <span class="hljs-comment"># Image [W,H] [RGB]</span></span><br><span class="line">img_arr = np.array(img)  <span class="hljs-comment"># [H,W,C] [0-255] uint8 [RGB]</span></span><br><span class="line">img = Image.fromarray(img_arr)  <span class="hljs-comment"># Image [W,H]</span></span><br><span class="line">img.save(fp, format=<span class="hljs-literal">None</span>, **params)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Channel split and merge</span></span><br><span class="line">r,g,b = img.split()</span><br><span class="line">img = Image.merge(<span class="hljs-string">'RGB'</span>, (r,g,b))</span><br><span class="line"><span class="hljs-comment"># RoI</span></span><br><span class="line">roi = img.crop(box=<span class="hljs-literal">None</span>)  <span class="hljs-comment"># box=(left, upper, right, lower)</span></span><br><span class="line"><span class="hljs-comment"># Rotate</span></span><br><span class="line">img = img.rotate(angle, resample=Resampling.NEAREST, expand=<span class="hljs-number">0</span>, </span><br><span class="line">    	     center=<span class="hljs-literal">None</span>, translate=<span class="hljs-literal">None</span>, fillcolor=<span class="hljs-literal">None</span>)</span><br><span class="line"><span class="hljs-comment"># Flip</span></span><br><span class="line">img = img.transpose(Image.FLIP_TOP_BOTTOM)  <span class="hljs-comment"># Vertically</span></span><br><span class="line">img = img.transpose(Image.FLIP_LEFT_RIGHT)  <span class="hljs-comment"># Horizontally</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Filter</span></span><br><span class="line"><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> ImageFilter</span><br><span class="line">img_blur = img.filter(ImageFilter.BLUR)</span><br><span class="line">img_contour = img.filter(ImageFilter.CONTOUR)</span><br><span class="line">img_detail = img.filter(ImageFilter.DETAIL)</span><br><span class="line">img_edge_enhance = img.filter(ImageFilter.EDGE_ENHANCE)</span><br><span class="line">img_sharp = img.filter(ImageFilter.SHARPEN)</span><br><span class="line">img_gauss = img.filter(ImageFilter.GaussianBlur(radius=<span class="hljs-number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Enhance</span></span><br><span class="line"><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> ImageEnhance</span><br><span class="line">img_bright = ImageEnhance.Brightness(img)</span><br><span class="line">brightness = <span class="hljs-number">3</span></span><br><span class="line">image_brighted = img_bright.enhance(brightness)</span><br><span class="line"></span><br><span class="line">img_color = ImageEnhance.Color(img)</span><br><span class="line">color = <span class="hljs-number">2</span></span><br><span class="line">image_colored = img_color.enhance(color)</span><br><span class="line"></span><br><span class="line">img_contrast = ImageEnhance.Contrast(img)</span><br><span class="line">contrast = <span class="hljs-number">3</span></span><br><span class="line">image_contrasted = img_contrast.enhance(contrast)</span><br><span class="line"></span><br><span class="line">img_sharp = ImageEnhance.Sharpness(img)</span><br><span class="line">sharpness = <span class="hljs-number">2</span></span><br><span class="line">image_sharped = img_sharp.enhance(sharpness)</span><br></pre></td></tr></table></figure>
+
+<h1 id="matplotlib"><a href="#matplotlib" class="headerlink" title="matplotlib"></a>matplotlib</h1><hr>
+<p>matplotlib 通道顺序为 <code>RGB</code>，<code>img</code>: numpy.ndarray；主要用于描绘 <code>结果曲线</code> 或 <code>多图显示</code>，图像处理操作大多仍采取 opencv 实现；</p>
+<h2 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell hljs"><table><tr><td class="code"><pre><span class="line">pip install matplotlib</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-2"><a href="#使用-2" class="headerlink" title="使用"></a>使用</h2><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Basic read and show</span></span><br><span class="line">img  = plt.imread(fname, format=<span class="hljs-literal">None</span>)  <span class="hljs-comment"># [0-255] uint8 [RGB] [HWC]</span></span><br><span class="line">plt.imshow(X, cmap=<span class="hljs-literal">None</span>, *args, **kwargs)  <span class="hljs-comment"># XLarray-like or PIL image</span></span><br><span class="line">plt.axis(<span class="hljs-string">'off'</span>)</span><br><span class="line">plt.show()</span><br><span class="line">plt.savefig(fname, *args, **kwargs)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Channel split</span></span><br><span class="line">(r, g, b) = [img[:,:,i] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>)]</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Figures plot</span></span><br><span class="line">plt.plot([x], y, [fmt], *, data=<span class="hljs-literal">None</span>, **kwargs)</span><br><span class="line">plt.plot([x], y, [fmt], [x2], y2, [fmt2], ..., **kwargs)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Result list to img [e.g.]</span></span><br><span class="line">fig = plt.figure()</span><br><span class="line">plt.xlabel(<span class="hljs-string">'Epoch'</span>)</span><br><span class="line">plt.ylabel(<span class="hljs-string">'Loss'</span>)</span><br><span class="line">plt.plot(range(<span class="hljs-number">0</span>, epoch + <span class="hljs-number">1</span>), train_loss, <span class="hljs-string">'ob--'</span>, label=<span class="hljs-string">'train loss'</span>)</span><br><span class="line">plt.plot(range(<span class="hljs-number">0</span>, epoch + <span class="hljs-number">1</span>), val_loss, <span class="hljs-string">'or-'</span>, label=<span class="hljs-string">'val loss'</span>)</span><br><span class="line">plt.legend()</span><br><span class="line"><span class="hljs-comment"># plt.show()</span></span><br><span class="line">plt.savefig(fig_name)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Multiple figures [e.g.]</span></span><br><span class="line"><span class="hljs-keyword">from</span> skimage <span class="hljs-keyword">import</span> data</span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line">img=data.astronaut()  <span class="hljs-comment"># [0-255] [W,H,C] uint8</span></span><br><span class="line">plt.figure(num=<span class="hljs-string">'astronaut'</span>,figsize=(<span class="hljs-number">8</span>,<span class="hljs-number">8</span>))  <span class="hljs-comment"># Create a new figure.</span></span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>)  <span class="hljs-comment"># plot 2x2=4 figures, and specify 1st figure.</span></span><br><span class="line">plt.title(<span class="hljs-string">'origin image'</span>)</span><br><span class="line">plt.imshow(img)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>)</span><br><span class="line">plt.title(<span class="hljs-string">'R channel'</span>)</span><br><span class="line">plt.imshow(img[:,:,<span class="hljs-number">0</span>], plt.cm.gray)</span><br><span class="line">plt.axis(<span class="hljs-string">'off'</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)</span><br><span class="line">plt.title(<span class="hljs-string">'G channel'</span>)</span><br><span class="line">plt.imshow(img[:,:,<span class="hljs-number">1</span>], plt.cm.gray)</span><br><span class="line">plt.axis(<span class="hljs-string">'off'</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>)</span><br><span class="line">plt.title(<span class="hljs-string">'B channel'</span>)</span><br><span class="line">plt.imshow(img[:,:,<span class="hljs-number">2</span>], plt.cm.gray)</span><br><span class="line">plt.axis(<span class="hljs-string">'off'</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<h1 id="skimage"><a href="#skimage" class="headerlink" title="skimage"></a>skimage</h1><hr>
+<p>skimage(scikit-image) 通道顺序为 <code>RGB</code>，<code>img</code>: numpy.ndarray；</p>
+<h2 id="安装-3"><a href="#安装-3" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell hljs"><table><tr><td class="code"><pre><span class="line">pip install scikit-image</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-3"><a href="#使用-3" class="headerlink" title="使用"></a>使用</h2><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> skimage <span class="hljs-keyword">import</span> io</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Basic read and show</span></span><br><span class="line">img = io.imread(fname, as_gray=<span class="hljs-literal">False</span>, plugin=<span class="hljs-literal">None</span>, **plugin_args)  <span class="hljs-comment"># [0-255] uint8 [RGB] [HWC]</span></span><br><span class="line">img = color.rgb2grey(img)</span><br><span class="line">io.imshow(img)</span><br><span class="line">io.show() </span><br><span class="line">io.imsave(fname, arr, plugin=<span class="hljs-literal">None</span>, check_contrast=<span class="hljs-literal">True</span>, **plugin_args)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">from</span> skimage <span class="hljs-keyword">import</span> transform</span><br><span class="line"><span class="hljs-comment"># Resize</span></span><br><span class="line">img_resize = transform.resize(img, (H,W))</span><br><span class="line"><span class="hljs-comment"># Rescale</span></span><br><span class="line">img_r1 = transform.rescale(img, <span class="hljs-number">0.1</span>)</span><br><span class="line">img_r2 = transform.rescale(img, [<span class="hljs-number">0.5</span>,<span class="hljs-number">0.2</span>])</span><br><span class="line"><span class="hljs-comment"># Rotate</span></span><br><span class="line">img_90 = transform.rotate(img, <span class="hljs-number">90</span>)</span><br><span class="line">img_30 = transform.rotate(img, <span class="hljs-number">30</span>, resize=<span class="hljs-literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Filter</span></span><br><span class="line"><span class="hljs-keyword">from</span> skimage <span class="hljs-keyword">import</span> filters, feature, disk</span><br><span class="line">edges = filters.sobel(img)</span><br><span class="line">edges = filters.roberts(img)</span><br><span class="line">edges1 = feature.canny(img)  <span class="hljs-comment"># sigma=1</span></span><br><span class="line">edges2 = feature.canny(img, sigma=<span class="hljs-number">3</span>)</span><br><span class="line">filt_real, filt_fake = fileters.gabor_filter(img, frequency=<span class="hljs-number">0.4</span>)</span><br><span class="line">edges = filters.gaussian(img, sigma=<span class="hljs-number">0.4</span>)</span><br><span class="line">edges = filters.median(img, disk(<span class="hljs-number">5</span>))</span><br></pre></td></tr></table></figure>
+
+<h1 id="convert"><a href="#convert" class="headerlink" title="convert"></a>convert</h1><hr>
+<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># opencv -&gt; pil</span></span><br><span class="line">img_pil = Image.fromarray(cv2.cvtColor(img_cv, cv2.COLOR_BGR2RGB))</span><br><span class="line"><span class="hljs-comment"># pil -&gt; opencv</span></span><br><span class="line">img_cv = cv2.cvtColor(np.array(img_pil), cv2.COLOR_RGB2BGR)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># skimage -&gt; pil</span></span><br><span class="line">img_pil = Image.fromarray(img_skimage)</span><br><span class="line"><span class="hljs-comment"># pil -&gt; skimage</span></span><br><span class="line">img_sk = np.array(img_skimage)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># opencv -&gt; skimage</span></span><br><span class="line">img_skimage = cv2.cvtColor(img_cv, cv2.COLOR_BGR2RGB)</span><br><span class="line"><span class="hljs-comment"># skimage -&gt; opencv</span></span><br><span class="line">img_cv = cv2.cvtColor(img_skimage, cv2.COLOR_RBG2BGR)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Transpose</span></span><br><span class="line">img = img.transpose(<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>)  <span class="hljs-comment"># [H,W,C] to [C,H,W]</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h1><hr>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="center">Type</th>
+<th align="center">Shape / Size</th>
+<th align="center">Channel</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">opencv</td>
+<td align="center">numpy.ndarray</td>
+<td align="center">Shape: [H,W,C]</td>
+<td align="center">BGR</td>
+</tr>
+<tr>
+<td align="left">pillow</td>
+<td align="center">PIL.Image</td>
+<td align="center">Size: [W,H]</td>
+<td align="center">RGB</td>
+</tr>
+<tr>
+<td align="left">matplotlib</td>
+<td align="center">numpy.ndarray</td>
+<td align="center">Shape: [H,W,C]</td>
+<td align="center">RGB</td>
+</tr>
+<tr>
+<td align="left">skimage</td>
+<td align="center">numpy.ndarray</td>
+<td align="center">Shape: [H,W,C]</td>
+<td align="center">RGB</td>
+</tr>
+</tbody></table>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><hr>
+<blockquote>
+<p>[1] <a href="https://blog.csdn.net/qq_36941368/article/details/82998296?spm=1001.2101.3001.6650.8&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-8.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-8.pc_relevant_default&utm_relevant_index=13" target="_blank" rel="noopener">Python的图像库（Opencv、PIL、matplotlib、skimage）的使用</a>.<br>[2] <a href="https://blog.csdn.net/weixin_38208912/article/details/90297267" target="_blank" rel="noopener">torchvision 的 transforms 与 python 的图像接口opencv、skimage和PIL 相关总结</a>.<br>[3] <a href="https://docs.opencv.org/3.4/index.html" target="_blank" rel="noopener">opencv-3.4</a>.<br>[4] <a href="https://pillow.readthedocs.io/en/stable/index.html" target="_blank" rel="noopener">pillow-stable</a>.<br>[5] <a href="https://matplotlib.org/stable/api/" target="_blank" rel="noopener">matplotlib-stable</a>.<br>[6] <a href="https://scikit-image.org/docs/stable/" target="_blank" rel="noopener">scikit-image-stable</a>.</p>
+</blockquote>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>Title：</strong><a href="https://gojay.top/2022/04/01/Python-Image-API/">Python-Image-API</a></li>
+            <li><strong>Author：</strong><a href="https://gojay.top">Gojay</a></li>
+            <li><strong>Link：</strong><a href="https://gojay.top/2022/04/01/Python-Image-API/">https://gojay.top/2022/04/01/Python-Image-API/</a></li>
+            <li><strong>Date：</strong>2022-04-01</li>
+            <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/API/">API</a>,&nbsp;<a class="has-link-grey -link" href="/tags/DIP/">DIP</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Image/">Image</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/12/15/剑指Offer-49-丑数/">
+                <span class="level-item">剑指Offer-49-丑数</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: '6kgdHh2dtxHKbi9fwyPjsA7t-gzGzoHsz',
+        app_key: 'N4XHHmLsjyHwx2ENVEGEn9Br',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu" style="max-height: 800px; overflow: auto;">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Contents">
+        <span class="has-mr-6">1</span>
+        <span>Contents</span>
+        </a></li><li>
+        <a class="is-flex" href="#opencv">
+        <span class="has-mr-6">2</span>
+        <span>opencv</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#安装">
+        <span class="has-mr-6">2.1</span>
+        <span>安装</span>
+        </a></li><li>
+        <a class="is-flex" href="#使用">
+        <span class="has-mr-6">2.2</span>
+        <span>使用</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#pillow">
+        <span class="has-mr-6">3</span>
+        <span>pillow</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#安装-1">
+        <span class="has-mr-6">3.1</span>
+        <span>安装</span>
+        </a></li><li>
+        <a class="is-flex" href="#使用-1">
+        <span class="has-mr-6">3.2</span>
+        <span>使用</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#matplotlib">
+        <span class="has-mr-6">4</span>
+        <span>matplotlib</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#安装-2">
+        <span class="has-mr-6">4.1</span>
+        <span>安装</span>
+        </a></li><li>
+        <a class="is-flex" href="#使用-2">
+        <span class="has-mr-6">4.2</span>
+        <span>使用</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#skimage">
+        <span class="has-mr-6">5</span>
+        <span>skimage</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#安装-3">
+        <span class="has-mr-6">5.1</span>
+        <span>安装</span>
+        </a></li><li>
+        <a class="is-flex" href="#使用-3">
+        <span class="has-mr-6">5.2</span>
+        <span>使用</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#convert">
+        <span class="has-mr-6">6</span>
+        <span>convert</span>
+        </a></li><li>
+        <a class="is-flex" href="#conclusion">
+        <span class="has-mr-6">7</span>
+        <span>conclusion</span>
+        </a></li><li>
+        <a class="is-flex" href="#reference">
+        <span class="has-mr-6">8</span>
+        <span>reference</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    Gojay&#39;s Records
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2023 Gojay&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                <span id="busuanzi_value_site_pv">0</span> visits
+                </span>
+                
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">1</span> users
+                </span>
+                
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Gojay GitHub" href="https://www.github.com/Gojay001">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.0.0/dist/lazyload.min.js"></script>
+<script>
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy",
+    load_delay: 300,
+});
+</script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
