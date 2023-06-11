@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<meta name="baidu-site-verification" content="y4OgBadCWI">
+<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA">
+<title>Python-random汇总 - Gojay&#39;s Records</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="本文主要对 python 常用的几个 random 模块 进行简单的对比分析，并对常用的函数及其参数进行总结。包括 python-random, numpy-random, pytorch-random。">
+<meta name="keywords" content="python,numpy,pytorch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-random汇总">
+<meta property="og:url" content="https://gojay.top/2023/06/11/Python-random汇总/index.html">
+<meta property="og:site_name" content="Gojay&#39;s Records">
+<meta property="og:description" content="本文主要对 python 常用的几个 random 模块 进行简单的对比分析，并对常用的函数及其参数进行总结。包括 python-random, numpy-random, pytorch-random。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://gojay.top/gallery/thumbnails/random.png">
+<meta property="og:updated_time" content="2023-06-11T07:58:20.918Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python-random汇总">
+<meta name="twitter:description" content="本文主要对 python 常用的几个 random 模块 进行简单的对比分析，并对常用的函数及其参数进行总结。包括 python-random, numpy-random, pytorch-random。">
+<meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/random.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/head.jpg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?f29d95e89a802be01b6ea105a1b4e115";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                Gojay&#39;s Records
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives/">Archives</a>
+                
+                <a class="navbar-item" href="/categories/">Categories</a>
+                
+                <a class="navbar-item" href="/tags/">Tags</a>
+                
+                <a class="navbar-item" href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
+                
+                <a class="navbar-item" href="/about/">About</a>
+                
+                <a class="navbar-item" href="/rss.xml">RSS</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Gojay GitHub" href="https://www.github.com/Gojay001">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail lazy" data-src="/gallery/thumbnails/random.png" alt="Python-random汇总">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>Python-random汇总
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                <time class="level-item has-text-grey" datetime="2023-06-11T07:12:32.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2023-06-11</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2023-06-11T07:58:20.918Z"><i class="far fa-calendar-check">&nbsp;</i>2023-06-11</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/DigitalImageProcessing/">DigitalImageProcessing</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/DigitalImageProcessing/Python-API/">Python API</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    12 minutes read (About 1739 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>本文主要对 python 常用的几个 <code>random 模块</code> 进行简单的对比分析，并对常用的函数及其参数进行总结。包括 <code>python-random, numpy-random, pytorch-random</code>。</p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h1><hr>
+<ul>
+<li><strong><a href="#随机数及随机种子">随机数及随机种子</a></strong></li>
+<li><strong><a href="#不同库中random模块">不同库中 random 模块</a></strong></li>
+<li><strong><a href="#random模块常用函数">random模块常用函数</a></strong></li>
+<li><strong><a href="#reference">reference</a></strong></li>
+</ul>
+<h1 id="随机数及随机种子"><a href="#随机数及随机种子" class="headerlink" title="随机数及随机种子"></a>随机数及随机种子</h1><hr>
+<ul>
+<li>真随机数</li>
+</ul>
+<p>真随机数需要自然界中真实的随机物理现象才能产生，而对于计算机来说生成这种随机数是很难办到的；</p>
+<ul>
+<li>伪随机数</li>
+</ul>
+<p>伪随机数是通过一个初始化的值，来计算来产生一个随机序列；<br>如果初始值是不变的，那么多次从该种子产生的随机序列也是相同的。<br>通过设置相同初始值，在程序每次运行时就能生成相同的随机序列，从而复现程序结果。<br>这个 <code>初始值</code> 就称为 <code>随机种子</code>。</p>
+<h1 id="不同库中random模块"><a href="#不同库中random模块" class="headerlink" title="不同库中random模块"></a>不同库中random模块</h1><hr>
+<h2 id="程序中随机数"><a href="#程序中随机数" class="headerlink" title="程序中随机数"></a>程序中随机数</h2><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> random</span><br><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"><span class="hljs-keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># set seed</span></span><br><span class="line">seed = <span class="hljs-number">12345</span></span><br><span class="line">random.seed(seed)</span><br><span class="line">np.random.seed(seed)</span><br><span class="line">torch.manual_seed(seed)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># generate random number</span></span><br><span class="line">n_random = random.random()</span><br><span class="line">n_np_random = np.random.rand(<span class="hljs-number">1</span>)</span><br><span class="line">n_torch_ranfom = torch.rand(<span class="hljs-number">1</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="hljs-string">f'random: <span class="hljs-subst">&#123;n_random&#125;</span>, np: <span class="hljs-subst">&#123;n_np_random&#125;</span>, torch: <span class="hljs-subst">&#123;n_torch_ranfom&#125;</span>'</span>)</span><br><span class="line"><span class="hljs-comment"># random: 0.41661987254534116, np: [0.92961609], torch: tensor([0.9817])</span></span><br></pre></td></tr></table></figure>
+
+<p>此时，每次程序运行结果将会是上述值；<br>当 ramdom/numpy/torch 版本不同时，生成的随机数可能会与上述值不同；</p>
+<h2 id="seed-作用范围"><a href="#seed-作用范围" class="headerlink" title="seed 作用范围"></a>seed 作用范围</h2><ul>
+<li>当程序中产生多个随机数时，随机数将会改变；【在 for 循环中常见】</li>
+</ul>
+<p>以 numpy 举例，python, torch 中 random 模块同理：</p>
+<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">seed = <span class="hljs-number">12345</span></span><br><span class="line">np.random.seed(seed)</span><br><span class="line">n_np_random_1 = np.random.rand(<span class="hljs-number">2</span>)</span><br><span class="line">n_np_random_2 = np.random.rand(<span class="hljs-number">2</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="hljs-string">f'first: <span class="hljs-subst">&#123;n_np_random_1&#125;</span>, second: <span class="hljs-subst">&#123;n_np_random_2&#125;</span>'</span>)</span><br><span class="line"><span class="hljs-comment"># first: [0.92961609 0.31637555], second: [0.18391881 0.20456028]</span></span><br></pre></td></tr></table></figure>
+
+<p>因为第二次生成随机数，已经不是在之前设置的np.random.seed(seed)下了；</p>
+<ul>
+<li>如果想<code>生成多个相同的随机数</code>，则需要再次设置相同的 seed：</li>
+</ul>
+<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">seed = <span class="hljs-number">12345</span></span><br><span class="line">np.random.seed(seed)</span><br><span class="line">n_np_random_1 = np.random.rand(<span class="hljs-number">2</span>)</span><br><span class="line">np.random.seed(seed)</span><br><span class="line">n_np_random_2 = np.random.rand(<span class="hljs-number">2</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="hljs-string">f'first: <span class="hljs-subst">&#123;n_np_random_1&#125;</span>, second: <span class="hljs-subst">&#123;n_np_random_2&#125;</span>'</span>)</span><br><span class="line"><span class="hljs-comment"># first: [0.92961609 0.31637555], second: [0.92961609 0.31637555]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>此外，只设置一次 seed，虽然在程序中会生成了多个不同的随机数，但是在每次运行的结果将会保持一致；</li>
+</ul>
+<p>即，每次运行程序都将会得到 # first: [0.92961609 0.31637555], second: [0.18391881 0.20456028]；</p>
+<h2 id="不同库的-seed-相互隔离"><a href="#不同库的-seed-相互隔离" class="headerlink" title="不同库的 seed 相互隔离"></a>不同库的 seed 相互隔离</h2><p><strong>np.random.seed</strong>, <strong>torch.manual_seed</strong> 使用 <code>MT19937</code> 来生成随机数；</p>
+<blockquote>
+<p>MT 是因为这个伪随机数产生器基于 Mersenne Twister 算法。<br>19937 是因为产生随的机数的周期长，可达到 $2^{19937-1}$。</p>
+</blockquote>
+<p>np.random.seed 只影响 NumPy 的随机过程，torch.manual_seed 也只影响 PyTorch 的随机过程。</p>
+<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">np.random.seed(<span class="hljs-number">12345</span>)</span><br><span class="line"></span><br><span class="line">print(np.random.rand(<span class="hljs-number">1</span>)) <span class="hljs-comment"># always output [0.92961609]</span></span><br><span class="line">print(torch.rand(<span class="hljs-number">1</span>))  <span class="hljs-comment"># different in each running time</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">torch.manual_seed(<span class="hljs-number">12345</span>)</span><br><span class="line"></span><br><span class="line">print(np.random.rand(<span class="hljs-number">1</span>)) <span class="hljs-comment"># different in each running time</span></span><br><span class="line">print(torch.rand(<span class="hljs-number">1</span>))  <span class="hljs-comment"># always output tensor([0.9817])</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="CUDA-随机数"><a href="#CUDA-随机数" class="headerlink" title="CUDA 随机数"></a>CUDA 随机数</h2><p><code>torch.cuda.manual_seed_all</code>: 设置显卡的随机种子。<br>同样只影响 CUDA 的随机过程，与 NumPy 和 PyTorch 相互隔离。<br>在 PyTorch 的内部，使用 <code>CUDA Runtime API</code> 提供的 <code>curand</code> 来设置随机种子。</p>
+<ul>
+<li><code>torch.manual_seed</code> 是对所有的设备设置随机种子：</li>
+</ul>
+<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> torch</span><br><span class="line">torch.cuda.manual_seed_all(<span class="hljs-number">12345</span>)</span><br><span class="line"></span><br><span class="line">print(torch.rand(<span class="hljs-number">1</span>))  <span class="hljs-comment"># different in each running time</span></span><br><span class="line">print(torch.rand(<span class="hljs-number">1</span>, device=<span class="hljs-string">"cuda:0"</span>))  <span class="hljs-comment"># always output tensor([0.8202], device='cuda:0')</span></span><br><span class="line">print(torch.rand(<span class="hljs-number">1</span>, device=<span class="hljs-string">"cuda:1"</span>))  <span class="hljs-comment"># always output tensor([0.8202], device='cuda:1')</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果希望在不同的 GPU 设备上可以<code>生成不同的随机数</code>：</li>
+</ul>
+<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">seed = <span class="hljs-number">12345</span></span><br><span class="line">torch.manual_seed(seed)</span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(torch.cuda.device_count()):</span><br><span class="line">    torch.cuda.set_device(i)</span><br><span class="line">    torch.cuda.manual_seed_all(seed + i)</span><br><span class="line"></span><br><span class="line">print(torch.rand(<span class="hljs-number">1</span>))  <span class="hljs-comment"># always output tensor([0.0819])</span></span><br><span class="line">print(torch.rand(<span class="hljs-number">1</span>, device=<span class="hljs-string">"cuda:0"</span>))  <span class="hljs-comment"># always output tensor([0.8202], device='cuda:0')</span></span><br><span class="line">print(torch.rand(<span class="hljs-number">1</span>, device=<span class="hljs-string">"cuda:1"</span>))  <span class="hljs-comment"># always output tensor([0.9036], device='cuda:1')</span></span><br></pre></td></tr></table></figure>
+
+<p>此时，既保证了随机性（不同设备产生不同的随机数），也保证了确定性（多次调用产生相同结果）。</p>
+<ul>
+<li>用 GPU 训练的实验结果，<code>在 CPU 上复现</code>：</li>
+</ul>
+<p>CPU 设置随机种子是用 PyTorch 官方实现的 <code>MT19937</code>，而 GPU 是用到了 CUDA Runtime API 的 <code>curand</code>。因此两套实现是完全不同的，那么对于相同的随机种子，理应产生不同的随机序列，用下面的代码可以验证：</p>
+<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">torch.manual_seed(<span class="hljs-number">12345</span>)</span><br><span class="line">print(torch.rand(<span class="hljs-number">1</span>))  <span class="hljs-comment"># always output tensor([0.9817])</span></span><br><span class="line"></span><br><span class="line">torch.manual_seed(<span class="hljs-number">12345</span>)</span><br><span class="line">print(torch.rand(<span class="hljs-number">1</span>, device=<span class="hljs-string">"cuda:0"</span>))  <span class="hljs-comment"># always output tensor([0.8202], device='cuda:0')</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>只要不直接在 GPU 上创建随机变量，就可以避免这个问题</strong>。<br>即，在 CPU 上创建 Tensor，再切换到 GPU 上：</p>
+<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">torch.manual_seed(<span class="hljs-number">12345</span>)</span><br><span class="line">print(torch.rand(<span class="hljs-number">1</span>))  <span class="hljs-comment"># always output tensor([0.9817])</span></span><br><span class="line"></span><br><span class="line">torch.manual_seed(<span class="hljs-number">12345</span>)</span><br><span class="line">print(torch.rand(<span class="hljs-number">1</span>).to(<span class="hljs-string">"cuda:0"</span>))  <span class="hljs-comment"># always output tensor tensor([0.9817], device='cuda:0')</span></span><br></pre></td></tr></table></figure>
+
+<p>此时，GPU 和 CPU 的输出保持一致。</p>
+<h1 id="random-模块常用函数"><a href="#random-模块常用函数" class="headerlink" title="random 模块常用函数"></a>random 模块常用函数</h1><hr>
+<h2 id="python-random"><a href="#python-random" class="headerlink" title="python - random"></a>python - random</h2><p>python 中 random 模块主要用于生成<code>一个随机元素或一个随机列表</code>。<br>详细函数见官方文档（3.11.4）：<a href="https://docs.python.org/zh-cn/3/library/random.html" target="_blank" rel="noopener">https://docs.python.org/zh-cn/3/library/random.html</a></p>
+<table>
+<thead>
+<tr>
+<th>Methods</th>
+<th>Descriptions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>random.random()</td>
+<td>返回一个 [0, 1) 的浮点数</td>
+</tr>
+<tr>
+<td>random.uniform(a, b)</td>
+<td>返回一个 [a, b] 的浮点数</td>
+</tr>
+<tr>
+<td>random.randrange(start, stop[, step])</td>
+<td>返回一个整数 from range(start, stop, step)</td>
+</tr>
+<tr>
+<td>random.randint(a, b)</td>
+<td>返回一个 [a, b] 的整数</td>
+</tr>
+<tr>
+<td>random.choice(seq)</td>
+<td>返回一个随机元素 from sequence</td>
+</tr>
+<tr>
+<td>random.choices(population, *, …, k=1)</td>
+<td>返回大小为 k 的元素列表，从 population 中有放回抽样</td>
+</tr>
+<tr>
+<td>random.sample(population, k, *, …)</td>
+<td>返回大小为 k 的元素列表，从 population 中不放回抽样</td>
+</tr>
+<tr>
+<td>random.shuffle(x)</td>
+<td>就地将序列 x 随机打乱位置</td>
+</tr>
+</tbody></table>
+<h2 id="numpy-random"><a href="#numpy-random" class="headerlink" title="numpy - random"></a>numpy - random</h2><p>numpy 中 random 模块主要用于生成<code>指定形状（大小或维度）的 np.ndarray</code>。<br>详细函数见官方文档（1.24）：<a href="https://numpy.org/doc/stable/reference/random/index.html" target="_blank" rel="noopener">https://numpy.org/doc/stable/reference/random/index.html</a><br>【size 可以取 int, tuple, list】</p>
+<table>
+<thead>
+<tr>
+<th>Methods</th>
+<th>Descriptions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>np.random.random([size])</td>
+<td>返回指定 size 的 [0, 1) np.ndarray</td>
+</tr>
+<tr>
+<td>np.random.rand(d0, d1, …, dn)</td>
+<td>返回指定 dim 的 [0, 1) np.ndarray，均匀分布</td>
+</tr>
+<tr>
+<td>np.random.randn(d0, d1, …, dn)</td>
+<td>返回指定 dim 的 [0, 1) np.ndarray，标准正态分布</td>
+</tr>
+<tr>
+<td>np.random.randint(low=0, high[, size, dtype])</td>
+<td>返回指定 size 的 [low, high) np.ndarray</td>
+</tr>
+<tr>
+<td>np.random.choice(a[, size, replace, p])</td>
+<td>返回指定 size 的 np.ndarray from a</td>
+</tr>
+</tbody></table>
+<h2 id="torch-random"><a href="#torch-random" class="headerlink" title="torch - random"></a>torch - random</h2><p>pytorch 中 random 相关函数主要用于生成<code>指定形状（大小或维度）的 torch.Tensor</code>。<br>详细函数见官方文档（2.0）：<a href="https://pytorch.org/docs/stable/search.html?q=rand&amp;check_keywords=yes&amp;area=default" target="_blank" rel="noopener">https://pytorch.org/docs/stable/search.html?q=rand&amp;check_keywords=yes&amp;area=default</a><br>【size 可以取 int, tuple, list】</p>
+<table>
+<thead>
+<tr>
+<th>Methods</th>
+<th>Descriptions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>torch.rand(*size[, …])</td>
+<td>返回指定 size 的 [0, 1) torch.Tensor，均匀分布</td>
+</tr>
+<tr>
+<td>torch.randn(*size[, …])</td>
+<td>返回指定 size 的 [0, 1) torch.Tensor，正态分布</td>
+</tr>
+<tr>
+<td>torch.randint(low=0, high, size[, …])</td>
+<td>返回指定 size 的 [low, high) torch.Tensor</td>
+</tr>
+<tr>
+<td>torch.randperm(n[, …])</td>
+<td>返回 [0, n-1] 的整数排列 torch.Tensor</td>
+</tr>
+</tbody></table>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><hr>
+<blockquote>
+<p>[1] <a href="https://chenglu.me/blogs/real-seed-everything" target="_blank" rel="noopener">Seed Everything - 可复现的 PyTorch</a>.<br>[2] <a href="https://www.cnblogs.com/sddai/p/14606613.html" target="_blank" rel="noopener">Pytorch中的随机性问题</a>.<br>[3] <a href="https://www.cnblogs.com/picassooo/p/13633771.html" target="_blank" rel="noopener">Python自带的random库，numpy的随机库，torch的随机函数</a>.<br>[4] <a href="https://docs.python.org/zh-cn/3/library/random.html" target="_blank" rel="noopener">python-3.11.4-random</a>.<br>[5] <a href="https://numpy.org/doc/stable/reference/random/index.html" target="_blank" rel="noopener">numpy-1.24-random</a>.<br>[6] <a href="https://pytorch.org/docs/stable/search.html?q=rand&check_keywords=yes&area=default" target="_blank" rel="noopener">pytorch-2.0-random</a>.</p>
+</blockquote>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>Title：</strong><a href="https://gojay.top/2023/06/11/Python-random汇总/">Python-random汇总</a></li>
+            <li><strong>Author：</strong><a href="https://gojay.top">Gojay</a></li>
+            <li><strong>Link：</strong><a href="https://gojay.top/2023/06/11/Python-random汇总/">https://gojay.top/2023/06/11/Python-random汇总/</a></li>
+            <li><strong>Date：</strong>2023-06-11</li>
+            <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/numpy/">numpy</a>,&nbsp;<a class="has-link-grey -link" href="/tags/python/">python</a>,&nbsp;<a class="has-link-grey -link" href="/tags/pytorch/">pytorch</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2022/04/01/Python-Image-API/">
+                <span class="level-item">Python-Image-API</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: '6kgdHh2dtxHKbi9fwyPjsA7t-gzGzoHsz',
+        app_key: 'N4XHHmLsjyHwx2ENVEGEn9Br',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu" style="max-height: 800px; overflow: auto;">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Contents">
+        <span class="has-mr-6">1</span>
+        <span>Contents</span>
+        </a></li><li>
+        <a class="is-flex" href="#随机数及随机种子">
+        <span class="has-mr-6">2</span>
+        <span>随机数及随机种子</span>
+        </a></li><li>
+        <a class="is-flex" href="#不同库中random模块">
+        <span class="has-mr-6">3</span>
+        <span>不同库中random模块</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#程序中随机数">
+        <span class="has-mr-6">3.1</span>
+        <span>程序中随机数</span>
+        </a></li><li>
+        <a class="is-flex" href="#seed-作用范围">
+        <span class="has-mr-6">3.2</span>
+        <span>seed 作用范围</span>
+        </a></li><li>
+        <a class="is-flex" href="#不同库的-seed-相互隔离">
+        <span class="has-mr-6">3.3</span>
+        <span>不同库的 seed 相互隔离</span>
+        </a></li><li>
+        <a class="is-flex" href="#CUDA-随机数">
+        <span class="has-mr-6">3.4</span>
+        <span>CUDA 随机数</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#random-模块常用函数">
+        <span class="has-mr-6">4</span>
+        <span>random 模块常用函数</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#python-random">
+        <span class="has-mr-6">4.1</span>
+        <span>python - random</span>
+        </a></li><li>
+        <a class="is-flex" href="#numpy-random">
+        <span class="has-mr-6">4.2</span>
+        <span>numpy - random</span>
+        </a></li><li>
+        <a class="is-flex" href="#torch-random">
+        <span class="has-mr-6">4.3</span>
+        <span>torch - random</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#reference">
+        <span class="has-mr-6">5</span>
+        <span>reference</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    Gojay&#39;s Records
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2023 Gojay&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                <span id="busuanzi_value_site_pv">0</span> visits
+                </span>
+                
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">1</span> users
+                </span>
+                
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Gojay GitHub" href="https://www.github.com/Gojay001">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.0.0/dist/lazyload.min.js"></script>
+<script>
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy",
+    load_delay: 300,
+});
+</script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
