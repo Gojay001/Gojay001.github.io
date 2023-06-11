@@ -5,7 +5,7 @@ date: 2022-04-01 16:52:23
 categories:
     - DigitalImageProcessing
     - Image API
-tags: [DIP, Image, API]
+tags: [DIP, Image, API, python]
 ---
 
 > 本文主要对 python 常用的几个 `图像处理库` 进行简单的对比分析，并对常用的函数及其参数进行总结。包括 `opencv, pillow, matplotlib, skimage`。
