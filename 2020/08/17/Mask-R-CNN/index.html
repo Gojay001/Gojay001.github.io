@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html  lang="en">
+<head>
     <meta charset="utf-8">
-<meta name="baidu-site-verification" content="y4OgBadCWI">
-<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA">
+<meta name="baidu-site-verification" content="y4OgBadCWI" />
+<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA" />
 <title>Mask R-CNN - Gojay&#39;s Records</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
     <meta name="description" content="Mask R-CNN[1] is a framework for object instance segmentation, which adds a branch for predicting an object mask in parallel with the existing branch for bounding box recognition of Faster R-CNN. The">
-<meta name="keywords" content="DL,Segmentation,Mask R-CNN">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mask R-CNN">
 <meta property="og:url" content="https://gojay.top/2020/08/17/Mask-R-CNN/index.html">
 <meta property="og:site_name" content="Gojay&#39;s Records">
 <meta property="og:description" content="Mask R-CNN[1] is a framework for object instance segmentation, which adds a branch for predicting an object mask in parallel with the existing branch for bounding box recognition of Faster R-CNN. The">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://gojay.top/gallery/thumbnails/Mask%20R-CNN.png">
-<meta property="og:updated_time" content="2023-03-10T07:58:38.564Z">
+<meta property="article:published_time" content="2020-08-17T13:37:19.000Z">
+<meta property="article:modified_time" content="2023-03-10T07:58:38.564Z">
+<meta property="article:author" content="Gojay">
+<meta property="article:tag" content="DL">
+<meta property="article:tag" content="Mask R-CNN">
+<meta property="article:tag" content="Segmentation">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mask R-CNN">
-<meta name="twitter:description" content="Mask R-CNN[1] is a framework for object instance segmentation, which adds a branch for predicting an object mask in parallel with the existing branch for bounding box recognition of Faster R-CNN. The">
 <meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/Mask%20R-CNN.png">
 
 
@@ -96,13 +98,14 @@ var _hmt = _hmt || [];
     
     
     
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
 
     
 
 
 <link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/rss.xml" title="Gojay's Records" type="application/atom+xml">
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
@@ -118,19 +121,26 @@ var _hmt = _hmt || [];
             
             <div class="navbar-start">
                 
-                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item"
+                href="/">Home</a>
                 
-                <a class="navbar-item" href="/archives/">Archives</a>
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
                 
-                <a class="navbar-item" href="/categories/">Categories</a>
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
                 
-                <a class="navbar-item" href="/tags/">Tags</a>
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
                 
-                <a class="navbar-item" href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
+                <a class="navbar-item"
+                href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
                 
-                <a class="navbar-item" href="/about/">About</a>
+                <a class="navbar-item"
+                href="/about/">About</a>
                 
-                <a class="navbar-item" href="/rss.xml">RSS</a>
+                <a class="navbar-item"
+                href="/rss.xml">RSS</a>
                 
             </div>
             
@@ -166,8 +176,8 @@ var _hmt = _hmt || [];
                 <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-image">
-        <span class="image is-7by1">
-            <img class="thumbnail lazy" data-src="/gallery/thumbnails/Mask R-CNN.png" alt="Mask R-CNN">
+        <span  class="image is-7by1">
+            <img class="thumbnail lazy" data-src="/gallery/thumbnails/Mask%20R-CNN.png" alt="Mask R-CNN">
         </span>
     </div>
     
@@ -209,22 +219,22 @@ var _hmt = _hmt || [];
         </div>
         
         <div class="content">
-            <blockquote>
-<p><strong>Mask R-CNN</strong><a href="http://openaccess.thecvf.com/content_ICCV_2017/papers/He_Mask_R-CNN_ICCV_2017_paper.pdf" target="_blank" rel="noopener">[1]</a> is a framework for object <strong>instance segmentation</strong>, which adds a branch for <code>predicting an object mask</code> in parallel with the existing branch for bounding box recognition of <code>Faster R-CNN</code>. There are some details of reading and implementing it.  </p>
+            <html><head></head><body><blockquote>
+<p><strong>Mask R-CNN</strong><a href="http://openaccess.thecvf.com/content_ICCV_2017/papers/He_Mask_R-CNN_ICCV_2017_paper.pdf">[1]</a> is a framework for object <strong>instance segmentation</strong>, which adds a branch for <code>predicting an object mask</code> in parallel with the existing branch for bounding box recognition of <code>Faster R-CNN</code>. There are some details of reading and implementing it.  </p>
 </blockquote>
-<a id="more"></a>
+<span id="more"></span>
 
 <h1 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h1><hr>
 <ul>
-<li><strong><a href="#Paper&Code&note">Paper &amp; Code &amp; note</a></strong></li>
+<li><strong><a href="#Paper&amp;Code&amp;note">Paper &amp; Code &amp; note</a></strong></li>
 <li><strong><a href="#Paper">Paper understanding</a></strong></li>
 <li><strong><a href="#Code">Code understanding</a></strong></li>
 <li><strong><a href="#Note">Note</a></strong></li>
 <li><strong><a href="#References">References</a></strong></li>
 </ul>
-<h1 id="Paper-amp-Code-amp-note"><a href="#Paper-amp-Code-amp-note" class="headerlink" title="Paper &amp; Code &amp; note"></a>Paper &amp; Code &amp; note</h1><hr>
+<h1 id="Paper-Code-note"><a href="#Paper-Code-note" class="headerlink" title="Paper &amp; Code &amp; note"></a>Paper &amp; Code &amp; note</h1><hr>
 <blockquote>
-<p><strong>Paper</strong>: <a href="http://openaccess.thecvf.com/content_ICCV_2017/papers/He_Mask_R-CNN_ICCV_2017_paper.pdf" target="_blank" rel="noopener">Mask R-CNN</a>(ICCV 2017 paper)<br><strong>Code</strong>: <a href="https://github.com/facebookresearch/detectron2" target="_blank" rel="noopener">Pytorch</a><br><strong>Note</strong>: <a href="https://www.mendeley.com/viewer/?fileId=7cf81d53-02f7-9c65-0040-d1a695798524&documentId=c8be9f0f-e376-399b-96d7-5470dfd95a2a" target="_blank" rel="noopener">Mendeley</a></p>
+<p><strong>Paper</strong>: <a href="http://openaccess.thecvf.com/content_ICCV_2017/papers/He_Mask_R-CNN_ICCV_2017_paper.pdf">Mask R-CNN</a>(ICCV 2017 paper)<br><strong>Code</strong>: <a href="https://github.com/facebookresearch/detectron2">Pytorch</a><br><strong>Note</strong>: <a href="https://www.mendeley.com/viewer/?fileId=7cf81d53-02f7-9c65-0040-d1a695798524&amp;documentId=c8be9f0f-e376-399b-96d7-5470dfd95a2a">Mendeley</a></p>
 </blockquote>
 <h1 id="Paper"><a href="#Paper" class="headerlink" title="Paper"></a>Paper</h1><hr>
 <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p><img src="https://i.loli.net/2020/08/19/CYqtbVd9SJoDkwa.png" alt="Mask R-CNN_Abstract.png">  </p>
@@ -245,22 +255,22 @@ var _hmt = _hmt || [];
 <h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p><img src="https://i.loli.net/2020/08/19/eGxm6bV48LyXEdj.png" alt="Mask R-CNN_results.png"><br><img src="https://i.loli.net/2020/08/19/cg5apbFo93rZQDS.png" alt="Mask R-CNN_Ablations.png"><br><img src="https://i.loli.net/2020/08/19/kRViK42PfIChMsu.png" alt="Mask R-CNN_AP.png"></p>
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><hr>
 <blockquote>
-<p>The <strong>complete code</strong> can be found in detectron2<a href="https://github.com/facebookresearch/detectron2" target="_blank" rel="noopener">[2]</a>.  </p>
+<p>The <strong>complete code</strong> can be found in detectron2<a href="https://github.com/facebookresearch/detectron2">[2]</a>.  </p>
 </blockquote>
 <h1 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h1><hr>
 <blockquote>
-<p>More details of <strong>Mask R-CNN and its extends</strong> like RoIAlign, bilinear interpolation and etc. can be found in <a href="https://zhuanlan.zhihu.com/p/37998710" target="_blank" rel="noopener">[3]</a>.  </p>
+<p>More details of <strong>Mask R-CNN and its extends</strong> like RoIAlign, bilinear interpolation and etc. can be found in <a href="https://zhuanlan.zhihu.com/p/37998710">[3]</a>.  </p>
 </blockquote>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><hr>
 <blockquote>
-<p>[1] He K, Gkioxari G, Dollár P, et al. Mask r-cnn[C]&#x2F;&#x2F;Proceedings of the IEEE international conference on computer vision. 2017: 2961-2969.<br>[2] detectron2. <a href="https://github.com/facebookresearch/detectron2" target="_blank" rel="noopener">https://github.com/facebookresearch/detectron2</a><br>[3] stone. “The amazing Mask R-CNN.” <a href="https://zhuanlan.zhihu.com/p/37998710" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/37998710</a></p>
+<p>[1] He K, Gkioxari G, Dollár P, et al. Mask r-cnn[C]//Proceedings of the IEEE international conference on computer vision. 2017: 2961-2969.<br>[2] detectron2. <a href="https://github.com/facebookresearch/detectron2">https://github.com/facebookresearch/detectron2</a><br>[3] stone. “The amazing Mask R-CNN.” <a href="https://zhuanlan.zhihu.com/p/37998710">https://zhuanlan.zhihu.com/p/37998710</a></p>
 </blockquote>
-
+</body></html>
         </div>
         
             <ul class="post-copyright">
             <li><strong>Title：</strong><a href="https://gojay.top/2020/08/17/Mask-R-CNN/">Mask R-CNN</a></li>
-            <li><strong>Author：</strong><a href="https://gojay.top">Gojay</a></li>
+            <li><strong>Author：</strong><a href=""></a></li>
             <li><strong>Link：</strong><a href="https://gojay.top/2020/08/17/Mask-R-CNN/">https://gojay.top/2020/08/17/Mask-R-CNN/</a></li>
             <li><strong>Date：</strong>2020-08-17</li>
             <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
@@ -268,12 +278,12 @@ var _hmt = _hmt || [];
             </ul>
         
         
-        <hr style="height:1px;margin:1rem 0">
+        <hr style="height:1px;margin:1rem 0"/>
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/DL/">DL</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Mask-R-CNN/">Mask R-CNN</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Segmentation/">Segmentation</a>
+                    <a class="has-link-grey -link-link" href="/tags/DL/" rel="tag">DL</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/Mask-R-CNN/" rel="tag">Mask R-CNN</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/Segmentation/" rel="tag">Segmentation</a>
                 </div>
             </div>
         </div>
@@ -295,7 +305,7 @@ var _hmt = _hmt || [];
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/08/21/剑指Offer-03-数组中重复的数字/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/08/21/%E5%89%91%E6%8C%87Offer-03-%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">剑指Offer-03-数组中重复的数字</span>
             </a>
@@ -320,7 +330,7 @@ var _hmt = _hmt || [];
         
 <div id="valine-thread" class="content"></div>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 <script>
     new Valine({
         el: '#valine-thread' ,
@@ -355,9 +365,9 @@ var _hmt = _hmt || [];
         <span class="has-mr-6">1</span>
         <span>Contents</span>
         </a></li><li>
-        <a class="is-flex" href="#Paper-amp-Code-amp-note">
+        <a class="is-flex" href="#Paper-Code-note">
         <span class="has-mr-6">2</span>
-        <span>Paper &amp; Code &amp; note</span>
+        <span>Paper & Code & note</span>
         </a></li><li>
         <a class="is-flex" href="#Paper">
         <span class="has-mr-6">3</span>
@@ -438,8 +448,9 @@ var _hmt = _hmt || [];
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2023 Gojay&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                &copy; 2026 Gojay&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
                 <br>
                 
@@ -594,7 +605,7 @@ var lazyLoadInstance = new LazyLoad({
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">

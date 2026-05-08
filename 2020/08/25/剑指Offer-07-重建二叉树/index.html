@@ -1,28 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html  lang="en">
+<head>
     <meta charset="utf-8">
-<meta name="baidu-site-verification" content="y4OgBadCWI">
-<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA">
+<meta name="baidu-site-verification" content="y4OgBadCWI" />
+<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA" />
 <title>剑指Offer-07-重建二叉树 - Gojay&#39;s Records</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
     <meta name="description" content="题目 题目描述 输入某二叉树的 前序遍历和中序遍历 的结果，请 重建该二叉树 。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。">
-<meta name="keywords" content="Algorithm,Offer,递归,二叉树,HashMap">
 <meta property="og:type" content="article">
 <meta property="og:title" content="剑指Offer-07-重建二叉树">
-<meta property="og:url" content="https://gojay.top/2020/08/25/剑指Offer-07-重建二叉树/index.html">
+<meta property="og:url" content="https://gojay.top/2020/08/25/%E5%89%91%E6%8C%87Offer-07-%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
 <meta property="og:site_name" content="Gojay&#39;s Records">
 <meta property="og:description" content="题目 题目描述 输入某二叉树的 前序遍历和中序遍历 的结果，请 重建该二叉树 。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
-<meta property="og:updated_time" content="2023-03-10T07:58:38.566Z">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gojay.top/gallery/thumbnails/%E5%89%91%E6%8C%87Offer.jpg">
+<meta property="article:published_time" content="2020-08-25T08:05:59.000Z">
+<meta property="article:modified_time" content="2023-03-10T07:58:38.566Z">
+<meta property="article:author" content="Gojay">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="HashMap">
+<meta property="article:tag" content="Offer">
+<meta property="article:tag" content="二叉树">
+<meta property="article:tag" content="递归">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="剑指Offer-07-重建二叉树">
-<meta name="twitter:description" content="题目 题目描述 输入某二叉树的 前序遍历和中序遍历 的结果，请 重建该二叉树 。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。">
-<meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
+<meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/%E5%89%91%E6%8C%87Offer.jpg">
 
 
 
@@ -96,13 +100,14 @@ var _hmt = _hmt || [];
     
     
     
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
 
     
 
 
 <link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/rss.xml" title="Gojay's Records" type="application/atom+xml">
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
@@ -118,19 +123,26 @@ var _hmt = _hmt || [];
             
             <div class="navbar-start">
                 
-                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item"
+                href="/">Home</a>
                 
-                <a class="navbar-item" href="/archives/">Archives</a>
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
                 
-                <a class="navbar-item" href="/categories/">Categories</a>
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
                 
-                <a class="navbar-item" href="/tags/">Tags</a>
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
                 
-                <a class="navbar-item" href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
+                <a class="navbar-item"
+                href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
                 
-                <a class="navbar-item" href="/about/">About</a>
+                <a class="navbar-item"
+                href="/about/">About</a>
                 
-                <a class="navbar-item" href="/rss.xml">RSS</a>
+                <a class="navbar-item"
+                href="/rss.xml">RSS</a>
                 
             </div>
             
@@ -166,8 +178,8 @@ var _hmt = _hmt || [];
                 <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-image">
-        <span class="image is-7by1">
-            <img class="thumbnail lazy" data-src="/gallery/thumbnails/剑指Offer.jpg" alt="剑指Offer-07-重建二叉树">
+        <span  class="image is-7by1">
+            <img class="thumbnail lazy" data-src="/gallery/thumbnails/%E5%89%91%E6%8C%87Offer.jpg" alt="剑指Offer-07-重建二叉树">
         </span>
     </div>
     
@@ -188,7 +200,7 @@ var _hmt = _hmt || [];
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/剑指Offer/">剑指Offer</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/剑指Offer/7/">7</a>
+                <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/%E5%89%91%E6%8C%87Offer/">剑指Offer</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/%E5%89%91%E6%8C%87Offer/7/">7</a>
                 </div>
                 
                 
@@ -209,19 +221,22 @@ var _hmt = _hmt || [];
         </div>
         
         <div class="content">
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr>
+            <html><head></head><body><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr>
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><blockquote>
 <p>输入某二叉树的 <code>前序遍历和中序遍历</code> 的结果，请 <code>重建该二叉树</code> 。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。</p>
 </blockquote>
-<a id="more"></a>
+<span id="more"></span>
 
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><ul>
-<li><p><strong>输入</strong>： </p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">前序遍历 preorder = [3,9,20,15,7]  </span><br><span class="line">中序遍历 inorder = [9,3,15,20,7]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>输出</strong>：返回如下二叉树</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">  3  </span><br><span class="line"> / \  </span><br><span class="line">9  20  </span><br><span class="line">  /  \  </span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure></li>
+<li><strong>输入</strong>：</li>
 </ul>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">前序遍历 preorder = [3,9,20,15,7]  </span><br><span class="line">中序遍历 inorder = [9,3,15,20,7]</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li><strong>输出</strong>：返回如下二叉树</li>
+</ul>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">  3  </span><br><span class="line"> / \  </span><br><span class="line">9  20  </span><br><span class="line">  /  \  </span><br><span class="line"> 15   7</span><br></pre></td></tr></tbody></table></figure>
+
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr>
 <h2 id="原地递归"><a href="#原地递归" class="headerlink" title="原地递归"></a>原地递归</h2><blockquote>
 <p><strong>前序遍历</strong>：根节点、左子树、右子树；<strong>中序遍历</strong>：左子树、根节点、右子树。<br>已知前序遍历和中序遍历重建二叉树：</p>
@@ -230,33 +245,33 @@ var _hmt = _hmt || [];
 <li><strong>终止</strong>：前序或中序为空，即到达叶子节点，return None。<br><strong>时间复杂度</strong>：O($n^2$)，以根节点遍历序列，每次递归左右子树。<br><strong>空间复杂度</strong>：O(n)，递归使用O(n)空间。</li>
 </ul>
 </blockquote>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="hljs-comment"># class TreeNode:</span></span><br><span class="line"><span class="hljs-comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="hljs-comment">#         self.val = x</span></span><br><span class="line"><span class="hljs-comment">#         self.left = None</span></span><br><span class="line"><span class="hljs-comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">buildTree</span><span class="hljs-params">(self, preorder: List[int], inorder: List[int])</span> -&gt; TreeNode:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> preorder <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> inorder:</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span></span><br><span class="line">        loc = inorder.index(preorder[<span class="hljs-number">0</span>])</span><br><span class="line">        root = TreeNode(preorder[<span class="hljs-number">0</span>])</span><br><span class="line">        root.left = self.buildTree(preorder[<span class="hljs-number">1</span> : loc+<span class="hljs-number">1</span>], inorder[ : loc])</span><br><span class="line">        root.right = self.buildTree(preorder[loc+<span class="hljs-number">1</span> : ], inorder[loc+<span class="hljs-number">1</span> : ])</span><br><span class="line">        <span class="hljs-keyword">return</span> root</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="hljs-comment"># class TreeNode:</span></span><br><span class="line"><span class="hljs-comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="hljs-comment">#         self.val = x</span></span><br><span class="line"><span class="hljs-comment">#         self.left = None</span></span><br><span class="line"><span class="hljs-comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">buildTree</span>(<span class="hljs-params">self, preorder: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], inorder: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; TreeNode:</span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> preorder <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> inorder:</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span></span><br><span class="line">        loc = inorder.index(preorder[<span class="hljs-number">0</span>])</span><br><span class="line">        root = TreeNode(preorder[<span class="hljs-number">0</span>])</span><br><span class="line">        root.left = <span class="variable language_">self</span>.buildTree(preorder[<span class="hljs-number">1</span> : loc+<span class="hljs-number">1</span>], inorder[ : loc])</span><br><span class="line">        root.right = <span class="variable language_">self</span>.buildTree(preorder[loc+<span class="hljs-number">1</span> : ], inorder[loc+<span class="hljs-number">1</span> : ])</span><br><span class="line">        <span class="hljs-keyword">return</span> root</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="哈希表递归"><a href="#哈希表递归" class="headerlink" title="哈希表递归"></a>哈希表递归</h2><p>(<a href="https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/solution/mian-shi-ti-07-zhong-jian-er-cha-shu-di-gui-fa-qin/" target="_blank" rel="noopener">引用Krahets</a>)</p>
+<h2 id="哈希表递归"><a href="#哈希表递归" class="headerlink" title="哈希表递归"></a>哈希表递归</h2><p>(<a href="https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/solution/mian-shi-ti-07-zhong-jian-er-cha-shu-di-gui-fa-qin/">引用Krahets</a>)</p>
 <blockquote>
 <p>使用哈希表预存储 <code>中序遍历的值与索引</code> 的映射关系，每次搜索的时间复杂度为O(1)。<br><strong>方法参数</strong>： <code>pre_root</code> ：前序根节点索引； <code>in_left</code> ：中序左边界； <code>in_right</code> ：中序右边界。<br><strong>子树根节点索引</strong>：左子树根节点为 <code>前序根节点+1</code> ；右子树根节点为 <code>前序根节点+1+左子树长度(中序根节点索引-左边界)</code> 。<br><strong>时间复杂度</strong>：O(n)，初始化HashMap遍历inorder，占用O(n)；每层递归中的节点建立、搜索操作占用O(1)。<br><strong>空间复杂度</strong>：O(n)，HashMap使用O(n)额外空间；递归操作中系统需使用O(n)额外空间。  </p>
 </blockquote>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">buildTree</span><span class="hljs-params">(self, preorder: List[int], inorder: List[int])</span> -&gt; TreeNode:</span></span><br><span class="line">        self.dic, self.preorder = &#123;&#125;, preorder</span><br><span class="line">        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(inorder)):</span><br><span class="line">            self.dic[inorder[i]] = i</span><br><span class="line">        <span class="hljs-keyword">return</span> self.recur(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, len(inorder)<span class="hljs-number">-1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">recur</span><span class="hljs-params">(self, pre_root, in_left, in_right)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> in_left &gt; in_right: </span><br><span class="line">            <span class="hljs-keyword">return</span></span><br><span class="line">        root = TreeNode(self.preorder[pre_root])</span><br><span class="line">        loc = self.dic[self.preorder[pre_root]]</span><br><span class="line">        root.left = self.recur(pre_root+<span class="hljs-number">1</span>, in_left, loc<span class="hljs-number">-1</span>)</span><br><span class="line">        root.right = self.recur(pre_root+<span class="hljs-number">1</span>+loc-in_left, loc+<span class="hljs-number">1</span>, in_right)</span><br><span class="line">        <span class="hljs-keyword">return</span> root</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">buildTree</span>(<span class="hljs-params">self, preorder: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], inorder: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; TreeNode:</span><br><span class="line">        <span class="variable language_">self</span>.dic, <span class="variable language_">self</span>.preorder = {}, preorder</span><br><span class="line">        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(inorder)):</span><br><span class="line">            <span class="variable language_">self</span>.dic[inorder[i]] = i</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="variable language_">self</span>.recur(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(inorder)-<span class="hljs-number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">recur</span>(<span class="hljs-params">self, pre_root, in_left, in_right</span>):</span><br><span class="line">        <span class="hljs-keyword">if</span> in_left &gt; in_right: </span><br><span class="line">            <span class="hljs-keyword">return</span></span><br><span class="line">        root = TreeNode(<span class="variable language_">self</span>.preorder[pre_root])</span><br><span class="line">        loc = <span class="variable language_">self</span>.dic[<span class="variable language_">self</span>.preorder[pre_root]]</span><br><span class="line">        root.left = <span class="variable language_">self</span>.recur(pre_root+<span class="hljs-number">1</span>, in_left, loc-<span class="hljs-number">1</span>)</span><br><span class="line">        root.right = <span class="variable language_">self</span>.recur(pre_root+<span class="hljs-number">1</span>+loc-in_left, loc+<span class="hljs-number">1</span>, in_right)</span><br><span class="line">        <span class="hljs-keyword">return</span> root</span><br></pre></td></tr></tbody></table></figure>
 
-
+</body></html>
         </div>
         
             <ul class="post-copyright">
-            <li><strong>Title：</strong><a href="https://gojay.top/2020/08/25/剑指Offer-07-重建二叉树/">剑指Offer-07-重建二叉树</a></li>
-            <li><strong>Author：</strong><a href="https://gojay.top">Gojay</a></li>
-            <li><strong>Link：</strong><a href="https://gojay.top/2020/08/25/剑指Offer-07-重建二叉树/">https://gojay.top/2020/08/25/剑指Offer-07-重建二叉树/</a></li>
+            <li><strong>Title：</strong><a href="https://gojay.top/2020/08/25/%E5%89%91%E6%8C%87Offer-07-%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/">剑指Offer-07-重建二叉树</a></li>
+            <li><strong>Author：</strong><a href=""></a></li>
+            <li><strong>Link：</strong><a href="https://gojay.top/2020/08/25/%E5%89%91%E6%8C%87Offer-07-%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/">https://gojay.top/2020/08/25/%E5%89%91%E6%8C%87Offer-07-%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/</a></li>
             <li><strong>Date：</strong>2020-08-25</li>
             <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
             </li>
             </ul>
         
         
-        <hr style="height:1px;margin:1rem 0">
+        <hr style="height:1px;margin:1rem 0"/>
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/Algorithm/">Algorithm</a>,&nbsp;<a class="has-link-grey -link" href="/tags/HashMap/">HashMap</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Offer/">Offer</a>,&nbsp;<a class="has-link-grey -link" href="/tags/二叉树/">二叉树</a>,&nbsp;<a class="has-link-grey -link" href="/tags/递归/">递归</a>
+                    <a class="has-link-grey -link-link" href="/tags/Algorithm/" rel="tag">Algorithm</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/HashMap/" rel="tag">HashMap</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/Offer/" rel="tag">Offer</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a>
                 </div>
             </div>
         </div>
@@ -278,7 +293,7 @@ var _hmt = _hmt || [];
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/08/26/剑指Offer-09-用两个栈实现队列/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/08/26/%E5%89%91%E6%8C%87Offer-09-%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">剑指Offer-09-用两个栈实现队列</span>
             </a>
@@ -286,7 +301,7 @@ var _hmt = _hmt || [];
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/08/24/剑指Offer-06-从尾到头打印链表/">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/08/24/%E5%89%91%E6%8C%87Offer-06-%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8/">
                 <span class="level-item">剑指Offer-06-从尾到头打印链表</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
@@ -303,7 +318,7 @@ var _hmt = _hmt || [];
         
 <div id="valine-thread" class="content"></div>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 <script>
     new Valine({
         el: '#valine-thread' ,
@@ -385,8 +400,9 @@ var _hmt = _hmt || [];
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2023 Gojay&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                &copy; 2026 Gojay&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
                 <br>
                 
@@ -541,7 +557,7 @@ var lazyLoadInstance = new LazyLoad({
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">

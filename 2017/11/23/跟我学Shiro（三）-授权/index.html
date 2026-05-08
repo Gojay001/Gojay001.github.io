@@ -1,27 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html  lang="en">
+<head>
     <meta charset="utf-8">
-<meta name="baidu-site-verification" content="y4OgBadCWI">
-<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA">
+<meta name="baidu-site-verification" content="y4OgBadCWI" />
+<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA" />
 <title>跟我学Shiro（三）-授权 - Gojay&#39;s Records</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="简介授权：也叫访问控制，即在应用中控制谁能访问哪些资源（如访问页面&amp;#x2F;编辑数据&amp;#x2F;页面操作等）。在授权中需了解的几个关键对象：主体（Subject）、资源（Resource）、权限（Permission）、角色（Role）。">
-<meta name="keywords" content="Java,Shiro">
+    <meta name="description" content="简介授权：也叫访问控制，即在应用中控制谁能访问哪些资源（如访问页面&#x2F;编辑数据&#x2F;页面操作等）。在授权中需了解的几个关键对象：主体（Subject）、资源（Resource）、权限（Permission）、角色（Role）。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="跟我学Shiro（三）-授权">
-<meta property="og:url" content="https://gojay.top/2017/11/23/跟我学Shiro（三）-授权/index.html">
+<meta property="og:url" content="https://gojay.top/2017/11/23/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%B8%89%EF%BC%89-%E6%8E%88%E6%9D%83/index.html">
 <meta property="og:site_name" content="Gojay&#39;s Records">
-<meta property="og:description" content="简介授权：也叫访问控制，即在应用中控制谁能访问哪些资源（如访问页面&amp;#x2F;编辑数据&amp;#x2F;页面操作等）。在授权中需了解的几个关键对象：主体（Subject）、资源（Resource）、权限（Permission）、角色（Role）。">
-<meta property="og:locale" content="en">
+<meta property="og:description" content="简介授权：也叫访问控制，即在应用中控制谁能访问哪些资源（如访问页面&#x2F;编辑数据&#x2F;页面操作等）。在授权中需了解的几个关键对象：主体（Subject）、资源（Resource）、权限（Permission）、角色（Role）。">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://gojay.top/gallery/thumbnails/shiro.png">
-<meta property="og:updated_time" content="2023-03-10T07:58:38.569Z">
+<meta property="article:published_time" content="2017-11-23T03:41:24.000Z">
+<meta property="article:modified_time" content="2023-03-10T07:58:38.569Z">
+<meta property="article:author" content="Gojay">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Shiro">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="跟我学Shiro（三）-授权">
-<meta name="twitter:description" content="简介授权：也叫访问控制，即在应用中控制谁能访问哪些资源（如访问页面&amp;#x2F;编辑数据&amp;#x2F;页面操作等）。在授权中需了解的几个关键对象：主体（Subject）、资源（Resource）、权限（Permission）、角色（Role）。">
 <meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/shiro.png">
 
 
@@ -96,13 +97,14 @@ var _hmt = _hmt || [];
     
     
     
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
 
     
 
 
 <link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/rss.xml" title="Gojay's Records" type="application/atom+xml">
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
@@ -118,19 +120,26 @@ var _hmt = _hmt || [];
             
             <div class="navbar-start">
                 
-                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item"
+                href="/">Home</a>
                 
-                <a class="navbar-item" href="/archives/">Archives</a>
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
                 
-                <a class="navbar-item" href="/categories/">Categories</a>
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
                 
-                <a class="navbar-item" href="/tags/">Tags</a>
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
                 
-                <a class="navbar-item" href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
+                <a class="navbar-item"
+                href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
                 
-                <a class="navbar-item" href="/about/">About</a>
+                <a class="navbar-item"
+                href="/about/">About</a>
                 
-                <a class="navbar-item" href="/rss.xml">RSS</a>
+                <a class="navbar-item"
+                href="/rss.xml">RSS</a>
                 
             </div>
             
@@ -166,7 +175,7 @@ var _hmt = _hmt || [];
                 <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-image">
-        <span class="image is-7by1">
+        <span  class="image is-7by1">
             <img class="thumbnail lazy" data-src="/gallery/thumbnails/shiro.png" alt="跟我学Shiro（三）-授权">
         </span>
     </div>
@@ -209,11 +218,11 @@ var _hmt = _hmt || [];
         </div>
         
         <div class="content">
-            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><strong>授权</strong>：也叫访问控制，即在应用中控制谁能访问哪些资源（如访问页面&#x2F;编辑数据&#x2F;页面操作等）。在授权中需了解的几个关键对象：<code>主体</code>（Subject）、<code>资源</code>（Resource）、<code>权限</code>（Permission）、<code>角色</code>（Role）。</p>
-<a id="more"></a>
+            <html><head></head><body><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><strong>授权</strong>：也叫访问控制，即在应用中控制谁能访问哪些资源（如访问页面/编辑数据/页面操作等）。在授权中需了解的几个关键对象：<code>主体</code>（Subject）、<code>资源</code>（Resource）、<code>权限</code>（Permission）、<code>角色</code>（Role）。</p>
+<span id="more"></span>
 <ul>
 <li><strong>主体</strong>：即访问应用的用户，在Shiro中使用Subject代表该用户。用户只有授权后才允许访问相应的资源。</li>
-<li><strong>资源</strong>：在应用中用户可以访问的任何东西，比如访问JSP页面、查看&#x2F;编辑某些数据、访问某个业务方法、打印文本等等都是资源。用户只要授权后才能访问。</li>
+<li><strong>资源</strong>：在应用中用户可以访问的任何东西，比如访问JSP页面、查看/编辑某些数据、访问某个业务方法、打印文本等等都是资源。用户只要授权后才能访问。</li>
 <li><strong>权限</strong>：安全策略中的原子授权单位，通过权限我们可以表示在应用中用户有没有操作某个资源的权力。</li>
 <li><strong>角色</strong>：角色代表了操作集合，可以理解为权限的集合，一般情况下我们会赋予用户角色而不是权限，即这样用户可以拥有一组权限，赋予权限时比较方便。</li>
 <li><strong>隐式角色</strong>：即直接通过角色来验证用户有没有操作权限。</li>
@@ -225,34 +234,30 @@ var _hmt = _hmt || [];
 <h1 id="授权方式"><a href="#授权方式" class="headerlink" title="授权方式"></a>授权方式</h1><blockquote>
 <p>Shiro支持三种方式的授权。</p>
 </blockquote>
-<h2 id="编程式"><a href="#编程式" class="headerlink" title="编程式"></a>编程式</h2><p>通过写if&#x2F;else授权代码块完成： </p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">Subject subject = SecurityUtils.getSubject();  </span><br><span class="line">if(subject.hasRole(“admin”)) &#123;  </span><br><span class="line">    //有权限  </span><br><span class="line">&#125; else &#123;  </span><br><span class="line">    //无权限  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="编程式"><a href="#编程式" class="headerlink" title="编程式"></a>编程式</h2><p>通过写if/else授权代码块完成： </p>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">Subject subject = SecurityUtils.getSubject();  </span><br><span class="line">if(subject.hasRole(“admin”)) {  </span><br><span class="line">    //有权限  </span><br><span class="line">} else {  </span><br><span class="line">    //无权限  </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="注解式"><a href="#注解式" class="headerlink" title="注解式"></a>注解式</h2><p>通过在执行的Java方法上放置相应的注解完成： </p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">@RequiresRoles(&quot;admin&quot;)  </span><br><span class="line">public void hello() &#123;  </span><br><span class="line">    //有权限  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">@RequiresRoles("admin")  </span><br><span class="line">public void hello() {  </span><br><span class="line">    //有权限  </span><br><span class="line">} </span><br></pre></td></tr></tbody></table></figure>
 <p>没有权限将抛出相应的异常。</p>
-<h2 id="JSP-x2F-GSP标签"><a href="#JSP-x2F-GSP标签" class="headerlink" title="JSP&#x2F;GSP标签"></a>JSP&#x2F;GSP标签</h2><p>在JSP&#x2F;GSP页面通过相应的标签完成：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">&lt;shiro:hasRole name=&quot;admin&quot;&gt;  </span><br><span class="line">&lt;!— 有权限 —&gt;  </span><br><span class="line">&lt;/shiro:hasRole&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="JSP-GSP标签"><a href="#JSP-GSP标签" class="headerlink" title="JSP/GSP标签"></a>JSP/GSP标签</h2><p>在JSP/GSP页面通过相应的标签完成：</p>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">&lt;shiro:hasRole name="admin"&gt;  </span><br><span class="line">&lt;!— 有权限 —&gt;  </span><br><span class="line">&lt;/shiro:hasRole&gt;</span><br></pre></td></tr></tbody></table></figure>
 
 <h1 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h1><h2 id="基于角色的访问控制（隐式角色）"><a href="#基于角色的访问控制（隐式角色）" class="headerlink" title="基于角色的访问控制（隐式角色）"></a>基于角色的访问控制（隐式角色）</h2><h3 id="在ini配置文件配置用户拥有的角色"><a href="#在ini配置文件配置用户拥有的角色" class="headerlink" title="在ini配置文件配置用户拥有的角色"></a>在ini配置文件配置用户拥有的角色</h3><blockquote>
 <p>shiro-role.ini</p>
 </blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">[users]</span><br><span class="line">root=root,role1,role2</span><br><span class="line">gojay=test,role1</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">[users]</span><br><span class="line">root=root,role1,role2</span><br><span class="line">gojay=test,role1</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p><strong>规则</strong>：<code>“用户名=密码,角色1，角色2”</code>，如果需要在应用中判断用户是否有相应角色，就需要在相应的Realm中返回角色信息；也就是说<code>Shiro不负责维护用户-角色信息</code>，需要应用提供，Shiro只是提供相应的接口方便验证。</p>
 </blockquote>
 <h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><blockquote>
 <p>com.github.gojay001.test.RoleTest</p>
 </blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testHasRole() &#123;</span><br><span class="line">    login(&quot;classpath:shiro-role.ini&quot;, &quot;root&quot;, &quot;root&quot;);</span><br><span class="line">    // 判断拥有角色：role1</span><br><span class="line">    Assert.assertTrue(subject().hasRole(&quot;role1&quot;));</span><br><span class="line">    // 判断拥有角色：role1 and role2</span><br><span class="line">    Assert.assertTrue(subject().hasAllRoles(Arrays.asList(&quot;role1&quot;, &quot;role2&quot;)));</span><br><span class="line">    // 判断拥有角色：role1 and role2 and !role3</span><br><span class="line">    boolean[] result = subject().hasRoles(Arrays.asList(&quot;role1&quot;, &quot;role2&quot;, &quot;role3&quot;));</span><br><span class="line">    Assert.assertEquals(true, result[0]);</span><br><span class="line">    Assert.assertEquals(true, result[1]);</span><br><span class="line">    Assert.assertEquals(false, result[2]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testHasRole() {</span><br><span class="line">    login("classpath:shiro-role.ini", "root", "root");</span><br><span class="line">    // 判断拥有角色：role1</span><br><span class="line">    Assert.assertTrue(subject().hasRole("role1"));</span><br><span class="line">    // 判断拥有角色：role1 and role2</span><br><span class="line">    Assert.assertTrue(subject().hasAllRoles(Arrays.asList("role1", "role2")));</span><br><span class="line">    // 判断拥有角色：role1 and role2 and !role3</span><br><span class="line">    boolean[] result = subject().hasRoles(Arrays.asList("role1", "role2", "role3"));</span><br><span class="line">    Assert.assertEquals(true, result[0]);</span><br><span class="line">    Assert.assertEquals(true, result[1]);</span><br><span class="line">    Assert.assertEquals(false, result[2]);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
-<p>Shiro提供了<code>hasRole/hasAllRoles</code>用于判断用户是否拥有某个角色&#x2F;某些权限；但是没有提供如hashAnyRole用于判断是否有某些权限中的某一个。</p>
+<p>Shiro提供了<code>hasRole/hasAllRoles</code>用于判断用户是否拥有某个角色/某些权限；但是没有提供如hashAnyRole用于判断是否有某些权限中的某一个。</p>
 </blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">@Test(expected = UnauthorizedException.class)</span><br><span class="line">public void testCheckRole() &#123;</span><br><span class="line">    login(&quot;classpath:shiro-role.ini&quot;, &quot;root&quot;, &quot;root&quot;);</span><br><span class="line">    // 断言拥有角色：role1</span><br><span class="line">    subject().checkRole(&quot;role1&quot;);</span><br><span class="line">    // 断言拥有角色：role1 and role3 失败抛出异常</span><br><span class="line">    subject().checkRoles(&quot;role1&quot;, &quot;role3&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">@Test(expected = UnauthorizedException.class)</span><br><span class="line">public void testCheckRole() {</span><br><span class="line">    login("classpath:shiro-role.ini", "root", "root");</span><br><span class="line">    // 断言拥有角色：role1</span><br><span class="line">    subject().checkRole("role1");</span><br><span class="line">    // 断言拥有角色：role1 and role3 失败抛出异常</span><br><span class="line">    subject().checkRoles("role1", "role3");</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>Shiro提供的<code>checkRole/checkRoles</code>和<code>hasRole/hasAllRoles</code>不同的地方是它在判断为假的情况下会<code>抛出UnauthorizedException异常</code>。</p>
 </blockquote>
@@ -260,102 +265,87 @@ var _hmt = _hmt || [];
 <h2 id="基于资源的访问控制（显式角色）"><a href="#基于资源的访问控制（显式角色）" class="headerlink" title="基于资源的访问控制（显式角色）"></a>基于资源的访问控制（显式角色）</h2><h3 id="在ini配置文件配置用户拥有的角色及角色-权限关系"><a href="#在ini配置文件配置用户拥有的角色及角色-权限关系" class="headerlink" title="在ini配置文件配置用户拥有的角色及角色-权限关系"></a>在ini配置文件配置用户拥有的角色及角色-权限关系</h3><blockquote>
 <p>shiro-permission.ini</p>
 </blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">[users]</span><br><span class="line">root=root,role1,role2</span><br><span class="line">gojay=test,role1</span><br><span class="line">[roles]</span><br><span class="line">role1=user:create,user:update</span><br><span class="line">role2=user:create,user:delete</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">[users]</span><br><span class="line">root=root,role1,role2</span><br><span class="line">gojay=test,role1</span><br><span class="line">[roles]</span><br><span class="line">role1=user:create,user:update</span><br><span class="line">role2=user:create,user:delete</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p><strong>规则</strong>：<code>“用户名=密码，角色1，角色2”“角色=权限1，权限2”</code>，即首先根据用户名找到角色，然后根据角色再找到权限；即角色是权限集合；Shiro同样不进行权限的维护，需要我们通过Realm返回相应的权限信息。只需要维护“用户——角色”之间的关系即可。</p>
 </blockquote>
 <h3 id="测试用例-1"><a href="#测试用例-1" class="headerlink" title="测试用例"></a>测试用例</h3><blockquote>
 <p>com.github.gojay001.test.PermissionTest</p>
 </blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testIsPermitted() &#123;</span><br><span class="line">    login(&quot;classpath:shiro-permission.ini&quot;, &quot;root&quot;, &quot;root&quot;);</span><br><span class="line">    // 判断拥有权限：user:create</span><br><span class="line">    Assert.assertTrue(subject().isPermitted(&quot;user:create&quot;));</span><br><span class="line">    // 判断拥有权限：user:update and user:delete</span><br><span class="line">    Assert.assertTrue(subject().isPermittedAll(&quot;user:update&quot;, &quot;user:delete&quot;));</span><br><span class="line">    // 判断没有权限：user:view</span><br><span class="line">    Assert.assertFalse(subject().isPermitted(&quot;user:view&quot;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testIsPermitted() {</span><br><span class="line">    login("classpath:shiro-permission.ini", "root", "root");</span><br><span class="line">    // 判断拥有权限：user:create</span><br><span class="line">    Assert.assertTrue(subject().isPermitted("user:create"));</span><br><span class="line">    // 判断拥有权限：user:update and user:delete</span><br><span class="line">    Assert.assertTrue(subject().isPermittedAll("user:update", "user:delete"));</span><br><span class="line">    // 判断没有权限：user:view</span><br><span class="line">    Assert.assertFalse(subject().isPermitted("user:view"));</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>Shiro提供了<code>isPermitted</code>和<code>isPermittedAll</code>用于判断用户是否拥有某个权限或所有权限，也<code>没有提供如isPermittedAny</code>用于判断拥有某一个权限的接口。</p>
 </blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">@Test(expected = UnauthorizedException.class)</span><br><span class="line">public void testCheckPermission() &#123;</span><br><span class="line">    login(&quot;classpath:shiro-permission.ini&quot;, &quot;root&quot;, &quot;root&quot;);</span><br><span class="line">    // 断言拥有权限：user:create</span><br><span class="line">    subject().checkPermission(&quot;user:create&quot;);</span><br><span class="line">    // 断言拥有权限：user:delete and user:update</span><br><span class="line">    subject().checkPermissions(&quot;user:delete&quot;, &quot;user:update&quot;);</span><br><span class="line">    // 断言拥有权限：user:view 失败抛出异常</span><br><span class="line">    subject().checkPermissions(&quot;user:view&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">@Test(expected = UnauthorizedException.class)</span><br><span class="line">public void testCheckPermission() {</span><br><span class="line">    login("classpath:shiro-permission.ini", "root", "root");</span><br><span class="line">    // 断言拥有权限：user:create</span><br><span class="line">    subject().checkPermission("user:create");</span><br><span class="line">    // 断言拥有权限：user:delete and user:update</span><br><span class="line">    subject().checkPermissions("user:delete", "user:update");</span><br><span class="line">    // 断言拥有权限：user:view 失败抛出异常</span><br><span class="line">    subject().checkPermissions("user:view");</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p><code>checkPermissions</code>失败的情况下会抛出UnauthorizedException异常。</p>
 </blockquote>
 <p><strong>基于资源的访问控制</strong>（显式角色），也可以叫基于权限的访问控制，这种方式的一般规则是<code>“资源标识符：操作”</code>，即是资源级别的粒度；这种方式的好处就是如果要修改基本都是一个资源级别的修改，不会对其他模块代码产生影响，粒度小。但是实现起来可能稍微复杂点，需要维护“用户——角色，角色——权限（资源：操作）”之间的关系。 </p>
-<h1 id="Permission"><a href="#Permission" class="headerlink" title="Permission"></a>Permission</h1><p><strong>字符串通配符权限</strong><br><strong>规则</strong>：<code>“资源标识符：操作：对象实例ID”</code>  即对哪个资源的哪个实例可以进行什么操作。其默认支持通配符权限字符串，<code>“:”</code>表示资源&#x2F;操作&#x2F;实例的分割；<code>“,”</code>表示操作的分割；<code>“*”</code>表示任意资源&#x2F;操作&#x2F;实例。</p>
-<h2 id="单个资源单个权限"><a href="#单个资源单个权限" class="headerlink" title="单个资源单个权限"></a>单个资源单个权限</h2><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">subject().checkPermissions(&quot;system:user:update&quot;);</span><br></pre></td></tr></table></figure>
-
+<h1 id="Permission"><a href="#Permission" class="headerlink" title="Permission"></a>Permission</h1><p><strong>字符串通配符权限</strong><br><strong>规则</strong>：<code>“资源标识符：操作：对象实例ID”</code>  即对哪个资源的哪个实例可以进行什么操作。其默认支持通配符权限字符串，<code>“:”</code>表示资源/操作/实例的分割；<code>“,”</code>表示操作的分割；<code>“*”</code>表示任意资源/操作/实例。</p>
+<h2 id="单个资源单个权限"><a href="#单个资源单个权限" class="headerlink" title="单个资源单个权限"></a>单个资源单个权限</h2><figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">subject().checkPermissions("system:user:update");</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>用户拥有资源<code>“system:user”</code>的<code>“update”</code>权限。</p>
 </blockquote>
 <h2 id="单个资源多个权限"><a href="#单个资源多个权限" class="headerlink" title="单个资源多个权限"></a>单个资源多个权限</h2><p>ini配置文件：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">role41=system:user:update,system:user:delete</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">role41=system:user:update,system:user:delete</span><br></pre></td></tr></tbody></table></figure>
 <p>通过判断：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">subject().checkPermissions(&quot;system:user:update&quot;, &quot;system:user:delete&quot;);</span><br></pre></td></tr></table></figure>
-
-<p>可以简写为：<code>&quot;system:user:update,delete&quot;</code></p>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">subject().checkPermissions("system:user:update", "system:user:delete");</span><br></pre></td></tr></tbody></table></figure>
+<p>可以简写为：<code>"system:user:update,delete"</code></p>
 <blockquote>
 <p>用户拥有资源<code>“system:user”</code>的<code>“update”</code>和<code>“delete”</code>权限。</p>
 </blockquote>
 <h2 id="单个资源全部权限"><a href="#单个资源全部权限" class="headerlink" title="单个资源全部权限"></a>单个资源全部权限</h2><p>ini配置：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">role51=&quot;system:user:create,update,delete,view&quot;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">role51="system:user:create,update,delete,view" </span><br></pre></td></tr></tbody></table></figure>
 <p>通过判断：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">subject().checkPermissions(&quot;system:user:create,delete,update:view&quot;);</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">subject().checkPermissions("system:user:create,delete,update:view");</span><br></pre></td></tr></tbody></table></figure>
 <p>可以简写为：<code>system:user:*</code></p>
 <blockquote>
 <p>用户拥有资源<code>“system:user”</code>的<code>“create”</code>、<code>“update”</code>、<code>“delete”</code>和<code>“view”</code>所有权限。</p>
 </blockquote>
 <h2 id="所有资源全部权限"><a href="#所有资源全部权限" class="headerlink" title="所有资源全部权限"></a>所有资源全部权限</h2><p>ini配置：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">role61=*:view</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">role61=*:view</span><br></pre></td></tr></tbody></table></figure>
 <p>通过判断：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">subject().checkPermissions(&quot;user:view&quot;);</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">subject().checkPermissions("user:view");</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>用户拥有所有资源的<code>“view”</code>所有权限。</p>
 </blockquote>
 <h2 id="实例级别的权限"><a href="#实例级别的权限" class="headerlink" title="实例级别的权限"></a>实例级别的权限</h2><h3 id="单个实例单个权限"><a href="#单个实例单个权限" class="headerlink" title="单个实例单个权限"></a>单个实例单个权限</h3><p>ini配置：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">role71=user:view:1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">role71=user:view:1</span><br></pre></td></tr></tbody></table></figure>
 
 <p>通过判断：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">subject().checkPermissions(&quot;user:view:1&quot;);</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">subject().checkPermissions("user:view:1");</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>对资源user的1实例拥有view权限。</p>
 </blockquote>
 <h3 id="单个实例多个权限"><a href="#单个实例多个权限" class="headerlink" title="单个实例多个权限"></a>单个实例多个权限</h3><p>ini配置：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">role72=&quot;user:update,delete:1&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">role72="user:update,delete:1"</span><br></pre></td></tr></tbody></table></figure>
 
 <p>通过判断：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">subject().checkPermissions(&quot;user:delete,update:1&quot;);  </span><br><span class="line">subject().checkPermissions(&quot;user:update:1&quot;, &quot;user:delete:1&quot;);</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">subject().checkPermissions("user:delete,update:1");  </span><br><span class="line">subject().checkPermissions("user:update:1", "user:delete:1");</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>对资源user的1实例拥有update、delete权限。</p>
 </blockquote>
 <h3 id="单个实例所有权限"><a href="#单个实例所有权限" class="headerlink" title="单个实例所有权限"></a>单个实例所有权限</h3><p>ini配置：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">role73=user:*:1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">role73=user:*:1</span><br></pre></td></tr></tbody></table></figure>
 
 <p>通过判断：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">subject().checkPermissions(&quot;user:update:1&quot;, &quot;user:delete:1&quot;, &quot;user:view:1&quot;);</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">subject().checkPermissions("user:update:1", "user:delete:1", "user:view:1");</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>对资源user的1实例拥有所有权限。</p>
 </blockquote>
 <h3 id="所有实例单个权限"><a href="#所有实例单个权限" class="headerlink" title="所有实例单个权限"></a>所有实例单个权限</h3><p>ini配置：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">role74=user:auth:*</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">role74=user:auth:*</span><br></pre></td></tr></tbody></table></figure>
 
 <p>通过判断：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">subject().checkPermissions(&quot;user:auth:1&quot;, &quot;user:auth:2&quot;);</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">subject().checkPermissions("user:auth:1", "user:auth:2"); </span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>对资源user的1实例拥有所有权限。</p>
 </blockquote>
 <h3 id="所有实例所有权限"><a href="#所有实例所有权限" class="headerlink" title="所有实例所有权限"></a>所有实例所有权限</h3><p>ini配置：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">role75=user:*:*</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">role75=user:*:*</span><br></pre></td></tr></tbody></table></figure>
 
 <p>通过判断：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">subject().checkPermissions(&quot;user:view:1&quot;, &quot;user:auth:2&quot;);</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">subject().checkPermissions("user:view:1", "user:auth:2"); </span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>对资源user的1实例拥有所有权限。</p>
 </blockquote>
@@ -365,8 +355,7 @@ var _hmt = _hmt || [];
 <li>如<code>*:view</code> 不能匹配 <code>system:user:view</code>；需要使用 <code>*:*:view</code>；<br>即<strong>后缀匹配</strong>必须指定前缀（多个冒号就需要多个*来匹配）。</li>
 </ul>
 <h2 id="WildcardPermission"><a href="#WildcardPermission" class="headerlink" title="WildcardPermission"></a>WildcardPermission</h2><p>如下两种方式是等价的：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">subject().checkPermission(&quot;menu:view:1&quot;);  </span><br><span class="line">subject().checkPermission(new WildcardPermission(&quot;menu:view:1&quot;));</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">subject().checkPermission("menu:view:1");  </span><br><span class="line">subject().checkPermission(new WildcardPermission("menu:view:1"));</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>因此没什么必要的话使用字符串更方便。</p>
 </blockquote>
@@ -376,8 +365,8 @@ var _hmt = _hmt || [];
 <ol>
 <li>首先调用<code>Subject.isPermitted*/hasRole*</code>接口，其会委托给SecurityManager，而<code>SecurityManager</code>接着会委托给<code>Authorizer</code>；</li>
 <li><code>Authorizer</code>是真正的授权者；如果我们调用如<code>isPermitted(“user:view”)</code>，其首先会通过<code>PermissionResolver</code>把字符串转换成相应的<code>Permission实例</code>；</li>
-<li>在进行授权之前，其会<code>调用相应的Realm</code>获取Subject相应的<code>角色/权限</code>用于匹配传入的角色&#x2F;权限；</li>
-<li><code>Authorizer</code>会<code>判断</code>Realm的角色&#x2F;权限是否和传入的<code>匹配</code>，如果有<code>多个Realm</code>，会委托给<code>ModularRealmAuthorizer</code>进行循环判断，如果匹配如isPermitted*&#x2F;hasRole*会返回true，否则返回false表示授权失败。</li>
+<li>在进行授权之前，其会<code>调用相应的Realm</code>获取Subject相应的<code>角色/权限</code>用于匹配传入的角色/权限；</li>
+<li><code>Authorizer</code>会<code>判断</code>Realm的角色/权限是否和传入的<code>匹配</code>，如果有<code>多个Realm</code>，会委托给<code>ModularRealmAuthorizer</code>进行循环判断，如果匹配如isPermitted*/hasRole*会返回true，否则返回false表示授权失败。</li>
 </ol>
 </blockquote>
 <ul>
@@ -401,36 +390,39 @@ var _hmt = _hmt || [];
 <li>接着调用<code>Permission. implies(Permission p)</code>逐个与传入的权限比较，如果有<code>匹配</code>的则返回true，否则false。</li>
 </ol>
 </blockquote>
-<h1 id="Authorizer"><a href="#Authorizer" class="headerlink" title="Authorizer"></a>Authorizer</h1><p><strong>Authorizer</strong>的职责是进行授权（访问控制），提供了相应的角色&#x2F;权限判断接口。<code>SecurityManager</code>继承了<code>Authorizer接口</code>，且提供了<code>ModularRealmAuthorizer</code>用于多Realm时的授权匹配。<br><strong>PermissionResolver</strong>用于解析权限字符串到Permission实例。<br><strong>RolePermissionResolver</strong>用于根据角色解析相应的权限集合。</p>
+<h1 id="Authorizer"><a href="#Authorizer" class="headerlink" title="Authorizer"></a>Authorizer</h1><p><strong>Authorizer</strong>的职责是进行授权（访问控制），提供了相应的角色/权限判断接口。<code>SecurityManager</code>继承了<code>Authorizer接口</code>，且提供了<code>ModularRealmAuthorizer</code>用于多Realm时的授权匹配。<br><strong>PermissionResolver</strong>用于解析权限字符串到Permission实例。<br><strong>RolePermissionResolver</strong>用于根据角色解析相应的权限集合。</p>
 <ul>
-<li><p>可以通过如下ini配置更改<code>Authorizer</code>实现：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">authorizer=org.apache.shiro.authz.ModularRealmAuthorizer  </span><br><span class="line">securityManager.authorizer=$authorizer</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置<code>ModularRealmAuthorizer</code>的<code>permissionResolver</code>，其会自动设置到相应的Realm上（其实现了<code>PermissionResolverAware</code>接口），如：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">permissionResolver=org.apache.shiro.authz.permission.WildcardPermissionResolver  </span><br><span class="line">authorizer.permissionResolver=$permissionResolver</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置<code>ModularRealmAuthorizer</code>的<code>rolePermissionResolver</code>，其会自动设置到相应的Realm上（其实现了<code>RolePermissionResolverAware</code>接口），如：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">rolePermissionResolver=com.github.gojay001.permission.MyRolePermissionResolver  </span><br><span class="line">authorizer.rolePermissionResolver=$rolePermissionResolver</span><br></pre></td></tr></table></figure></li>
+<li>可以通过如下ini配置更改<code>Authorizer</code>实现：</li>
 </ul>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">authorizer=org.apache.shiro.authz.ModularRealmAuthorizer  </span><br><span class="line">securityManager.authorizer=$authorizer</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>设置<code>ModularRealmAuthorizer</code>的<code>permissionResolver</code>，其会自动设置到相应的Realm上（其实现了<code>PermissionResolverAware</code>接口），如：</li>
+</ul>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">permissionResolver=org.apache.shiro.authz.permission.WildcardPermissionResolver  </span><br><span class="line">authorizer.permissionResolver=$permissionResolver </span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>设置<code>ModularRealmAuthorizer</code>的<code>rolePermissionResolver</code>，其会自动设置到相应的Realm上（其实现了<code>RolePermissionResolverAware</code>接口），如：</li>
+</ul>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">rolePermissionResolver=com.github.gojay001.permission.MyRolePermissionResolver  </span><br><span class="line">authorizer.rolePermissionResolver=$rolePermissionResolver</span><br></pre></td></tr></tbody></table></figure>
+
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="ini配置"><a href="#ini配置" class="headerlink" title="ini配置"></a>ini配置</h3><blockquote>
 <p>shiro-jdbc-authorizer.ini</p>
 </blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">[main]</span><br><span class="line"># 自定义authorizer</span><br><span class="line">authorizer=org.apache.shiro.authz.ModularRealmAuthorizer</span><br><span class="line"># 自定义permissionResolver</span><br><span class="line"># permissionResolver=org.apache.shiro.authz.permission.WildcardPermissionResolver</span><br><span class="line">permissionResolver=com.github.gojay001.permission.BitAndWildPermissionResolver</span><br><span class="line">authorizer.permissionResolver=$permissionResolver</span><br><span class="line"># 自定义rolePermissionResolver</span><br><span class="line">rolePermissionResolver=com.github.gojay001.permission.MyRolePermissionResolver</span><br><span class="line">authorizer.rolePermissionResolver=$rolePermissionResolver</span><br><span class="line"></span><br><span class="line">securityManager.authorizer=$authorizer</span><br><span class="line"></span><br><span class="line"># 自定义realm 一定要放在securityManager.authorizer赋值之后</span><br><span class="line"># 因为调用setRealms会将realms设置给authorizer，并给各个Realm设置permissionResolver和rolePermissionResolver</span><br><span class="line">jdbcRealm=org.apache.shiro.realm.jdbc.JdbcRealm</span><br><span class="line">dataSource=com.alibaba.druid.pool.DruidDataSource</span><br><span class="line">dataSource.driverClassName=com.mysql.jdbc.Driver</span><br><span class="line">dataSource.url=jdbc:mysql://localhost:3306/shiro</span><br><span class="line">dataSource.username=root</span><br><span class="line">dataSource.password=root</span><br><span class="line">jdbcRealm.dataSource=$dataSource</span><br><span class="line">jdbcRealm.permissionsLookupEnabled=true</span><br><span class="line">securityManager.realms=$jdbcRealm</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">[main]</span><br><span class="line"># 自定义authorizer</span><br><span class="line">authorizer=org.apache.shiro.authz.ModularRealmAuthorizer</span><br><span class="line"># 自定义permissionResolver</span><br><span class="line"># permissionResolver=org.apache.shiro.authz.permission.WildcardPermissionResolver</span><br><span class="line">permissionResolver=com.github.gojay001.permission.BitAndWildPermissionResolver</span><br><span class="line">authorizer.permissionResolver=$permissionResolver</span><br><span class="line"># 自定义rolePermissionResolver</span><br><span class="line">rolePermissionResolver=com.github.gojay001.permission.MyRolePermissionResolver</span><br><span class="line">authorizer.rolePermissionResolver=$rolePermissionResolver</span><br><span class="line"></span><br><span class="line">securityManager.authorizer=$authorizer</span><br><span class="line"></span><br><span class="line"># 自定义realm 一定要放在securityManager.authorizer赋值之后</span><br><span class="line"># 因为调用setRealms会将realms设置给authorizer，并给各个Realm设置permissionResolver和rolePermissionResolver</span><br><span class="line">jdbcRealm=org.apache.shiro.realm.jdbc.JdbcRealm</span><br><span class="line">dataSource=com.alibaba.druid.pool.DruidDataSource</span><br><span class="line">dataSource.driverClassName=com.mysql.jdbc.Driver</span><br><span class="line">dataSource.url=jdbc:mysql://localhost:3306/shiro</span><br><span class="line">dataSource.username=root</span><br><span class="line">dataSource.password=root</span><br><span class="line">jdbcRealm.dataSource=$dataSource</span><br><span class="line">jdbcRealm.permissionsLookupEnabled=true</span><br><span class="line">securityManager.realms=$jdbcRealm</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>不能使用<code>IniSecurityManagerFactory</code>创建的<code>IniRealm</code>，因为其初始化顺序的问题可能造成后续的初始化Permission造成影响。</p>
 </blockquote>
 <h3 id="定义BitAndWildPermissionResolver及BitPermission"><a href="#定义BitAndWildPermissionResolver及BitPermission" class="headerlink" title="定义BitAndWildPermissionResolver及BitPermission"></a>定义BitAndWildPermissionResolver及BitPermission</h3><blockquote>
 <p><strong>BitPermission</strong>用于实现位移方式的权限，如规则是：<br>权限字符串格式：<code>+资源字符串+权限位+实例ID</code>；以+开头中间通过+分割；权限：<code>0 表示所有权限</code>；<code>1 新增</code>（二进制：0001）、<code>2 修改</code>（二进制：0010）、<code>4 删除</code>（二进制：0100）、<code>8 查看</code>（二进制：1000）；如 <code>+user+10</code> 表示对资源user拥有<code>修改/查看</code>权限。</p>
 </blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">public class BitPermission implements Permission &#123;</span><br><span class="line">    private String resourceIdentify;</span><br><span class="line">    private int permissionBit;</span><br><span class="line">    private String instanceId;</span><br><span class="line"></span><br><span class="line">    public BitPermission(String permissionString) &#123;</span><br><span class="line">        String[] array = permissionString.split(&quot;\\+&quot;);</span><br><span class="line"></span><br><span class="line">        if (array.length &gt; 1) &#123;</span><br><span class="line">            resourceIdentify = array[1];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (StringUtils.isEmpty(resourceIdentify)) &#123;</span><br><span class="line">            resourceIdentify = &quot;*&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (array.length &gt; 2) &#123;</span><br><span class="line">            permissionBit = Integer.valueOf(array[2]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (array.length &gt; 3) &#123;</span><br><span class="line">            instanceId = array[3];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (StringUtils.isEmpty(instanceId)) &#123;</span><br><span class="line">            instanceId = &quot;*&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public boolean implies(Permission permission) &#123;</span><br><span class="line">        if(!(permission instanceof BitPermission)) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        BitPermission other = (BitPermission) permission;</span><br><span class="line"></span><br><span class="line">        if(!(&quot;*&quot;.equals(this.resourceIdentify) || this.resourceIdentify.equals(other.resourceIdentify))) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if(!(this.permissionBit ==0 || (this.permissionBit &amp; other.permissionBit) != 0)) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if(!(&quot;*&quot;.equals(this.instanceId) || this.instanceId.equals(other.instanceId))) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;BitPermission&#123;&quot; +</span><br><span class="line">                &quot;resourceIdentify=&apos;&quot; + resourceIdentify + &apos;\&apos;&apos; +</span><br><span class="line">                &quot;, permissionBit=&quot; + permissionBit +</span><br><span class="line">                &quot;, instanceId=&apos;&quot; + instanceId + &apos;\&apos;&apos; +</span><br><span class="line">                &apos;&#125;&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">public class BitPermission implements Permission {</span><br><span class="line">    private String resourceIdentify;</span><br><span class="line">    private int permissionBit;</span><br><span class="line">    private String instanceId;</span><br><span class="line"></span><br><span class="line">    public BitPermission(String permissionString) {</span><br><span class="line">        String[] array = permissionString.split("\\+");</span><br><span class="line"></span><br><span class="line">        if (array.length &gt; 1) {</span><br><span class="line">            resourceIdentify = array[1];</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        if (StringUtils.isEmpty(resourceIdentify)) {</span><br><span class="line">            resourceIdentify = "*";</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        if (array.length &gt; 2) {</span><br><span class="line">            permissionBit = Integer.valueOf(array[2]);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        if (array.length &gt; 3) {</span><br><span class="line">            instanceId = array[3];</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        if (StringUtils.isEmpty(instanceId)) {</span><br><span class="line">            instanceId = "*";</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public boolean implies(Permission permission) {</span><br><span class="line">        if(!(permission instanceof BitPermission)) {</span><br><span class="line">            return false;</span><br><span class="line">        }</span><br><span class="line">        BitPermission other = (BitPermission) permission;</span><br><span class="line"></span><br><span class="line">        if(!("*".equals(this.resourceIdentify) || this.resourceIdentify.equals(other.resourceIdentify))) {</span><br><span class="line">            return false;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        if(!(this.permissionBit ==0 || (this.permissionBit &amp; other.permissionBit) != 0)) {</span><br><span class="line">            return false;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        if(!("*".equals(this.instanceId) || this.instanceId.equals(other.instanceId))) {</span><br><span class="line">            return false;</span><br><span class="line">        }</span><br><span class="line">        return true;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() {</span><br><span class="line">        return "BitPermission{" +</span><br><span class="line">                "resourceIdentify='" + resourceIdentify + '\'' +</span><br><span class="line">                ", permissionBit=" + permissionBit +</span><br><span class="line">                ", instanceId='" + instanceId + '\'' +</span><br><span class="line">                '}';</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p><strong>Permission接口</strong>提供了<code>boolean implies(Permission p)方法</code>用于判断权限匹配的；</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">public class BitAndWildPermissionResolver implements PermissionResolver &#123;  </span><br><span class="line">    @Override  </span><br><span class="line">    public Permission resolvePermission(String permissionString) &#123;  </span><br><span class="line">        if(permissionString.startsWith(&quot;+&quot;)) &#123;  </span><br><span class="line">            return new BitPermission(permissionString);  </span><br><span class="line">        &#125;  </span><br><span class="line">        return new WildcardPermission(permissionString);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">public class BitAndWildPermissionResolver implements PermissionResolver {  </span><br><span class="line">    @Override  </span><br><span class="line">    public Permission resolvePermission(String permissionString) {  </span><br><span class="line">        if(permissionString.startsWith("+")) {  </span><br><span class="line">            return new BitPermission(permissionString);  </span><br><span class="line">        }  </span><br><span class="line">        return new WildcardPermission(permissionString);  </span><br><span class="line">    }  </span><br><span class="line">} </span><br></pre></td></tr></tbody></table></figure>
 <p><strong>BitAndWildPermissionResolver</strong>实现了<code>PermissionResolver接口</code>，并根据权限字符串是否以“+”开头来解析权限字符串为BitPermission或WildcardPermission。</p>
 <h3 id="定义MyRolePermissionResolver"><a href="#定义MyRolePermissionResolver" class="headerlink" title="定义MyRolePermissionResolver"></a>定义MyRolePermissionResolver</h3><p><strong>RolePermissionResolver</strong>用于根据角色字符串来解析得到权限集合。</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">public class MyRolePermissionResolver implements RolePermissionResolver &#123;  </span><br><span class="line">    @Override  </span><br><span class="line">    public Collection&lt;Permission&gt; resolvePermissionsInRole(String roleString) &#123;  </span><br><span class="line">        if(&quot;role1&quot;.equals(roleString)) &#123;  </span><br><span class="line">            return Arrays.asList((Permission)new WildcardPermission(&quot;menu:*&quot;));  </span><br><span class="line">        &#125;  </span><br><span class="line">        return null;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">public class MyRolePermissionResolver implements RolePermissionResolver {  </span><br><span class="line">    @Override  </span><br><span class="line">    public Collection&lt;Permission&gt; resolvePermissionsInRole(String roleString) {  </span><br><span class="line">        if("role1".equals(roleString)) {  </span><br><span class="line">            return Arrays.asList((Permission)new WildcardPermission("menu:*"));  </span><br><span class="line">        }  </span><br><span class="line">        return null;  </span><br><span class="line">    }  </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="自定义Realm"><a href="#自定义Realm" class="headerlink" title="自定义Realm"></a>自定义Realm</h3><p>使用<strong>JdbcRealm</strong>，需要做的操作如下：</p>
 <ul>
@@ -440,13 +432,13 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>这里也可以自定义实现Realm，可参考com.github.gojay001.realm.MyRealm</p>
 </blockquote>
-<h3 id="测试用例-2"><a href="#测试用例-2" class="headerlink" title="测试用例"></a>测试用例</h3><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testIsPermitted2() &#123;</span><br><span class="line">    login(&quot;classpath:shiro-jdbc-authorizer.ini&quot;, &quot;root&quot;, &quot;root&quot;);</span><br><span class="line">    // 判断拥有权限：user:create</span><br><span class="line">    Assert.assertTrue(subject().isPermitted(&quot;user1:update&quot;));</span><br><span class="line">    Assert.assertTrue(subject().isPermitted(&quot;user2:update&quot;));</span><br><span class="line">    // 通过二进制位的方式表示权限</span><br><span class="line">    Assert.assertTrue(subject().isPermitted(&quot;+user1+2&quot;));// 新增权限</span><br><span class="line">    Assert.assertTrue(subject().isPermitted(&quot;+user1+8&quot;));// 查看权限</span><br><span class="line">    Assert.assertTrue(subject().isPermitted(&quot;+user2+10&quot;));// 新增及查看</span><br><span class="line"></span><br><span class="line">    Assert.assertFalse(subject().isPermitted(&quot;+user1+4&quot;));// 没有删除权限</span><br><span class="line"></span><br><span class="line">    Assert.assertTrue(subject().isPermitted(&quot;menu:view&quot;));// 通过MyRolePermissionResolver解析得到的权限</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="测试用例-2"><a href="#测试用例-2" class="headerlink" title="测试用例"></a>测试用例</h3><figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testIsPermitted2() {</span><br><span class="line">    login("classpath:shiro-jdbc-authorizer.ini", "root", "root");</span><br><span class="line">    // 判断拥有权限：user:create</span><br><span class="line">    Assert.assertTrue(subject().isPermitted("user1:update"));</span><br><span class="line">    Assert.assertTrue(subject().isPermitted("user2:update"));</span><br><span class="line">    // 通过二进制位的方式表示权限</span><br><span class="line">    Assert.assertTrue(subject().isPermitted("+user1+2"));// 新增权限</span><br><span class="line">    Assert.assertTrue(subject().isPermitted("+user1+8"));// 查看权限</span><br><span class="line">    Assert.assertTrue(subject().isPermitted("+user2+10"));// 新增及查看</span><br><span class="line"></span><br><span class="line">    Assert.assertFalse(subject().isPermitted("+user1+4"));// 没有删除权限</span><br><span class="line"></span><br><span class="line">    Assert.assertTrue(subject().isPermitted("menu:view"));// 通过MyRolePermissionResolver解析得到的权限</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="授权流程-1"><a href="#授权流程-1" class="headerlink" title="授权流程"></a>授权流程</h2><ul>
-<li>Subject.isPermitted*&#x2F;hasRole*</li>
+<li>Subject.isPermitted*/hasRole*</li>
 <li>SecurityManager</li>
 <li>Authorizer</li>
-<li>PermissionResolver&#x2F;RolePermissionResolver&#x2F;Permission</li>
+<li>PermissionResolver/RolePermissionResolver/Permission</li>
 <li>Realm</li>
 </ul>
 <h2 id="Realm"><a href="#Realm" class="headerlink" title="Realm"></a>Realm</h2><ul>
@@ -461,33 +453,33 @@ var _hmt = _hmt || [];
 <li>Realm</li>
 </ul>
 <h2 id="Subject"><a href="#Subject" class="headerlink" title="Subject"></a>Subject</h2><ul>
-<li>hasRole&#x2F;hasAllRoles</li>
-<li>checkRole&#x2F;checkRoles</li>
-<li>isPermitted&#x2F;isPermittedAll</li>
-<li>checkPermission&#x2F;checkPermissions</li>
+<li>hasRole/hasAllRoles</li>
+<li>checkRole/checkRoles</li>
+<li>isPermitted/isPermittedAll</li>
+<li>checkPermission/checkPermissions</li>
 </ul>
 <blockquote>
-<p>参考代码：<a href="https://github.com/Gojay001/Demo/tree/master/ShiroTest/ShiroTest-chapter3" target="_blank" rel="noopener">https://github.com/Gojay001/Demo/tree/master/ShiroTest/ShiroTest-chapter3</a></p>
+<p>参考代码：<a href="https://github.com/Gojay001/Demo/tree/master/ShiroTest/ShiroTest-chapter3">https://github.com/Gojay001/Demo/tree/master/ShiroTest/ShiroTest-chapter3</a></p>
 </blockquote>
-
+</body></html>
         </div>
         
             <ul class="post-copyright">
-            <li><strong>Title：</strong><a href="https://gojay.top/2017/11/23/跟我学Shiro（三）-授权/">跟我学Shiro（三）-授权</a></li>
-            <li><strong>Author：</strong><a href="https://gojay.top">Gojay</a></li>
-            <li><strong>Link：</strong><a href="https://gojay.top/2017/11/23/跟我学Shiro（三）-授权/">https://gojay.top/2017/11/23/跟我学Shiro（三）-授权/</a></li>
+            <li><strong>Title：</strong><a href="https://gojay.top/2017/11/23/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%B8%89%EF%BC%89-%E6%8E%88%E6%9D%83/">跟我学Shiro（三）-授权</a></li>
+            <li><strong>Author：</strong><a href=""></a></li>
+            <li><strong>Link：</strong><a href="https://gojay.top/2017/11/23/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%B8%89%EF%BC%89-%E6%8E%88%E6%9D%83/">https://gojay.top/2017/11/23/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%B8%89%EF%BC%89-%E6%8E%88%E6%9D%83/</a></li>
             <li><strong>Date：</strong>2017-11-23</li>
             <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
             </li>
             </ul>
         
         
-        <hr style="height:1px;margin:1rem 0">
+        <hr style="height:1px;margin:1rem 0"/>
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/Java/">Java</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Shiro/">Shiro</a>
+                    <a class="has-link-grey -link-link" href="/tags/Java/" rel="tag">Java</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/Shiro/" rel="tag">Shiro</a>
                 </div>
             </div>
         </div>
@@ -509,7 +501,7 @@ var _hmt = _hmt || [];
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2017/11/28/跟我学Shiro（四）-INI配置/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2017/11/28/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E5%9B%9B%EF%BC%89-INI%E9%85%8D%E7%BD%AE/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">跟我学Shiro（四）-INI配置</span>
             </a>
@@ -517,7 +509,7 @@ var _hmt = _hmt || [];
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2017/11/22/跟我学Shiro（二）-身份认证/">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2017/11/22/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%BA%8C%EF%BC%89-%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/">
                 <span class="level-item">跟我学Shiro（二）-身份认证</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
@@ -534,7 +526,7 @@ var _hmt = _hmt || [];
         
 <div id="valine-thread" class="content"></div>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 <script>
     new Valine({
         el: '#valine-thread' ,
@@ -581,9 +573,9 @@ var _hmt = _hmt || [];
         <span class="has-mr-6">2.2</span>
         <span>注解式</span>
         </a></li><li>
-        <a class="is-flex" href="#JSP-x2F-GSP标签">
+        <a class="is-flex" href="#JSP-GSP标签">
         <span class="has-mr-6">2.3</span>
-        <span>JSP&#x2F;GSP标签</span>
+        <span>JSP/GSP标签</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#授权">
         <span class="has-mr-6">3</span>
@@ -752,8 +744,9 @@ var _hmt = _hmt || [];
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2023 Gojay&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                &copy; 2026 Gojay&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
                 <br>
                 
@@ -908,7 +901,7 @@ var lazyLoadInstance = new LazyLoad({
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">

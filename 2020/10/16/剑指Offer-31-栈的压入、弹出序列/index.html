@@ -1,28 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html  lang="en">
+<head>
     <meta charset="utf-8">
-<meta name="baidu-site-verification" content="y4OgBadCWI">
-<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA">
+<meta name="baidu-site-verification" content="y4OgBadCWI" />
+<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA" />
 <title>剑指Offer-31-栈的压入、弹出序列 - Gojay&#39;s Records</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
     <meta name="description" content="题目 题目描述输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否为该栈的弹出顺序。假设压入栈的所有数字均不相等。例如，序列 {1,2,3,4,5} 是某栈的压栈序列，序列 {4,5,3,2,1} 是该压栈序列对应的一个弹出序列，但 {4,3,5,1,2} 就不可能是该压栈序列的弹出序列。">
-<meta name="keywords" content="Algorithm,Offer,栈">
 <meta property="og:type" content="article">
 <meta property="og:title" content="剑指Offer-31-栈的压入、弹出序列">
-<meta property="og:url" content="https://gojay.top/2020/10/16/剑指Offer-31-栈的压入、弹出序列/index.html">
+<meta property="og:url" content="https://gojay.top/2020/10/16/%E5%89%91%E6%8C%87Offer-31-%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E3%80%81%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97/index.html">
 <meta property="og:site_name" content="Gojay&#39;s Records">
 <meta property="og:description" content="题目 题目描述输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否为该栈的弹出顺序。假设压入栈的所有数字均不相等。例如，序列 {1,2,3,4,5} 是某栈的压栈序列，序列 {4,5,3,2,1} 是该压栈序列对应的一个弹出序列，但 {4,3,5,1,2} 就不可能是该压栈序列的弹出序列。">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
-<meta property="og:updated_time" content="2023-03-10T07:58:38.568Z">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gojay.top/gallery/thumbnails/%E5%89%91%E6%8C%87Offer.jpg">
+<meta property="article:published_time" content="2020-10-16T06:52:51.000Z">
+<meta property="article:modified_time" content="2023-03-10T07:58:38.568Z">
+<meta property="article:author" content="Gojay">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="Offer">
+<meta property="article:tag" content="栈">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="剑指Offer-31-栈的压入、弹出序列">
-<meta name="twitter:description" content="题目 题目描述输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否为该栈的弹出顺序。假设压入栈的所有数字均不相等。例如，序列 {1,2,3,4,5} 是某栈的压栈序列，序列 {4,5,3,2,1} 是该压栈序列对应的一个弹出序列，但 {4,3,5,1,2} 就不可能是该压栈序列的弹出序列。">
-<meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
+<meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/%E5%89%91%E6%8C%87Offer.jpg">
 
 
 
@@ -96,13 +98,14 @@ var _hmt = _hmt || [];
     
     
     
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
 
     
 
 
 <link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/rss.xml" title="Gojay's Records" type="application/atom+xml">
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
@@ -118,19 +121,26 @@ var _hmt = _hmt || [];
             
             <div class="navbar-start">
                 
-                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item"
+                href="/">Home</a>
                 
-                <a class="navbar-item" href="/archives/">Archives</a>
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
                 
-                <a class="navbar-item" href="/categories/">Categories</a>
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
                 
-                <a class="navbar-item" href="/tags/">Tags</a>
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
                 
-                <a class="navbar-item" href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
+                <a class="navbar-item"
+                href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
                 
-                <a class="navbar-item" href="/about/">About</a>
+                <a class="navbar-item"
+                href="/about/">About</a>
                 
-                <a class="navbar-item" href="/rss.xml">RSS</a>
+                <a class="navbar-item"
+                href="/rss.xml">RSS</a>
                 
             </div>
             
@@ -166,8 +176,8 @@ var _hmt = _hmt || [];
                 <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-image">
-        <span class="image is-7by1">
-            <img class="thumbnail lazy" data-src="/gallery/thumbnails/剑指Offer.jpg" alt="剑指Offer-31-栈的压入、弹出序列">
+        <span  class="image is-7by1">
+            <img class="thumbnail lazy" data-src="/gallery/thumbnails/%E5%89%91%E6%8C%87Offer.jpg" alt="剑指Offer-31-栈的压入、弹出序列">
         </span>
     </div>
     
@@ -188,7 +198,7 @@ var _hmt = _hmt || [];
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/剑指Offer/">剑指Offer</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/剑指Offer/31/">31</a>
+                <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/%E5%89%91%E6%8C%87Offer/">剑指Offer</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/%E5%89%91%E6%8C%87Offer/31/">31</a>
                 </div>
                 
                 
@@ -209,19 +219,19 @@ var _hmt = _hmt || [];
         </div>
         
         <div class="content">
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr>
+            <html><head></head><body><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr>
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入两个整数序列，<strong>第一个序列表示栈的压入顺序，请判断第二个序列是否为该栈的弹出顺序</strong>。假设压入栈的所有数字均不相等。例如，序列 {1,2,3,4,5} 是某栈的压栈序列，序列 {4,5,3,2,1} 是该压栈序列对应的一个弹出序列，但 {4,3,5,1,2} 就不可能是该压栈序列的弹出序列。</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><blockquote>
-<p><strong>输入</strong>: pushed &#x3D; [1,2,3,4,5], popped &#x3D; [4,5,3,2,1]<br><strong>输出</strong>: true<br><strong>解释</strong>: 我们可以按以下顺序执行：<br>push(1), push(2), push(3), push(4), pop() -&gt; 4,<br>push(5), pop() -&gt; 5, pop() -&gt; 3, pop() -&gt; 2, pop() -&gt; 1</p>
+<p><strong>输入</strong>: pushed = [1,2,3,4,5], popped = [4,5,3,2,1]<br><strong>输出</strong>: true<br><strong>解释</strong>: 我们可以按以下顺序执行：<br>push(1), push(2), push(3), push(4), pop() -&gt; 4,<br>push(5), pop() -&gt; 5, pop() -&gt; 3, pop() -&gt; 2, pop() -&gt; 1</p>
 </blockquote>
 <h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><blockquote>
-<p><strong>输入</strong>: pushed &#x3D; [1,2,3,4,5], popped &#x3D; [4,3,5,1,2]<br><strong>输出</strong>: false<br><strong>解释</strong>: 1 不能在 2 之前弹出。</p>
+<p><strong>输入</strong>: pushed = [1,2,3,4,5], popped = [4,3,5,1,2]<br><strong>输出</strong>: false<br><strong>解释</strong>: 1 不能在 2 之前弹出。</p>
 </blockquote>
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr>
 <h2 id="辅助栈"><a href="#辅助栈" class="headerlink" title="辅助栈"></a>辅助栈</h2><blockquote>
-<p>借用一个 <strong>辅助栈，模拟压入&#x2F;弹出操作</strong> 的排列，根据是否模拟成功，即可得到结果。</p>
+<p>借用一个 <strong>辅助栈，模拟压入/弹出操作</strong> 的排列，根据是否模拟成功，即可得到结果。</p>
 </blockquote>
 <ul>
 <li><strong>入栈操作</strong>: 按照压栈序列的顺序执行;</li>
@@ -230,7 +240,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p><strong>时间复杂度</strong>：O(n)，每个元素最多入栈与出栈一次，即2n次出入栈操作；<br><strong>空间复杂度</strong>：O(n)，辅助栈最多存储n个元素。</p>
 </blockquote>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">validateStackSequences</span><span class="hljs-params">(self, pushed: List[int], popped: List[int])</span> -&gt; bool:</span></span><br><span class="line">        stack, i = [], <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> pushed:</span><br><span class="line">            stack.append(num)</span><br><span class="line">            <span class="hljs-keyword">while</span> stack <span class="hljs-keyword">and</span> stack[<span class="hljs-number">-1</span>] == popped[i]:</span><br><span class="line">                stack.pop()</span><br><span class="line">                i += <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">not</span> stack</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">validateStackSequences</span>(<span class="hljs-params">self, pushed: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], popped: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">bool</span>:</span><br><span class="line">        stack, i = [], <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> pushed:</span><br><span class="line">            stack.append(num)</span><br><span class="line">            <span class="hljs-keyword">while</span> stack <span class="hljs-keyword">and</span> stack[-<span class="hljs-number">1</span>] == popped[i]:</span><br><span class="line">                stack.pop()</span><br><span class="line">                i += <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">not</span> stack</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="原地辅助栈"><a href="#原地辅助栈" class="headerlink" title="原地辅助栈"></a>原地辅助栈</h2><blockquote>
 <p><strong>将压栈序列pushed作为辅助栈</strong>，指针i,j分别指向pushed栈顶及poped首位元素。 </p>
@@ -241,27 +251,26 @@ var _hmt = _hmt || [];
 <blockquote>
 <p><strong>时间复杂度</strong>：O(n)，每个元素最多入栈与出栈一次，即2n次出入栈操作；<br><strong>空间复杂度</strong>：O(1)，pushed作为辅助栈，指针i,j只需常数额外空间。</p>
 </blockquote>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">validateStackSequences</span><span class="hljs-params">(self, pushed: List[int], popped: List[int])</span> -&gt; bool:</span></span><br><span class="line">        i, j = <span class="hljs-number">0</span>, <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> pushed:</span><br><span class="line">            pushed[i] = num</span><br><span class="line">            <span class="hljs-keyword">while</span> i &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> pushed[i] == popped[j]:</span><br><span class="line">                j += <span class="hljs-number">1</span></span><br><span class="line">                i -= <span class="hljs-number">1</span></span><br><span class="line">            i += <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">return</span> i == <span class="hljs-number">0</span></span><br></pre></td></tr></table></figure>
-
-
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">validateStackSequences</span>(<span class="hljs-params">self, pushed: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], popped: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">bool</span>:</span><br><span class="line">        i, j = <span class="hljs-number">0</span>, <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> pushed:</span><br><span class="line">            pushed[i] = num</span><br><span class="line">            <span class="hljs-keyword">while</span> i &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> pushed[i] == popped[j]:</span><br><span class="line">                j += <span class="hljs-number">1</span></span><br><span class="line">                i -= <span class="hljs-number">1</span></span><br><span class="line">            i += <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">return</span> i == <span class="hljs-number">0</span></span><br></pre></td></tr></tbody></table></figure>
+</body></html>
         </div>
         
             <ul class="post-copyright">
-            <li><strong>Title：</strong><a href="https://gojay.top/2020/10/16/剑指Offer-31-栈的压入、弹出序列/">剑指Offer-31-栈的压入、弹出序列</a></li>
-            <li><strong>Author：</strong><a href="https://gojay.top">Gojay</a></li>
-            <li><strong>Link：</strong><a href="https://gojay.top/2020/10/16/剑指Offer-31-栈的压入、弹出序列/">https://gojay.top/2020/10/16/剑指Offer-31-栈的压入、弹出序列/</a></li>
+            <li><strong>Title：</strong><a href="https://gojay.top/2020/10/16/%E5%89%91%E6%8C%87Offer-31-%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E3%80%81%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97/">剑指Offer-31-栈的压入、弹出序列</a></li>
+            <li><strong>Author：</strong><a href=""></a></li>
+            <li><strong>Link：</strong><a href="https://gojay.top/2020/10/16/%E5%89%91%E6%8C%87Offer-31-%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E3%80%81%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97/">https://gojay.top/2020/10/16/%E5%89%91%E6%8C%87Offer-31-%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E3%80%81%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97/</a></li>
             <li><strong>Date：</strong>2020-10-16</li>
             <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
             </li>
             </ul>
         
         
-        <hr style="height:1px;margin:1rem 0">
+        <hr style="height:1px;margin:1rem 0"/>
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/Algorithm/">Algorithm</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Offer/">Offer</a>,&nbsp;<a class="has-link-grey -link" href="/tags/栈/">栈</a>
+                    <a class="has-link-grey -link-link" href="/tags/Algorithm/" rel="tag">Algorithm</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/Offer/" rel="tag">Offer</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/%E6%A0%88/" rel="tag">栈</a>
                 </div>
             </div>
         </div>
@@ -283,7 +292,7 @@ var _hmt = _hmt || [];
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/10/18/剑指Offer-32-从上到下打印二叉树/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/10/18/%E5%89%91%E6%8C%87Offer-32-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">剑指Offer-32-从上到下打印二叉树</span>
             </a>
@@ -291,7 +300,7 @@ var _hmt = _hmt || [];
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/10/14/剑指Offer-30-包含min函数的栈/">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/10/14/%E5%89%91%E6%8C%87Offer-30-%E5%8C%85%E5%90%ABmin%E5%87%BD%E6%95%B0%E7%9A%84%E6%A0%88/">
                 <span class="level-item">剑指Offer-30-包含min函数的栈</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
@@ -308,7 +317,7 @@ var _hmt = _hmt || [];
         
 <div id="valine-thread" class="content"></div>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 <script>
     new Valine({
         el: '#valine-thread' ,
@@ -394,8 +403,9 @@ var _hmt = _hmt || [];
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2023 Gojay&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                &copy; 2026 Gojay&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
                 <br>
                 
@@ -550,7 +560,7 @@ var lazyLoadInstance = new LazyLoad({
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">

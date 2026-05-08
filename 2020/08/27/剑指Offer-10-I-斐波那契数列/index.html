@@ -1,28 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html  lang="en">
+<head>
     <meta charset="utf-8">
-<meta name="baidu-site-verification" content="y4OgBadCWI">
-<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA">
+<meta name="baidu-site-verification" content="y4OgBadCWI" />
+<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA" />
 <title>剑指Offer-10-I.斐波那契数列 - Gojay&#39;s Records</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="题目 题目描述写一个函数，输入 n ，求斐波那契（Fibonacci）数列的第 n 项。斐波那契数列的定义如下：    F(0) &amp;#x3D; 0,   F(1) &amp;#x3D; 1F(N) &amp;#x3D; F(N - 1) + F(N - 2), 其中 N &amp;gt; 1.    斐波那契数列由 0 和 1 开始，之后的斐波那契数就是由之前的两数相加而得出。答案需要取模 1e9+7（100000000">
-<meta name="keywords" content="Algorithm,Offer,递归,动态规划">
+    <meta name="description" content="题目 题目描述写一个函数，输入 n ，求斐波那契（Fibonacci）数列的第 n 项。斐波那契数列的定义如下：    F(0) &#x3D; 0,   F(1) &#x3D; 1F(N) &#x3D; F(N - 1) + F(N - 2), 其中 N &gt; 1.    斐波那契数列由 0 和 1 开始，之后的斐波那契数就是由之前的两数相加而得出。答案需要取模 1e9+7（1000000007），如计算初始结果为：100">
 <meta property="og:type" content="article">
 <meta property="og:title" content="剑指Offer-10-I.斐波那契数列">
-<meta property="og:url" content="https://gojay.top/2020/08/27/剑指Offer-10-I-斐波那契数列/index.html">
+<meta property="og:url" content="https://gojay.top/2020/08/27/%E5%89%91%E6%8C%87Offer-10-I-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/index.html">
 <meta property="og:site_name" content="Gojay&#39;s Records">
-<meta property="og:description" content="题目 题目描述写一个函数，输入 n ，求斐波那契（Fibonacci）数列的第 n 项。斐波那契数列的定义如下：    F(0) &amp;#x3D; 0,   F(1) &amp;#x3D; 1F(N) &amp;#x3D; F(N - 1) + F(N - 2), 其中 N &amp;gt; 1.    斐波那契数列由 0 和 1 开始，之后的斐波那契数就是由之前的两数相加而得出。答案需要取模 1e9+7（100000000">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
-<meta property="og:updated_time" content="2023-03-10T07:58:38.566Z">
+<meta property="og:description" content="题目 题目描述写一个函数，输入 n ，求斐波那契（Fibonacci）数列的第 n 项。斐波那契数列的定义如下：    F(0) &#x3D; 0,   F(1) &#x3D; 1F(N) &#x3D; F(N - 1) + F(N - 2), 其中 N &gt; 1.    斐波那契数列由 0 和 1 开始，之后的斐波那契数就是由之前的两数相加而得出。答案需要取模 1e9+7（1000000007），如计算初始结果为：100">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gojay.top/gallery/thumbnails/%E5%89%91%E6%8C%87Offer.jpg">
+<meta property="article:published_time" content="2020-08-27T07:01:45.000Z">
+<meta property="article:modified_time" content="2023-03-10T07:58:38.566Z">
+<meta property="article:author" content="Gojay">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="Offer">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="递归">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="剑指Offer-10-I.斐波那契数列">
-<meta name="twitter:description" content="题目 题目描述写一个函数，输入 n ，求斐波那契（Fibonacci）数列的第 n 项。斐波那契数列的定义如下：    F(0) &amp;#x3D; 0,   F(1) &amp;#x3D; 1F(N) &amp;#x3D; F(N - 1) + F(N - 2), 其中 N &amp;gt; 1.    斐波那契数列由 0 和 1 开始，之后的斐波那契数就是由之前的两数相加而得出。答案需要取模 1e9+7（100000000">
-<meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
+<meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/%E5%89%91%E6%8C%87Offer.jpg">
 
 
 
@@ -96,13 +99,14 @@ var _hmt = _hmt || [];
     
     
     
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
 
     
 
 
 <link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/rss.xml" title="Gojay's Records" type="application/atom+xml">
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
@@ -118,19 +122,26 @@ var _hmt = _hmt || [];
             
             <div class="navbar-start">
                 
-                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item"
+                href="/">Home</a>
                 
-                <a class="navbar-item" href="/archives/">Archives</a>
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
                 
-                <a class="navbar-item" href="/categories/">Categories</a>
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
                 
-                <a class="navbar-item" href="/tags/">Tags</a>
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
                 
-                <a class="navbar-item" href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
+                <a class="navbar-item"
+                href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
                 
-                <a class="navbar-item" href="/about/">About</a>
+                <a class="navbar-item"
+                href="/about/">About</a>
                 
-                <a class="navbar-item" href="/rss.xml">RSS</a>
+                <a class="navbar-item"
+                href="/rss.xml">RSS</a>
                 
             </div>
             
@@ -166,8 +177,8 @@ var _hmt = _hmt || [];
                 <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-image">
-        <span class="image is-7by1">
-            <img class="thumbnail lazy" data-src="/gallery/thumbnails/剑指Offer.jpg" alt="剑指Offer-10-I.斐波那契数列">
+        <span  class="image is-7by1">
+            <img class="thumbnail lazy" data-src="/gallery/thumbnails/%E5%89%91%E6%8C%87Offer.jpg" alt="剑指Offer-10-I.斐波那契数列">
         </span>
     </div>
     
@@ -188,7 +199,7 @@ var _hmt = _hmt || [];
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/剑指Offer/">剑指Offer</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/剑指Offer/10/">10</a>
+                <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/%E5%89%91%E6%8C%87Offer/">剑指Offer</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/%E5%89%91%E6%8C%87Offer/10/">10</a>
                 </div>
                 
                 
@@ -209,60 +220,60 @@ var _hmt = _hmt || [];
         </div>
         
         <div class="content">
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr>
+            <html><head></head><body><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr>
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>写一个函数，输入 <code>n</code> ，求斐波那契（Fibonacci）数列的第 <code>n</code> 项。斐波那契数列的定义如下：  </p>
 <blockquote>
-<p>F(0) &#x3D; 0,   F(1) &#x3D; 1<br>F(N) &#x3D; F(N - 1) + F(N - 2), 其中 N &gt; 1.  </p>
+<p>F(0) = 0,   F(1) = 1<br>F(N) = F(N - 1) + F(N - 2), 其中 N &gt; 1.  </p>
 </blockquote>
 <p><strong>斐波那契数列</strong>由 0 和 1 开始，之后的斐波那契数就是由之前的两数相加而得出。<br>答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><blockquote>
-<p><strong>输入</strong>：n &#x3D; 2<br><strong>输出</strong>：1</p>
+<p><strong>输入</strong>：n = 2<br><strong>输出</strong>：1</p>
 </blockquote>
 <h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><blockquote>
-<p><strong>输入</strong>：n &#x3D; 5<br><strong>输出</strong>：5</p>
+<p><strong>输入</strong>：n = 5<br><strong>输出</strong>：5</p>
 </blockquote>
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr>
 <h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><blockquote>
 <p>把f(n) <code>拆解</code> 为f(n-1)和f(n-2)递归计算，以f(1)和f(0)为终止条件。<br>大量重复递归计算，会直接超时。<br><strong>时间复杂度</strong>：O($2^n$)<br><strong>空间复杂度</strong>：O(n)</p>
 </blockquote>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fib</span><span class="hljs-params">(self, n: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> n &lt;= <span class="hljs-number">0</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> n</span><br><span class="line">        <span class="hljs-keyword">return</span> self.fib(n<span class="hljs-number">-1</span>) + self.fib(n<span class="hljs-number">-2</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">fib</span>(<span class="hljs-params">self, n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:</span><br><span class="line">        <span class="hljs-keyword">if</span> n &lt;= <span class="hljs-number">0</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> n</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="variable language_">self</span>.fib(n-<span class="hljs-number">1</span>) + <span class="variable language_">self</span>.fib(n-<span class="hljs-number">2</span>)</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><ul>
 <li><strong>状态定义</strong>：dp为一维数组，dp[i]为斐波那契数列的第i个值。  </li>
-<li><strong>转移方程</strong>：dp[i] &#x3D; dp[i-1] + dp[i-2]。  </li>
-<li><strong>初始状态</strong>：dp[0] &#x3D; 0, dp[1] &#x3D; 1。</li>
+<li><strong>转移方程</strong>：dp[i] = dp[i-1] + dp[i-2]。  </li>
+<li><strong>初始状态</strong>：dp[0] = 0, dp[1] = 1。</li>
 </ul>
 <blockquote>
 <p><strong>时间复杂度</strong>：O(n)，循环n次，每次O(1)。<br><strong>空间复杂度</strong>：O(n)，dp[n]占用O(n)。</p>
 </blockquote>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fib</span><span class="hljs-params">(self, n: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> n &lt;= <span class="hljs-number">0</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> n</span><br><span class="line">        dp = []</span><br><span class="line">        dp.append(<span class="hljs-number">0</span>)</span><br><span class="line">        dp.append(<span class="hljs-number">1</span>)</span><br><span class="line">        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>, n+<span class="hljs-number">1</span>):</span><br><span class="line">            dp_tmp = (dp[i<span class="hljs-number">-1</span>] + dp[i<span class="hljs-number">-2</span>]) % <span class="hljs-number">1000000007</span></span><br><span class="line">            dp.append(dp_tmp)</span><br><span class="line">        <span class="hljs-keyword">return</span> dp[n]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">fib</span>(<span class="hljs-params">self, n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:</span><br><span class="line">        <span class="hljs-keyword">if</span> n &lt;= <span class="hljs-number">0</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> n</span><br><span class="line">        dp = []</span><br><span class="line">        dp.append(<span class="hljs-number">0</span>)</span><br><span class="line">        dp.append(<span class="hljs-number">1</span>)</span><br><span class="line">        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, n+<span class="hljs-number">1</span>):</span><br><span class="line">            dp_tmp = (dp[i-<span class="hljs-number">1</span>] + dp[i-<span class="hljs-number">2</span>]) % <span class="hljs-number">1000000007</span></span><br><span class="line">            dp.append(dp_tmp)</span><br><span class="line">        <span class="hljs-keyword">return</span> dp[n]</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="动态规划（空间优化）"><a href="#动态规划（空间优化）" class="headerlink" title="动态规划（空间优化）"></a>动态规划（空间优化）</h2><blockquote>
 <p>利用 <code>辅助变量使a, b</code> 交替前进，节省了dp[]列表空间。<br><strong>时间复杂度</strong>：O(n)，循环n次，每次O(1)。<br><strong>空间复杂度</strong>：O(1)，变量占用O(1)。</p>
 </blockquote>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fib</span><span class="hljs-params">(self, n: int)</span> -&gt; int:</span></span><br><span class="line">        a, b = <span class="hljs-number">0</span>, <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(n):</span><br><span class="line">            a, b = b, a + b</span><br><span class="line">        <span class="hljs-keyword">return</span> a % <span class="hljs-number">1000000007</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">fib</span>(<span class="hljs-params">self, n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:</span><br><span class="line">        a, b = <span class="hljs-number">0</span>, <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):</span><br><span class="line">            a, b = b, a + b</span><br><span class="line">        <span class="hljs-keyword">return</span> a % <span class="hljs-number">1000000007</span></span><br></pre></td></tr></tbody></table></figure>
 
-
+</body></html>
         </div>
         
             <ul class="post-copyright">
-            <li><strong>Title：</strong><a href="https://gojay.top/2020/08/27/剑指Offer-10-I-斐波那契数列/">剑指Offer-10-I.斐波那契数列</a></li>
-            <li><strong>Author：</strong><a href="https://gojay.top">Gojay</a></li>
-            <li><strong>Link：</strong><a href="https://gojay.top/2020/08/27/剑指Offer-10-I-斐波那契数列/">https://gojay.top/2020/08/27/剑指Offer-10-I-斐波那契数列/</a></li>
+            <li><strong>Title：</strong><a href="https://gojay.top/2020/08/27/%E5%89%91%E6%8C%87Offer-10-I-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/">剑指Offer-10-I.斐波那契数列</a></li>
+            <li><strong>Author：</strong><a href=""></a></li>
+            <li><strong>Link：</strong><a href="https://gojay.top/2020/08/27/%E5%89%91%E6%8C%87Offer-10-I-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/">https://gojay.top/2020/08/27/%E5%89%91%E6%8C%87Offer-10-I-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/</a></li>
             <li><strong>Date：</strong>2020-08-27</li>
             <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
             </li>
             </ul>
         
         
-        <hr style="height:1px;margin:1rem 0">
+        <hr style="height:1px;margin:1rem 0"/>
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/Algorithm/">Algorithm</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Offer/">Offer</a>,&nbsp;<a class="has-link-grey -link" href="/tags/动态规划/">动态规划</a>,&nbsp;<a class="has-link-grey -link" href="/tags/递归/">递归</a>
+                    <a class="has-link-grey -link-link" href="/tags/Algorithm/" rel="tag">Algorithm</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/Offer/" rel="tag">Offer</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a>
                 </div>
             </div>
         </div>
@@ -284,7 +295,7 @@ var _hmt = _hmt || [];
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/08/29/剑指Offer-10-II-青蛙跳台阶问题/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/08/29/%E5%89%91%E6%8C%87Offer-10-II-%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">剑指Offer-10-II.青蛙跳台阶问题</span>
             </a>
@@ -292,7 +303,7 @@ var _hmt = _hmt || [];
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/08/26/剑指Offer-09-用两个栈实现队列/">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/08/26/%E5%89%91%E6%8C%87Offer-09-%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/">
                 <span class="level-item">剑指Offer-09-用两个栈实现队列</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
@@ -309,7 +320,7 @@ var _hmt = _hmt || [];
         
 <div id="valine-thread" class="content"></div>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 <script>
     new Valine({
         el: '#valine-thread' ,
@@ -399,8 +410,9 @@ var _hmt = _hmt || [];
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2023 Gojay&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                &copy; 2026 Gojay&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
                 <br>
                 
@@ -555,7 +567,7 @@ var lazyLoadInstance = new LazyLoad({
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">

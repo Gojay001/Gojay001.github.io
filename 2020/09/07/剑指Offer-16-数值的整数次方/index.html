@@ -1,28 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html  lang="en">
+<head>
     <meta charset="utf-8">
-<meta name="baidu-site-verification" content="y4OgBadCWI">
-<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA">
+<meta name="baidu-site-verification" content="y4OgBadCWI" />
+<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA" />
 <title>剑指Offer-16-数值的整数次方 - Gojay&#39;s Records</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
     <meta name="description" content="题目 题目描述实现函数double Power(double base, int exponent)，求base的exponent次方。不得使用库函数，同时不需要考虑大数问题。">
-<meta name="keywords" content="Algorithm,Offer,递归,分治">
 <meta property="og:type" content="article">
 <meta property="og:title" content="剑指Offer-16-数值的整数次方">
-<meta property="og:url" content="https://gojay.top/2020/09/07/剑指Offer-16-数值的整数次方/index.html">
+<meta property="og:url" content="https://gojay.top/2020/09/07/%E5%89%91%E6%8C%87Offer-16-%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9/index.html">
 <meta property="og:site_name" content="Gojay&#39;s Records">
 <meta property="og:description" content="题目 题目描述实现函数double Power(double base, int exponent)，求base的exponent次方。不得使用库函数，同时不需要考虑大数问题。">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
-<meta property="og:updated_time" content="2023-03-10T07:58:38.567Z">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gojay.top/gallery/thumbnails/%E5%89%91%E6%8C%87Offer.jpg">
+<meta property="article:published_time" content="2020-09-07T14:32:28.000Z">
+<meta property="article:modified_time" content="2023-03-10T07:58:38.567Z">
+<meta property="article:author" content="Gojay">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="Offer">
+<meta property="article:tag" content="分治">
+<meta property="article:tag" content="递归">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="剑指Offer-16-数值的整数次方">
-<meta name="twitter:description" content="题目 题目描述实现函数double Power(double base, int exponent)，求base的exponent次方。不得使用库函数，同时不需要考虑大数问题。">
-<meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
+<meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/%E5%89%91%E6%8C%87Offer.jpg">
 
 
 
@@ -96,13 +99,14 @@ var _hmt = _hmt || [];
     
     
     
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
 
     
 
 
 <link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/rss.xml" title="Gojay's Records" type="application/atom+xml">
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
@@ -118,19 +122,26 @@ var _hmt = _hmt || [];
             
             <div class="navbar-start">
                 
-                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item"
+                href="/">Home</a>
                 
-                <a class="navbar-item" href="/archives/">Archives</a>
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
                 
-                <a class="navbar-item" href="/categories/">Categories</a>
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
                 
-                <a class="navbar-item" href="/tags/">Tags</a>
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
                 
-                <a class="navbar-item" href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
+                <a class="navbar-item"
+                href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
                 
-                <a class="navbar-item" href="/about/">About</a>
+                <a class="navbar-item"
+                href="/about/">About</a>
                 
-                <a class="navbar-item" href="/rss.xml">RSS</a>
+                <a class="navbar-item"
+                href="/rss.xml">RSS</a>
                 
             </div>
             
@@ -166,8 +177,8 @@ var _hmt = _hmt || [];
                 <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-image">
-        <span class="image is-7by1">
-            <img class="thumbnail lazy" data-src="/gallery/thumbnails/剑指Offer.jpg" alt="剑指Offer-16-数值的整数次方">
+        <span  class="image is-7by1">
+            <img class="thumbnail lazy" data-src="/gallery/thumbnails/%E5%89%91%E6%8C%87Offer.jpg" alt="剑指Offer-16-数值的整数次方">
         </span>
     </div>
     
@@ -188,7 +199,7 @@ var _hmt = _hmt || [];
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/剑指Offer/">剑指Offer</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/剑指Offer/16/">16</a>
+                <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/%E5%89%91%E6%8C%87Offer/">剑指Offer</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/%E5%89%91%E6%8C%87Offer/16/">16</a>
                 </div>
                 
                 
@@ -209,9 +220,9 @@ var _hmt = _hmt || [];
         </div>
         
         <div class="content">
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr>
+            <html><head></head><body><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr>
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>实现函数double Power(double base, int exponent)，<strong>求base的exponent次方</strong>。不得使用库函数，同时不需要考虑大数问题。</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><blockquote>
 <p><strong>输入</strong>：2.00000, 10<br><strong>输出</strong>：1024.00000  </p>
@@ -220,22 +231,22 @@ var _hmt = _hmt || [];
 <p><strong>输入</strong>：2.10000, 3<br><strong>输出</strong>：9.26100  </p>
 </blockquote>
 <h2 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h2><blockquote>
-<p><strong>输入</strong>：2.00000, -2<br><strong>输出</strong>：0.25000<br><strong>解释</strong>：$2^{-2} &#x3D; 1&#x2F;2^{2} &#x3D; 1&#x2F;4 &#x3D; 0.25$</p>
+<p><strong>输入</strong>：2.00000, -2<br><strong>输出</strong>：0.25000<br><strong>解释</strong>：$2^{-2} = 1/2^{2} = 1/4 = 0.25$</p>
 </blockquote>
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr>
 <h2 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h2><blockquote>
 <p>把指数n做 <strong>“二进制分解”</strong>，在 <strong>底数不断自身乘以自身</strong> 的过程中，将最终结果需要的部分保存下来。</p>
 </blockquote>
-<p>$x^n &#x3D; x^{n&#x2F;2} * x^{n&#x2F;2} &#x3D; (x^2)^{n&#x2F;2}$, 设&#x2F;&#x2F;为向下取整除法:  </p>
+<p>$x^n = x^{n/2} * x^{n/2} = (x^2)^{n/2}$, 设//为向下取整除法:  </p>
 <ul>
-<li><strong>n为偶数</strong>：$x^n &#x3D; (x^2)^{n&#x2F;&#x2F;2}$；</li>
-<li><strong>n为奇数</strong>：$x^n &#x3D; x(x^2)^{n&#x2F;&#x2F;2}$, 即多出一项x。</li>
+<li><strong>n为偶数</strong>：$x^n = (x^2)^{n//2}$；</li>
+<li><strong>n为奇数</strong>：$x^n = x(x^2)^{n//2}$, 即多出一项x。</li>
 </ul>
-<p>1)若x&#x3D;&#x3D;0，则返回0; 2)初始化res&#x3D;1; 3)当n&lt;0时，将x转为分数，n取负数; 4)循环：a.若n&amp;1&#x3D;&#x3D;1,则将当前x乘入res; b.执行$x&#x3D;x^2$; c.将n右移一位。</p>
+<p>1)若x==0，则返回0; 2)初始化res=1; 3)当n&lt;0时，将x转为分数，n取负数; 4)循环：a.若n&amp;1==1,则将当前x乘入res; b.执行$x=x^2$; c.将n右移一位。</p>
 <blockquote>
 <p><strong>时间复杂度</strong>：O(logn)，二分对数级别时间复杂度；<br><strong>空间复杂度</strong>：O(1)</p>
 </blockquote>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">myPow</span><span class="hljs-params">(self, x: float, n: int)</span> -&gt; float:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> x == <span class="hljs-number">0</span>: </span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span></span><br><span class="line">        res = <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">0</span>: </span><br><span class="line">            x, n = <span class="hljs-number">1</span> / x, -n</span><br><span class="line">        <span class="hljs-keyword">while</span> n:</span><br><span class="line">            <span class="hljs-keyword">if</span> n &amp; <span class="hljs-number">1</span>: </span><br><span class="line">                res *= x</span><br><span class="line">            x *= x</span><br><span class="line">            n &gt;&gt;= <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">myPow</span>(<span class="hljs-params">self, x: <span class="hljs-built_in">float</span>, n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">float</span>:</span><br><span class="line">        <span class="hljs-keyword">if</span> x == <span class="hljs-number">0</span>: </span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span></span><br><span class="line">        res = <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">0</span>: </span><br><span class="line">            x, n = <span class="hljs-number">1</span> / x, -n</span><br><span class="line">        <span class="hljs-keyword">while</span> n:</span><br><span class="line">            <span class="hljs-keyword">if</span> n &amp; <span class="hljs-number">1</span>: </span><br><span class="line">                res *= x</span><br><span class="line">            x *= x</span><br><span class="line">            n &gt;&gt;= <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">return</span> res</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><blockquote>
 <p>将指数n每次 <strong>二分</strong>，然后分 <strong>奇偶数分别递归</strong> 求解。</p>
@@ -244,31 +255,30 @@ var _hmt = _hmt || [];
 <li><strong>递推</strong>：1)n为<code>奇数</code>: 提出x，并使n-1，继续递归; 2)n为<code>偶数</code>: 将n二分，继续递归。</li>
 <li><strong>终止</strong>：当 <code>n == 0</code> 时，x的0次幂为1。</li>
 </ul>
-<p>1)若x&#x3D;&#x3D;0，返回0; 2)若n&#x3D;&#x3D;0，递推结束; 3)若n&lt;0，将x取分数，幂次取反; 4)分奇偶递推。  </p>
+<p>1)若x==0，返回0; 2)若n==0，递推结束; 3)若n&lt;0，将x取分数，幂次取反; 4)分奇偶递推。  </p>
 <blockquote>
 <p><strong>时间复杂度</strong>：O(logn)<br><strong>空间复杂度</strong>：O(1)</p>
 </blockquote>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">myPow</span><span class="hljs-params">(self, x: float, n: int)</span> -&gt; float:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> x == <span class="hljs-number">0</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">if</span> n == <span class="hljs-number">0</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">elif</span> n &lt; <span class="hljs-number">0</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> / self.myPow(x, -n)</span><br><span class="line">        <span class="hljs-keyword">if</span> n &amp; <span class="hljs-number">1</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> x * self.myPow(x, n<span class="hljs-number">-1</span>)</span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> self.myPow(x*x, n//<span class="hljs-number">2</span>)</span><br></pre></td></tr></table></figure>
-
-
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">myPow</span>(<span class="hljs-params">self, x: <span class="hljs-built_in">float</span>, n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">float</span>:</span><br><span class="line">        <span class="hljs-keyword">if</span> x == <span class="hljs-number">0</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">if</span> n == <span class="hljs-number">0</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">elif</span> n &lt; <span class="hljs-number">0</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> / <span class="variable language_">self</span>.myPow(x, -n)</span><br><span class="line">        <span class="hljs-keyword">if</span> n &amp; <span class="hljs-number">1</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> x * <span class="variable language_">self</span>.myPow(x, n-<span class="hljs-number">1</span>)</span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="variable language_">self</span>.myPow(x*x, n//<span class="hljs-number">2</span>)</span><br></pre></td></tr></tbody></table></figure>
+</body></html>
         </div>
         
             <ul class="post-copyright">
-            <li><strong>Title：</strong><a href="https://gojay.top/2020/09/07/剑指Offer-16-数值的整数次方/">剑指Offer-16-数值的整数次方</a></li>
-            <li><strong>Author：</strong><a href="https://gojay.top">Gojay</a></li>
-            <li><strong>Link：</strong><a href="https://gojay.top/2020/09/07/剑指Offer-16-数值的整数次方/">https://gojay.top/2020/09/07/剑指Offer-16-数值的整数次方/</a></li>
+            <li><strong>Title：</strong><a href="https://gojay.top/2020/09/07/%E5%89%91%E6%8C%87Offer-16-%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9/">剑指Offer-16-数值的整数次方</a></li>
+            <li><strong>Author：</strong><a href=""></a></li>
+            <li><strong>Link：</strong><a href="https://gojay.top/2020/09/07/%E5%89%91%E6%8C%87Offer-16-%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9/">https://gojay.top/2020/09/07/%E5%89%91%E6%8C%87Offer-16-%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9/</a></li>
             <li><strong>Date：</strong>2020-09-07</li>
             <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
             </li>
             </ul>
         
         
-        <hr style="height:1px;margin:1rem 0">
+        <hr style="height:1px;margin:1rem 0"/>
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/Algorithm/">Algorithm</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Offer/">Offer</a>,&nbsp;<a class="has-link-grey -link" href="/tags/分治/">分治</a>,&nbsp;<a class="has-link-grey -link" href="/tags/递归/">递归</a>
+                    <a class="has-link-grey -link-link" href="/tags/Algorithm/" rel="tag">Algorithm</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/Offer/" rel="tag">Offer</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/%E5%88%86%E6%B2%BB/" rel="tag">分治</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a>
                 </div>
             </div>
         </div>
@@ -290,7 +300,7 @@ var _hmt = _hmt || [];
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/09/11/剑指Offer-17-打印从1到最大的n位数/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/09/11/%E5%89%91%E6%8C%87Offer-17-%E6%89%93%E5%8D%B0%E4%BB%8E1%E5%88%B0%E6%9C%80%E5%A4%A7%E7%9A%84n%E4%BD%8D%E6%95%B0/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">剑指Offer-17-打印从1到最大的n位数</span>
             </a>
@@ -298,7 +308,7 @@ var _hmt = _hmt || [];
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/09/07/剑指Offer-15-二进制中1的个数/">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/09/07/%E5%89%91%E6%8C%87Offer-15-%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/">
                 <span class="level-item">剑指Offer-15-二进制中1的个数</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
@@ -315,7 +325,7 @@ var _hmt = _hmt || [];
         
 <div id="valine-thread" class="content"></div>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 <script>
     new Valine({
         el: '#valine-thread' ,
@@ -405,8 +415,9 @@ var _hmt = _hmt || [];
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2023 Gojay&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                &copy; 2026 Gojay&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
                 <br>
                 
@@ -561,7 +572,7 @@ var lazyLoadInstance = new LazyLoad({
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">

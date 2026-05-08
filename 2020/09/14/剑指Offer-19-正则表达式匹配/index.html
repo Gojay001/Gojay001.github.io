@@ -1,28 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html  lang="en">
+<head>
     <meta charset="utf-8">
-<meta name="baidu-site-verification" content="y4OgBadCWI">
-<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA">
+<meta name="baidu-site-verification" content="y4OgBadCWI" />
+<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA" />
 <title>剑指Offer-19-正则表达式匹配 - Gojay&#39;s Records</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="题目 题目描述请实现一个函数用来匹配包含&amp;#39;.&amp;#39;和&amp;#39;*&amp;#39;的正则表达式。模式中的字符’.’表示任意一个字符，而&amp;#39;*&amp;#39;表示它前面的字符可以出现任意次（含0次）。在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串”aaa”与模式&amp;quot;a.a&amp;quot;和&amp;quot;ab*ac*a&amp;quot;匹配，但与&amp;quot;aa.a&amp;quot;和&amp;quo">
-<meta name="keywords" content="Algorithm,Offer,字符串,递归,动态规划">
+    <meta name="description" content="题目 题目描述请实现一个函数用来匹配包含&#39;.&#39;和&#39;*&#39;的正则表达式。模式中的字符’.’表示任意一个字符，而&#39;*&#39;表示它前面的字符可以出现任意次（含0次）。在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串”aaa”与模式&quot;a.a&quot;和&quot;ab*ac*a&quot;匹配，但与&quot;aa.a&quot;和&quot;ab*a&quot;均不匹配。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="剑指Offer-19-正则表达式匹配">
-<meta property="og:url" content="https://gojay.top/2020/09/14/剑指Offer-19-正则表达式匹配/index.html">
+<meta property="og:url" content="https://gojay.top/2020/09/14/%E5%89%91%E6%8C%87Offer-19-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/index.html">
 <meta property="og:site_name" content="Gojay&#39;s Records">
-<meta property="og:description" content="题目 题目描述请实现一个函数用来匹配包含&amp;#39;.&amp;#39;和&amp;#39;*&amp;#39;的正则表达式。模式中的字符’.’表示任意一个字符，而&amp;#39;*&amp;#39;表示它前面的字符可以出现任意次（含0次）。在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串”aaa”与模式&amp;quot;a.a&amp;quot;和&amp;quot;ab*ac*a&amp;quot;匹配，但与&amp;quot;aa.a&amp;quot;和&amp;quo">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
-<meta property="og:updated_time" content="2023-03-10T07:58:38.567Z">
+<meta property="og:description" content="题目 题目描述请实现一个函数用来匹配包含&#39;.&#39;和&#39;*&#39;的正则表达式。模式中的字符’.’表示任意一个字符，而&#39;*&#39;表示它前面的字符可以出现任意次（含0次）。在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串”aaa”与模式&quot;a.a&quot;和&quot;ab*ac*a&quot;匹配，但与&quot;aa.a&quot;和&quot;ab*a&quot;均不匹配。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gojay.top/gallery/thumbnails/%E5%89%91%E6%8C%87Offer.jpg">
+<meta property="article:published_time" content="2020-09-14T14:17:01.000Z">
+<meta property="article:modified_time" content="2023-03-10T07:58:38.567Z">
+<meta property="article:author" content="Gojay">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="Offer">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="递归">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="剑指Offer-19-正则表达式匹配">
-<meta name="twitter:description" content="题目 题目描述请实现一个函数用来匹配包含&amp;#39;.&amp;#39;和&amp;#39;*&amp;#39;的正则表达式。模式中的字符’.’表示任意一个字符，而&amp;#39;*&amp;#39;表示它前面的字符可以出现任意次（含0次）。在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串”aaa”与模式&amp;quot;a.a&amp;quot;和&amp;quot;ab*ac*a&amp;quot;匹配，但与&amp;quot;aa.a&amp;quot;和&amp;quo">
-<meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/剑指Offer.jpg">
+<meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/%E5%89%91%E6%8C%87Offer.jpg">
 
 
 
@@ -96,13 +100,14 @@ var _hmt = _hmt || [];
     
     
     
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
 
     
 
 
 <link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/rss.xml" title="Gojay's Records" type="application/atom+xml">
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
@@ -118,19 +123,26 @@ var _hmt = _hmt || [];
             
             <div class="navbar-start">
                 
-                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item"
+                href="/">Home</a>
                 
-                <a class="navbar-item" href="/archives/">Archives</a>
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
                 
-                <a class="navbar-item" href="/categories/">Categories</a>
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
                 
-                <a class="navbar-item" href="/tags/">Tags</a>
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
                 
-                <a class="navbar-item" href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
+                <a class="navbar-item"
+                href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
                 
-                <a class="navbar-item" href="/about/">About</a>
+                <a class="navbar-item"
+                href="/about/">About</a>
                 
-                <a class="navbar-item" href="/rss.xml">RSS</a>
+                <a class="navbar-item"
+                href="/rss.xml">RSS</a>
                 
             </div>
             
@@ -166,8 +178,8 @@ var _hmt = _hmt || [];
                 <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-image">
-        <span class="image is-7by1">
-            <img class="thumbnail lazy" data-src="/gallery/thumbnails/剑指Offer.jpg" alt="剑指Offer-19-正则表达式匹配">
+        <span  class="image is-7by1">
+            <img class="thumbnail lazy" data-src="/gallery/thumbnails/%E5%89%91%E6%8C%87Offer.jpg" alt="剑指Offer-19-正则表达式匹配">
         </span>
     </div>
     
@@ -188,7 +200,7 @@ var _hmt = _hmt || [];
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/剑指Offer/">剑指Offer</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/剑指Offer/19/">19</a>
+                <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/%E5%89%91%E6%8C%87Offer/">剑指Offer</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Algorithm/%E5%89%91%E6%8C%87Offer/19/">19</a>
                 </div>
                 
                 
@@ -209,32 +221,32 @@ var _hmt = _hmt || [];
         </div>
         
         <div class="content">
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>请实现一个函数用来匹配包含<code>&#39;.&#39;</code>和<code>&#39;*&#39;</code>的正则表达式。模式中的字符’.’表示任意一个字符，而<code>&#39;*&#39;</code>表示它前面的字符可以出现任意次（含0次）。在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串”aaa”与模式<code>&quot;a.a&quot;</code>和<code>&quot;ab*ac*a&quot;</code>匹配，但与<code>&quot;aa.a&quot;</code>和<code>&quot;ab*a&quot;</code>均不匹配。</p>
-<a id="more"></a>
+            <html><head></head><body><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><hr>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>请实现一个函数用来匹配包含<code>'.'</code>和<code>'*'</code>的正则表达式。模式中的字符’.’表示任意一个字符，而<code>'*'</code>表示它前面的字符可以出现任意次（含0次）。在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串”aaa”与模式<code>"a.a"</code>和<code>"ab*ac*a"</code>匹配，但与<code>"aa.a"</code>和<code>"ab*a"</code>均不匹配。</p>
+<span id="more"></span>
 
 <h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><blockquote>
-<p><strong>输入</strong>：s &#x3D; “aa”, p &#x3D; “a”<br><strong>输出</strong>：false<br><strong>解释</strong>：”a” 无法匹配 “aa” 整个字符串。</p>
+<p><strong>输入</strong>：s = “aa”, p = “a”<br><strong>输出</strong>：false<br><strong>解释</strong>：”a” 无法匹配 “aa” 整个字符串。</p>
 </blockquote>
 <h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><blockquote>
-<p><strong>输入</strong>：s &#x3D; “aa”, p &#x3D; “a*“<br><strong>输出</strong>：true<br><strong>解释</strong>：因为 ‘*‘ 代表可以匹配零个或多个前面的那一个元素, 在这里前面的元素就是 ‘a’。因此，字符串 “aa” 可被视为 ‘a’ 重复了一次。</p>
+<p><strong>输入</strong>：s = “aa”, p = “a*“<br><strong>输出</strong>：true<br><strong>解释</strong>：因为 ‘*‘ 代表可以匹配零个或多个前面的那一个元素, 在这里前面的元素就是 ‘a’。因此，字符串 “aa” 可被视为 ‘a’ 重复了一次。</p>
 </blockquote>
 <h2 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h2><blockquote>
-<p><strong>输入</strong>：s &#x3D; “ab”, p &#x3D; “.*“<br><strong>输出</strong>：true<br><strong>解释</strong>：”.*“ 表示可匹配零个或多个（’*‘）任意字符（’.’）。</p>
+<p><strong>输入</strong>：s = “ab”, p = “.*“<br><strong>输出</strong>：true<br><strong>解释</strong>：”.*“ 表示可匹配零个或多个（’*‘）任意字符（’.’）。</p>
 </blockquote>
 <h2 id="示例4"><a href="#示例4" class="headerlink" title="示例4"></a>示例4</h2><blockquote>
-<p><strong>输入</strong>：s &#x3D; “aab”, p &#x3D; “c*a*b”<br><strong>输出</strong>：true<br><strong>解释</strong>：因为 ‘*’ 表示零个或多个，这里 ‘c’ 为 0 个, ‘a’ 被重复一次。因此可以匹配字符串 “aab”。</p>
+<p><strong>输入</strong>：s = “aab”, p = “c*a*b”<br><strong>输出</strong>：true<br><strong>解释</strong>：因为 ‘*’ 表示零个或多个，这里 ‘c’ 为 0 个, ‘a’ 被重复一次。因此可以匹配字符串 “aab”。</p>
 </blockquote>
 <h2 id="示例5"><a href="#示例5" class="headerlink" title="示例5"></a>示例5</h2><blockquote>
-<p><strong>输入</strong>：s &#x3D; “mississippi”, p &#x3D; “mis*is*p*.”<br><strong>输出</strong>：false</p>
+<p><strong>输入</strong>：s = “mississippi”, p = “mis*is*p*.”<br><strong>输出</strong>：false</p>
 </blockquote>
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr>
 <h2 id="re库函数"><a href="#re库函数" class="headerlink" title="re库函数"></a>re库函数</h2><blockquote>
 <p>python3调用<code>re正则模块</code>。</p>
 </blockquote>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isMatch</span><span class="hljs-params">(self, s: str, p: str)</span> -&gt; bool:</span></span><br><span class="line">        <span class="hljs-keyword">return</span> (re.fullmatch(p, s)) != <span class="hljs-literal">None</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">isMatch</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span>, p: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">bool</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> (re.fullmatch(p, s)) != <span class="hljs-literal">None</span></span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>(<a href="https://leetcode-cn.com/problems/zheng-ze-biao-da-shi-pi-pei-lcof/solution/mian-shi-ti-19-zheng-ze-biao-da-shi-pi-pei-by-wral/" target="_blank" rel="noopener">引用WEAllen</a>)</p>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>(<a href="https://leetcode-cn.com/problems/zheng-ze-biao-da-shi-pi-pei-lcof/solution/mian-shi-ti-19-zheng-ze-biao-da-shi-pi-pei-by-wral/">引用WEAllen</a>)</p>
 <blockquote>
 <p>核心思路：遇到 <code>x*</code> 的情况其实只有2种，只需分别处理这两种情况。</p>
 </blockquote>
@@ -242,43 +254,42 @@ var _hmt = _hmt || [];
 <li><strong>当x不匹配时</strong>：抛弃掉整个 x*；</li>
 <li><strong>当x匹配时</strong>：要么抵消掉一个s，x* 保留；要么整个 x* 抛弃掉。</li>
 </ul>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isMatch</span><span class="hljs-params">(self, s: str, p: str)</span> -&gt; bool:</span></span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> p: </span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">not</span> s</span><br><span class="line">        first_match = bool(s) <span class="hljs-keyword">and</span> p[<span class="hljs-number">0</span>] <span class="hljs-keyword">in</span> (<span class="hljs-string">"."</span>, s[<span class="hljs-number">0</span>])</span><br><span class="line">        <span class="hljs-keyword">if</span> len(p) &gt;= <span class="hljs-number">2</span> <span class="hljs-keyword">and</span> p[<span class="hljs-number">1</span>] == <span class="hljs-string">"*"</span>:</span><br><span class="line">            <span class="hljs-keyword">if</span> first_match:</span><br><span class="line">                <span class="hljs-keyword">return</span> self.isMatch(s[<span class="hljs-number">1</span>:], p) <span class="hljs-keyword">or</span> self.isMatch(s, p[<span class="hljs-number">2</span>:])</span><br><span class="line">            <span class="hljs-keyword">else</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> self.isMatch(s, p[<span class="hljs-number">2</span>:])   </span><br><span class="line">        <span class="hljs-keyword">return</span> first_match <span class="hljs-keyword">and</span> self.isMatch(s[<span class="hljs-number">1</span>:], p[<span class="hljs-number">1</span>:])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">isMatch</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span>, p: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">bool</span>:</span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> p: </span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">not</span> s</span><br><span class="line">        first_match = <span class="hljs-built_in">bool</span>(s) <span class="hljs-keyword">and</span> p[<span class="hljs-number">0</span>] <span class="hljs-keyword">in</span> (<span class="hljs-string">"."</span>, s[<span class="hljs-number">0</span>])</span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(p) &gt;= <span class="hljs-number">2</span> <span class="hljs-keyword">and</span> p[<span class="hljs-number">1</span>] == <span class="hljs-string">"*"</span>:</span><br><span class="line">            <span class="hljs-keyword">if</span> first_match:</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="variable language_">self</span>.isMatch(s[<span class="hljs-number">1</span>:], p) <span class="hljs-keyword">or</span> <span class="variable language_">self</span>.isMatch(s, p[<span class="hljs-number">2</span>:])</span><br><span class="line">            <span class="hljs-keyword">else</span>:</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="variable language_">self</span>.isMatch(s, p[<span class="hljs-number">2</span>:])   </span><br><span class="line">        <span class="hljs-keyword">return</span> first_match <span class="hljs-keyword">and</span> <span class="variable language_">self</span>.isMatch(s[<span class="hljs-number">1</span>:], p[<span class="hljs-number">1</span>:])</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>(引用<a href="https://leetcode-cn.com/problems/zheng-ze-biao-da-shi-pi-pei-lcof/solution/zi-jie-ti-ku-jian-19-kun-nan-zheng-ze-biao-da-shi-/" target="_blank" rel="noopener">superkakayong</a>,<a href="https://leetcode-cn.com/problems/zheng-ze-biao-da-shi-pi-pei-lcof/solution/dong-tai-gui-hua-er-wei-shu-zu-by-loick/" target="_blank" rel="noopener">loick</a>)</p>
+<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>(引用<a href="https://leetcode-cn.com/problems/zheng-ze-biao-da-shi-pi-pei-lcof/solution/zi-jie-ti-ku-jian-19-kun-nan-zheng-ze-biao-da-shi-/">superkakayong</a>,<a href="https://leetcode-cn.com/problems/zheng-ze-biao-da-shi-pi-pei-lcof/solution/dong-tai-gui-hua-er-wei-shu-zu-by-loick/">loick</a>)</p>
 <blockquote>
-<p>当 <code>&#39;x*&#39;</code> 出现时，选择抛弃或保留。</p>
+<p>当 <code>'x*'</code> 出现时，选择抛弃或保留。</p>
 </blockquote>
 <ul>
 <li><strong>状态定义</strong>：dp为二维数组，dp[i][j]表示<code>s的前i个</code>字符和<code>p的前j个</code>字符是否匹配。</li>
 <li><strong>初始状态</strong>：<code>dp[0][0] = True</code>，两个空字符是匹配的。</li>
 <li><strong>转移方程1</strong>：<code>i == 0</code>时，表示以空字符串去匹配p的前j个字符，仅当p的字符为 ‘x*’ 时为True。</li>
-<li><strong>转移方程2</strong>：当<code>p的当前j字符为&#39;.&#39;</code>或者与s的当前i字符相同时，只需看dp[i-1][j-1]是否匹配。</li>
-<li><strong>转移方程3</strong>：当<code>p的当前j字符为&#39;*&#39;</code>时，1)p的前一个字符x与s的当前i字符不匹配，且x不为’.’，则抛弃掉p中的 ‘x*‘，只需看dp[i][j-2]是否匹配；2)否则，保留 ‘x*‘，当dp[i][j-2]，dp[i][j-1]，dp[i-1][j]任一满足时为True。</li>
+<li><strong>转移方程2</strong>：当<code>p的当前j字符为'.'</code>或者与s的当前i字符相同时，只需看dp[i-1][j-1]是否匹配。</li>
+<li><strong>转移方程3</strong>：当<code>p的当前j字符为'*'</code>时，1)p的前一个字符x与s的当前i字符不匹配，且x不为’.’，则抛弃掉p中的 ‘x*‘，只需看dp[i][j-2]是否匹配；2)否则，保留 ‘x*‘，当dp[i][j-2]，dp[i][j-1]，dp[i-1][j]任一满足时为True。</li>
 </ul>
 <blockquote>
 <p><strong>时间复杂度</strong>：O(mn)，计算二维数组dp[m][n]；<br><strong>空间复杂度</strong>：O(mn)，保存二维数组dp[m][n]。</p>
 </blockquote>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isMatch</span><span class="hljs-params">(self, s: str, p: str)</span> -&gt; bool:</span></span><br><span class="line">        m, n = len(s)+<span class="hljs-number">1</span>, len(p)+<span class="hljs-number">1</span></span><br><span class="line">        dp = [[<span class="hljs-literal">False</span>]*n <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(m)]</span><br><span class="line">        dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-literal">True</span></span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, n):</span><br><span class="line">            <span class="hljs-keyword">if</span> p[i<span class="hljs-number">-1</span>] == <span class="hljs-string">'*'</span> <span class="hljs-keyword">and</span> dp[<span class="hljs-number">0</span>][i<span class="hljs-number">-2</span>] == <span class="hljs-literal">True</span>:</span><br><span class="line">                dp[<span class="hljs-number">0</span>][i] = <span class="hljs-literal">True</span></span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, m):</span><br><span class="line">            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, n):</span><br><span class="line">                <span class="hljs-keyword">if</span> p[j<span class="hljs-number">-1</span>] == s[i<span class="hljs-number">-1</span>] <span class="hljs-keyword">or</span> p[j<span class="hljs-number">-1</span>] == <span class="hljs-string">'.'</span>:</span><br><span class="line">                    dp[i][j] = dp[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>]</span><br><span class="line">                <span class="hljs-keyword">elif</span> p[j<span class="hljs-number">-1</span>] == <span class="hljs-string">'*'</span>:</span><br><span class="line">                    <span class="hljs-keyword">if</span> p[j<span class="hljs-number">-2</span>] != s[i<span class="hljs-number">-1</span>] <span class="hljs-keyword">and</span> p[j<span class="hljs-number">-2</span>] != <span class="hljs-string">'.'</span>:</span><br><span class="line">                        dp[i][j] = dp[i][j<span class="hljs-number">-2</span>]</span><br><span class="line">                    <span class="hljs-keyword">else</span>:</span><br><span class="line">                        dp[i][j] = dp[i][j<span class="hljs-number">-2</span>] <span class="hljs-keyword">or</span> dp[i][j<span class="hljs-number">-1</span>] <span class="hljs-keyword">or</span> dp[i<span class="hljs-number">-1</span>][j]</span><br><span class="line">                <span class="hljs-keyword">else</span>:</span><br><span class="line">                    dp[i][j] == <span class="hljs-literal">False</span></span><br><span class="line">        <span class="hljs-keyword">return</span> dp[<span class="hljs-number">-1</span>][<span class="hljs-number">-1</span>]</span><br></pre></td></tr></table></figure>
-
-
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">isMatch</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span>, p: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">bool</span>:</span><br><span class="line">        m, n = <span class="hljs-built_in">len</span>(s)+<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(p)+<span class="hljs-number">1</span></span><br><span class="line">        dp = [[<span class="hljs-literal">False</span>]*n <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m)]</span><br><span class="line">        dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-literal">True</span></span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n):</span><br><span class="line">            <span class="hljs-keyword">if</span> p[i-<span class="hljs-number">1</span>] == <span class="hljs-string">'*'</span> <span class="hljs-keyword">and</span> dp[<span class="hljs-number">0</span>][i-<span class="hljs-number">2</span>] == <span class="hljs-literal">True</span>:</span><br><span class="line">                dp[<span class="hljs-number">0</span>][i] = <span class="hljs-literal">True</span></span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, m):</span><br><span class="line">            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n):</span><br><span class="line">                <span class="hljs-keyword">if</span> p[j-<span class="hljs-number">1</span>] == s[i-<span class="hljs-number">1</span>] <span class="hljs-keyword">or</span> p[j-<span class="hljs-number">1</span>] == <span class="hljs-string">'.'</span>:</span><br><span class="line">                    dp[i][j] = dp[i-<span class="hljs-number">1</span>][j-<span class="hljs-number">1</span>]</span><br><span class="line">                <span class="hljs-keyword">elif</span> p[j-<span class="hljs-number">1</span>] == <span class="hljs-string">'*'</span>:</span><br><span class="line">                    <span class="hljs-keyword">if</span> p[j-<span class="hljs-number">2</span>] != s[i-<span class="hljs-number">1</span>] <span class="hljs-keyword">and</span> p[j-<span class="hljs-number">2</span>] != <span class="hljs-string">'.'</span>:</span><br><span class="line">                        dp[i][j] = dp[i][j-<span class="hljs-number">2</span>]</span><br><span class="line">                    <span class="hljs-keyword">else</span>:</span><br><span class="line">                        dp[i][j] = dp[i][j-<span class="hljs-number">2</span>] <span class="hljs-keyword">or</span> dp[i][j-<span class="hljs-number">1</span>] <span class="hljs-keyword">or</span> dp[i-<span class="hljs-number">1</span>][j]</span><br><span class="line">                <span class="hljs-keyword">else</span>:</span><br><span class="line">                    dp[i][j] == <span class="hljs-literal">False</span></span><br><span class="line">        <span class="hljs-keyword">return</span> dp[-<span class="hljs-number">1</span>][-<span class="hljs-number">1</span>]</span><br></pre></td></tr></tbody></table></figure>
+</body></html>
         </div>
         
             <ul class="post-copyright">
-            <li><strong>Title：</strong><a href="https://gojay.top/2020/09/14/剑指Offer-19-正则表达式匹配/">剑指Offer-19-正则表达式匹配</a></li>
-            <li><strong>Author：</strong><a href="https://gojay.top">Gojay</a></li>
-            <li><strong>Link：</strong><a href="https://gojay.top/2020/09/14/剑指Offer-19-正则表达式匹配/">https://gojay.top/2020/09/14/剑指Offer-19-正则表达式匹配/</a></li>
+            <li><strong>Title：</strong><a href="https://gojay.top/2020/09/14/%E5%89%91%E6%8C%87Offer-19-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/">剑指Offer-19-正则表达式匹配</a></li>
+            <li><strong>Author：</strong><a href=""></a></li>
+            <li><strong>Link：</strong><a href="https://gojay.top/2020/09/14/%E5%89%91%E6%8C%87Offer-19-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/">https://gojay.top/2020/09/14/%E5%89%91%E6%8C%87Offer-19-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/</a></li>
             <li><strong>Date：</strong>2020-09-14</li>
             <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
             </li>
             </ul>
         
         
-        <hr style="height:1px;margin:1rem 0">
+        <hr style="height:1px;margin:1rem 0"/>
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/Algorithm/">Algorithm</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Offer/">Offer</a>,&nbsp;<a class="has-link-grey -link" href="/tags/动态规划/">动态规划</a>,&nbsp;<a class="has-link-grey -link" href="/tags/字符串/">字符串</a>,&nbsp;<a class="has-link-grey -link" href="/tags/递归/">递归</a>
+                    <a class="has-link-grey -link-link" href="/tags/Algorithm/" rel="tag">Algorithm</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/Offer/" rel="tag">Offer</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a>
                 </div>
             </div>
         </div>
@@ -300,7 +311,7 @@ var _hmt = _hmt || [];
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/09/18/剑指Offer-20-表示数值的字符串/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/09/18/%E5%89%91%E6%8C%87Offer-20-%E8%A1%A8%E7%A4%BA%E6%95%B0%E5%80%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">剑指Offer-20-表示数值的字符串</span>
             </a>
@@ -308,7 +319,7 @@ var _hmt = _hmt || [];
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/09/14/剑指Offer-18-删除链表的节点/">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/09/14/%E5%89%91%E6%8C%87Offer-18-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/">
                 <span class="level-item">剑指Offer-18-删除链表的节点</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
@@ -325,7 +336,7 @@ var _hmt = _hmt || [];
         
 <div id="valine-thread" class="content"></div>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 <script>
     new Valine({
         el: '#valine-thread' ,
@@ -427,8 +438,9 @@ var _hmt = _hmt || [];
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2023 Gojay&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                &copy; 2026 Gojay&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
                 <br>
                 
@@ -583,7 +595,7 @@ var lazyLoadInstance = new LazyLoad({
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">

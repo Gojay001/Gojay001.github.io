@@ -1,27 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html  lang="en">
+<head>
     <meta charset="utf-8">
-<meta name="baidu-site-verification" content="y4OgBadCWI">
-<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA">
+<meta name="baidu-site-verification" content="y4OgBadCWI" />
+<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA" />
 <title>跟我学Shiro（一）-Shiro简介 - Gojay&#39;s Records</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
     <meta name="description" content="简介认识 Apache Shiro是Java的一个安全框架。   对比Spring Security小而简单。   可同时用在JavaSE、JavaEE环境中。   主要完成认证、授权、加密、会话管理、与Web集成、缓存等。">
-<meta name="keywords" content="Java,Shiro">
 <meta property="og:type" content="article">
 <meta property="og:title" content="跟我学Shiro（一）-Shiro简介">
-<meta property="og:url" content="https://gojay.top/2017/11/19/跟我学Shiro（一）-Shiro简介/index.html">
+<meta property="og:url" content="https://gojay.top/2017/11/19/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%B8%80%EF%BC%89-Shiro%E7%AE%80%E4%BB%8B/index.html">
 <meta property="og:site_name" content="Gojay&#39;s Records">
 <meta property="og:description" content="简介认识 Apache Shiro是Java的一个安全框架。   对比Spring Security小而简单。   可同时用在JavaSE、JavaEE环境中。   主要完成认证、授权、加密、会话管理、与Web集成、缓存等。">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://gojay.top/gallery/thumbnails/shiro.png">
-<meta property="og:updated_time" content="2023-03-10T07:58:38.569Z">
+<meta property="article:published_time" content="2017-11-19T03:06:53.000Z">
+<meta property="article:modified_time" content="2023-03-10T07:58:38.569Z">
+<meta property="article:author" content="Gojay">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Shiro">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="跟我学Shiro（一）-Shiro简介">
-<meta name="twitter:description" content="简介认识 Apache Shiro是Java的一个安全框架。   对比Spring Security小而简单。   可同时用在JavaSE、JavaEE环境中。   主要完成认证、授权、加密、会话管理、与Web集成、缓存等。">
 <meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/shiro.png">
 
 
@@ -96,13 +97,14 @@ var _hmt = _hmt || [];
     
     
     
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
 
     
 
 
 <link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/rss.xml" title="Gojay's Records" type="application/atom+xml">
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
@@ -118,19 +120,26 @@ var _hmt = _hmt || [];
             
             <div class="navbar-start">
                 
-                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item"
+                href="/">Home</a>
                 
-                <a class="navbar-item" href="/archives/">Archives</a>
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
                 
-                <a class="navbar-item" href="/categories/">Categories</a>
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
                 
-                <a class="navbar-item" href="/tags/">Tags</a>
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
                 
-                <a class="navbar-item" href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
+                <a class="navbar-item"
+                href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
                 
-                <a class="navbar-item" href="/about/">About</a>
+                <a class="navbar-item"
+                href="/about/">About</a>
                 
-                <a class="navbar-item" href="/rss.xml">RSS</a>
+                <a class="navbar-item"
+                href="/rss.xml">RSS</a>
                 
             </div>
             
@@ -166,7 +175,7 @@ var _hmt = _hmt || [];
                 <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-image">
-        <span class="image is-7by1">
+        <span  class="image is-7by1">
             <img class="thumbnail lazy" data-src="/gallery/thumbnails/shiro.png" alt="跟我学Shiro（一）-Shiro简介">
         </span>
     </div>
@@ -209,15 +218,17 @@ var _hmt = _hmt || [];
         </div>
         
         <div class="content">
-            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="认识"><a href="#认识" class="headerlink" title="认识"></a>认识</h2><ul>
+            <html><head></head><body><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="认识"><a href="#认识" class="headerlink" title="认识"></a>认识</h2><ul>
 <li>Apache Shiro是Java的一个安全框架。  </li>
 <li>对比<code>Spring Security</code>小而简单。  </li>
 <li>可同时用在JavaSE、JavaEE环境中。  </li>
-<li>主要完成认证、授权、加密、会话管理、与Web集成、缓存等。<a id="more"></a></li>
+<li>主要完成认证、授权、加密、会话管理、与Web集成、缓存等。</li>
 </ul>
+<span id="more"></span>
+
 <h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p><img src="https://i.loli.net/2019/08/04/2icLvSGIotKdmC9.png" alt="1-1.png"></p>
 <ul>
-<li><strong>Authentication</strong>：身份认证&#x2F;登录，验证用户是不是拥有相应的身份；</li>
+<li><strong>Authentication</strong>：身份认证/登录，验证用户是不是拥有相应的身份；</li>
 <li><strong>Authorization</strong>：授权，即权限验证，验证某个已认证的用户是否拥有某个权限；</li>
 <li><strong>Session Manager</strong>：会话管理，即用户登录后就是一次会话，在没有退出之前，它的所有信息都在会话中；</li>
 <li><strong>Cryptography</strong>：加密，保护数据的安全性，如密码加密存储到数据库，而不是明文存储；</li>
@@ -234,13 +245,13 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>Subject</strong>：主体；代表了与当前应用交互的用户，如网络爬虫、机器人等；所有 <code>Subject</code> 都绑定到 <code>SecurityManager</code>，与 <code>Subject</code> 的所有交互都会委托给 <code>SecurityManager</code>；可以把 <code>Subject</code> 认为是一个门面，<code>SecurityManager</code> 才是实际的执行者；</li>
 <li><strong>SecurityManager</strong>：安全管理器；即所有与安全有关的操作都会与 <code>SecurityManager</code> 交互，且它管理着所有 <code>Subject</code>；它是 Shiro 的核心，负责与其他组件进行交互，可以把它看成<code>Spring NVC</code>中的 <code>DispatcherServlet</code> 前端控制器；</li>
-<li><strong>Realm</strong>：域；<code>Shiro</code> 从 <code>Realm</code> 获取安全数据（如用户、角色、权限），就是说 <code>SecurityManager</code> 要验证用户身份，那么它需要从 <code>Realm</code> 获取相应的用户进行比较以确定用户身份是否合法；也需要从 <code>Realm</code> 得到用户相应的角色&#x2F;权限进行验证用户是否能进行操作；可以把 Realm 看成 <code>DataSource</code>，即安全数据源。</li>
+<li><strong>Realm</strong>：域；<code>Shiro</code> 从 <code>Realm</code> 获取安全数据（如用户、角色、权限），就是说 <code>SecurityManager</code> 要验证用户身份，那么它需要从 <code>Realm</code> 获取相应的用户进行比较以确定用户身份是否合法；也需要从 <code>Realm</code> 得到用户相应的角色/权限进行验证用户是否能进行操作；可以把 Realm 看成 <code>DataSource</code>，即安全数据源。</li>
 </ul>
 <blockquote>
 <p>最简单的一个 Shiro 应用：</p>
 <ol>
 <li>应用代码通过 <code>Subject</code> 来进行认证和授权，而 <code>Subject</code> 又委托给 <code>SecurityManager</code>；</li>
-<li>我们需要给 Shiro 的 <code>SecurityManager</code> 注入 <code>Realm</code>，从而让 <code>SecurityManager</code> 能得到合法的用户及其权限进行判断。<br>可以看出：Shiro不提供维护用户&#x2F;权限，而是通过Realm让开发人员自己注入。</li>
+<li>我们需要给 Shiro 的 <code>SecurityManager</code> 注入 <code>Realm</code>，从而让 <code>SecurityManager</code> 能得到合法的用户及其权限进行判断。<br>可以看出：Shiro不提供维护用户/权限，而是通过Realm让开发人员自己注入。</li>
 </ol>
 </blockquote>
 <h3 id="从内部看Shiro："><a href="#从内部看Shiro：" class="headerlink" title="从内部看Shiro："></a>从内部看Shiro：</h3><p><img src="https://i.loli.net/2019/08/04/mtUHo7nAzGLOZbB.png" alt="1-3.png"></p>
@@ -248,34 +259,34 @@ var _hmt = _hmt || [];
 <li><strong>Subject</strong>：主体；可以看到主体可以是任何可以与应用交互的“用户”；</li>
 <li><strong>SecurityManager</strong> ：安全管理器；所有具体的交互都通过 <code>SecurityManager</code> 进行控制；它管理着所有 <code>Subject</code>，且负责进行认证和授权、及会话、缓存的管理，是Shiro的心脏；</li>
 <li><strong>Authenticator</strong>：认证器；负责主体认证的，这是一个扩展点，如果用户觉得 Shiro 默认的不好，可以自定义实现；其需要认证策略<code>Authentication Strategy</code>，即什么情况下算用户认证通过了； * <strong>Authrizer</strong>：授权器；用来决定主体是否有权限进行相应的操作，即控制着用户能访问应用中的哪些功能；</li>
-<li><strong>Realm</strong>：可以有 1 个或多个 <code>Realm</code>，可以认为是安全实体数据源，即用于获取安全实体的，由用户提供；Shiro 不知道用户&#x2F;权限存储在哪及以何种格式存储，所以我们一般在应用中都需要实现自己的 <code>Realm</code>；</li>
+<li><strong>Realm</strong>：可以有 1 个或多个 <code>Realm</code>，可以认为是安全实体数据源，即用于获取安全实体的，由用户提供；Shiro 不知道用户/权限存储在哪及以何种格式存储，所以我们一般在应用中都需要实现自己的 <code>Realm</code>；</li>
 <li><strong>SessionManager</strong>：Session需要有人去管理它的生命周期，这个组件就是<code>SessionManager</code>；Shiro 抽象了一个自己的 Session 来管理主体与应用之间交互的数据；这样的话，比如我们在 Web 环境用，刚开始是一台 Web 服务器；接着又上了台 EJB 服务器；这时想把两台服务器的会话数据放到一个地方，这个时候就可以实现自己的分布式会话（如把数据放到 Memcached 服务器）；</li>
 <li><strong>SessionDAO</strong>：数据访问对象<code>DAO</code>，用于会话的 CRUD，比如我们想把 Session 保存到数据库，那么可以实现自己的 SessionDAO，通过如JDBC写到数据库；比如想把 <code>Session</code> 放到<code>Memcached</code>中，可以实现自己的 <code>Memcached SessionDAO</code>；另外 <code>SessionDAO</code> 中可以使用 <code>Cache</code> 进行缓存，以提高性能；</li>
 <li><strong>CacheManager</strong>：缓存控制器；来管理如用户、角色、权限等的缓存的；因为这些数据基本上很少去改变，放到缓存中后可以提高访问的性能；</li>
-<li><strong>Cryptography</strong>：密码模块;Shiro 提高了一些常见的加密组件用于如密码加密&#x2F;解密的。</li>
+<li><strong>Cryptography</strong>：密码模块;Shiro 提高了一些常见的加密组件用于如密码加密/解密的。</li>
 </ul>
 <blockquote>
 <p>到此 Shiro 架构及其组件就认识完了。</p>
 </blockquote>
-
+</body></html>
         </div>
         
             <ul class="post-copyright">
-            <li><strong>Title：</strong><a href="https://gojay.top/2017/11/19/跟我学Shiro（一）-Shiro简介/">跟我学Shiro（一）-Shiro简介</a></li>
-            <li><strong>Author：</strong><a href="https://gojay.top">Gojay</a></li>
-            <li><strong>Link：</strong><a href="https://gojay.top/2017/11/19/跟我学Shiro（一）-Shiro简介/">https://gojay.top/2017/11/19/跟我学Shiro（一）-Shiro简介/</a></li>
+            <li><strong>Title：</strong><a href="https://gojay.top/2017/11/19/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%B8%80%EF%BC%89-Shiro%E7%AE%80%E4%BB%8B/">跟我学Shiro（一）-Shiro简介</a></li>
+            <li><strong>Author：</strong><a href=""></a></li>
+            <li><strong>Link：</strong><a href="https://gojay.top/2017/11/19/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%B8%80%EF%BC%89-Shiro%E7%AE%80%E4%BB%8B/">https://gojay.top/2017/11/19/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%B8%80%EF%BC%89-Shiro%E7%AE%80%E4%BB%8B/</a></li>
             <li><strong>Date：</strong>2017-11-19</li>
             <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
             </li>
             </ul>
         
         
-        <hr style="height:1px;margin:1rem 0">
+        <hr style="height:1px;margin:1rem 0"/>
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/Java/">Java</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Shiro/">Shiro</a>
+                    <a class="has-link-grey -link-link" href="/tags/Java/" rel="tag">Java</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/Shiro/" rel="tag">Shiro</a>
                 </div>
             </div>
         </div>
@@ -297,7 +308,7 @@ var _hmt = _hmt || [];
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2017/11/22/跟我学Shiro（二）-身份认证/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2017/11/22/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%BA%8C%EF%BC%89-%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">跟我学Shiro（二）-身份认证</span>
             </a>
@@ -322,7 +333,7 @@ var _hmt = _hmt || [];
         
 <div id="valine-thread" class="content"></div>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 <script>
     new Valine({
         el: '#valine-thread' ,
@@ -404,8 +415,9 @@ var _hmt = _hmt || [];
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2023 Gojay&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                &copy; 2026 Gojay&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
                 <br>
                 
@@ -560,7 +572,7 @@ var lazyLoadInstance = new LazyLoad({
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">

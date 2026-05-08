@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html  lang="en">
+<head>
     <meta charset="utf-8">
-<meta name="baidu-site-verification" content="y4OgBadCWI">
-<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA">
+<meta name="baidu-site-verification" content="y4OgBadCWI" />
+<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA" />
 <title>Tracklet - Gojay&#39;s Records</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
     <meta name="description" content="Tracklet[1] is a novel method for optimizing tracklet consistency, which directly takes the prediction errors into account. There are some details of reading and implementing it.">
-<meta name="keywords" content="DL,Tracking,MOT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tracklet">
 <meta property="og:url" content="https://gojay.top/2020/03/26/Tracklet/index.html">
 <meta property="og:site_name" content="Gojay&#39;s Records">
 <meta property="og:description" content="Tracklet[1] is a novel method for optimizing tracklet consistency, which directly takes the prediction errors into account. There are some details of reading and implementing it.">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://gojay.top/gallery/thumbnails/Tracklet.png">
-<meta property="og:updated_time" content="2023-03-10T07:58:38.565Z">
+<meta property="article:published_time" content="2020-03-26T08:41:56.000Z">
+<meta property="article:modified_time" content="2023-03-10T07:58:38.565Z">
+<meta property="article:author" content="Gojay">
+<meta property="article:tag" content="DL">
+<meta property="article:tag" content="MOT">
+<meta property="article:tag" content="Tracking">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tracklet">
-<meta name="twitter:description" content="Tracklet[1] is a novel method for optimizing tracklet consistency, which directly takes the prediction errors into account. There are some details of reading and implementing it.">
 <meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/Tracklet.png">
 
 
@@ -96,13 +98,14 @@ var _hmt = _hmt || [];
     
     
     
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
 
     
 
 
 <link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/rss.xml" title="Gojay's Records" type="application/atom+xml">
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
@@ -118,19 +121,26 @@ var _hmt = _hmt || [];
             
             <div class="navbar-start">
                 
-                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item"
+                href="/">Home</a>
                 
-                <a class="navbar-item" href="/archives/">Archives</a>
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
                 
-                <a class="navbar-item" href="/categories/">Categories</a>
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
                 
-                <a class="navbar-item" href="/tags/">Tags</a>
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
                 
-                <a class="navbar-item" href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
+                <a class="navbar-item"
+                href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
                 
-                <a class="navbar-item" href="/about/">About</a>
+                <a class="navbar-item"
+                href="/about/">About</a>
                 
-                <a class="navbar-item" href="/rss.xml">RSS</a>
+                <a class="navbar-item"
+                href="/rss.xml">RSS</a>
                 
             </div>
             
@@ -166,7 +176,7 @@ var _hmt = _hmt || [];
                 <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-image">
-        <span class="image is-7by1">
+        <span  class="image is-7by1">
             <img class="thumbnail lazy" data-src="/gallery/thumbnails/Tracklet.png" alt="Tracklet">
         </span>
     </div>
@@ -209,22 +219,22 @@ var _hmt = _hmt || [];
         </div>
         
         <div class="content">
-            <blockquote>
-<p><strong>Tracklet</strong><a href="https://arxiv.org/abs/2003.02795" target="_blank" rel="noopener">[1]</a> is a novel method for optimizing <code>tracklet consistency</code>, which directly takes the <code>prediction errors</code> into account. There are some details of reading and implementing it. </p>
+            <html><head></head><body><blockquote>
+<p><strong>Tracklet</strong><a href="https://arxiv.org/abs/2003.02795">[1]</a> is a novel method for optimizing <code>tracklet consistency</code>, which directly takes the <code>prediction errors</code> into account. There are some details of reading and implementing it. </p>
 </blockquote>
-<a id="more"></a>
+<span id="more"></span>
 
 <h1 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h1><hr>
 <ul>
-<li><strong><a href="#Paper&Code&note">Paper &amp; Code &amp; note</a></strong></li>
+<li><strong><a href="#Paper&amp;Code&amp;note">Paper &amp; Code &amp; note</a></strong></li>
 <li><strong><a href="#Paper">Paper understanding</a></strong></li>
 <li><strong><a href="#Code">Code understanding</a></strong></li>
 <li><strong><a href="#Note">Note</a></strong></li>
 <li><strong><a href="#References">References</a></strong></li>
 </ul>
-<h1 id="Paper-amp-Code-amp-note"><a href="#Paper-amp-Code-amp-note" class="headerlink" title="Paper &amp; Code &amp; note"></a>Paper &amp; Code &amp; note</h1><hr>
+<h1 id="Paper-Code-note"><a href="#Paper-Code-note" class="headerlink" title="Paper &amp; Code &amp; note"></a>Paper &amp; Code &amp; note</h1><hr>
 <blockquote>
-<p><strong>Paper</strong>: <a href="https://arxiv.org/abs/2003.02795" target="_blank" rel="noopener">Multi-object Tracking via End-to-end Tracklet Searching and Ranking</a>(arXiv 2020 paper)<br><strong>Code</strong>: [Pytorch][Updating]<br><strong>Note</strong>: <a href="https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Tracking/Tracklet/Note" target="_blank" rel="noopener">Tracklet</a></p>
+<p><strong>Paper</strong>: <a href="https://arxiv.org/abs/2003.02795">Multi-object Tracking via End-to-end Tracklet Searching and Ranking</a>(arXiv 2020 paper)<br><strong>Code</strong>: [Pytorch][Updating]<br><strong>Note</strong>: <a href="https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Tracking/Tracklet/Note">Tracklet</a></p>
 </blockquote>
 <h1 id="Paper"><a href="#Paper" class="headerlink" title="Paper"></a>Paper</h1><hr>
 <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p><img src="https://i.loli.net/2020/03/27/nxgNL3iSzwIy6Fr.png" alt="Tracklet_Abstract.png"></p>
@@ -274,16 +284,16 @@ var _hmt = _hmt || [];
 <p><img src="https://i.loli.net/2020/03/27/CgTOnXJujhDeIsV.png" alt="Tracklet_SBTO.png"></p>
 <h1 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h1><hr>
 <blockquote>
-<p>More details of <strong>Tracklet optimization</strong> and the like can be found in <a href="https://blog.csdn.net/qq_36449741/article/details/104815321?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">[2]</a>.</p>
+<p>More details of <strong>Tracklet optimization</strong> and the like can be found in <a href="https://blog.csdn.net/qq_36449741/article/details/104815321?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task">[2]</a>.</p>
 </blockquote>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><hr>
-<p>[1] Hu, T., Huang, L., &amp; Shen, H. (2020). Multi-object Tracking via End-to-end Tracklet Searching and Ranking. arXiv preprint arXiv:2003.02795.<br>[2] Change_ZH. “Tracklet: MOT Scoring Network.” <a href="https://blog.csdn.net/qq_36449741/article/details/104815321?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">https://blog.csdn.net/qq_36449741/article/details/104815321?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task</a>.</p>
-
+<p>[1] Hu, T., Huang, L., &amp; Shen, H. (2020). Multi-object Tracking via End-to-end Tracklet Searching and Ranking. arXiv preprint arXiv:2003.02795.<br>[2] Change_ZH. “Tracklet: MOT Scoring Network.” <a href="https://blog.csdn.net/qq_36449741/article/details/104815321?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task">https://blog.csdn.net/qq_36449741/article/details/104815321?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task</a>.</p>
+</body></html>
         </div>
         
             <ul class="post-copyright">
             <li><strong>Title：</strong><a href="https://gojay.top/2020/03/26/Tracklet/">Tracklet</a></li>
-            <li><strong>Author：</strong><a href="https://gojay.top">Gojay</a></li>
+            <li><strong>Author：</strong><a href=""></a></li>
             <li><strong>Link：</strong><a href="https://gojay.top/2020/03/26/Tracklet/">https://gojay.top/2020/03/26/Tracklet/</a></li>
             <li><strong>Date：</strong>2020-03-26</li>
             <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
@@ -291,12 +301,12 @@ var _hmt = _hmt || [];
             </ul>
         
         
-        <hr style="height:1px;margin:1rem 0">
+        <hr style="height:1px;margin:1rem 0"/>
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/DL/">DL</a>,&nbsp;<a class="has-link-grey -link" href="/tags/MOT/">MOT</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Tracking/">Tracking</a>
+                    <a class="has-link-grey -link-link" href="/tags/DL/" rel="tag">DL</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/MOT/" rel="tag">MOT</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/Tracking/" rel="tag">Tracking</a>
                 </div>
             </div>
         </div>
@@ -343,7 +353,7 @@ var _hmt = _hmt || [];
         
 <div id="valine-thread" class="content"></div>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 <script>
     new Valine({
         el: '#valine-thread' ,
@@ -378,9 +388,9 @@ var _hmt = _hmt || [];
         <span class="has-mr-6">1</span>
         <span>Contents</span>
         </a></li><li>
-        <a class="is-flex" href="#Paper-amp-Code-amp-note">
+        <a class="is-flex" href="#Paper-Code-note">
         <span class="has-mr-6">2</span>
-        <span>Paper &amp; Code &amp; note</span>
+        <span>Paper & Code & note</span>
         </a></li><li>
         <a class="is-flex" href="#Paper">
         <span class="has-mr-6">3</span>
@@ -449,8 +459,9 @@ var _hmt = _hmt || [];
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2023 Gojay&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                &copy; 2026 Gojay&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
                 <br>
                 
@@ -605,7 +616,7 @@ var lazyLoadInstance = new LazyLoad({
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">

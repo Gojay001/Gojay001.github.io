@@ -1,27 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html  lang="en">
+<head>
     <meta charset="utf-8">
-<meta name="baidu-site-verification" content="y4OgBadCWI">
-<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA">
+<meta name="baidu-site-verification" content="y4OgBadCWI" />
+<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA" />
 <title>跟我学Shiro（二）-身份认证 - Gojay&#39;s Records</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="简介身份验证：在应用中能证明他就是他本人。一般提供一些标识信息来表明他就是他本人，如提供身份证，用户名&amp;#x2F;密码来证明。在 shiro 中，用户需要提供 principals （身份）和 credentials（证明）给 shiro，从而应用能验证用户身份。">
-<meta name="keywords" content="Java,Shiro">
+    <meta name="description" content="简介身份验证：在应用中能证明他就是他本人。一般提供一些标识信息来表明他就是他本人，如提供身份证，用户名&#x2F;密码来证明。在 shiro 中，用户需要提供 principals （身份）和 credentials（证明）给 shiro，从而应用能验证用户身份。    principals：身份；即主体的标识属性，可以是任何东西，如用户名、邮箱等，唯一即可。一个主体可以有多个 principals，但只有">
 <meta property="og:type" content="article">
 <meta property="og:title" content="跟我学Shiro（二）-身份认证">
-<meta property="og:url" content="https://gojay.top/2017/11/22/跟我学Shiro（二）-身份认证/index.html">
+<meta property="og:url" content="https://gojay.top/2017/11/22/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%BA%8C%EF%BC%89-%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/index.html">
 <meta property="og:site_name" content="Gojay&#39;s Records">
-<meta property="og:description" content="简介身份验证：在应用中能证明他就是他本人。一般提供一些标识信息来表明他就是他本人，如提供身份证，用户名&amp;#x2F;密码来证明。在 shiro 中，用户需要提供 principals （身份）和 credentials（证明）给 shiro，从而应用能验证用户身份。">
-<meta property="og:locale" content="en">
+<meta property="og:description" content="简介身份验证：在应用中能证明他就是他本人。一般提供一些标识信息来表明他就是他本人，如提供身份证，用户名&#x2F;密码来证明。在 shiro 中，用户需要提供 principals （身份）和 credentials（证明）给 shiro，从而应用能验证用户身份。    principals：身份；即主体的标识属性，可以是任何东西，如用户名、邮箱等，唯一即可。一个主体可以有多个 principals，但只有">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://gojay.top/gallery/thumbnails/shiro.png">
-<meta property="og:updated_time" content="2023-03-10T07:58:38.570Z">
+<meta property="article:published_time" content="2017-11-22T03:16:43.000Z">
+<meta property="article:modified_time" content="2023-03-10T07:58:38.570Z">
+<meta property="article:author" content="Gojay">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Shiro">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="跟我学Shiro（二）-身份认证">
-<meta name="twitter:description" content="简介身份验证：在应用中能证明他就是他本人。一般提供一些标识信息来表明他就是他本人，如提供身份证，用户名&amp;#x2F;密码来证明。在 shiro 中，用户需要提供 principals （身份）和 credentials（证明）给 shiro，从而应用能验证用户身份。">
 <meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/shiro.png">
 
 
@@ -96,13 +97,14 @@ var _hmt = _hmt || [];
     
     
     
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
 
     
 
 
 <link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/rss.xml" title="Gojay's Records" type="application/atom+xml">
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
@@ -118,19 +120,26 @@ var _hmt = _hmt || [];
             
             <div class="navbar-start">
                 
-                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item"
+                href="/">Home</a>
                 
-                <a class="navbar-item" href="/archives/">Archives</a>
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
                 
-                <a class="navbar-item" href="/categories/">Categories</a>
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
                 
-                <a class="navbar-item" href="/tags/">Tags</a>
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
                 
-                <a class="navbar-item" href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
+                <a class="navbar-item"
+                href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
                 
-                <a class="navbar-item" href="/about/">About</a>
+                <a class="navbar-item"
+                href="/about/">About</a>
                 
-                <a class="navbar-item" href="/rss.xml">RSS</a>
+                <a class="navbar-item"
+                href="/rss.xml">RSS</a>
                 
             </div>
             
@@ -166,7 +175,7 @@ var _hmt = _hmt || [];
                 <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-image">
-        <span class="image is-7by1">
+        <span  class="image is-7by1">
             <img class="thumbnail lazy" data-src="/gallery/thumbnails/shiro.png" alt="跟我学Shiro（二）-身份认证">
         </span>
     </div>
@@ -209,11 +218,11 @@ var _hmt = _hmt || [];
         </div>
         
         <div class="content">
-            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><strong>身份验证</strong>：在应用中能<code>证明他就是他本人</code>。一般提供一些标识信息来表明他就是他本人，如提供身份证，用户名&#x2F;密码来证明。<br>在 shiro 中，用户需要提供 <code>principals</code> （身份）和 <code>credentials</code>（证明）给 shiro，从而应用能验证用户身份。 </p>
-<a id="more"></a>
+            <html><head></head><body><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><strong>身份验证</strong>：在应用中能<code>证明他就是他本人</code>。一般提供一些标识信息来表明他就是他本人，如提供身份证，用户名/密码来证明。<br>在 shiro 中，用户需要提供 <code>principals</code> （身份）和 <code>credentials</code>（证明）给 shiro，从而应用能验证用户身份。 </p>
+<!-- more  -->
 <ul>
-<li><strong>principals</strong>：身份；即主体的标识属性，可以是任何东西，如用户名、邮箱等，唯一即可。一个主体可以有多个 principals，但<code>只有一个 Primary principals</code>，一般是用户名&#x2F;密码&#x2F;手机号。 </li>
-<li><strong>credentials</strong>：证明&#x2F;凭证；即只有主体知道的安全值，如密码&#x2F;数字证书等。</li>
+<li><strong>principals</strong>：身份；即主体的标识属性，可以是任何东西，如用户名、邮箱等，唯一即可。一个主体可以有多个 principals，但<code>只有一个 Primary principals</code>，一般是用户名/密码/手机号。 </li>
+<li><strong>credentials</strong>：证明/凭证；即只有主体知道的安全值，如密码/数字证书等。</li>
 </ul>
 <blockquote>
 <p>最常见的 principals 和 credentials 组合就是<code>用户名/密码</code>了。<br>另外两个相关的概念是之前提到的 <code>Subject</code> 及 <code>Realm</code>，分别是主体及验证主体的数据源。</p>
@@ -222,30 +231,28 @@ var _hmt = _hmt || [];
 <blockquote>
 <p><strong>更新</strong>：加入slf4j-nop依赖包。</p>
 </blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;junit&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;junit&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;4.12&lt;/version&gt;</span><br><span class="line">        &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;commons-logging&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;commons-logging&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.2&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;shiro-core&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.4.0&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.slf4j&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;slf4j-nop&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.7.25&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;junit&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;junit&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;4.12&lt;/version&gt;</span><br><span class="line">        &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;commons-logging&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;commons-logging&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.2&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;shiro-core&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.4.0&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.slf4j&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;slf4j-nop&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.7.25&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 
-<h1 id="登录-x2F-退出"><a href="#登录-x2F-退出" class="headerlink" title="登录&#x2F;退出"></a>登录&#x2F;退出</h1><h2 id="准备一些用户身份-x2F-凭据"><a href="#准备一些用户身份-x2F-凭据" class="headerlink" title="准备一些用户身份&#x2F;凭据"></a>准备一些用户身份&#x2F;凭据</h2><blockquote>
+<h1 id="登录-退出"><a href="#登录-退出" class="headerlink" title="登录/退出"></a>登录/退出</h1><h2 id="准备一些用户身份-凭据"><a href="#准备一些用户身份-凭据" class="headerlink" title="准备一些用户身份/凭据"></a>准备一些用户身份/凭据</h2><blockquote>
 <p>shiro.ini</p>
 </blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">[users]</span><br><span class="line">gojay=test</span><br><span class="line">root=root</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">[users]</span><br><span class="line">gojay=test</span><br><span class="line">root=root</span><br></pre></td></tr></tbody></table></figure>
 <p>此处使用ini配置文件，通过<code>[user]</code>指定两个主体。</p>
 <h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><blockquote>
 <p>com.github.gojay001.test.LoginLogoutTest<br><strong>更新</strong>：注意类过时。</p>
 </blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testLoginLogout() &#123;</span><br><span class="line">    //1、获取SecurityManager工厂，此处使用Ini配置文件初始化SecurityManager</span><br><span class="line">    Factory&lt;SecurityManager&gt; factory = new IniSecurityManagerFactory(&quot;classpath:shiro.ini&quot;);</span><br><span class="line"></span><br><span class="line">    //2、得到SecurityManager实例 并绑定给SecurityUtils</span><br><span class="line">    SecurityManager securityManager = factory.getInstance();</span><br><span class="line">    SecurityUtils.setSecurityManager(securityManager);</span><br><span class="line"></span><br><span class="line">    //3、得到Subject及创建用户名/密码身份验证Token（即用户身份/凭证）</span><br><span class="line">    Subject subject = SecurityUtils.getSubject();</span><br><span class="line">    UsernamePasswordToken token = new UsernamePasswordToken(&quot;root&quot;, &quot;root&quot;);</span><br><span class="line"></span><br><span class="line">    try &#123;</span><br><span class="line">        //4、登录，即身份验证</span><br><span class="line">        subject.login(token);</span><br><span class="line">    &#125; catch (AuthenticationException e) &#123;</span><br><span class="line">        //5、身份验证失败</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Assert.assertEquals(true, subject.isAuthenticated());</span><br><span class="line"></span><br><span class="line">    //6、退出</span><br><span class="line">    subject.logout();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testLoginLogout() {</span><br><span class="line">    //1、获取SecurityManager工厂，此处使用Ini配置文件初始化SecurityManager</span><br><span class="line">    Factory&lt;SecurityManager&gt; factory = new IniSecurityManagerFactory("classpath:shiro.ini");</span><br><span class="line"></span><br><span class="line">    //2、得到SecurityManager实例 并绑定给SecurityUtils</span><br><span class="line">    SecurityManager securityManager = factory.getInstance();</span><br><span class="line">    SecurityUtils.setSecurityManager(securityManager);</span><br><span class="line"></span><br><span class="line">    //3、得到Subject及创建用户名/密码身份验证Token（即用户身份/凭证）</span><br><span class="line">    Subject subject = SecurityUtils.getSubject();</span><br><span class="line">    UsernamePasswordToken token = new UsernamePasswordToken("root", "root");</span><br><span class="line"></span><br><span class="line">    try {</span><br><span class="line">        //4、登录，即身份验证</span><br><span class="line">        subject.login(token);</span><br><span class="line">    } catch (AuthenticationException e) {</span><br><span class="line">        //5、身份验证失败</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    Assert.assertEquals(true, subject.isAuthenticated());</span><br><span class="line"></span><br><span class="line">    //6、退出</span><br><span class="line">    subject.logout();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>首先通过new IniSecurityManagerFactory并指定一个ini配置文件来<code>创建一个SecurityManager工厂</code>；</li>
 <li>接着<code>获取SecurityManager并绑定到SecurityUtils</code>，这是一个全局设置，设置一次即可；</li>
-<li>通过SecurityUtils<code>得到Subject</code>，其会自动绑定到当前线程；如果在web环境在请求结束时需要解除绑定；然后<code>获取身份验证的Token</code>，如用户名&#x2F;密码；</li>
+<li>通过SecurityUtils<code>得到Subject</code>，其会自动绑定到当前线程；如果在web环境在请求结束时需要解除绑定；然后<code>获取身份验证的Token</code>，如用户名/密码；</li>
 <li><code>调用subject.login方法</code>进行登录，其会自动委托给SecurityManager.login方法进行登录；</li>
 <li><code>如果身份验证失败捕获AuthenticationException或其子类</code>，常见的如： <code>DisabledAccountException</code>（禁用的帐号）、<code>LockedAccountException</code>（锁定的帐号）、<code>UnknownAccountException</code>（错误的帐号）、<code>ExcessiveAttemptsException</code>（登录失败次数过多）、<code>IncorrectCredentialsException</code> （错误的凭证）、<code>ExpiredCredentialsException</code>（过期的凭证）等，具体查看其继承关系；</li>
 <li>最后可以<code>调用subject.logout退出</code>，其会自动委托给SecurityManager.logout方法退出。</li>
 </ul>
 <h2 id="总结步骤"><a href="#总结步骤" class="headerlink" title="总结步骤"></a>总结步骤</h2><blockquote>
 <ol>
-<li>收集用户身份&#x2F;凭证，即如用户名&#x2F;密码；</li>
+<li>收集用户身份/凭证，即如用户名/密码；</li>
 <li>调用Subject.login进行登录，如果失败将得到相应的AuthenticationException异常，根据异常提示用户错误信息；否则登录成功；</li>
 <li>最后调用Subject.logout进行退出操作。</li>
 </ol>
@@ -253,7 +260,7 @@ var _hmt = _hmt || [];
 <h2 id="存在问题"><a href="#存在问题" class="headerlink" title="存在问题"></a>存在问题</h2><blockquote>
 <ol>
 <li><code>用户名/密码硬编码</code>在ini配置文件，以后需要改成如数据库存储，且密码需要加密存储；</li>
-<li><code>用户身份Token</code>可能不仅仅是用户名&#x2F;密码，也可能<code>还有其他的</code>，如登录时允许用户名&#x2F;邮箱&#x2F;手机号同时登录。</li>
+<li><code>用户身份Token</code>可能不仅仅是用户名/密码，也可能<code>还有其他的</code>，如登录时允许用户名/邮箱/手机号同时登录。</li>
 </ol>
 </blockquote>
 <h1 id="身份认证流程"><a href="#身份认证流程" class="headerlink" title="身份认证流程"></a>身份认证流程</h1><p><img src="https://i.loli.net/2019/08/04/tfpzHNlgqS5QomI.png" alt="2-1.png"></p>
@@ -263,49 +270,44 @@ var _hmt = _hmt || [];
 <li><code>SecurityManager</code>负责真正的身份验证逻辑；它会<code>委托给Authenticator进行身份验证</code>；</li>
 <li>Authenticator才是真正的身份验证者，Shiro API中核心的身份认证入口点，此处<code>可以自定义插入自己的实现</code>；</li>
 <li>Authenticator可能会委托给相应的AuthenticationStrategy<code>进行多Realm身份验证</code>，默认ModularRealmAuthenticator会调用AuthenticationStrategy进行多Realm身份验证；</li>
-<li>Authenticator会<code>把相应的token传入Realm，从Realm获取身份验证信息</code>，如果没有返回&#x2F;抛出异常表示身份验证失败了。此处可以配置多个Realm，将按照相应的顺序及策略进行访问。</li>
+<li>Authenticator会<code>把相应的token传入Realm，从Realm获取身份验证信息</code>，如果没有返回/抛出异常表示身份验证失败了。此处可以配置多个Realm，将按照相应的顺序及策略进行访问。</li>
 </ol>
 </blockquote>
 <h1 id="Realm"><a href="#Realm" class="headerlink" title="Realm"></a>Realm</h1><p><strong>Realm</strong>：域；Shiro从Realm获取安全数据（如用户、角色、权限），可以把Realm看成DataSource，即<code>安全数据源</code>。</p>
 <p>org.apache.shiro.realm.Realm接口如下：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">String getName(); //返回一个唯一的Realm名字  </span><br><span class="line">boolean supports(AuthenticationToken token); //判断此Realm是否支持此Token  </span><br><span class="line">AuthenticationInfo getAuthenticationInfo(AuthenticationToken token) throws AuthenticationException;  //根据Token获取认证信息</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">String getName(); //返回一个唯一的Realm名字  </span><br><span class="line">boolean supports(AuthenticationToken token); //判断此Realm是否支持此Token  </span><br><span class="line">AuthenticationInfo getAuthenticationInfo(AuthenticationToken token) throws AuthenticationException;  //根据Token获取认证信息</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="单Realm配置"><a href="#单Realm配置" class="headerlink" title="单Realm配置"></a>单Realm配置</h2><h3 id="自定义Realm实现"><a href="#自定义Realm实现" class="headerlink" title="自定义Realm实现"></a>自定义Realm实现</h3><blockquote>
 <p>com.github.gojay001.realm.MyRealm1</p>
 </blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line"> public class MyRealm1 implements Realm &#123;</span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return &quot;myRealm1&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public boolean supports(AuthenticationToken authenticationToken) &#123;</span><br><span class="line">        return authenticationToken instanceof UsernamePasswordToken;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public AuthenticationInfo getAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException &#123;</span><br><span class="line">        // 得到用户名</span><br><span class="line">        String username = (String)authenticationToken.getPrincipal();</span><br><span class="line">        // 得到密码</span><br><span class="line">        String password = new String((char[])authenticationToken.getCredentials());</span><br><span class="line">        if(!&quot;root&quot;.equals(username)) &#123;</span><br><span class="line">            //用户名错误</span><br><span class="line">            throw new UnknownAccountException();</span><br><span class="line">        &#125;</span><br><span class="line">        if(!&quot;root&quot;.equals(password)) &#123;</span><br><span class="line">            //密码错误</span><br><span class="line">            throw new IncorrectCredentialsException();</span><br><span class="line">        &#125;</span><br><span class="line">        //如果身份认证验证成功，返回一个AuthenticationInfo实现；</span><br><span class="line">        return new SimpleAuthenticationInfo(username, password, getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line"> public class MyRealm1 implements Realm {</span><br><span class="line">    public String getName() {</span><br><span class="line">        return "myRealm1";</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public boolean supports(AuthenticationToken authenticationToken) {</span><br><span class="line">        return authenticationToken instanceof UsernamePasswordToken;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public AuthenticationInfo getAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {</span><br><span class="line">        // 得到用户名</span><br><span class="line">        String username = (String)authenticationToken.getPrincipal();</span><br><span class="line">        // 得到密码</span><br><span class="line">        String password = new String((char[])authenticationToken.getCredentials());</span><br><span class="line">        if(!"root".equals(username)) {</span><br><span class="line">            //用户名错误</span><br><span class="line">            throw new UnknownAccountException();</span><br><span class="line">        }</span><br><span class="line">        if(!"root".equals(password)) {</span><br><span class="line">            //密码错误</span><br><span class="line">            throw new IncorrectCredentialsException();</span><br><span class="line">        }</span><br><span class="line">        //如果身份认证验证成功，返回一个AuthenticationInfo实现；</span><br><span class="line">        return new SimpleAuthenticationInfo(username, password, getName());</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="ini配置文件指定自定义Realm实现"><a href="#ini配置文件指定自定义Realm实现" class="headerlink" title="ini配置文件指定自定义Realm实现"></a>ini配置文件指定自定义Realm实现</h3><blockquote>
 <p>shiro-realm.ini</p>
 </blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line"># 声明一个realm</span><br><span class="line">myRealm1=com.github.gojay001.realm.MyRealm1</span><br><span class="line"># 指定securityManager的realms实现</span><br><span class="line">securityManager.realms=$myRealm1</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line"># 声明一个realm</span><br><span class="line">myRealm1=com.github.gojay001.realm.MyRealm1</span><br><span class="line"># 指定securityManager的realms实现</span><br><span class="line">securityManager.realms=$myRealm1</span><br></pre></td></tr></tbody></table></figure>
 <p>通过$name来引入之前的realm定义。</p>
 <h2 id="多Realm配置"><a href="#多Realm配置" class="headerlink" title="多Realm配置"></a>多Realm配置</h2><h3 id="ini配置文件"><a href="#ini配置文件" class="headerlink" title="ini配置文件"></a>ini配置文件</h3><blockquote>
 <p>shiro-multi-realm.ini</p>
 </blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line"># 声明一个realm  </span><br><span class="line">myRealm1=com.github.zhangkaitao.shiro.chapter2.realm.MyRealm1  </span><br><span class="line">myRealm2=com.github.zhangkaitao.shiro.chapter2.realm.MyRealm2  </span><br><span class="line"># 指定securityManager的realms实现  </span><br><span class="line">securityManager.realms=$myRealm1,$myRealm2</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line"># 声明一个realm  </span><br><span class="line">myRealm1=com.github.zhangkaitao.shiro.chapter2.realm.MyRealm1  </span><br><span class="line">myRealm2=com.github.zhangkaitao.shiro.chapter2.realm.MyRealm2  </span><br><span class="line"># 指定securityManager的realms实现  </span><br><span class="line">securityManager.realms=$myRealm1,$myRealm2</span><br></pre></td></tr></tbody></table></figure>
 <p>securityManager会按照realms指定的顺序进行身份认证。</p>
 <h2 id="Shiro默认提供的Realm"><a href="#Shiro默认提供的Realm" class="headerlink" title="Shiro默认提供的Realm"></a>Shiro默认提供的Realm</h2><p><img src="https://i.loli.net/2019/08/04/2gCrkAm37uDxsl8.png" alt="2-2.png"></p>
 <p>以后一般继承<code>AuthorizingRealm</code>（授权）即可；其继承了<code>AuthenticatingRealm</code>（即身份验证），而且也间接继承了<code>CachingRealm</code>（带有缓存实现）。<br>其中主要默认实现如下：</p>
 <ul>
-<li><strong>org.apache.shiro.realm.text.IniRealm</strong>：<code>[users]部分</code>指定用户名&#x2F;密码及其角色；<code>[roles]部分</code>指定角色即权限信息；</li>
-<li><strong>org.apache.shiro.realm.text.PropertiesRealm</strong>： <code>user.username=password,role1,role2</code>指定用户名&#x2F;密码及其角色；<code>role.role1=permission1,permission2</code>指定角色及权限信息；</li>
+<li><strong>org.apache.shiro.realm.text.IniRealm</strong>：<code>[users]部分</code>指定用户名/密码及其角色；<code>[roles]部分</code>指定角色即权限信息；</li>
+<li><strong>org.apache.shiro.realm.text.PropertiesRealm</strong>： <code>user.username=password,role1,role2</code>指定用户名/密码及其角色；<code>role.role1=permission1,permission2</code>指定角色及权限信息；</li>
 <li><strong>org.apache.shiro.realm.jdbc.JdbcRealm</strong>：通过sql查询相应的信息，如<code>“select password from users where username = ?”</code>获取用户密码，<code>“select role_name from user_roles where username = ?”</code>获取用户角色；<code>“select permission from roles_permissions where role_name = ?”</code>获取角色对应的权限信息；也可以调用相应的api进行自定义sql；</li>
 </ul>
 <h2 id="JDBC-Realm使用"><a href="#JDBC-Realm使用" class="headerlink" title="JDBC Realm使用"></a>JDBC Realm使用</h2><h3 id="数据库及依赖"><a href="#数据库及依赖" class="headerlink" title="数据库及依赖"></a>数据库及依赖</h3><blockquote>
 <p><strong>更新</strong>：alibaba的druid包更新版本。</p>
 </blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;6.0.6&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;druid&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.1.5&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;6.0.6&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;druid&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.1.5&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt; </span><br></pre></td></tr></tbody></table></figure>
 <p>本文将使用mysql数据库及druid连接池。</p>
-<h3 id="数据库下建表"><a href="#数据库下建表" class="headerlink" title="数据库下建表"></a>数据库下建表</h3><p><code>users</code>（用户名&#x2F;密码）、<code>user_roles</code>（用户&#x2F;角色）、<code>roles_permissions</code>（角色&#x2F;权限）；<br>具体请参照sql&#x2F;shiro.sql；并添加一个用户记录，用户名&#x2F;密码为root&#x2F;root。</p>
+<h3 id="数据库下建表"><a href="#数据库下建表" class="headerlink" title="数据库下建表"></a>数据库下建表</h3><p><code>users</code>（用户名/密码）、<code>user_roles</code>（用户/角色）、<code>roles_permissions</code>（角色/权限）；<br>具体请参照sql/shiro.sql；并添加一个用户记录，用户名/密码为root/root。</p>
 <h3 id="ini配置"><a href="#ini配置" class="headerlink" title="ini配置"></a>ini配置</h3><blockquote>
 <p>shiro-jdbc-realm.ini</p>
 </blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">jdbcRealm=org.apache.shiro.realm.jdbc.JdbcRealm  </span><br><span class="line">dataSource=com.alibaba.druid.pool.DruidDataSource  </span><br><span class="line">dataSource.driverClassName=com.mysql.jdbc.Driver  </span><br><span class="line">dataSource.url=jdbc:mysql://localhost:3306/shiro  </span><br><span class="line">dataSource.username=root  </span><br><span class="line">dataSource.password=root</span><br><span class="line">jdbcRealm.dataSource=$dataSource  </span><br><span class="line">securityManager.realms=$jdbcRealm</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">jdbcRealm=org.apache.shiro.realm.jdbc.JdbcRealm  </span><br><span class="line">dataSource=com.alibaba.druid.pool.DruidDataSource  </span><br><span class="line">dataSource.driverClassName=com.mysql.jdbc.Driver  </span><br><span class="line">dataSource.url=jdbc:mysql://localhost:3306/shiro  </span><br><span class="line">dataSource.username=root  </span><br><span class="line">dataSource.password=root</span><br><span class="line">jdbcRealm.dataSource=$dataSource  </span><br><span class="line">securityManager.realms=$jdbcRealm </span><br></pre></td></tr></tbody></table></figure>
 <ol>
 <li><code>变量名=全限定类名</code> 自动创建一个类实例</li>
 <li><code>变量名.属性=值</code> 自动调用相应的setter方法进行赋值</li>
@@ -313,8 +315,7 @@ var _hmt = _hmt || [];
 <li><code>测试代码</code>和之前的没什么区别。</li>
 </ol>
 <h1 id="Authenticator及AuthenticationStrategy"><a href="#Authenticator及AuthenticationStrategy" class="headerlink" title="Authenticator及AuthenticationStrategy"></a>Authenticator及AuthenticationStrategy</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p><strong>Authenticator</strong>的职责是验证用户帐号，<br>是Shiro API中身份验证核心的入口点：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">public AuthenticationInfo authenticate(AuthenticationToken authenticationToken) throws AuthenticationException;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">public AuthenticationInfo authenticate(AuthenticationToken authenticationToken) throws AuthenticationException;</span><br></pre></td></tr></tbody></table></figure>
 <p>如果验证成功，将返回AuthenticationInfo验证信息，此信息中包含了身份及凭证；<br>如果验证失败将抛出相应的AuthenticationException实现。</p>
 <p><strong>SecurityManager</strong>接口继承了Authenticator，另外还有一个<code>ModularRealmAuthenticator实现</code>，其委托给多个Realm进行验证，验证规则通过<code>AuthenticationStrategy接口</code>指定，默认提供的实现：</p>
 <ul>
@@ -326,22 +327,18 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><blockquote>
-<p>假设有三个realm：<br>myRealm1： 用户名&#x2F;密码为root&#x2F;root时成功，且返回身份&#x2F;凭据为root&#x2F;root；<br>myRealm2： 用户名&#x2F;密码为gojay&#x2F;test时成功，且返回身份&#x2F;凭据为gojay&#x2F;test；<br>myRealm3： 用户名&#x2F;密码为root&#x2F;root时成功，且返回身份&#x2F;凭据为<a href="mailto:&#x72;&#111;&#x6f;&#x74;&#64;&#x66;&#111;&#x78;&#109;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;" target="_blank" rel="noopener">&#x72;&#111;&#x6f;&#x74;&#64;&#x66;&#111;&#x78;&#109;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;</a>&#x2F;root；</p>
+<p>假设有三个realm：<br>myRealm1： 用户名/密码为root/root时成功，且返回身份/凭据为root/root；<br>myRealm2： 用户名/密码为gojay/test时成功，且返回身份/凭据为gojay/test；<br>myRealm3： 用户名/密码为root/root时成功，且返回身份/凭据为<a href="mailto:root@foxmail.com">root@foxmail.com</a>/root；</p>
 </blockquote>
 <h3 id="ini配置文件-1"><a href="#ini配置文件-1" class="headerlink" title="ini配置文件"></a>ini配置文件</h3><blockquote>
 <p>shiro-authenticator-all-success.ini</p>
 </blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">[main]</span><br><span class="line">#指定securityManager的authenticator实现</span><br><span class="line">authenticator=org.apache.shiro.authc.pam.ModularRealmAuthenticator</span><br><span class="line">securityManager.authenticator=$authenticator</span><br><span class="line"></span><br><span class="line">#指定securityManager.authenticator的authenticationStrategy</span><br><span class="line">allSuccessfulStrategy=org.apache.shiro.authc.pam.AllSuccessfulStrategy</span><br><span class="line">securityManager.authenticator.authenticationStrategy=$allSuccessfulStrategy</span><br><span class="line"></span><br><span class="line">myRealm1=com.github.gojay001.realm.MyRealm1</span><br><span class="line">myRealm2=com.github.gojay001.realm.MyRealm2</span><br><span class="line">myRealm3=com.github.gojay001.realm.MyRealm3</span><br><span class="line">securityManager.realms=$myRealm1,$myRealm3</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">[main]</span><br><span class="line">#指定securityManager的authenticator实现</span><br><span class="line">authenticator=org.apache.shiro.authc.pam.ModularRealmAuthenticator</span><br><span class="line">securityManager.authenticator=$authenticator</span><br><span class="line"></span><br><span class="line">#指定securityManager.authenticator的authenticationStrategy</span><br><span class="line">allSuccessfulStrategy=org.apache.shiro.authc.pam.AllSuccessfulStrategy</span><br><span class="line">securityManager.authenticator.authenticationStrategy=$allSuccessfulStrategy</span><br><span class="line"></span><br><span class="line">myRealm1=com.github.gojay001.realm.MyRealm1</span><br><span class="line">myRealm2=com.github.gojay001.realm.MyRealm2</span><br><span class="line">myRealm3=com.github.gojay001.realm.MyRealm3</span><br><span class="line">securityManager.realms=$myRealm1,$myRealm3</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h3><blockquote>
 <p>com.github.gojay001.test.AuthenticatorTest</p>
 </blockquote>
-<h4 id="首先通用化登录逻辑"><a href="#首先通用化登录逻辑" class="headerlink" title="首先通用化登录逻辑"></a>首先通用化登录逻辑</h4><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">private void login(String configFile) &#123;  </span><br><span class="line">    //1、获取SecurityManager工厂，此处使用Ini配置文件初始化SecurityManager  </span><br><span class="line">    Factory&lt;org.apache.shiro.mgt.SecurityManager&gt; factory =  </span><br><span class="line">            new IniSecurityManagerFactory(configFile);  </span><br><span class="line">  </span><br><span class="line">    //2、得到SecurityManager实例 并绑定给SecurityUtils  </span><br><span class="line">    org.apache.shiro.mgt.SecurityManager securityManager = factory.getInstance();  </span><br><span class="line">    SecurityUtils.setSecurityManager(securityManager);  </span><br><span class="line">  </span><br><span class="line">    //3、得到Subject及创建用户名/密码身份验证Token（即用户身份/凭证）  </span><br><span class="line">    Subject subject = SecurityUtils.getSubject();  </span><br><span class="line">    UsernamePasswordToken token = new UsernamePasswordToken(&quot;root&quot;, &quot;root&quot;);  </span><br><span class="line">  </span><br><span class="line">    subject.login(token);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="测试AllSuccessfulStrategy成功"><a href="#测试AllSuccessfulStrategy成功" class="headerlink" title="测试AllSuccessfulStrategy成功"></a>测试AllSuccessfulStrategy成功</h4><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">@Test  </span><br><span class="line">public void testAllSuccessfulStrategyWithSuccess() &#123;  </span><br><span class="line">    login(&quot;classpath:shiro-authenticator-all-success.ini&quot;);  </span><br><span class="line">    Subject subject = SecurityUtils.getSubject();  </span><br><span class="line">  </span><br><span class="line">    //得到一个身份集合，其包含了Realm验证成功的身份信息  </span><br><span class="line">    PrincipalCollection principalCollection = subject.getPrincipals();  </span><br><span class="line">    Assert.assertEquals(2, principalCollection.asList().size());  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="测试AllSuccessfulStrategy失败"><a href="#测试AllSuccessfulStrategy失败" class="headerlink" title="测试AllSuccessfulStrategy失败"></a>测试AllSuccessfulStrategy失败</h4><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">@Test(expected = UnknownAccountException.class)  </span><br><span class="line">public void testAllSuccessfulStrategyWithFail() &#123;  </span><br><span class="line">    login(&quot;classpath:shiro-authenticator-all-fail.ini&quot;);  </span><br><span class="line">    Subject subject = SecurityUtils.getSubject();  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h4 id="首先通用化登录逻辑"><a href="#首先通用化登录逻辑" class="headerlink" title="首先通用化登录逻辑"></a>首先通用化登录逻辑</h4><figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">private void login(String configFile) {  </span><br><span class="line">    //1、获取SecurityManager工厂，此处使用Ini配置文件初始化SecurityManager  </span><br><span class="line">    Factory&lt;org.apache.shiro.mgt.SecurityManager&gt; factory =  </span><br><span class="line">            new IniSecurityManagerFactory(configFile);  </span><br><span class="line">  </span><br><span class="line">    //2、得到SecurityManager实例 并绑定给SecurityUtils  </span><br><span class="line">    org.apache.shiro.mgt.SecurityManager securityManager = factory.getInstance();  </span><br><span class="line">    SecurityUtils.setSecurityManager(securityManager);  </span><br><span class="line">  </span><br><span class="line">    //3、得到Subject及创建用户名/密码身份验证Token（即用户身份/凭证）  </span><br><span class="line">    Subject subject = SecurityUtils.getSubject();  </span><br><span class="line">    UsernamePasswordToken token = new UsernamePasswordToken("root", "root");  </span><br><span class="line">  </span><br><span class="line">    subject.login(token);  </span><br><span class="line">}  </span><br></pre></td></tr></tbody></table></figure>
+<h4 id="测试AllSuccessfulStrategy成功"><a href="#测试AllSuccessfulStrategy成功" class="headerlink" title="测试AllSuccessfulStrategy成功"></a>测试AllSuccessfulStrategy成功</h4><figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">@Test  </span><br><span class="line">public void testAllSuccessfulStrategyWithSuccess() {  </span><br><span class="line">    login("classpath:shiro-authenticator-all-success.ini");  </span><br><span class="line">    Subject subject = SecurityUtils.getSubject();  </span><br><span class="line">  </span><br><span class="line">    //得到一个身份集合，其包含了Realm验证成功的身份信息  </span><br><span class="line">    PrincipalCollection principalCollection = subject.getPrincipals();  </span><br><span class="line">    Assert.assertEquals(2, principalCollection.asList().size());  </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="测试AllSuccessfulStrategy失败"><a href="#测试AllSuccessfulStrategy失败" class="headerlink" title="测试AllSuccessfulStrategy失败"></a>测试AllSuccessfulStrategy失败</h4><figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">@Test(expected = UnknownAccountException.class)  </span><br><span class="line">public void testAllSuccessfulStrategyWithFail() {  </span><br><span class="line">    login("classpath:shiro-authenticator-all-fail.ini");  </span><br><span class="line">    Subject subject = SecurityUtils.getSubject();  </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p><code>shiro-authenticator-all-fail.ini</code> 与 <code>shiro-authenticator-all-success.ini</code> 不同的配置是使用了 <code>securityManager.realms=$myRealm1,$myRealm2</code> ；即myRealm验证失败。</p>
 </blockquote>
@@ -349,9 +346,8 @@ var _hmt = _hmt || [];
 <p> 对于 <code>AtLeastOneSuccessfulStrategy</code> 和 <code>FirstSuccessfulStrategy</code> 的区别：唯一不同点一个是<code>返回所有</code>验证成功的Realm的认证信息；另一个是<code>只返回第一个</code>验证成功的Realm的认证信息.<code>示例代码同上</code></p>
 </blockquote>
 <h3 id="自定义AuthenticationStrategy实现"><a href="#自定义AuthenticationStrategy实现" class="headerlink" title="自定义AuthenticationStrategy实现"></a>自定义AuthenticationStrategy实现</h3><p>首先看其API：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">//在所有Realm验证之前调用  </span><br><span class="line">AuthenticationInfo beforeAllAttempts(  </span><br><span class="line">Collection&lt;? extends Realm&gt; realms, AuthenticationToken token)   </span><br><span class="line">throws AuthenticationException;  </span><br><span class="line">//在每个Realm之前调用  </span><br><span class="line">AuthenticationInfo beforeAttempt(  </span><br><span class="line">Realm realm, AuthenticationToken token, AuthenticationInfo aggregate)   </span><br><span class="line">throws AuthenticationException;  </span><br><span class="line">//在每个Realm之后调用  </span><br><span class="line">AuthenticationInfo afterAttempt(  </span><br><span class="line">Realm realm, AuthenticationToken token,   </span><br><span class="line">AuthenticationInfo singleRealmInfo, AuthenticationInfo aggregateInfo, Throwable t)  </span><br><span class="line">throws AuthenticationException;  </span><br><span class="line">//在所有Realm之后调用  </span><br><span class="line">AuthenticationInfo afterAllAttempts(  </span><br><span class="line">AuthenticationToken token, AuthenticationInfo aggregate)   </span><br><span class="line">throws AuthenticationException;</span><br></pre></td></tr></table></figure>
-
-<p>因为每个<code>AuthenticationStrategy</code>实例都是无状态的，所有每次都通过接口将相应的认证信息传入下一次流程；<br>通过如上接口可以进行如合并&#x2F;返回第一个验证成功的认证信息。<br>自定义实现时一般<code>继承 org.apache.shiro.authc.pam.AbstractAuthenticationStrategy</code> 即可。<code>参考代码同上</code></p>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">//在所有Realm验证之前调用  </span><br><span class="line">AuthenticationInfo beforeAllAttempts(  </span><br><span class="line">Collection&lt;? extends Realm&gt; realms, AuthenticationToken token)   </span><br><span class="line">throws AuthenticationException;  </span><br><span class="line">//在每个Realm之前调用  </span><br><span class="line">AuthenticationInfo beforeAttempt(  </span><br><span class="line">Realm realm, AuthenticationToken token, AuthenticationInfo aggregate)   </span><br><span class="line">throws AuthenticationException;  </span><br><span class="line">//在每个Realm之后调用  </span><br><span class="line">AuthenticationInfo afterAttempt(  </span><br><span class="line">Realm realm, AuthenticationToken token,   </span><br><span class="line">AuthenticationInfo singleRealmInfo, AuthenticationInfo aggregateInfo, Throwable t)  </span><br><span class="line">throws AuthenticationException;  </span><br><span class="line">//在所有Realm之后调用  </span><br><span class="line">AuthenticationInfo afterAllAttempts(  </span><br><span class="line">AuthenticationToken token, AuthenticationInfo aggregate)   </span><br><span class="line">throws AuthenticationException;   </span><br></pre></td></tr></tbody></table></figure>
+<p>因为每个<code>AuthenticationStrategy</code>实例都是无状态的，所有每次都通过接口将相应的认证信息传入下一次流程；<br>通过如上接口可以进行如合并/返回第一个验证成功的认证信息。<br>自定义实现时一般<code>继承 org.apache.shiro.authc.pam.AbstractAuthenticationStrategy</code> 即可。<code>参考代码同上</code></p>
 <blockquote>
 <p>到此基本的身份验证就结束了。</p>
 </blockquote>
@@ -361,7 +357,7 @@ var _hmt = _hmt || [];
 <h3 id="SLF4J加载失败"><a href="#SLF4J加载失败" class="headerlink" title="SLF4J加载失败"></a>SLF4J加载失败</h3><blockquote>
 <p>SLF4J: Failed to load class “org.slf4j.impl.StaticLoggerBinder”<br><strong>解决</strong>：Maven引入slf4j-nop包：</p>
 </blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;slf4j-nop&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.7.6&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;slf4j-nop&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.7.6&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="implements不需要-Override"><a href="#implements不需要-Override" class="headerlink" title="implements不需要@Override"></a>implements不需要@Override</h3><h3 id="alibaba的druid版本更新"><a href="#alibaba的druid版本更新" class="headerlink" title="alibaba的druid版本更新"></a>alibaba的druid版本更新</h3><h2 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h2><h3 id="用户登录流程"><a href="#用户登录流程" class="headerlink" title="用户登录流程"></a>用户登录流程</h3><ul>
 <li>Subject.login(token)</li>
@@ -382,27 +378,27 @@ var _hmt = _hmt || [];
 <li>自定义Strategy</li>
 </ul>
 <blockquote>
-<p>参考代码：<a href="https://github.com/Gojay001/Demo/tree/master/ShiroTest/ShiroTest-chapter2" target="_blank" rel="noopener">https://github.com/Gojay001/Demo/tree/master/ShiroTest/ShiroTest-chapter2</a></p>
+<p>参考代码：<a href="https://github.com/Gojay001/Demo/tree/master/ShiroTest/ShiroTest-chapter2">https://github.com/Gojay001/Demo/tree/master/ShiroTest/ShiroTest-chapter2</a></p>
 </blockquote>
-
+</body></html>
         </div>
         
             <ul class="post-copyright">
-            <li><strong>Title：</strong><a href="https://gojay.top/2017/11/22/跟我学Shiro（二）-身份认证/">跟我学Shiro（二）-身份认证</a></li>
-            <li><strong>Author：</strong><a href="https://gojay.top">Gojay</a></li>
-            <li><strong>Link：</strong><a href="https://gojay.top/2017/11/22/跟我学Shiro（二）-身份认证/">https://gojay.top/2017/11/22/跟我学Shiro（二）-身份认证/</a></li>
+            <li><strong>Title：</strong><a href="https://gojay.top/2017/11/22/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%BA%8C%EF%BC%89-%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/">跟我学Shiro（二）-身份认证</a></li>
+            <li><strong>Author：</strong><a href=""></a></li>
+            <li><strong>Link：</strong><a href="https://gojay.top/2017/11/22/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%BA%8C%EF%BC%89-%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/">https://gojay.top/2017/11/22/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%BA%8C%EF%BC%89-%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/</a></li>
             <li><strong>Date：</strong>2017-11-22</li>
             <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
             </li>
             </ul>
         
         
-        <hr style="height:1px;margin:1rem 0">
+        <hr style="height:1px;margin:1rem 0"/>
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/Java/">Java</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Shiro/">Shiro</a>
+                    <a class="has-link-grey -link-link" href="/tags/Java/" rel="tag">Java</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/Shiro/" rel="tag">Shiro</a>
                 </div>
             </div>
         </div>
@@ -424,7 +420,7 @@ var _hmt = _hmt || [];
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2017/11/23/跟我学Shiro（三）-授权/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2017/11/23/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%B8%89%EF%BC%89-%E6%8E%88%E6%9D%83/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">跟我学Shiro（三）-授权</span>
             </a>
@@ -432,7 +428,7 @@ var _hmt = _hmt || [];
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2017/11/19/跟我学Shiro（一）-Shiro简介/">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2017/11/19/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%B8%80%EF%BC%89-Shiro%E7%AE%80%E4%BB%8B/">
                 <span class="level-item">跟我学Shiro（一）-Shiro简介</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
@@ -449,7 +445,7 @@ var _hmt = _hmt || [];
         
 <div id="valine-thread" class="content"></div>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 <script>
     new Valine({
         el: '#valine-thread' ,
@@ -492,13 +488,13 @@ var _hmt = _hmt || [];
         <span class="has-mr-6">2.1</span>
         <span>使用Maven构建</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#登录-x2F-退出">
+        <a class="is-flex" href="#登录-退出">
         <span class="has-mr-6">3</span>
-        <span>登录&#x2F;退出</span>
+        <span>登录/退出</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#准备一些用户身份-x2F-凭据">
+        <a class="is-flex" href="#准备一些用户身份-凭据">
         <span class="has-mr-6">3.1</span>
-        <span>准备一些用户身份&#x2F;凭据</span>
+        <span>准备一些用户身份/凭据</span>
         </a></li><li>
         <a class="is-flex" href="#测试用例">
         <span class="has-mr-6">3.2</span>
@@ -655,8 +651,9 @@ var _hmt = _hmt || [];
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2023 Gojay&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                &copy; 2026 Gojay&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
                 <br>
                 
@@ -811,7 +808,7 @@ var lazyLoadInstance = new LazyLoad({
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
