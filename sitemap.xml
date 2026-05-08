@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://gojay.top/2026/05/08/%E6%BA%90%E7%A0%81%E5%AE%9E%E7%8E%B0-Normalization/</loc>
+    <loc>https://gojay.top/2023/06/11/Python-random%E6%B1%87%E6%80%BB/</loc>
     
     <lastmod>2026-05-08</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2023/06/11/Python-random%E6%B1%87%E6%80%BB/</loc>
+    <loc>https://gojay.top/2026/05/08/%E6%BA%90%E7%A0%81%E5%AE%9E%E7%8E%B0-Normalization/</loc>
     
     <lastmod>2026-05-08</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2017/11/22/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%BA%8C%EF%BC%89-%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/</loc>
+    <loc>https://gojay.top/2017/11/30/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E5%85%AD%EF%BC%89-Realm%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%AF%B9%E8%B1%A1/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -74,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2017/11/30/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E5%85%AD%EF%BC%89-Realm%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%AF%B9%E8%B1%A1/</loc>
+    <loc>https://gojay.top/2017/11/22/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%BA%8C%EF%BC%89-%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -92,61 +92,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/11/14/%E5%89%91%E6%8C%87Offer-41-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B8%AD%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/11/18/%E5%89%91%E6%8C%87Offer-42-%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/11/18/%E5%89%91%E6%8C%87Offer-43-1%EF%BD%9En-%E6%95%B4%E6%95%B0%E4%B8%AD-1-%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/11/23/%E5%89%91%E6%8C%87Offer-44-%E6%95%B0%E5%AD%97%E5%BA%8F%E5%88%97%E4%B8%AD%E6%9F%90%E4%B8%80%E4%BD%8D%E7%9A%84%E6%95%B0%E5%AD%97/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/11/23/%E5%89%91%E6%8C%87Offer-45-%E6%8A%8A%E6%95%B0%E7%BB%84%E6%8E%92%E6%88%90%E6%9C%80%E5%B0%8F%E7%9A%84%E6%95%B0/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/12/15/%E5%89%91%E6%8C%87Offer-46-%E6%8A%8A%E6%95%B0%E5%AD%97%E7%BF%BB%E8%AF%91%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/12/15/%E5%89%91%E6%8C%87Offer-47-%E7%A4%BC%E7%89%A9%E7%9A%84%E6%9C%80%E5%A4%A7%E4%BB%B7%E5%80%BC/</loc>
+    <loc>https://gojay.top/2020/12/15/%E5%89%91%E6%8C%87Offer-49-%E4%B8%91%E6%95%B0/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -164,7 +110,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/12/15/%E5%89%91%E6%8C%87Offer-49-%E4%B8%91%E6%95%B0/</loc>
+    <loc>https://gojay.top/2020/12/15/%E5%89%91%E6%8C%87Offer-47-%E7%A4%BC%E7%89%A9%E7%9A%84%E6%9C%80%E5%A4%A7%E4%BB%B7%E5%80%BC/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -173,7 +119,52 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2017/11/19/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%B8%80%EF%BC%89-Shiro%E7%AE%80%E4%BB%8B/</loc>
+    <loc>https://gojay.top/2020/12/15/%E5%89%91%E6%8C%87Offer-46-%E6%8A%8A%E6%95%B0%E5%AD%97%E7%BF%BB%E8%AF%91%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/11/23/%E5%89%91%E6%8C%87Offer-45-%E6%8A%8A%E6%95%B0%E7%BB%84%E6%8E%92%E6%88%90%E6%9C%80%E5%B0%8F%E7%9A%84%E6%95%B0/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/11/23/%E5%89%91%E6%8C%87Offer-44-%E6%95%B0%E5%AD%97%E5%BA%8F%E5%88%97%E4%B8%AD%E6%9F%90%E4%B8%80%E4%BD%8D%E7%9A%84%E6%95%B0%E5%AD%97/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/11/18/%E5%89%91%E6%8C%87Offer-43-1%EF%BD%9En-%E6%95%B4%E6%95%B0%E4%B8%AD-1-%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/11/18/%E5%89%91%E6%8C%87Offer-42-%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/11/14/%E5%89%91%E6%8C%87Offer-41-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B8%AD%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -191,106 +182,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/09/24/%E5%89%91%E6%8C%87Offer-28-%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/10/14/%E5%89%91%E6%8C%87Offer-29-%E9%A1%BA%E6%97%B6%E9%92%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/10/14/%E5%89%91%E6%8C%87Offer-30-%E5%8C%85%E5%90%ABmin%E5%87%BD%E6%95%B0%E7%9A%84%E6%A0%88/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/10/16/%E5%89%91%E6%8C%87Offer-31-%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E3%80%81%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/10/18/%E5%89%91%E6%8C%87Offer-32-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/10/20/%E5%89%91%E6%8C%87Offer-33-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/10/22/%E5%89%91%E6%8C%87Offer-34-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/10/22/%E5%89%91%E6%8C%87Offer-35-%E5%A4%8D%E6%9D%82%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%8D%E5%88%B6/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/10/26/%E5%89%91%E6%8C%87Offer-36-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/10/27/%E5%89%91%E6%8C%87Offer-37-%E5%BA%8F%E5%88%97%E5%8C%96%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/11/02/%E5%89%91%E6%8C%87Offer-38-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/11/05/%E5%89%91%E6%8C%87Offer-39-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/</loc>
+    <loc>https://gojay.top/2017/11/19/%E8%B7%9F%E6%88%91%E5%AD%A6Shiro%EF%BC%88%E4%B8%80%EF%BC%89-Shiro%E7%AE%80%E4%BB%8B/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -308,7 +200,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/09/04/%E5%89%91%E6%8C%87Offer-14-%E5%89%AA%E7%BB%B3%E5%AD%90/</loc>
+    <loc>https://gojay.top/2020/11/05/%E5%89%91%E6%8C%87Offer-39-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -317,7 +209,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/09/07/%E5%89%91%E6%8C%87Offer-16-%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9/</loc>
+    <loc>https://gojay.top/2020/11/02/%E5%89%91%E6%8C%87Offer-38-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -326,7 +218,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/09/07/%E5%89%91%E6%8C%87Offer-15-%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/</loc>
+    <loc>https://gojay.top/2020/10/27/%E5%89%91%E6%8C%87Offer-37-%E5%BA%8F%E5%88%97%E5%8C%96%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -335,7 +227,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/09/11/%E5%89%91%E6%8C%87Offer-17-%E6%89%93%E5%8D%B0%E4%BB%8E1%E5%88%B0%E6%9C%80%E5%A4%A7%E7%9A%84n%E4%BD%8D%E6%95%B0/</loc>
+    <loc>https://gojay.top/2020/10/26/%E5%89%91%E6%8C%87Offer-36-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -344,7 +236,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/09/14/%E5%89%91%E6%8C%87Offer-19-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/</loc>
+    <loc>https://gojay.top/2020/10/22/%E5%89%91%E6%8C%87Offer-35-%E5%A4%8D%E6%9D%82%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%8D%E5%88%B6/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -353,7 +245,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/09/18/%E5%89%91%E6%8C%87Offer-20-%E8%A1%A8%E7%A4%BA%E6%95%B0%E5%80%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
+    <loc>https://gojay.top/2020/10/22/%E5%89%91%E6%8C%87Offer-34-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -362,7 +254,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/09/14/%E5%89%91%E6%8C%87Offer-18-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/</loc>
+    <loc>https://gojay.top/2020/10/20/%E5%89%91%E6%8C%87Offer-33-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -371,7 +263,70 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/09/19/%E5%89%91%E6%8C%87Offer-21-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/</loc>
+    <loc>https://gojay.top/2020/10/18/%E5%89%91%E6%8C%87Offer-32-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/10/16/%E5%89%91%E6%8C%87Offer-31-%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E3%80%81%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/10/14/%E5%89%91%E6%8C%87Offer-30-%E5%8C%85%E5%90%ABmin%E5%87%BD%E6%95%B0%E7%9A%84%E6%A0%88/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/10/14/%E5%89%91%E6%8C%87Offer-29-%E9%A1%BA%E6%97%B6%E9%92%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/09/24/%E5%89%91%E6%8C%87Offer-28-%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/09/23/%E5%89%91%E6%8C%87Offer-27-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/09/23/%E5%89%91%E6%8C%87Offer-26-%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/09/21/%E5%89%91%E6%8C%87Offer-25-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -398,7 +353,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/09/21/%E5%89%91%E6%8C%87Offer-25-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/</loc>
+    <loc>https://gojay.top/2020/09/19/%E5%89%91%E6%8C%87Offer-21-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -407,7 +362,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/09/23/%E5%89%91%E6%8C%87Offer-26-%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/</loc>
+    <loc>https://gojay.top/2020/09/18/%E5%89%91%E6%8C%87Offer-20-%E8%A1%A8%E7%A4%BA%E6%95%B0%E5%80%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -416,7 +371,52 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/09/23/%E5%89%91%E6%8C%87Offer-27-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/</loc>
+    <loc>https://gojay.top/2020/09/14/%E5%89%91%E6%8C%87Offer-19-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/09/14/%E5%89%91%E6%8C%87Offer-18-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/09/11/%E5%89%91%E6%8C%87Offer-17-%E6%89%93%E5%8D%B0%E4%BB%8E1%E5%88%B0%E6%9C%80%E5%A4%A7%E7%9A%84n%E4%BD%8D%E6%95%B0/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/09/07/%E5%89%91%E6%8C%87Offer-16-%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/09/07/%E5%89%91%E6%8C%87Offer-15-%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/09/04/%E5%89%91%E6%8C%87Offer-14-%E5%89%AA%E7%BB%B3%E5%AD%90/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -434,88 +434,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/08/21/%E5%89%91%E6%8C%87Offer-03-%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/08/21/%E5%89%91%E6%8C%87Offer-04-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/08/24/%E5%89%91%E6%8C%87Offer-05-%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/08/24/%E5%89%91%E6%8C%87Offer-06-%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/08/26/%E5%89%91%E6%8C%87Offer-09-%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/08/29/%E5%89%91%E6%8C%87Offer-10-II-%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/08/25/%E5%89%91%E6%8C%87Offer-07-%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/08/30/%E5%89%91%E6%8C%87Offer-11-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://gojay.top/2020/09/03/%E5%89%91%E6%8C%87Offer-13-%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/08/27/%E5%89%91%E6%8C%87Offer-10-I-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -533,25 +452,88 @@
   </url>
   
   <url>
+    <loc>https://gojay.top/2020/08/30/%E5%89%91%E6%8C%87Offer-11-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/08/29/%E5%89%91%E6%8C%87Offer-10-II-%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/08/27/%E5%89%91%E6%8C%87Offer-10-I-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/08/26/%E5%89%91%E6%8C%87Offer-09-%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/08/25/%E5%89%91%E6%8C%87Offer-07-%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/08/24/%E5%89%91%E6%8C%87Offer-06-%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/08/24/%E5%89%91%E6%8C%87Offer-05-%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/08/21/%E5%89%91%E6%8C%87Offer-04-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/08/21/%E5%89%91%E6%8C%87Offer-03-%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://gojay.top/2020/12/02/PPNet/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/06/23/PV-RCNN/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2019/08/21/RN-Realation-Network/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -569,25 +551,16 @@
   </url>
   
   <url>
+    <loc>https://gojay.top/2020/06/23/PV-RCNN/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://gojay.top/2020/06/14/SORT/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2019/09/08/ResNet/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2019/11/26/SiamMask/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -623,7 +596,88 @@
   </url>
   
   <url>
+    <loc>https://gojay.top/2019/11/26/SiamMask/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://gojay.top/2019/11/09/Tracktor/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2019/09/08/ResNet/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2019/08/21/RN-Realation-Network/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/12/02/PANet/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/10/19/OSLSM/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/08/17/Mask-R-CNN/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/07/28/PGNet/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/02/25/PAMCC-AOT/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2019/08/31/NIN-Network-In-Network/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -659,88 +713,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/08/17/Mask-R-CNN/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2019/08/31/NIN-Network-In-Network/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/10/19/OSLSM/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/02/25/PAMCC-AOT/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/12/02/PANet/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/07/28/PGNet/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2019/10/19/Faster-R-CNN/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/01/04/GlobalTrack/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2019/09/05/GoogLeNet/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2019/08/07/Hexo-Blog-Pages/</loc>
+    <loc>https://gojay.top/2020/07/29/LTM/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -767,7 +740,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2018/02/01/Java-Back-end-Interview/</loc>
+    <loc>https://gojay.top/2020/01/04/GlobalTrack/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -776,7 +749,34 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/07/29/LTM/</loc>
+    <loc>https://gojay.top/2019/10/19/Faster-R-CNN/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2019/09/05/GoogLeNet/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2019/08/07/Hexo-Blog-Pages/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2018/02/01/Java-Back-end-Interview/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -794,25 +794,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2019/08/25/Classification-Review/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://gojay.top/2020/07/10/CRNet/</loc>
-    
-    <lastmod>2023-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/2020/06/20/DeepSORT/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -830,7 +812,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/2020/03/05/FFT-Flow-Fuse-Tracker/</loc>
+    <loc>https://gojay.top/2020/06/20/DeepSORT/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -840,6 +822,24 @@
   
   <url>
     <loc>https://gojay.top/2020/05/25/FairMOT/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2020/03/05/FFT-Flow-Fuse-Tracker/</loc>
+    
+    <lastmod>2023-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/2019/08/25/Classification-Review/</loc>
     
     <lastmod>2023-03-10</lastmod>
     
@@ -871,28 +871,14 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/tags/CANet/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/tags/Classification/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/tags/Review/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://gojay.top/tags/CRNet/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/tags/CANet/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -907,6 +893,20 @@
   
   <url>
     <loc>https://gojay.top/tags/MOT/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/tags/Classification/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/tags/Review/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -948,20 +948,6 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/tags/GoogLeNet/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/tags/Inception/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://gojay.top/tags/blog/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -977,6 +963,20 @@
   
   <url>
     <loc>https://gojay.top/tags/icarus/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/tags/GoogLeNet/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/tags/Inception/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1004,13 +1004,6 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/tags/LTM/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://gojay.top/tags/JVM/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -1018,7 +1011,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/tags/Path/</loc>
+    <loc>https://gojay.top/tags/LTM/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1026,6 +1019,13 @@
   
   <url>
     <loc>https://gojay.top/tags/Encoding/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/tags/Path/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1046,14 +1046,14 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/tags/NIN/</loc>
+    <loc>https://gojay.top/tags/OSLSM/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gojay.top/tags/OSLSM/</loc>
+    <loc>https://gojay.top/tags/NIN/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1074,14 +1074,14 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/tags/PGNet/</loc>
+    <loc>https://gojay.top/tags/Overview/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gojay.top/tags/Overview/</loc>
+    <loc>https://gojay.top/tags/PGNet/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1137,13 +1137,6 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/tags/RN/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://gojay.top/tags/numpy/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -1152,6 +1145,13 @@
   
   <url>
     <loc>https://gojay.top/tags/pytorch/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/tags/RN/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1207,13 +1207,6 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/tags/%E5%AD%97%E5%85%B8/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -1222,6 +1215,13 @@
   
   <url>
     <loc>https://gojay.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/tags/%E5%AD%97%E5%85%B8/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1256,13 +1256,6 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://gojay.top/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -1271,6 +1264,13 @@
   
   <url>
     <loc>https://gojay.top/tags/HashMap/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1291,14 +1291,14 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/tags/BFS/</loc>
+    <loc>https://gojay.top/tags/%E5%9B%9E%E6%BA%AF/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gojay.top/tags/%E5%9B%9E%E6%BA%AF/</loc>
+    <loc>https://gojay.top/tags/BFS/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1312,14 +1312,14 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/tags/%E5%88%86%E6%B2%BB/</loc>
+    <loc>https://gojay.top/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gojay.top/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/</loc>
+    <loc>https://gojay.top/tags/%E5%88%86%E6%B2%BB/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1361,14 +1361,14 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/tags/%E5%A0%86/</loc>
+    <loc>https://gojay.top/tags/%E6%95%B0%E5%AD%A6/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gojay.top/tags/%E6%95%B0%E5%AD%A6/</loc>
+    <loc>https://gojay.top/tags/%E5%A0%86/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1426,14 +1426,14 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/DeepLearning/Few-Shot-Learning/</loc>
+    <loc>https://gojay.top/categories/DeepLearning/Classification/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/DeepLearning/Classification/</loc>
+    <loc>https://gojay.top/categories/DeepLearning/Few-Shot-Learning/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1447,14 +1447,14 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/DeepLearning/Object-Tracking/DeepSORT/</loc>
+    <loc>https://gojay.top/categories/Toolkit/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/Toolkit/</loc>
+    <loc>https://gojay.top/categories/DeepLearning/Object-Tracking/FFT/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1468,7 +1468,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/DeepLearning/Few-Shot-Segmentation/CANet/</loc>
+    <loc>https://gojay.top/categories/DeepLearning/Few-Shot-Segmentation/CRNet/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1489,7 +1489,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/DeepLearning/Few-Shot-Learning/FSL-Survey/</loc>
+    <loc>https://gojay.top/categories/DeepLearning/Classification/Review/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1503,7 +1503,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/DeepLearning/Object-Tracking/FFT/</loc>
+    <loc>https://gojay.top/categories/DeepLearning/Few-Shot-Learning/FSL-Survey/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1517,14 +1517,14 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/DeepLearning/Classification/Review/</loc>
+    <loc>https://gojay.top/categories/DeepLearning/Few-Shot-Segmentation/CANet/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/DeepLearning/Classification/NIN/</loc>
+    <loc>https://gojay.top/categories/DeepLearning/Few-Shot-Segmentation/OSLSM/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1538,7 +1538,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/DeepLearning/Few-Shot-Segmentation/OSLSM/</loc>
+    <loc>https://gojay.top/categories/DeepLearning/Classification/NIN/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1566,13 +1566,6 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/DeepLearning/Few-Shot-Segmentation/PGNet/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://gojay.top/categories/DeepLearning/Overview/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -1580,7 +1573,14 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/DeepLearning/Few-Shot-Segmentation/CRNet/</loc>
+    <loc>https://gojay.top/categories/DeepLearning/Few-Shot-Segmentation/PGNet/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/categories/DeepLearning/Object-Tracking/DeepSORT/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1615,14 +1615,14 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/DeepLearning/Few-Shot-Learning/RN/</loc>
+    <loc>https://gojay.top/categories/Toolkit/Hexo/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/DeepLearning/Classification/GoogLeNet/</loc>
+    <loc>https://gojay.top/categories/DeepLearning/Few-Shot-Learning/RN/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1643,20 +1643,6 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/DeepLearning/Classification/ResNet/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/categories/Toolkit/Hexo/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://gojay.top/categories/DeepLearning/Object-Tracking/SiamMask/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -1664,14 +1650,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/DeepLearning/Object-Tracking/TSDM/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/categories/DeepLearning/Image-Generation/ImageTransformer/</loc>
+    <loc>https://gojay.top/categories/DeepLearning/Classification/GoogLeNet/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1685,14 +1664,21 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/Toolkit/Overview/</loc>
+    <loc>https://gojay.top/categories/DeepLearning/Classification/ResNet/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/DeepLearning/Object-Tracking/Tracklet/</loc>
+    <loc>https://gojay.top/categories/DeepLearning/Image-Generation/ImageTransformer/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/categories/DeepLearning/Object-Tracking/TSDM/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1748,7 +1734,21 @@
   </url>
   
   <url>
+    <loc>https://gojay.top/categories/Toolkit/Overview/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://gojay.top/categories/DeepLearning/Object-Tracking/Tracktor/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/categories/DeepLearning/Object-Tracking/Tracklet/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1776,69 +1776,6 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/21/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/7/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/24/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/22/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/3/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/25/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/26/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/11/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/27/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/28/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -1846,7 +1783,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/13/</loc>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/11/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1881,21 +1818,21 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/32/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/10/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/33/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/12/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/32/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1909,7 +1846,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/14/</loc>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/13/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1937,21 +1874,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/37/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/38/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/12/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1965,6 +1888,20 @@
   </url>
   
   <url>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/14/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/37/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/40/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -1972,28 +1909,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/16/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/41/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/42/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/6/</loc>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/15/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2014,7 +1930,14 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/15/</loc>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/3/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/42/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2028,6 +1951,13 @@
   </url>
   
   <url>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/16/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/46/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -2035,28 +1965,14 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/17/</loc>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/41/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/47/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/48/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/9/</loc>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/18/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2070,6 +1986,27 @@
   </url>
   
   <url>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/47/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/6/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/48/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://gojay.top/categories/DeepLearning/PyTorch/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -2077,7 +2014,7 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/19/</loc>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/17/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2098,7 +2035,70 @@
   </url>
   
   <url>
-    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/18/</loc>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/9/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/19/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/21/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/7/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/22/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/24/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/10/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/26/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/25/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://gojay.top/categories/Algorithm/%E5%89%91%E6%8C%87Offer/27/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
