@@ -1,4 +1,8 @@
-const logger = require('hexo-log')();
+const hexoLog = require('hexo-log');
+const logger =
+  typeof hexoLog === 'function'
+    ? hexoLog()
+    : (hexoLog.logger || hexoLog.default)({});
 
 function checkDependency(name) {
     try {

@@ -1,7 +1,11 @@
 const fs = require('fs');
 const util = require('util');
 const path = require('path');
-const logger = require('hexo-log')();
+const hexoLog = require('hexo-log');
+const logger =
+  typeof hexoLog === 'function'
+    ? hexoLog()
+    : (hexoLog.logger || hexoLog.default)({});
 const yaml = require('js-yaml');
 
 const { errors } = require('../common/utils');

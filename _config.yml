@@ -4,7 +4,7 @@
 
 # Site
 title: Gojay's Records
-subtitle: 
+subtitle:
 description: Computer Vision & Computer Graphics
 keywords: Gojay, ComputerVision, ComputerGraphics
 author: Gojay
@@ -44,7 +44,7 @@ highlight:
   line_number: false
   auto_detect: false
   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
@@ -52,10 +52,10 @@ highlight:
 index_generator:
   path: ''
   per_page: 6
-  order_by: 
+  order_by:
     top: -1
     date: -1
-  
+
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -84,7 +84,7 @@ theme: icarus
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   - type: git
-    repo: 
+    repo:
       github: git@github.com:Gojay001/Gojay001.github.io.git
       # coding: git@e.coding.net:Gojay001-01/Gojay001.coding.me/Gojay001.coding.me.git
     branch: master
@@ -97,10 +97,10 @@ baidusitemap:
   path: baidusitemap.xml
 
 baidu_url_submit:
-  count: 10 
-  host: gojay.top 
-  token: 9ZN6BffdOceFx7V3 
-  path: baidu_urls.txt 
+  count: 10
+  host: gojay.top
+  token: 9ZN6BffdOceFx7V3
+  path: baidu_urls.txt
 
 # RSS
 feed:
@@ -111,7 +111,7 @@ feed:
   content: true
   order_by: -date
 
-# Heading index settings
+# Heading index (hexo-heading-index)
 heading_index:
   enable: false
   index_styles: "{1} {1} {1} {1} {1} {1}"
