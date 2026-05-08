@@ -3,168 +3,134 @@ title: Overview
 top: 10
 thumbnail: /gallery/thumbnails/DL.jpg
 date: 2020-04-01 10:32:41
-categories: 
+categories:
     - DeepLearning
     - Overview
 tags: [DL, Overview]
 ---
 
-> There are the overall of papers about **Deep Learning**.  
-> https://github.com/Gojay001/DeepLearning-pwcn
+> There are the overall of paper with code for **CV / AIGC / LLM / VLM**.
+> https://github.com/Gojay001/DeepLearning-Paper-with-Code.
+> [Updating...]
 <!-- more -->
 
 # Contents
 ---
-- [Classification](#Image-Classification)
-    - LeNet-5
-    - AlexNet
-    - NIN(Network In Network)
-    - VGG
-    - GoogLeNet(Inception-v1)
-    - ResNet
-    - Inception-v4
-    - DenseNet
-    - DLA(Deep Layer Aggregation)
-    - ShuffleNet
-    - MobileNetV3
-- [Detection](#Object-Detection)
-    - One-stage
-        - SSD
-        - YOLO
-        - YOLOv2
-        - RetinaNet
-        - YOLOv3
-        - CornerNet
-        - CenterNet
-        - YOLOv4
-        - YOLOF
-    - Two-stage
-        - R-CNN
-        - SPP
-        - Fast R-CNN
-        - Faster R-CNN
-        - FPN
-- [Segmentation](#Object-Segmentation)
-    - FCN
-    - U-Net
-    - Seg-Net
-    - DeepLab V1
-    - PSPNet
-    - DeepLab V2
-    - Mask R-CNN
-    - DeepLab V3
-    - PointNet
-    - PointNet++
-    - DeepLab V3+
-    - DGCNet(Dual GCN)
-    - SETR(SEgmentation TRansfomer)
-    - Segmenter
-    - SegFormer
-    - FTN(Fully Transformer Networks)
-- [Tracking](#Object-Tracking)
-    - MOT
-        - SORT
-        - DeepSORT
-        - Tracktor
-        - FFT(Flow-Fuse Tracker)
-        - JRMOT
-        - Tracklet
-        - DMCT(Deep Multi-Camera Tracking)
-        - FairMOT
-        - CenterPoint
-    - VOT
-        - DepthTrack
-        - BinocularTrack
-        - SiamFC
-        - SiamRPN
-        - SiamRPN++
-        - SiamMask
-        - GlobalTrack
-        - PAMCC-AOT
-        - SiamCAR
-        - SiamBAN
-        - SiamAttn
-        - TSDM
-        - SiamGAT
-        - RE-SiamNets
-- [FSS](#Few-Shot-Segmentation)
-    - OSLSM
-    - co-FCN
-    - AMP(Adaptive Masked Proxies)
-    - SG-One(Similarity Guidance)
-    - CENet(Combinatorial Embedding Network)
-    - PANet(Prototype Alignment)
-    - CANet(Class Agnostic)
-    - PGNet(Pyramid Graph Network)
-    - CRNet(Cross-Reference Network)
-    - FGN(Fully Guided Network)
-    - OTB(On the Texture Bias)
-    - LTM(Local Transformation Module)
-    - SimPropNet(Similarity Propagation)
-    - PPNet(Part-aware Prototype)
-    - PFENet(Prior Guided Feature Enrichment Network)
-    - PMMs(Prototype Mixture Models)
-    - GFS-Seg(Generalized Few-Shot)
-    - SCL(Self-Corss Learning)
-    - ASGNet(Adaptive Superpixel-guided Network)
-    - HSNet(Hypercorrelation Squeeze)
-    - BAM
-- [3D-Face](#3D-Face-Reconstruction-and-Facial-Animation)
-    - 3DMM
-    - CameraCalibration
-    - Bilinear
-    - DDE
-    - FaceWarehouse
-    - Face2Face
-    - DynamicAvatars
-    - FLAME
-    - Nonlinear
-    - DynamicRigidityPrior
-    - Deep3D
-    - SimpleAnimation
-    - RingNet
-    - FOCUS
-    - MICA
-    - HRN
-- [Attention](#Attention-or-Transformer)
-    - Transformer
-    - Non-local
-    - Image Transformer
-    - ViT(Vision Transformer)
-    - Swin Transformer
-    - ResT
-    - DS-Net(Dual Stream Network)
-    - TransCNN
-    - Shuffle Transformer
-- [RGBD-SOT](#Salient-Object-Detection)
-    - UC-Net
-    - JL-DCF(Joint Learning and Densely-Cooperative Fusion)
-    - SA-Gate(Separation-and-Aggregation Gate)
-    - BiANet(Bilateral Attention Network)
-    - DSA^2F(Depth-Sensitive Attention and Automatic Multi-Modal Fusion)
-- [Unsupervised](#Unsupervised-Learning)
-    - SimSiam
-- [Detection-3D](#3D-Object-Detection)
-    - PV-RCNN
-- [FSL](#Few-Shot-Learning)
-    - RN(Relation Network)
-- [GAN](#Generative-Adversarial-Network)
-    - GAN
-    - BeautyGAN
-- [Optimization](#Optimization)
-    - ReLU
-    - Momentum
-    - Dropout
-    - Adam
-    - BN
-    - GDoptimization
-- [Survey](#Survey)
-    - 3D-Detection-Survey-2019
-    - FSL-Survey-2019
-    - MOT-Survey-2020
-    - Transformer-Survey-2021
+- **AIGC** (AI Generated Content)
+    - [GAN](#Generative-Adversarial-Network)
+    - [VAE](#Variational-Auto-Encoder)
+    - [Diffusion](#Diffusion-Model)
+    - [Applications](#AIGC-Applications)
+        - [Face Editing](#Face-Editing)
+        - [Face Swapping](#Face-Swapping)
+- **LLM / VLM** (Large Language Model / Vision-Language Model)
+    - [Transformer](#Attention-or-Transformer)
+    - [ViT](#Vision-Transformer)
+- **CV** (Computer Vision)
+    - [Backbone](#Backbone)
+    - [Detection](#Object-Detection)
+    - [Segmentation](#Object-Segmentation)
+    - [Tracking](#Object-Tracking)
+        - [MOT](#Multiple-Object-Tracking)
+        - [VOT](#Visual-Object-Tracking)
+    - [FSS](#Few-Shot-Segmentation)
+    - [FSL](#Few-Shot-Learning)
+    - [3D-Face](#3D-Face-Reconstruction-and-Facial-Animation)
+    - Others
+        - [Optimization](#Optimization)
+        - [Detection-3D](#3D-Object-Detection)
+        - [RGBD-SOT](#Salient-Object-Detection)
+    - [Survey](#Survey)
 
-## Image Classification
+
+## Generative Adversarial Network
+| Title | Paper | Conf | Code |
+|:--------|:--------:|:--------:|:--------:|
+| GAN | [Generative Adversarial Networks](https://arxiv.org/abs/1406.2661) | arXiv(2014) | [code]
+| pix2pix | [Image-to-Image Translation with Conditional Adversarial Networks](https://arxiv.org/abs/1611.07004) | arXiv(2016) / CVPR(2017) | [PyTorch](https://github.com/phillipi/pix2pix)
+| CycleGAN | [Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks](https://arxiv.org/abs/1703.10593) | ICCV(2017) | [PyTorch](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix)
+| pix2pixHD | [High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs](https://arxiv.org/abs/1711.11585) | arXiv(2017) / CVPR(2018) | [PyTroch](https://github.com/NVIDIA/pix2pixHD)
+| StyleGAN | [A Style-Based Generator Architecture for Generative Adversarial Networks](https://arxiv.org/abs/1812.04948) | arXiv(2018) / CVPR(2019) | [TensorFlow](https://github.com/NVlabs/stylegan)
+| StyleGAN2 | [Analyzing and Improving the Image Quality of StyleGAN](https://arxiv.org/abs/1912.04958) | arXiv(2019) / CVPR(2020) | [TensorFlow](https://github.com/NVlabs/stylegan2)
+| StyleGAN2-ADA | [Training Generative Adversarial Networks with Limited Data](https://arxiv.org/abs/2006.06676) | NIPS(2020) | [PyTorch](https://github.com/NVlabs/stylegan2-ada-pytorch)
+| StyleCLIP | [StyleCLIP: Text-Driven Manipulation of StyleGAN Imagery](https://arxiv.org/abs/2103.17249) | ICCV(2021) | [PyTorch](https://github.com/orpatashnik/StyleCLIP)
+| MobileStyleGAN | [MobileStyleGAN: A Lightweight Convolutional Neural Network for High-Fidelity Image Synthesis](https://arxiv.org/abs/2104.04767) | arXiv(2021) | [PyTorch](https://github.com/bes-dev/MobileStyleGAN.pytorch)
+| StyleGAN3 | [Alias-Free Generative Adversarial Networks](https://arxiv.org/abs/2106.12423) | NIPS(2021) | [PyTorch](https://github.com/NVlabs/stylegan3)
+> More implementation for GANs can be found in [PyTorch-GAN](https://github.com/eriklindernoren/PyTorch-GAN).
+
+## Variational Auto-Encoder
+| Title | Paper | Conf | Code |
+|:--------|:--------:|:--------:|:--------:|
+| VAE | [Auto-Encoding Variational Bayes](https://arxiv.org/abs/1312.6114) | arXiv(2013) / ICLR(2014) | [PyTorch](https://github.com/AntixK/PyTorch-VAE)
+> More implementation for VAEs can be found in [PyTorch-VAE](https://github.com/AntixK/PyTorch-VAE).
+
+## Diffusion Model
+| Title | Paper | Conf | Code |
+|:--------|:--------:|:--------:|:--------:|
+| DDPM | [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239) | arXiv(2020) / NIPS(2020) | [PyTorch](https://github.com/lucidrains/denoising-diffusion-pytorch)
+| SD | [High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/abs/2112.10752) | arXiv(2021) / CVPR(2022) | [PyTorch](https://github.com/compvis/stable-diffusion)
+| DiT | [Scalable Diffusion Models with Transformers](https://arxiv.org/abs/2212.09748) | arXiv(2022) / ICCV(2023) | [PyTorch](https://github.com/facebookresearch/DiT)
+| JiT | [Back to Basics: Let Denoising Generative Models Denoise](https://arxiv.org/abs/2511.13720) | arXiv(2025) | [PyTorch](https://github.com/LTH14/JiT)
+| PixelDiT | [PixelDiT: Pixel Diffusion Transformers for Image Generation](https://arxiv.org/abs/2511.20645) | arXiv(2025) / CVPR(2026) | [PyTorch](https://github.com/NVlabs/PixelDiT)
+> More implementation for Diffusion Models can be found in [Awesome-Diffusion-Models](https://github.com/diff-usion/Awesome-Diffusion-Models).
+
+## AIGC-Applications
+### Face Editing
+| Title | Paper | Conf | Code |
+|:--------|:--------:|:--------:|:--------:|
+| BeautyGAN | [BeautyGAN: Instance-level Facial Makeup Transfer with Deep Generative Adversarial Network](http://liusi-group.com/pdf/BeautyGAN-camera-ready_2.pdf) | ACM MM(2018) | [TensorFlow](http://liusi-group.com/projects/BeautyGAN)
+| GFPGAN | [Towards Real-World Blind Face Restoration with Generative Facial Prior](https://arxiv.org/abs/2101.04061) | CVPR(2021) | [PyTorch](https://github.com/TencentARC/GFPGAN)
+| HairCLIP | [HairCLIP: Design Your Hair by Text and Reference Image](https://arxiv.org/abs/2112.05142) | CVPR(2022) | [PyTorch](https://github.com/wtybest/HairCLIP)
+| HairMapper | [HairMapper: Removing Hair from Portraits Using GANs](https://onethousandwu.com/HairMapper.github.io/) | CVPR(2022) | [PyTorch](https://github.com/oneThousand1000/HairMapper)
+| LEDITS | [LEDITS: Real Image Editing with DDPM Inversion and Semantic Guidance](https://arxiv.org/abs/2307.00522) | arXiv(2023) | [code]
+| LEDITS++ | [LEDITS++: Limitless Image Editing using Text-to-Image Models](https://arxiv.org/abs/2311.16711) | arXiv(2023) / CVPR(2024) | [PyTorch](https://github.com/ml-research/ledits_pp)
+
+### Face Swapping
+| Title | Paper | Conf | Code |
+|:--------|:--------:|:--------:|:--------:|
+| FaceShifter | [FaceShifter: Towards High Fidelity And Occlusion Aware Face Swapping](https://arxiv.org/abs/1912.13457) | arXiv(2019) | [code]
+| DeepFaceLab | [DeepFaceLab: Integrated, flexible and extensible face-swapping framework](https://arxiv.org/abs/2005.05535) | arXiv(2020) | [TensorFlow](https://github.com/iperov/DeepFaceLab)
+| SimSwap | [SimSwap: An Efficient Framework For High Fidelity Face Swapping](https://arxiv.org/abs/2106.06340v1) | ACM MM(2020) | [PyTorch](https://github.com/neuralchen/SimSwap)
+| FaceController | [FaceController: Controllable Attribute Editing for Face in the Wild](https://arxiv.org/abs/2102.11464) | AAAI(2021) | [code]
+| HifiFace | [HifiFace: 3D Shape and Semantic Prior Guided High Fidelity Face Swapping](https://arxiv.org/abs/2106.09965) | IJCAI(2021) | [PyTorch](https://github.com/maum-ai/hififace)
+| GHOST | [GHOST—A New Face Swap Approach for Image and Video Domains](https://ieeexplore.ieee.org/abstract/document/9851423) | IEEE Acess(2022) | [PyTorch](https://github.com/ai-forever/ghost)
+| MobileFaceSwap | [MobileFaceSwap: A Lightweight Framework for Video Face Swapping](https://arxiv.org/abs/2201.03808) | AAAI(2022) | [PaddlePaddle](https://github.com/Seanseattle/MobileFaceSwap)
+| E4S | [Fine-Grained Face Swapping via Regional GAN Inversion](https://arxiv.org/abs/2211.14068) | arXiv(2022) / CVPR(2023) | [PyTorch](https://github.com/e4s2024/e4s2024)
+| SimSwap++ | [SimSwap++: Towards Faster and High-Quality Identity Swapping](https://pubmed.ncbi.nlm.nih.gov/37607138/) | TPAMI(2024) | [Github](https://github.com/neuralchen/SimSwapPlus)
+| DiffFace | [DiffFace: Diffusion-based Face Swapping with Facial Guidance](https://arxiv.org/abs/2212.13344) | arXiv(2022) / PR(2025) | [PyTorch](https://github.com/hxngiee/DiffFace)
+| DiffSwap | [DiffSwap: High-Fidelity and Controllable Face Swapping via 3D-Aware Masked Diffusion](https://openaccess.thecvf.com/content/CVPR2023/papers/Zhao_DiffSwap_High-Fidelity_and_Controllable_Face_Swapping_via_3D-Aware_Masked_Diffusion_CVPR_2023_paper.pdf) | CVPR(2023) | [PyTorch](https://github.com/wl-zhao/DiffSwap)
+| DreamID | [DreamID: High-Fidelity and Fast diffusion-based Face Swapping via Triplet ID Group Learning](https://arxiv.org/abs/2504.14509) | SIGGRAPH Asia(2025) | [GitHub](https://github.com/superhero-7/DreamID)
+
+---
+
+## Attention or Transformer
+| Title | Paper | Conf | Code |
+|:--------|:--------:|:--------:|:--------:|
+| CAM | [Learning Deep Features for Discriminative Localization](https://arxiv.org/abs/1512.04150) | arXiv(2015) / CVPR(2016) | [Caffe](https://github.com/zhoubolei/CAM)
+| Transformer | [Attention Is All You Need](http://arxiv.org/abs/1706.03762) | NIPS(2017) | [TensorFlow](https://github.com/tensorflow/tensor2tensor)
+| SENet | [Squeeze-and-Excitation Networks](https://arxiv.org/abs/1709.01507) | arXiv(2017) / CVPR(2018) | [Caffe](https://github.com/hujie-frank/SENet)
+| GAT | [Graph Attention Networks](https://arxiv.org/abs/1710.10903) | arXiv(2017) / ICLR(2018) | [TensorFlow](https://github.com/PetarV-/GAT)
+| Non-local | [Non-local Neural Networks](https://arxiv.org/abs/1711.07971) | arXiv(2017) / CVPR(2018) | [Caffe](https://github.com/facebookresearch/video-nonlocal-net)
+
+## Vision Transformer
+| Title | Paper | Conf | Code |
+|:--------|:--------:|:--------:|:--------:|
+| [Image Transformer](https://gojay.top/2020/05/15/Image-Transformer/) | [Image Transformer](https://arxiv.org/abs/1802.05751) | ICML(2018) | [code]
+| ViT | [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929) | arXiv(2020) / ICLR(2021) | [PyTorch](https://github.com/lucidrains/vit-pytorch)
+| Swin Transformer | [Swin Transformer: Hierarchical Vision Transformer using Shifted Windows](https://arxiv.org/abs/2103.14030) | ICCV(2021) | [PyTorch](https://github.com/microsoft/Swin-Transformer)
+| DINO | [Emerging Properties in Self-Supervised Vision Transformers](https://arxiv.org/abs/2104.14294) | ICCV(2021) | [PyTorch](https://github.com/facebookresearch/dino)
+| ResT | [ResT: An Efficient Transformer for Visual Recognition](http://arxiv.org/abs/2105.13677) | NIPS(2021) | [PyTorch](https://github.com/wofmanaf/ResT)
+| HAT-Net | [Vision Transformers with Hierarchical Attention](http://arxiv.org/abs/2106.03180) | arXiv(2021) | [PyTorch](https://github.com/yun-liu/HAT-Net)
+| Shuffle-T | [Shuffle Transformer: Rethinking Spatial Shuffle for Vision Transformer](http://arxiv.org/abs/2106.03650) | arXiv(2021) | [PyTorch](https://github.com/mulinmeng/Shuffle-Transformer)
+| Swinv2 | [Swin Transformer V2: Scaling Up Capacity and Resolution](https://arxiv.org/abs/2111.09883) | arXiv(2021) / CVPR(2022) | [PyTorch](https://github.com/microsoft/Swin-Transformer)
+| DINOv2 | [DINOv2: Learning Robust Visual Features without Supervision](https://arxiv.org/abs/2304.07193) | arXiv(2023) | [PyTorch](https://github.com/facebookresearch/dinov2)
+| DINOv3 | [DINOv3](https://arxiv.org/abs/2508.10104) | arXiv(2025) | [PyTorch](https://github.com/facebookresearch/dinov3)
+| LAST-ViT | [Vision Transformers Need More Than Registers](https://arxiv.org/abs/2602.22394) | arXiv(2026) | [PyTorch](https://github.com/ChengShiest/LAST-ViT)
+> More implementation for ViTs can be found in [vit-pytorch](https://github.com/lucidrains/vit-pytorch).
+
+---
+
+## Backbone
 | Title | Paper | Conf | Code |
 |:--------|:--------:|:--------:|:--------:|
 | LeNet-5 | [Gradient-based learning applied to document recognition](http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf) | IEEE(1998) | [code]
@@ -174,7 +140,7 @@ tags: [DL, Overview]
 | [GoogLeNet](https://gojay.top/2019/09/05/GoogLeNet/) | [Going deeper with convolutions](https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Szegedy_Going_Deeper_With_2015_CVPR_paper.pdf) | CVPR(2015) | [PyTorch](https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Classification/GoogLeNet/Code)
 | [ResNet](https://gojay.top/2019/09/08/ResNet/) | [Deep Residual Learning for Image Recognition](http://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf) | CVPR(2016) | [PyTorch](https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Classification/ResNet/Code)
 | Inception-v4 | [Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning](https://www.aaai.org/ocs/index.php/AAAI/AAAI17/paper/viewFile/14806/14311) | AAAI(2017) | [code]
-| DenseNet | [Densely Connected Convolutional Networks](http://openaccess.thecvf.com/content_cvpr_2017/papers/Huang_Densely_Connected_Convolutional_CVPR_2017_paper.pdf) | CVPR(2017) | [PyTorch](https://github.com/gpleiss/efficient_densenet_pytorch)
+| DenseNet | [Densely Connected Convolutional Networks](http://openaccess.thecvf.com/content_cvpr_2017/papers/Huang_Densely_Connected_Convolutional_CVPR_2017_paper.pdf) | CVPR(2017) | [code]
 | DLA | [Deep Layer Aggregation](https://openaccess.thecvf.com/content_cvpr_2018/papers/Yu_Deep_Layer_Aggregation_CVPR_2018_paper.pdf) | CVPR(2018) | [PyTorch](https://github.com/ucbdrive/dla)
 | ShuffleNet | [ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices](http://openaccess.thecvf.com/content_cvpr_2018/papers/Zhang_ShuffleNet_An_Extremely_CVPR_2018_paper.pdf) | CVPR(2018) | [code]
 | MobileNetV3 | [Searching for MobileNetV3](http://openaccess.thecvf.com/content_ICCV_2019/papers/Howard_Searching_for_MobileNetV3_ICCV_2019_paper.pdf) | ICCV(2019) | [code]
@@ -220,29 +186,34 @@ tags: [DL, Overview]
 | FTN | [Fully Transformer Networks for Semantic ImageSegmentation](http://arxiv.org/abs/2106.04108) | arXiv(2021) | [code]
 
 ## Object Tracking
+### Multiple Object Tracking
 | Title | Paper | Conf | Code |
 |:--------|:--------:|:--------:|:--------:|
 | [SORT](https://gojay.top/2020/06/14/SORT/) | [Simple Online and Realtime Tracking](https://arxiv.org/abs/1602.00763) | ICIP(2016) | [PyTorch](https://github.com/abewley/sort)
-| DepthTrack | [Real-time depth-based tracking using a binocular camera](https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Tracking/Binocular%20camera/DepthTrack.pdf) | WCICA(2016) | [code]
 | [DeepSORT](https://gojay.top/2020/06/20/DeepSORT/) | [Simple Online and Realtime Tracking with a Deep Association Metric](https://arxiv.org/abs/1703.07402) | ICIP(2017) | [PyTorch](https://github.com/nwojke/deep_sort)
-| BinocularTrack | [Research on Target Tracking Algorithm Based on Parallel Binocular Camera](https://github.com/Gojay001/DeepLearning-pwcn/blob/master/Tracking/Binocular%20camera/BinocularTrack.pdf) | ITAIC(2019) | [code]
-| SiamFC| [Fully-Convolutional Siamese Networks for Object Tracking](https://arxiv.org/abs/1606.09549) | ECCV(2016) | [PyTorch](https://github.com/zllrunning/SiameseX.PyTorch)
-| SiamRPN| [High Performance Visual Tracking with Siamese Region Proposal Network](https://openaccess.thecvf.com/content_cvpr_2018/papers/Li_High_Performance_Visual_CVPR_2018_paper.pdf) | CVPR(2018) | [PyTorch](https://github.com/huanglianghua/siamrpn-pytorch)
-| [SiamRPN++](https://gojay.top/2020/05/09/SiamRPN++/) | [SiamRPN++: Evolution of Siamese Visual Tracking with Very Deep Networks](http://openaccess.thecvf.com/content_CVPR_2019/papers/Li_SiamRPN_Evolution_of_Siamese_Visual_Tracking_With_Very_Deep_Networks_CVPR_2019_paper.pdf) | CVPR(2019) | [PyTorch](https://github.com/STVIR/pysot)
-| [SiamMask](https://gojay.top/2019/11/26/SiamMask/) | [Fast Online Object Tracking and Segmentation: A Unifying Approach](http://openaccess.thecvf.com/content_CVPR_2019/papers/Wang_Fast_Online_Object_Tracking_and_Segmentation_A_Unifying_Approach_CVPR_2019_paper.pdf) | CVPR(2019) | [PyTorch](https://github.com/Gojay001/SiamMask)
 | [Tracktor](https://gojay.top/2019/11/09/Tracktor/) | [Tracking without bells and whistles](https://arxiv.org/abs/1903.05625) | ICCV(2019) | [PyTorch](https://github.com/Gojay001/tracking_wo_bnw)
-| [GlobalTrack](https://gojay.top/2020/01/04/GlobalTrack/) | [GlobalTrack: A Simple and Strong Baseline for Long-term Tracking](https://arxiv.org/abs/1912.08531) | AAAI(2020) | [PyTorch](https://github.com/huanglianghua/GlobalTrack)
-| SiamCAR | [SiamCAR: Siamese Fully Convolutional Classification and Regression for Visual Tracking](https://openaccess.thecvf.com/content_CVPR_2020/papers/Guo_SiamCAR_Siamese_Fully_Convolutional_Classification_and_Regression_for_Visual_Tracking_CVPR_2020_paper.pdf) | CVPR(2020) | [PyTorch](https://github.com/ohhhyeahhh/SiamCAR)
-| SiamBAN | [Siamese Box Adaptive Network for Visual Tracking](https://openaccess.thecvf.com/content_CVPR_2020/papers/Chen_Siamese_Box_Adaptive_Network_for_Visual_Tracking_CVPR_2020_paper.pdf) | CVPR(2020) | [PyTorch](https://github.com/hqucv/siamban)
-| SiamAttn | [Deformable Siamese Attention Networks for Visual Object Tracking](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yu_Deformable_Siamese_Attention_Networks_for_Visual_Object_Tracking_CVPR_2020_paper.pdf) | CVPR(2020) | [PyTorch](https://github.com/msight-tech/research-siamattn)
-| [PAMCC-AOT](https://gojay.top/2020/02/25/PAMCC-AOT/) | [Pose-Assisted Multi-Camera Collaboration for Active Object Tracking](https://arxiv.org/abs/2001.05161) | AAAI(2020) | [code]
 | [FFT](https://gojay.top/2020/03/05/FFT-Flow-Fuse-Tracker/) | [Multiple Object Tracking by Flowing and Fusing](https://arxiv.org/abs/2001.11180) | arXiv(2020) | [code]
 | [JRMOT](https://gojay.top/2020/02/28/JRMOT/) | [JRMOT: A Real-Time 3D Multi-Object Tracker and a New Large-Scale Dataset](https://arxiv.org/abs/2002.08397) | arXiv(2020) | [code]
 | [Tracklet](https://gojay.top/2020/03/26/Tracklet/) | [Multi-object Tracking via End-to-end Tracklet Searching and Ranking](https://arxiv.org/abs/2003.02795) | arXiv(2020) | [code]
 | DMCT | [Real-time 3D Deep Multi-Camera Tracking](https://arxiv.org/abs/2003.11753) | arXiv(2020) | [code]
 | [FairMOT](https://gojay.top/2020/05/25/FairMOT/) | [A Simple Baseline for Multi-Object Tracking](https://arxiv.org/abs/2004.01888) | arXiv(2020) | [PyTorch](https://github.com/Gojay001/FairMOT)
-| [TSDM](https://gojay.top/2020/05/23/TSDM/) | [TSDM: Tracking by SiamRPN++ with a Depth-refiner and a Mask-generator](https://arxiv.org/abs/2005.04063) | arXiv(2020) | [PyTorch](https://github.com/Gojay001/TSDM)
 | CenterPoint | [Center-based 3D Object Detection and Tracking](https://arxiv.org/pdf/2006.11275.pdf) | CVPR(2021) | [PyTorch](https://github.com/tianweiy/CenterPoint)
+
+### Visual Object Tracking
+| Title | Paper | Conf | Code |
+|:--------|:--------:|:--------:|:--------:|
+| DepthTrack | [Real-time depth-based tracking using a binocular camera](https://github.com/Gojay001/DeepLearning-pwcn/tree/master/Tracking/Binocular%20camera/DepthTrack.pdf) | WCICA(2016) | [code]
+| BinocularTrack | [Research on Target Tracking Algorithm Based on Parallel Binocular Camera](https://github.com/Gojay001/DeepLearning-pwcn/blob/master/Tracking/Binocular%20camera/BinocularTrack.pdf) | ITAIC(2019) | [code]
+| SiamFC| [Fully-Convolutional Siamese Networks for Object Tracking](https://arxiv.org/abs/1606.09549) | ECCV(2016) | [PyTorch](https://github.com/zllrunning/SiameseX.PyTorch)
+| SiamRPN| [High Performance Visual Tracking with Siamese Region Proposal Network](https://openaccess.thecvf.com/content_cvpr_2018/papers/Li_High_Performance_Visual_CVPR_2018_paper.pdf) | CVPR(2018) | [PyTorch](https://github.com/huanglianghua/siamrpn-pytorch)
+| [SiamRPN++](https://gojay.top/2020/05/09/SiamRPN++/) | [SiamRPN++: Evolution of Siamese Visual Tracking with Very Deep Networks](http://openaccess.thecvf.com/content_CVPR_2019/papers/Li_SiamRPN_Evolution_of_Siamese_Visual_Tracking_With_Very_Deep_Networks_CVPR_2019_paper.pdf) | CVPR(2019) | [PyTorch](https://github.com/STVIR/pysot)
+| [SiamMask](https://gojay.top/2019/11/26/SiamMask/) | [Fast Online Object Tracking and Segmentation: A Unifying Approach](http://openaccess.thecvf.com/content_CVPR_2019/papers/Wang_Fast_Online_Object_Tracking_and_Segmentation_A_Unifying_Approach_CVPR_2019_paper.pdf) | CVPR(2019) | [PyTorch](https://github.com/Gojay001/SiamMask)
+| [GlobalTrack](https://gojay.top/2020/01/04/GlobalTrack/) | [GlobalTrack: A Simple and Strong Baseline for Long-term Tracking](https://arxiv.org/abs/1912.08531) | AAAI(2020) | [PyTorch](https://github.com/huanglianghua/GlobalTrack)
+| SiamCAR | [SiamCAR: Siamese Fully Convolutional Classification and Regression for Visual Tracking](https://openaccess.thecvf.com/content_CVPR_2020/papers/Guo_SiamCAR_Siamese_Fully_Convolutional_Classification_and_Regression_for_Visual_Tracking_CVPR_2020_paper.pdf) | CVPR(2020) | [PyTorch](https://github.com/ohhhyeahhh/SiamCAR)
+| SiamBAN | [Siamese Box Adaptive Network for Visual Tracking](https://openaccess.thecvf.com/content_CVPR_2020/papers/Chen_Siamese_Box_Adaptive_Network_for_Visual_Tracking_CVPR_2020_paper.pdf) | CVPR(2020) | [PyTorch](https://github.com/hqucv/siamban)
+| SiamAttn | [Deformable Siamese Attention Networks for Visual Object Tracking](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yu_Deformable_Siamese_Attention_Networks_for_Visual_Object_Tracking_CVPR_2020_paper.pdf) | CVPR(2020) | [PyTorch](https://github.com/msight-tech/research-siamattn)
+| [PAMCC-AOT](https://gojay.top/2020/02/25/PAMCC-AOT/) | [Pose-Assisted Multi-Camera Collaboration for Active Object Tracking](https://arxiv.org/abs/2001.05161) | AAAI(2020) | [code]
+| [TSDM](https://gojay.top/2020/05/23/TSDM/) | [TSDM: Tracking by SiamRPN++ with a Depth-refiner and a Mask-generator](https://arxiv.org/abs/2005.04063) | arXiv(2020) | [PyTorch](https://github.com/Gojay001/TSDM)
 | SiamGAT | [Graph Attention Tracking](https://arxiv.org/abs/2011.11204) | CVPR(2021) | [PyTorch](https://github.com/ohhhyeahhh/SiamGAT)
 | RE-SiamNets | [Rotation Equivariant Siamese Networks for Tracking](https://arxiv.org/abs/2012.13078) | CVPR(2021) | [PyTorch](https://github.com/dkgupta90/re-siamnet)
 
@@ -272,6 +243,12 @@ tags: [DL, Overview]
 | BAM | [Learning What Not to Segment: A New Perspective on Few-Shot Segmentation](https://arxiv.org/abs/2203.07615) | CVPR(2022) | [PyTorch](https://github.com/chunbolang/BAM)
 > More information can be found in [Few-Shot-Semantic-Segmentation-Papers](https://github.com/xiaomengyc/Few-Shot-Semantic-Segmentation-Papers).
 
+## Few-Shot Learning
+| Title | Paper | Conf | Code |
+|:--------|:--------:|:--------:|:--------:|
+| [RN](https://gojay.top/2019/08/21/RN-Realation-Network/) | [Learning to Compare: Relation Network for Few-Shot Learning](https://arxiv.org/abs/1711.06025) | CVPR(2018) | [PyTorch](https://github.com/Gojay001/LearningToCompare_FSL)
+| SimSiam | [Exploring Simple Siamese Representation Learning](https://arxiv.org/abs/2011.10566) | CVPR(2021) | [PyTorch](https://github.com/PatrickHua/SimSiam)
+
 ## 3D Face Reconstruction and Facial Animation
 | Title | Paper | Conf | Code |
 |:--------|:--------:|:--------:|:--------:|
@@ -292,19 +269,6 @@ tags: [DL, Overview]
 | MICA | [Towards Metrical Reconstruction of Human Faces](https://arxiv.org/abs/2204.06607) | ECCV(2022) | [PyTorch](https://github.com/Zielon/MICA)
 | HRN | [A Hierarchical Representation Network for Accurate and Detailed Face Reconstruction from In-The-Wild Images](https://arxiv.org/abs/2302.14434) | CVPR(2023) | [PyTorch](https://github.com/youngLBW/HRN)
 
-## Attention or Transformer
-| Title | Paper | Conf | Code |
-|:--------|:--------:|:--------:|:--------:|
-| Transformer | [Attention Is All You Need](http://arxiv.org/abs/1706.03762) | arXiv(2017) | [TensorFlow](https://github.com/tensorflow/tensor2tensor)
-| Non-local | [Non-local Neural Networks](https://openaccess.thecvf.com/content_cvpr_2018/papers/Wang_Non-Local_Neural_Networks_CVPR_2018_paper.pdf) | CVPR(2018) | [PyTorch](https://github.com/facebookresearch/video-nonlocal-net)
-| [Image Transformer](https://gojay.top/2020/05/15/Image-Transformer/) | [Image Transformer](https://arxiv.org/abs/1802.05751) | arXiv(2018) | [code]
-| ViT | [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](http://arxiv.org/abs/2010.11929) | arXiv(2020) | [PyTorch](https://github.com/google-research/vision_transformer)
-| Swin Transformer | [Swin Transformer: Hierarchical Vision Transformer using Shifted Windows](https://arxiv.org/abs/2103.14030) | arXiv(2021) | [PyTorch](https://github.com/microsoft/Swin-Transformer)
-| ResT | [ResT: An Efficient Transformer for Visual Recognition](http://arxiv.org/abs/2105.13677) | arXiv(2021) | [PyTorch](https://github.com/wofmanaf/ResT)
-| DS-Net | [Dual-stream Network for Visual Recognition](http://arxiv.org/abs/2105.14734) | arXiv(2021) | [code]
-| TransCNN | [Transformer in Convolutional Neural Networks](http://arxiv.org/abs/2106.03180) | arXiv(2021) | [PyTorch](https://github.com/yun-liu/TransCNN)
-| Shuffle Transformer | [Shuffle Transformer: Rethinking Spatial Shuffle for Vision Transformer](http://arxiv.org/abs/2106.03650) | arXiv(2021) | [PyTorch](https://github.com/speedinghzl/ShuffleTransformer)
-
 ## Salient Object Detection
 | Title | Paper | Conf | Code |
 |:--------|:--------:|:--------:|:--------:|
@@ -314,26 +278,10 @@ tags: [DL, Overview]
 | BiANet | [Bilateral Attention Network for RGB-D Salient Object Detection](https://arxiv.org/abs/2004.14582) | TIP(2021) | [Code]
 | DSA^2F | [Deep RGB-D Saliency Detection with Depth-Sensitive Attention and Automatic Multi-Modal Fusion](http://arxiv.org/abs/2103.11832) | CVPR(2021) | [Code]
 
-## Unsupervised Learning
-| Title | Paper | Conf | Code |
-|:--------|:--------:|:--------:|:--------:|
-| SimSiam | [Exploring Simple Siamese Representation Learning](https://arxiv.org/abs/2011.10566) | CVPR(2021) | [PyTorch](https://github.com/PatrickHua/SimSiam)
-
 ## 3D Object Detection
 | Title | Paper | Conf | Code |
 |:--------|:--------:|:--------:|:--------:|
 | [PV-RCNN](https://gojay.top/2020/06/23/PV-RCNN/) | [PV-RCNN: Point-Voxel Feature Set Abstraction for 3D Object Detection](http://openaccess.thecvf.com/content_CVPR_2020/papers/Shi_PV-RCNN_Point-Voxel_Feature_Set_Abstraction_for_3D_Object_Detection_CVPR_2020_paper.pdf) | CVPR(2020) | [PyTorch](https://github.com/sshaoshuai/PV-RCNN)
-
-## Few-Shot Learning
-| Title | Paper | Conf | Code |
-|:--------|:--------:|:--------:|:--------:|
-| [RN](https://gojay.top/2019/08/21/RN-Realation-Network/) | [Learning to Compare: Relation Network for Few-Shot Learning](https://arxiv.org/abs/1711.06025) | CVPR(2018) | [PyTorch](https://github.com/Gojay001/LearningToCompare_FSL)
-
-## Generative Adversarial Network
-| Title | Paper | Conf | Code |
-|:--------|:--------:|:--------:|:--------:|
-| GAN | [Generative Adversarial Networks](https://arxiv.org/abs/1406.2661) | arXiv(2014) | [code]
-| BeautyGAN | [BeautyGAN: Instance-level Facial Makeup Transfer with Deep Generative Adversarial Network](http://liusi-group.com/pdf/BeautyGAN-camera-ready_2.pdf) | ACM MM(2018) | [TensorFlow](http://liusi-group.com/projects/BeautyGAN)
 
 ## Optimization
 | Title | Paper | Conf | Code |
@@ -344,6 +292,7 @@ tags: [DL, Overview]
 | Adam | [Adam: A Method for Stochastic Optimization](https://arxiv.org/abs/1412.6980) | ICLR(2015) | [code]
 | BN | [Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift](https://arxiv.org/abs/1502.03167) | ICML(2015) | [code]
 | GDoptimization | [An overview of gradient descent optimization algorithms](https://arxiv.org/abs/1609.04747) | arXiv(2016) | [code]
+| StableCNN | [Single-frame regularization for temporally stable cnns](https://arxiv.org/abs/1902.10424) | CVPR(2019) | [code]
 
 ## Survey
 | Title | Paper | Conf |
