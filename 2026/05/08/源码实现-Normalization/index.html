@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8">
+<meta name="baidu-site-verification" content="y4OgBadCWI" />
+<meta name="google-site-verification" content="bbMnXM8ufhf7fGNfsWyXLlLCJ9Z_mhUMvRlQ0Ax8juA" />
+<title>源码实现-Normalization - Gojay&#39;s Records</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="本文整理 BatchNorm &#x2F; LayerNorm &#x2F; RMSNorm 的作用与差异，并给出与 PyTorch 思路一致的简化实现（dummy），便于对照官方源码阅读。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="源码实现-Normalization">
+<meta property="og:url" content="https://gojay.top/2026/05/08/%E6%BA%90%E7%A0%81%E5%AE%9E%E7%8E%B0-Normalization/index.html">
+<meta property="og:site_name" content="Gojay&#39;s Records">
+<meta property="og:description" content="本文整理 BatchNorm &#x2F; LayerNorm &#x2F; RMSNorm 的作用与差异，并给出与 PyTorch 思路一致的简化实现（dummy），便于对照官方源码阅读。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gojay.top/gallery/thumbnails/normalization.png">
+<meta property="article:published_time" content="2026-05-08T04:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-08T06:35:13.650Z">
+<meta property="article:author" content="Gojay">
+<meta property="article:tag" content="normalization">
+<meta property="article:tag" content="pytorch">
+<meta property="article:tag" content="source_code">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gojay.top/gallery/thumbnails/normalization.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/head.jpg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?f29d95e89a802be01b6ea105a1b4e115";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/rss.xml" title="Gojay's Records" type="application/atom+xml">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                Gojay&#39;s Records
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories/">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="https://www.zhihu.com/people/gojay/activities">ZhiHu</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+                <a class="navbar-item"
+                href="/rss.xml">RSS</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Gojay GitHub" href="https://www.github.com/Gojay001">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail lazy" data-src="/gallery/thumbnails/normalization.png" alt="源码实现-Normalization">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>源码实现-Normalization
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                <time class="level-item has-text-grey" datetime="2026-05-08T04:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2026-05-08</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2026-05-08T06:35:13.650Z"><i class="far fa-calendar-check">&nbsp;</i>2026-05-08</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/DeepLearning/">DeepLearning</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/DeepLearning/PyTorch/">PyTorch</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    12 minutes read (About 1756 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <html><head></head><body><blockquote>
+<p>本文整理 <strong>BatchNorm / LayerNorm / RMSNorm</strong> 的作用与差异，并给出与 PyTorch 思路一致的简化实现（dummy），便于对照官方源码阅读。</p>
+</blockquote>
+<span id="more"></span>
+
+
+<h1 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h1><hr>
+<ul>
+<li><strong><a href="#%E6%A6%82%E8%BF%B0%E4%B8%8E%E5%AF%B9%E6%AF%94">概述与对比</a></strong></li>
+<li><strong><a href="#%E6%9E%81%E7%AE%80%E4%BC%AA%E4%BB%A3%E7%A0%81">极简伪代码（BN / LN / RMSNorm）</a></strong></li>
+<li><strong><a href="#BatchNorm">BatchNorm</a></strong></li>
+<li><strong><a href="#LayerNorm">LayerNorm</a></strong></li>
+<li><strong><a href="#RMSNorm">RMSNorm</a></strong></li>
+<li><strong><a href="#reference">reference</a></strong></li>
+</ul>
+<h1 id="概述与对比"><a href="#概述与对比" class="headerlink" title="概述与对比"></a>概述与对比</h1><hr>
+<h2 id="归一化的作用"><a href="#归一化的作用" class="headerlink" title="归一化的作用"></a>归一化的作用</h2><ul>
+<li><strong>稳定输入分布</strong>（常见目标为零均值、单位方差），减轻内部协变量偏移带来的影响；</li>
+<li>使各层学习目标相对稳定，<strong>梯度更平滑</strong>（减轻激活函数饱和区带来的梯度问题）；</li>
+<li>梯度更稳定后，往往可以使用<strong>更大学习率</strong>，从而<strong>加快收敛</strong>。</li>
+</ul>
+<h2 id="BN-与-LN-的对比"><a href="#BN-与-LN-的对比" class="headerlink" title="BN 与 LN 的对比"></a>BN 与 LN 的对比</h2><ul>
+<li><code>BN</code>：<strong>逐通道</strong>归一化，在 <strong>NHW</strong>（或序列场景下的 <strong>NL</strong>）上统计；</li>
+<li><code>LN</code>：<strong>逐样本 / 逐 token</strong> 归一化；图像上常对 <strong>CHW</strong>，序列上对最后一维 <strong>D</strong>。</li>
+</ul>
+<p><strong>CNN</strong>：图像具有空间不变性，同一通道在不同空间位置的可比性强，适合<strong>跨样本、逐通道</strong>做 BN。</p>
+<p><strong>Transformer</strong>：LN 在每个样本的<strong>每个 token 内</strong>，对特征维 <strong>D</strong> 独立归一化，使每个 token 的特征向量分布稳定。</p>
+<p>统一形式：先标准化，再用可学习参数做仿射变换：<code>y = scale * x + shift</code>（RMSNorm 常省略 bias）。</p>
+<h1 id="极简伪代码"><a href="#极简伪代码" class="headerlink" title="极简伪代码"></a>极简伪代码</h1><hr>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> torch</span><br><span class="line"><span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">BatchNorm2d</span>:</span><br><span class="line">    <span class="hljs-string">"""教学用极简 BN2d，非 nn.Module。"""</span></span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">__init__</span>(<span class="hljs-params">self, num_features, eps=<span class="hljs-number">1e-5</span>, momentum=<span class="hljs-number">0.1</span></span>):</span><br><span class="line">        <span class="variable language_">self</span>.num_features = num_features</span><br><span class="line">        <span class="variable language_">self</span>.eps = eps</span><br><span class="line">        <span class="variable language_">self</span>.momentum = momentum</span><br><span class="line">        <span class="variable language_">self</span>.gamma = nn.Parameter(torch.ones(num_features))</span><br><span class="line">        <span class="variable language_">self</span>.beta = nn.Parameter(torch.zeros(num_features))</span><br><span class="line">        <span class="variable language_">self</span>.running_mean = torch.zeros(num_features)</span><br><span class="line">        <span class="variable language_">self</span>.running_var = torch.ones(num_features)</span><br><span class="line">        <span class="variable language_">self</span>.training = <span class="hljs-literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">forward</span>(<span class="hljs-params">self, x</span>):</span><br><span class="line">        N, C, H, W = x.shape</span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="variable language_">self</span>.training:</span><br><span class="line">            mean = x.mean(dim=(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>), keepdim=<span class="hljs-literal">True</span>)</span><br><span class="line">            var = x.var(dim=(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>), keepdim=<span class="hljs-literal">True</span>, unbiased=<span class="hljs-literal">False</span>)</span><br><span class="line">            <span class="hljs-keyword">with</span> torch.no_grad():</span><br><span class="line">                <span class="variable language_">self</span>.running_mean = (<span class="hljs-number">1</span> - <span class="variable language_">self</span>.momentum) * <span class="variable language_">self</span>.running_mean + <span class="variable language_">self</span>.momentum * mean.squeeze()</span><br><span class="line">                <span class="variable language_">self</span>.running_var = (<span class="hljs-number">1</span> - <span class="variable language_">self</span>.momentum) * <span class="variable language_">self</span>.running_var + <span class="variable language_">self</span>.momentum * var.squeeze()</span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            mean = <span class="variable language_">self</span>.running_mean.view(<span class="hljs-number">1</span>, C, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>)</span><br><span class="line">            var = <span class="variable language_">self</span>.running_var.view(<span class="hljs-number">1</span>, C, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>)</span><br><span class="line">        x_norm = (x - mean) / torch.sqrt(var + <span class="variable language_">self</span>.eps)</span><br><span class="line">        gamma = <span class="variable language_">self</span>.gamma.view(<span class="hljs-number">1</span>, C, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>)</span><br><span class="line">        beta = <span class="variable language_">self</span>.beta.view(<span class="hljs-number">1</span>, C, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> x_norm * gamma + beta</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">LayerNorm</span>(nn.Module):</span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">__init__</span>(<span class="hljs-params">self, dim, eps=<span class="hljs-number">1e-6</span></span>):</span><br><span class="line">        <span class="hljs-built_in">super</span>().__init__()</span><br><span class="line">        <span class="variable language_">self</span>.eps = eps</span><br><span class="line">        <span class="variable language_">self</span>.gamma = nn.Parameter(torch.ones(dim))</span><br><span class="line">        <span class="variable language_">self</span>.beta = nn.Parameter(torch.zeros(dim))</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">forward</span>(<span class="hljs-params">self, x</span>):</span><br><span class="line">        mean = x.mean(-<span class="hljs-number">1</span>, keepdim=<span class="hljs-literal">True</span>)</span><br><span class="line">        var = x.var(-<span class="hljs-number">1</span>, keepdim=<span class="hljs-literal">True</span>)</span><br><span class="line">        x_norm = (x - mean) / torch.sqrt(var + <span class="variable language_">self</span>.eps)</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="variable language_">self</span>.gamma * x_norm + <span class="variable language_">self</span>.beta</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">RMSNorm</span>(nn.Module):</span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">__init__</span>(<span class="hljs-params">self, dim, eps=<span class="hljs-number">1e-6</span></span>):</span><br><span class="line">        <span class="hljs-built_in">super</span>().__init__()</span><br><span class="line">        <span class="variable language_">self</span>.eps = eps</span><br><span class="line">        <span class="variable language_">self</span>.gamma = nn.Parameter(torch.ones(dim))</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">forward</span>(<span class="hljs-params">self, x</span>):</span><br><span class="line">        rms = torch.sqrt(x.<span class="hljs-built_in">pow</span>(<span class="hljs-number">2</span>).mean(-<span class="hljs-number">1</span>, keepdim=<span class="hljs-literal">True</span>) + <span class="variable language_">self</span>.eps)</span><br><span class="line">        x_norm = x / rms</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="variable language_">self</span>.gamma * x_norm</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="BatchNorm"><a href="#BatchNorm" class="headerlink" title="BatchNorm"></a>BatchNorm</h1><hr>
+<ul>
+<li><strong>图像 NCHW</strong>：在 <strong>NHW</strong> 上统计，<strong>逐通道</strong>归一化（<code>normalized_shape=[N,H,W]</code>）；</li>
+<li><strong>序列 NCL</strong>：在 <strong>NL</strong> 上统计，同样是逐通道（<code>normalized_shape=[N,L]</code>）。</li>
+</ul>
+<p>PyTorch 官方实现入口：</p>
+<blockquote>
+<p><a href="https://github.com/pytorch/pytorch/blob/main/torch/nn/modules/batchnorm.py">torch/nn/modules/batchnorm.py</a></p>
+</blockquote>
+<p>文档中的形状约定（节选）：</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">BatchNorm1d</span>(<span class="title class_ inherited__">_BatchNorm</span>):</span><br><span class="line">    <span class="hljs-string">r"""</span></span><br><span class="line"><span class="hljs-string">    Shape:</span></span><br><span class="line"><span class="hljs-string">        - Input: :math:`(N, C)` or :math:`(N, C, L)`, where :math:`N` is the batch size,</span></span><br><span class="line"><span class="hljs-string">          :math:`C` is the number of features or channels, and :math:`L` is the sequence length</span></span><br><span class="line"><span class="hljs-string">        - Output: :math:`(N, C)` or :math:`(N, C, L)` (same shape as input)</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">    Examples::</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt; m = nn.BatchNorm1d(100)</span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt; input = torch.randn(20, 100)</span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt; output = m(input)</span></span><br><span class="line"><span class="hljs-string">    """</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">BatchNorm2d</span>(<span class="title class_ inherited__">_BatchNorm</span>):</span><br><span class="line">    <span class="hljs-string">r"""</span></span><br><span class="line"><span class="hljs-string">    Shape:</span></span><br><span class="line"><span class="hljs-string">        - Input: :math:`(N, C, H, W)`</span></span><br><span class="line"><span class="hljs-string">        - Output: :math:`(N, C, H, W)` (same shape as input)</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">    Examples::</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt; m = nn.BatchNorm2d(100)</span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt; input = torch.randn(20, 100, 35, 45)</span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt; output = m(input)</span></span><br><span class="line"><span class="hljs-string">    """</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>更完整的 <strong>BatchNorm2d dummy</strong>（支持 <code>affine</code>、<code>track_running_stats</code>、多维度输入扩展思路；类名避免与上文极简版冲突）：</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> torch</span><br><span class="line"><span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn</span><br><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">BatchNorm2dDummy</span>(nn.Module):</span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">__init__</span>(<span class="hljs-params"></span></span><br><span class="line"><span class="hljs-params">        self,</span></span><br><span class="line"><span class="hljs-params">        num_features: <span class="hljs-built_in">int</span>,</span></span><br><span class="line"><span class="hljs-params">        eps: <span class="hljs-built_in">float</span> = <span class="hljs-number">1e-5</span>,</span></span><br><span class="line"><span class="hljs-params">        momentum: <span class="hljs-built_in">float</span> = <span class="hljs-number">0.1</span>,</span></span><br><span class="line"><span class="hljs-params">        affine: <span class="hljs-built_in">bool</span> = <span class="hljs-literal">True</span>,</span></span><br><span class="line"><span class="hljs-params">        track_running_stats: <span class="hljs-built_in">bool</span> = <span class="hljs-literal">True</span>,</span></span><br><span class="line"><span class="hljs-params">    </span>):</span><br><span class="line">        <span class="hljs-built_in">super</span>().__init__()</span><br><span class="line">        <span class="variable language_">self</span>.num_features = num_features</span><br><span class="line">        <span class="variable language_">self</span>.eps = eps</span><br><span class="line">        <span class="variable language_">self</span>.momentum = momentum</span><br><span class="line">        <span class="variable language_">self</span>.affine = affine</span><br><span class="line">        <span class="variable language_">self</span>.track_running_stats = track_running_stats</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> affine:</span><br><span class="line">            <span class="variable language_">self</span>.weight = nn.Parameter(torch.ones(num_features))</span><br><span class="line">            <span class="variable language_">self</span>.bias = nn.Parameter(torch.zeros(num_features))</span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            <span class="variable language_">self</span>.register_parameter(<span class="hljs-string">"weight"</span>, <span class="hljs-literal">None</span>)</span><br><span class="line">            <span class="variable language_">self</span>.register_parameter(<span class="hljs-string">"bias"</span>, <span class="hljs-literal">None</span>)</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> track_running_stats:</span><br><span class="line">            <span class="variable language_">self</span>.register_buffer(<span class="hljs-string">"running_mean"</span>, torch.zeros(num_features))</span><br><span class="line">            <span class="variable language_">self</span>.register_buffer(<span class="hljs-string">"running_var"</span>, torch.ones(num_features))</span><br><span class="line">            <span class="variable language_">self</span>.register_buffer(<span class="hljs-string">"num_batches_tracked"</span>, torch.tensor(<span class="hljs-number">0</span>, dtype=torch.long))</span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            <span class="variable language_">self</span>.register_buffer(<span class="hljs-string">"running_mean"</span>, <span class="hljs-literal">None</span>)</span><br><span class="line">            <span class="variable language_">self</span>.register_buffer(<span class="hljs-string">"running_var"</span>, <span class="hljs-literal">None</span>)</span><br><span class="line">            <span class="variable language_">self</span>.register_buffer(<span class="hljs-string">"num_batches_tracked"</span>, <span class="hljs-literal">None</span>)</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.training = <span class="hljs-literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">forward</span>(<span class="hljs-params">self, x: torch.Tensor</span>) -&gt; torch.Tensor:</span><br><span class="line">        <span class="hljs-keyword">if</span> x.dim() <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]:</span><br><span class="line">            <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">f"Expect 2-5D input (got <span class="hljs-subst">{x.dim()}</span>D input)"</span>)</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> x.dim() == <span class="hljs-number">4</span>:</span><br><span class="line">            dims = (<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)</span><br><span class="line">        <span class="hljs-keyword">elif</span> x.dim() == <span class="hljs-number">3</span>:</span><br><span class="line">            dims = (<span class="hljs-number">0</span>, <span class="hljs-number">2</span>)</span><br><span class="line">        <span class="hljs-keyword">elif</span> x.dim() == <span class="hljs-number">5</span>:</span><br><span class="line">            dims = (<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>)</span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            dims = (<span class="hljs-number">0</span>,)</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="variable language_">self</span>.training <span class="hljs-keyword">and</span> <span class="variable language_">self</span>.track_running_stats:</span><br><span class="line">            batch_mean = x.mean(dim=dims, keepdim=<span class="hljs-literal">True</span>)</span><br><span class="line">            batch_var = x.var(dim=dims, keepdim=<span class="hljs-literal">True</span>, unbiased=<span class="hljs-literal">False</span>)</span><br><span class="line">            <span class="hljs-keyword">with</span> torch.no_grad():</span><br><span class="line">                m = <span class="variable language_">self</span>.momentum</span><br><span class="line">                <span class="variable language_">self</span>.running_mean = (<span class="hljs-number">1</span> - m) * <span class="variable language_">self</span>.running_mean + m * batch_mean.squeeze()</span><br><span class="line">                <span class="variable language_">self</span>.running_var = (<span class="hljs-number">1</span> - m) * <span class="variable language_">self</span>.running_var + m * batch_var.squeeze()</span><br><span class="line">                <span class="variable language_">self</span>.num_batches_tracked += <span class="hljs-number">1</span></span><br><span class="line">            mean, var = batch_mean, batch_var</span><br><span class="line">        <span class="hljs-keyword">elif</span> <span class="hljs-keyword">not</span> <span class="variable language_">self</span>.training <span class="hljs-keyword">and</span> <span class="variable language_">self</span>.track_running_stats:</span><br><span class="line">            shape = [<span class="hljs-number">1</span>] * x.dim()</span><br><span class="line">            shape[<span class="hljs-number">1</span>] = -<span class="hljs-number">1</span></span><br><span class="line">            mean = <span class="variable language_">self</span>.running_mean.view(*shape)</span><br><span class="line">            var = <span class="variable language_">self</span>.running_var.view(*shape)</span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            mean = x.mean(dim=dims, keepdim=<span class="hljs-literal">True</span>)</span><br><span class="line">            var = x.var(dim=dims, keepdim=<span class="hljs-literal">True</span>, unbiased=<span class="hljs-literal">False</span>)</span><br><span class="line"></span><br><span class="line">        normalized = (x - mean) / torch.sqrt(var + <span class="variable language_">self</span>.eps)</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="variable language_">self</span>.affine <span class="hljs-keyword">and</span> <span class="variable language_">self</span>.weight <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">and</span> <span class="variable language_">self</span>.bias <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:</span><br><span class="line">            weight_shape = [<span class="hljs-number">1</span>] * x.dim()</span><br><span class="line">            weight_shape[<span class="hljs-number">1</span>] = -<span class="hljs-number">1</span></span><br><span class="line">            w = <span class="variable language_">self</span>.weight.view(*weight_shape)</span><br><span class="line">            b = <span class="variable language_">self</span>.bias.view(*weight_shape)</span><br><span class="line">            normalized = normalized * w + b</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> normalized</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="LayerNorm"><a href="#LayerNorm" class="headerlink" title="LayerNorm"></a>LayerNorm</h1><hr>
+<ul>
+<li><strong>图像 NCHW</strong>：可按样本在 <strong>CHW</strong> 上归一化（<code>normalized_shape=[C,H,W]</code>）；</li>
+<li><strong>序列 NLD</strong>：通常只在最后一维 <strong>D</strong> 上归一化（<code>normalized_shape=[D]</code>）。</li>
+</ul>
+<p><code>nn.LayerNorm</code> 负责管理可学习的 <code>weight</code> / <code>bias</code>，核心计算多委托给 <code>torch.nn.functional.layer_norm</code>。</p>
+<p>官方入口：</p>
+<blockquote>
+<p><a href="https://github.com/pytorch/pytorch/blob/main/torch/nn/modules/normalization.py#L105">normalization.py — LayerNorm</a><br><a href="https://github.com/pytorch/pytorch/blob/main/torch/nn/functional.py#L2924">functional.layer_norm</a></p>
+</blockquote>
+<p>文档示例（节选）：</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">LayerNorm</span>(<span class="title class_ inherited__">Module</span>):</span><br><span class="line">    <span class="hljs-string">r"""</span></span><br><span class="line"><span class="hljs-string">    Examples::</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt; # NLP</span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt; batch, sentence_length, embedding_dim = 20, 5, 10</span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt; embedding = torch.randn(batch, sentence_length, embedding_dim)</span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt; layer_norm = nn.LayerNorm(embedding_dim)</span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt; output = layer_norm(embedding)</span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt;</span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt; # Image：在最后三维（通道与空间）上归一化</span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt; N, C, H, W = 20, 5, 10, 10</span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt; input = torch.randn(N, C, H, W)</span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt; layer_norm = nn.LayerNorm([C, H, W])</span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt; output = layer_norm(input)</span></span><br><span class="line"><span class="hljs-string">    """</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>functional 形式的 dummy</strong>（对应「在 <code>normalized_shape</code> 指定的一组末尾维度上」求均值方差）：</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">def</span> <span class="title function_">layer_norm</span>(<span class="hljs-params"><span class="hljs-built_in">input</span>, normalized_shape, weight=<span class="hljs-literal">None</span>, bias=<span class="hljs-literal">None</span>, eps=<span class="hljs-number">1e-5</span></span>):</span><br><span class="line">    dims = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-built_in">input</span>.dim() - <span class="hljs-built_in">len</span>(normalized_shape), <span class="hljs-built_in">input</span>.dim()))</span><br><span class="line">    mean = <span class="hljs-built_in">input</span>.mean(dim=dims, keepdim=<span class="hljs-literal">True</span>)</span><br><span class="line">    var = <span class="hljs-built_in">input</span>.var(dim=dims, keepdim=<span class="hljs-literal">True</span>, unbiased=<span class="hljs-literal">False</span>)</span><br><span class="line">    normalized = (<span class="hljs-built_in">input</span> - mean) / torch.sqrt(var + eps)</span><br><span class="line">    <span class="hljs-keyword">if</span> weight <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">and</span> bias <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:</span><br><span class="line">        normalized = normalized * weight + bias</span><br><span class="line">    <span class="hljs-keyword">elif</span> weight <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:</span><br><span class="line">        normalized = normalized * weight</span><br><span class="line">    <span class="hljs-keyword">elif</span> bias <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:</span><br><span class="line">        normalized = normalized + bias</span><br><span class="line">    <span class="hljs-keyword">return</span> normalized</span><br></pre></td></tr></tbody></table></figure>
+
+<p>底层实现还可对照 CPU / CUDA kernel（阅读源码时便于理解边界与数值稳定性）：</p>
+<blockquote>
+<p><a href="https://github.com/pytorch/pytorch/blob/main/aten/src/ATen/native/cpu/layer_norm_kernel.cpp#L59">layer_norm_kernel.cpp</a><br><a href="https://github.com/pytorch/pytorch/blob/main/aten/src/ATen/native/cuda/layer_norm_kernel.cu#L253">layer_norm_kernel.cu</a></p>
+</blockquote>
+<h1 id="RMSNorm"><a href="#RMSNorm" class="headerlink" title="RMSNorm"></a>RMSNorm</h1><hr>
+<p>相比 LN：<strong>去掉减均值（中心化）</strong>，只保留除以 RMS 的缩放；仿射部分往往<strong>只有缩放 gamma，无 bias</strong>。</p>
+<p>直观理解：中心化与偏置可由后续 FFN 等层补偿；<strong>缩放对稳定梯度幅度</strong>往往更关键。形式上若存在线性层：<code>y = W(x - μ) + b = Wx + (b - Wμ)</code>，偏置与中心化存在冗余空间。</p>
+<p>官方接口：</p>
+<blockquote>
+<p><a href="https://github.com/pytorch/pytorch/blob/main/torch/nn/modules/normalization.py#L343">normalization.py — RMSNorm</a></p>
+</blockquote>
+<figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">RMSNorm</span>(<span class="title class_ inherited__">Module</span>):</span><br><span class="line">    <span class="hljs-string">r"""</span></span><br><span class="line"><span class="hljs-string">    Examples::</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt; rms_norm = nn.RMSNorm([2, 3])</span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt; input = torch.randn(2, 2, 3)</span></span><br><span class="line"><span class="hljs-string">        &gt;&gt;&gt; output = rms_norm(input)</span></span><br><span class="line"><span class="hljs-string">    """</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><hr>
+<ul>
+<li><a href="https://github.com/pytorch/pytorch/blob/main/torch/nn/modules/batchnorm.py">PyTorch BatchNorm</a></li>
+<li><a href="https://github.com/pytorch/pytorch/blob/main/torch/nn/modules/normalization.py">PyTorch LayerNorm / RMSNorm</a></li>
+<li><a href="https://github.com/pytorch/pytorch/blob/main/torch/nn/functional.py">PyTorch F.layer_norm</a></li>
+</ul>
+</body></html>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>Title：</strong><a href="https://gojay.top/2026/05/08/%E6%BA%90%E7%A0%81%E5%AE%9E%E7%8E%B0-Normalization/">源码实现-Normalization</a></li>
+            <li><strong>Author：</strong><a href=""></a></li>
+            <li><strong>Link：</strong><a href="https://gojay.top/2026/05/08/%E6%BA%90%E7%A0%81%E5%AE%9E%E7%8E%B0-Normalization/">https://gojay.top/2026/05/08/%E6%BA%90%E7%A0%81%E5%AE%9E%E7%8E%B0-Normalization/</a></li>
+            <li><strong>Date：</strong>2026-05-08</li>
+            <li><strong>Copyright：</strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link-link" href="/tags/normalization/" rel="tag">normalization</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/pytorch/" rel="tag">pytorch</a>,&nbsp;<a class="has-link-grey -link-link" href="/tags/source-code/" rel="tag">source_code</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2023/06/11/Python-random%E6%B1%87%E6%80%BB/">
+                <span class="level-item">Python-random汇总</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: '6kgdHh2dtxHKbi9fwyPjsA7t-gzGzoHsz',
+        app_key: 'N4XHHmLsjyHwx2ENVEGEn9Br',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu" style="max-height: 800px; overflow: auto;">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Contents">
+        <span class="has-mr-6">1</span>
+        <span>Contents</span>
+        </a></li><li>
+        <a class="is-flex" href="#概述与对比">
+        <span class="has-mr-6">2</span>
+        <span>概述与对比</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#归一化的作用">
+        <span class="has-mr-6">2.1</span>
+        <span>归一化的作用</span>
+        </a></li><li>
+        <a class="is-flex" href="#BN-与-LN-的对比">
+        <span class="has-mr-6">2.2</span>
+        <span>BN 与 LN 的对比</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#极简伪代码">
+        <span class="has-mr-6">3</span>
+        <span>极简伪代码</span>
+        </a></li><li>
+        <a class="is-flex" href="#BatchNorm">
+        <span class="has-mr-6">4</span>
+        <span>BatchNorm</span>
+        </a></li><li>
+        <a class="is-flex" href="#LayerNorm">
+        <span class="has-mr-6">5</span>
+        <span>LayerNorm</span>
+        </a></li><li>
+        <a class="is-flex" href="#RMSNorm">
+        <span class="has-mr-6">6</span>
+        <span>RMSNorm</span>
+        </a></li><li>
+        <a class="is-flex" href="#reference">
+        <span class="has-mr-6">7</span>
+        <span>reference</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    Gojay&#39;s Records
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2026 Gojay&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                <span id="busuanzi_value_site_pv">0</span> visits
+                </span>
+                
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">1</span> users
+                </span>
+                
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Gojay GitHub" href="https://www.github.com/Gojay001">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.0.0/dist/lazyload.min.js"></script>
+<script>
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy",
+    load_delay: 300,
+});
+</script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
