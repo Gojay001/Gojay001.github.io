@@ -1,9 +1,12 @@
 /* global hexo */
 'use strict';
 
+const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
+
+const SYNC_STATE_FILE = '.sync-state.json';
 
 function getPaperReadingConfig(hexo) {
   const cfg = hexo.config.paper_reading || {};
@@ -24,6 +27,18 @@ function resolveSourceDir(hexo) {
 
 function resolvePostsDir(hexo) {
   return path.join(hexo.base_dir, getPaperReadingConfig(hexo).postsDir);
+}
+
+function resolveSubmoduleRoot(hexo) {
+  return path.dirname(resolveSourceDir(hexo));
+}
+
+function resolvePaperReadingPrefix(hexo) {
+  return path.relative(resolveSubmoduleRoot(hexo), resolveSourceDir(hexo)).replace(/\\/g, '/');
+}
+
+function resolveSyncStatePath(hexo) {
+  return path.join(resolvePostsDir(hexo), SYNC_STATE_FILE);
 }
 
 function parseTitleFromHtmlContent(html, titleSuffix) {
@@ -220,7 +235,7 @@ function renderPostMarkdown(paper) {
   }
 
   const yamlBody = yaml.dump(frontMatter, { lineWidth: -1, noRefs: true }).trimEnd();
-  const body = [
+  return [
     '---',
     yamlBody,
     '---',
@@ -228,8 +243,194 @@ function renderPostMarkdown(paper) {
     `[阅读完整精读页面 →](${paper.link})`,
     '',
   ].join('\n');
+}
 
-  return body;
+function readSyncState(hexo) {
+  const statePath = resolveSyncStatePath(hexo);
+  if (!fs.existsSync(statePath)) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(fs.readFileSync(statePath, 'utf8'));
+  } catch (error) {
+    hexo.log.warn(`paper-reading: invalid sync state, will run full sync (${error.message})`);
+    return null;
+  }
+}
+
+function writeSyncState(hexo, submoduleCommit) {
+  const postsDir = resolvePostsDir(hexo);
+  fs.mkdirSync(postsDir, { recursive: true });
+
+  const state = {
+    submodule_commit: submoduleCommit,
+    submodule_path: path.relative(hexo.base_dir, resolveSubmoduleRoot(hexo)),
+    paper_reading_dir: resolvePaperReadingPrefix(hexo),
+    synced_at: new Date().toISOString(),
+  };
+
+  fs.writeFileSync(resolveSyncStatePath(hexo), `${JSON.stringify(state, null, 2)}\n`, 'utf8');
+}
+
+function getSubmoduleCommit(hexo) {
+  const submoduleRoot = resolveSubmoduleRoot(hexo);
+  if (!fs.existsSync(submoduleRoot)) {
+    return null;
+  }
+
+  try {
+    return execSync(`git -C "${submoduleRoot}" rev-parse HEAD`, { encoding: 'utf8' }).trim();
+  } catch (error) {
+    hexo.log.warn(`paper-reading: unable to read submodule commit (${error.message})`);
+    return null;
+  }
+}
+
+function slugFromPaperReadingPath(filePath, prefix) {
+  const normalized = filePath.replace(/\\/g, '/');
+  const escapedPrefix = prefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const match = normalized.match(new RegExp(`^${escapedPrefix}/([^/]+)\\.html$`));
+  return match ? match[1] : null;
+}
+
+function getHtmlDiff(hexo, oldCommit, newCommit) {
+  const submoduleRoot = resolveSubmoduleRoot(hexo);
+  const prefix = resolvePaperReadingPrefix(hexo);
+
+  try {
+    const output = execSync(
+      `git -C "${submoduleRoot}" diff --name-status ${oldCommit} ${newCommit} -- "${prefix}/"`,
+      { encoding: 'utf8' }
+    ).trim();
+
+    const addedOrModified = new Set();
+    const deleted = new Set();
+
+    if (!output) {
+      return { addedOrModified: [], deleted: [] };
+    }
+
+    for (const line of output.split('\n').filter(Boolean)) {
+      const parts = line.split('\t');
+      const status = parts[0];
+
+      if (status.startsWith('R')) {
+        const oldSlug = slugFromPaperReadingPath(parts[1], prefix);
+        const newSlug = slugFromPaperReadingPath(parts[2], prefix);
+        if (oldSlug) {
+          deleted.add(oldSlug);
+        }
+        if (newSlug) {
+          addedOrModified.add(newSlug);
+        }
+        continue;
+      }
+
+      const slug = slugFromPaperReadingPath(parts[1], prefix);
+      if (!slug) {
+        continue;
+      }
+
+      if (status === 'D') {
+        deleted.add(slug);
+      } else if (status === 'A' || status === 'M') {
+        addedOrModified.add(slug);
+      }
+    }
+
+    return {
+      addedOrModified: [...addedOrModified],
+      deleted: [...deleted],
+    };
+  } catch (error) {
+    hexo.log.warn(`paper-reading: diff failed, falling back to full sync (${error.message})`);
+    return null;
+  }
+}
+
+function writePostMd(hexo, slug) {
+  const sourceDir = resolveSourceDir(hexo);
+  const postsDir = resolvePostsDir(hexo);
+  const htmlPath = path.join(sourceDir, `${slug}.html`);
+
+  if (!fs.existsSync(htmlPath)) {
+    hexo.log.warn(`paper-reading: skip missing html for slug "${slug}"`);
+    return false;
+  }
+
+  const paper = parsePaperMetadata(hexo, htmlPath, slug);
+  const content = renderPostMarkdown(paper);
+  const outPath = path.join(postsDir, `${slug}.md`);
+
+  if (fs.existsSync(outPath) && fs.readFileSync(outPath, 'utf8') === content) {
+    return false;
+  }
+
+  fs.writeFileSync(outPath, content, 'utf8');
+  return true;
+}
+
+function deletePostMd(hexo, slug) {
+  const outPath = path.join(resolvePostsDir(hexo), `${slug}.md`);
+  if (!fs.existsSync(outPath)) {
+    return false;
+  }
+
+  fs.unlinkSync(outPath);
+  return true;
+}
+
+function fullSyncPosts(hexo) {
+  const postsDir = resolvePostsDir(hexo);
+  fs.mkdirSync(postsDir, { recursive: true });
+
+  const papers = listHtmlPapers(hexo);
+  const activeSlugs = new Set(papers.map((paper) => paper.slug));
+  let changedCount = 0;
+
+  for (const { slug } of papers) {
+    if (writePostMd(hexo, slug)) {
+      changedCount += 1;
+    }
+  }
+
+  for (const name of fs.readdirSync(postsDir)) {
+    if (!name.endsWith('.md')) {
+      continue;
+    }
+
+    const slug = name.slice(0, -3);
+    if (!activeSlugs.has(slug)) {
+      fs.unlinkSync(path.join(postsDir, name));
+      changedCount += 1;
+    }
+  }
+
+  return { changedCount, totalPosts: papers.length, mode: 'full' };
+}
+
+function incrementalSyncPosts(hexo, diff) {
+  let changedCount = 0;
+
+  for (const slug of diff.addedOrModified) {
+    if (writePostMd(hexo, slug)) {
+      changedCount += 1;
+    }
+  }
+
+  for (const slug of diff.deleted) {
+    if (deletePostMd(hexo, slug)) {
+      changedCount += 1;
+    }
+  }
+
+  return {
+    changedCount,
+    totalPosts: listHtmlPapers(hexo).length,
+    mode: 'incremental',
+    touched: diff.addedOrModified.length + diff.deleted.length,
+  };
 }
 
 function syncPostsToMd(hexo) {
@@ -246,46 +447,53 @@ function syncPostsToMd(hexo) {
     return 0;
   }
 
-  fs.mkdirSync(postsDir, { recursive: true });
-
-  const papers = scanPapers(hexo);
-  const activeSlugs = new Set(papers.map((paper) => paper.slug));
-  let changedCount = 0;
-
-  for (const paper of papers) {
-    const outPath = path.join(postsDir, `${paper.slug}.md`);
-    const content = renderPostMarkdown(paper);
-
-    if (fs.existsSync(outPath)) {
-      const existing = fs.readFileSync(outPath, 'utf8');
-      if (existing === content) {
-        continue;
-      }
-    }
-
-    fs.writeFileSync(outPath, content, 'utf8');
-    changedCount += 1;
+  const currentCommit = getSubmoduleCommit(hexo);
+  if (!currentCommit) {
+    hexo.log.warn('paper-reading: skip post sync, submodule commit unavailable');
+    return 0;
   }
 
-  for (const name of fs.readdirSync(postsDir)) {
-    if (!name.endsWith('.md')) {
-      continue;
-    }
+  const state = readSyncState(hexo);
+  let result;
 
-    const slug = name.slice(0, -3);
-    if (!activeSlugs.has(slug)) {
-      fs.unlinkSync(path.join(postsDir, name));
-      changedCount += 1;
-    }
-  }
-
-  if (changedCount > 0) {
+  if (!state || !state.submodule_commit) {
+    result = fullSyncPosts(hexo);
+    writeSyncState(hexo, currentCommit);
     hexo.log.info(
-      `paper-reading: synced ${papers.length} post(s) to ${path.relative(hexo.base_dir, postsDir)}/ (${changedCount} file(s) updated)`
+      `paper-reading: full sync ${result.totalPosts} post(s) -> ${path.relative(hexo.base_dir, postsDir)}/ (${result.changedCount} file(s) updated, commit ${currentCommit.slice(0, 7)})`
     );
+    return result.changedCount;
   }
 
-  return changedCount;
+  if (state.submodule_commit === currentCommit) {
+    hexo.log.info(`paper-reading: submodule unchanged (${currentCommit.slice(0, 7)}), skip post sync`);
+    return 0;
+  }
+
+  const diff = getHtmlDiff(hexo, state.submodule_commit, currentCommit);
+  if (!diff) {
+    result = fullSyncPosts(hexo);
+    writeSyncState(hexo, currentCommit);
+    hexo.log.info(
+      `paper-reading: full sync ${result.totalPosts} post(s) (${result.changedCount} file(s) updated, commit ${currentCommit.slice(0, 7)})`
+    );
+    return result.changedCount;
+  }
+
+  if (diff.addedOrModified.length === 0 && diff.deleted.length === 0) {
+    writeSyncState(hexo, currentCommit);
+    hexo.log.info(
+      `paper-reading: submodule ${state.submodule_commit.slice(0, 7)}..${currentCommit.slice(0, 7)}, no paper-reading html changes`
+    );
+    return 0;
+  }
+
+  result = incrementalSyncPosts(hexo, diff);
+  writeSyncState(hexo, currentCommit);
+  hexo.log.info(
+    `paper-reading: incremental sync ${state.submodule_commit.slice(0, 7)}..${currentCommit.slice(0, 7)}, ${result.touched} html change(s), ${result.changedCount} md file(s) updated`
+  );
+  return result.changedCount;
 }
 
 function copyStaticFiles(hexo) {

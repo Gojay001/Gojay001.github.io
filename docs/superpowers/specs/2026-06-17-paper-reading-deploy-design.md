@@ -198,17 +198,15 @@ paper_reading:
 
 ### 1. `scripts/paper-reading.js`（扩展）
 
-#### `generateBefore`：同步桥接 md
+#### `hexo.on('ready')`：增量同步桥接 md
 
-对每个 `{slug}.html`（排除 `index.html`）：
+1. 读取 `.sync-state.json` 中的 `submodule_commit`
+2. **commit 未变**：跳过，不扫描 HTML
+3. **commit 变化**：`git diff --name-status <old> <new> -- paper-reading/`，仅对变更的 `.html` 增量生成/删除 md
+4. **首次运行或 diff 失败**：全量同步
+5. 仅当 md 内容变化时写入文件
 
-1. 解析 title / categories / tags / excerpt / thumbnail / date
-2. 渲染 md 模板写入 `{posts_dir}/{slug}.md`
-3. 文件头注释：`<!-- AUTO-GENERATED from paper-reading/{slug}.html; edit HTML in submodule, not this file -->`
-4. **孤儿清理**：删除 `posts_dir` 中无对应 HTML 的 `*.md`
-5. 仅当内容 hash 变化时写入，避免无意义 git diff
-
-触发时机：`hexo generate` / `hexo deploy` 的 `generateBefore`（早于 Hexo 读取 `_posts`）。
+触发时机：`hexo.on('ready')`（早于 Hexo `source.process()`）。
 
 #### `paper-reading-index` generator（保留，可选）
 
@@ -239,13 +237,22 @@ href="<%- url_for(post.link ? post.link : post.path) %>"
 或在 `post.ejs` / `article.ejs` 中对 `paper_reading` 博文做 `location.replace(post.link)` 自动跳转。  
 **推荐**：显示 CTA 按钮 + 简短 excerpt，不强制自动跳转（利于 SEO / RSS 摘要）。
 
-### 4. `.gitignore`（推荐）
+### 4. `source/_posts/paper-reading/.sync-state.json`
 
-```
-source/_posts/paper-reading/
+记录上次同步的 submodule commit，随仓库提交：
+
+```json
+{
+  "submodule_commit": "de72cbae72dc0fa6ddfd6125c36a71f0f32ff4b4",
+  "submodule_path": "submodule/paper-with-code-skills",
+  "paper_reading_dir": "paper-reading",
+  "synced_at": "2026-06-17T12:35:57.428Z"
+}
 ```
 
-桥接 md 由构建生成，不提交仓库，避免与 submodule HTML 漂移。若需手动微调 categories，后续可加 sidecar 配置 `paper-reading.overrides.yaml`（v2 不做）。
+### 5. `.gitignore`
+
+`source/_posts/paper-reading/` **不再忽略**，桥接 md 与 sync state 均由 git 管理。
 
 ## 数据流
 
