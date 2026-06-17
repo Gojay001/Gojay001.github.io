@@ -98,6 +98,19 @@ module.exports = function (hexo) {
         return this.url_for(hasThumbnail ? post.thumbnail : 'images/thumbnail.svg');
     });
 
+    hexo.extend.helper.register('get_thumbnail_class', function (post, ...extraClasses) {
+        const classes = ['thumbnail'];
+        if (post.thumbnail_fit === 'contain' || post.paper_reading) {
+            classes.push('thumbnail-contain');
+        }
+        for (const extra of extraClasses) {
+            if (extra) {
+                classes.push(extra);
+            }
+        }
+        return classes.join(' ');
+    });
+
     hexo.extend.helper.register('has_og_image', function (post) {
         return post.hasOwnProperty('og_image');
     });

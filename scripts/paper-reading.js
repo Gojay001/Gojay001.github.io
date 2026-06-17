@@ -216,6 +216,7 @@ function renderPostMarkdown(paper) {
 
   if (paper.thumbnail) {
     frontMatter.thumbnail = paper.thumbnail;
+    frontMatter.thumbnail_fit = 'contain';
   }
 
   const yamlBody = yaml.dump(frontMatter, { lineWidth: -1, noRefs: true }).trimEnd();
