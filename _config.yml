@@ -119,6 +119,16 @@ heading_index:
   global_prefix: ""
   global_suffix: ". "
 
+# Paper reading (submodule HTML → static deploy)
+paper_reading:
+  source_dir: submodule/paper-with-code-skills/paper-reading
+  url_path: paper-reading
+  posts_dir: source/_posts/paper-reading
+  title_suffix: " · 逻辑精读"
+  index_title: Paper Reading
+  index_subtitle: Triple-column logic annotations · paper-logic-reading skill
+  sync_posts: true
+
 # Additional
 jsonContent:
   meta: false

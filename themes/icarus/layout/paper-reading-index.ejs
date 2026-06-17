@@ -1,0 +1,32 @@
+<div class="card">
+    <div class="card-content article">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            <i class="fas fa-angle-double-right"></i><%= page.title %>
+        </h1>
+        <% if (page.subtitle) { %>
+        <p class="subtitle is-size-6 has-text-grey"><%= page.subtitle %></p>
+        <% } %>
+        <div class="content">
+            <% if (!page.papers || page.papers.length === 0) { %>
+            <p>No paper reading pages yet.</p>
+            <% } else { %>
+            <table class="table is-fullwidth is-hoverable">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th class="is-hidden-mobile">Updated</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% page.papers.forEach(function(paper) { %>
+                    <tr>
+                        <td><a href="<%- url_for(paper.path) %>"><%= paper.title %></a></td>
+                        <td class="is-hidden-mobile has-text-grey"><%= paper.mtime %></td>
+                    </tr>
+                <% }); %>
+                </tbody>
+            </table>
+            <% } %>
+        </div>
+    </div>
+</div>

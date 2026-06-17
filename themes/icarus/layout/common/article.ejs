@@ -52,6 +52,11 @@
             </div>
         </div>
         <% } %>
+        <% if (!index && post.paper_reading && post.link) { %>
+        <div class="notification is-info is-light" style="margin-bottom: 1rem;">
+            <a href="<%- url_for(post.link) %>"><i class="fas fa-external-link-alt"></i>&nbsp;阅读完整精读页面 →</a>
+        </div>
+        <% } %>
         <div class="content">
             <%- index && post.excerpt ? post.excerpt : post.content %>
         </div>
@@ -99,7 +104,7 @@
             </div>
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="<%- url_for(post.path) %>#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;<%= __('article.more') %></a>
+                <a class="button is-size-7 is-light" href="<%- url_for(post.link ? post.link : post.path) %><%= post.link ? '' : '#more' %>"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;<%= __('article.more') %></a>
                 </div>
             </div>
         </div>
