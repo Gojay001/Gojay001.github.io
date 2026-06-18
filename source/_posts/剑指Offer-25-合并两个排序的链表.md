@@ -3,7 +3,7 @@ title: 剑指Offer-25-合并两个排序的链表
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-09-21 15:29:26
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 25
 tags: [Algorithm, Offer, 递归, 链表, 指针]

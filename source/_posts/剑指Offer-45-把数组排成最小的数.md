@@ -3,7 +3,7 @@ title: 剑指Offer-45-把数组排成最小的数
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-11-23 17:05:50
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 45
 tags: [Algorithm, Offer, 排序]

@@ -3,7 +3,7 @@ title: CANet
 thumbnail: /gallery/thumbnails/CANet.png
 date: 2020-10-20 16:05:21
 categories:
-    - DeepLearning  
+    - CV
     - Few-Shot Segmentation  
     - CANet
 tags: [DL, FSS, CANet]

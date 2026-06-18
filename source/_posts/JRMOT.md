@@ -3,7 +3,7 @@ title: JRMOT
 thumbnail: /gallery/thumbnails/JRMOT.png
 date: 2020-02-28 17:17:03
 categories:
-    - DeepLearning
+    - CV
     - Object Tracking
     - JRMOT
 tags: [DL, Tracking, MOT]

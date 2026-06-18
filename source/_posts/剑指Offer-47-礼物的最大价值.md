@@ -3,7 +3,7 @@ title: 剑指Offer-47-礼物的最大价值
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-12-15 11:14:27
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 47
 tags: [Algorithm, Offer, 动态规划]

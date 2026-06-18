@@ -3,7 +3,7 @@ title: 剑指Offer-44-数字序列中某一位的数字
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-11-23 16:09:57
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 44
 tags: [Algorithm, Offer, 数学]

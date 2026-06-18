@@ -3,7 +3,7 @@ title: 剑指Offer-28-对称的二叉树
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-09-24 16:48:01
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 28
 tags: [Algorithm, Offer, 二叉树, 递归]

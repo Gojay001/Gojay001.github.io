@@ -3,7 +3,7 @@ title: 剑指Offer-17-打印从1到最大的n位数
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-09-11 10:36:11
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 17
 tags: [Algorithm, Offer, 字符串, DFS, 递归]

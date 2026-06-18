@@ -3,7 +3,7 @@ title: 剑指Offer-39-数组中出现次数超过一半的数字
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-11-05 22:08:34
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 39
 tags: [Algorithm, Offer, HashMap]

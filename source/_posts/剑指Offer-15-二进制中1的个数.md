@@ -3,7 +3,7 @@ title: 剑指Offer-15-二进制中1的个数
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-09-07 11:29:43
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 15
 tags: [Algorithm, Offer, 位运算]

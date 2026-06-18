@@ -3,7 +3,7 @@ title: 剑指Offer-11-旋转数组的最小数字
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-08-30 15:10:29
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 11
 tags: [Algorithm, Offer, 数组, 二分查找]

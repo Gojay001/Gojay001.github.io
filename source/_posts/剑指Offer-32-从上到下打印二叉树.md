@@ -3,7 +3,7 @@ title: 剑指Offer-32-从上到下打印二叉树
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-10-18 22:12:08
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 32
 tags: [Algorithm, Offer, BFS, 队列]

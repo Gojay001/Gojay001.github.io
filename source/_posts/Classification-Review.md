@@ -3,7 +3,7 @@ title: Classification Review
 thumbnail: /gallery/thumbnails/LeNet-5.png  
 date: 2019-08-25 16:27:27  
 categories:  
-    - DeepLearning  
+    - CV
     - Classification  
     - Review  
 tags: [DL, Classification, Review]

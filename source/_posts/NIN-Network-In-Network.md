@@ -3,7 +3,7 @@ title: NIN(Network In Network)
 thumbnail: /gallery/thumbnails/NIN.png
 date: 2019-08-31 17:42:39
 categories:
-    - DeepLearning
+    - CV
     - Classification
     - NIN
 tags: [DL, Classification, NIN]

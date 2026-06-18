@@ -3,7 +3,7 @@ title: Tracktor
 thumbnail: /gallery/thumbnails/Tracktor.png
 date: 2019-11-09 08:21:49
 categories:
-    - DeepLearning  
+    - CV
     - Object Tracking  
     - Tracktor  
 tags: [DL, Tracking, MOT]

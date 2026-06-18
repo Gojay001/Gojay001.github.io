@@ -3,7 +3,7 @@ title: 剑指Offer-29-顺时针打印矩阵
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-10-14 14:36:16
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 29
 tags: [Algorithm, Offer, 数组]

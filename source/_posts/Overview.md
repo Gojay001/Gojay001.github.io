@@ -4,7 +4,7 @@ top: 10
 thumbnail: /gallery/thumbnails/DL.jpg
 date: 2020-04-01 10:32:41
 categories:
-    - DeepLearning
+    - CV
     - Overview
 tags: [DL, Overview]
 ---

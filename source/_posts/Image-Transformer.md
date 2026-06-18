@@ -3,7 +3,7 @@ title: Image Transformer
 thumbnail: /gallery/thumbnails/ImageTransformer.png
 date: 2020-05-15 16:15:09
 categories:
-    - DeepLearning
+    - CV
     - Image Generation
     - ImageTransformer
 tags: [DL, Attention]

@@ -3,7 +3,7 @@ title: 剑指Offer-40-最小的k个数
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-11-09 22:51:41
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 40
 tags: [Algorithm, Offer, topk, 排序]

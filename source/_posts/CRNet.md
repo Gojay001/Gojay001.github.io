@@ -3,7 +3,7 @@ title: CRNet
 thumbnail: /gallery/thumbnails/CRNet.png
 date: 2020-07-10 15:56:24
 categories:
-    - DeepLearning  
+    - CV
     - Few-Shot Segmentation  
     - CRNet  
 tags: [DL, FSS, CRNet]

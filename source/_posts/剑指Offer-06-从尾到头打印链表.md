@@ -3,7 +3,7 @@ title: 剑指Offer-06-从尾到头打印链表
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-08-24 15:09:34
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 06
 tags: [Algorithm, Offer, 链表, 递归, 栈]

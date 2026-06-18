@@ -3,7 +3,7 @@ title: LTM
 thumbnail: /gallery/thumbnails/LTM.png
 date: 2020-07-29 10:59:27
 categories:
-    - DeepLearning  
+    - CV
     - Few-Shot Segmentation  
     - LTM 
 tags: [DL, FSS, LTM]

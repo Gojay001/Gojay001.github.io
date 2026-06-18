@@ -3,7 +3,7 @@ title: PGNet
 thumbnail: /gallery/thumbnails/PGNet.png
 date: 2020-07-28 15:39:02
 categories:
-    - DeepLearning  
+    - CV
     - Few-Shot Segmentation  
     - PGNet  
 tags: [DL, FSS, PGNet]

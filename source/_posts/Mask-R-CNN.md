@@ -3,7 +3,7 @@ title: Mask R-CNN
 thumbnail: /gallery/thumbnails/Mask R-CNN.png
 date: 2020-08-17 21:37:19
 categories:
-    - DeepLearning  
+    - CV
     - Object Segmentation  
     - Mask R-CNN  
 tags: [DL, Segmentation, Mask R-CNN]

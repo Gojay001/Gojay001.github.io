@@ -3,7 +3,7 @@ title: 剑指Offer-46-把数字翻译成字符串
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-12-15 10:23:21
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 46
 tags: [Algorithm, Offer, 动态规划]

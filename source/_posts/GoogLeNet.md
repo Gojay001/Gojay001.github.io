@@ -3,7 +3,7 @@ title: GoogLeNet
 thumbnail: /gallery/thumbnails/GoogLeNet.png
 date: 2019-09-05 15:01:37
 categories:
-    - DeepLearning
+    - CV
     - Classification
     - GoogLeNet
 tags: [DL, Classification, GoogLeNet, Inception]

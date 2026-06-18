@@ -3,7 +3,7 @@ title: 剑指Offer-07-重建二叉树
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-08-25 16:05:59
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 07
 tags: [Algorithm, Offer, 递归, 二叉树, HashMap]

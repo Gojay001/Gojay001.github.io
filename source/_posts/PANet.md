@@ -3,7 +3,7 @@ title: PANet
 thumbnail: /gallery/thumbnails/PANet.png
 date: 2020-12-02 09:56:12
 categories:
-    - DeepLearning  
+    - CV
     - Few-Shot Segmentation  
     - PANet
 tags: [DL, FSS, PANet]

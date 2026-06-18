@@ -3,7 +3,7 @@ title: ResNet
 thumbnail: /gallery/thumbnails/ResNet.png
 date: 2019-09-08 12:45:35
 categories:
-    - DeepLearning
+    - CV
     - Classification
     - ResNet
 tags: [DL, Classification, ResNet]

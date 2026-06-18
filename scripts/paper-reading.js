@@ -68,56 +68,207 @@ function extractAcronym(title, slug) {
   return slug.toUpperCase();
 }
 
-function parseCategories(metaLine, title, slug) {
-  const acronym = extractAcronym(title, slug);
-  const categories = [];
-
-  if (metaLine) {
-    const firstSegment = metaLine.split('·')[0].trim();
-    const domain = firstSegment.split('-')[0].trim();
-    if (domain) {
-      categories.push(domain);
-    }
-  }
-
-  categories.push('Paper Reading');
-
-  if (acronym) {
-    categories.push(acronym);
-  }
-
-  if (categories.length === 1) {
-    categories.push(slug.toUpperCase());
-  }
-
-  return categories;
+function resolvePaperWithCodeListPath(hexo) {
+  return path.join(resolveSubmoduleRoot(hexo), 'paper-with-code-list.md');
 }
 
-function parseTags(metaLine) {
-  const tags = new Set(['Paper Reading']);
+function slugifyHeading(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-');
+}
 
+function normalizeTaxonomyKey(text) {
+  return text.trim().toLowerCase();
+}
+
+const SUBCATEGORY_TAG_ABBR = {
+  'Diffusion Model': 'DM',
+  'Generative Adversarial Network': 'GAN',
+  'Variational Auto-Encoder': 'VAE',
+  'Vision Transformer': 'ViT',
+  'Pre-trained Language Model': 'PLM',
+  'Large Language Model': 'LLM',
+  'Vision Language Model': 'VLM',
+  'Few-Shot Segmentation': 'FSS',
+  'Few-Shot Learning': 'FSL',
+  'Multiple Object Tracking': 'MOT',
+  'Visual Object Tracking': 'VOT',
+  'Object Detection': 'OD',
+  'Object Segmentation': 'OS',
+  'Object Tracking': 'OT',
+  '3D Object Detection': '3D-Det',
+  'Salient Object Detection': 'SOD',
+};
+
+function subCategoryTagAbbr(subCategory) {
+  if (SUBCATEGORY_TAG_ABBR[subCategory]) {
+    return SUBCATEGORY_TAG_ABBR[subCategory];
+  }
+
+  const words = subCategory.split(/[\s-/]+/).filter(Boolean);
+  if (words.length === 1) {
+    return words[0].toUpperCase();
+  }
+
+  return words.map((word) => word[0].toUpperCase()).join('');
+}
+
+function buildPaperWithCodeTaxonomy(content) {
+  const bySubCategory = new Map();
+  const byPaperTitle = new Map();
+  const anchorToTopDomain = new Map();
+
+  let currentTopDomain = null;
+  let currentSubCategory = null;
+  let currentTopDomainForSection = null;
+
+  for (const line of content.split('\n')) {
+    const topMatch = line.match(/^\s*-\s+\*\*([^*]+)\*\*/);
+    if (topMatch) {
+      currentTopDomain = topMatch[1].trim();
+      continue;
+    }
+
+    const tocLinkMatch = line.match(/^\s+- \[([^\]]+)\]\(#([^)]+)\)/);
+    if (tocLinkMatch && currentTopDomain) {
+      anchorToTopDomain.set(tocLinkMatch[2].trim(), currentTopDomain);
+    }
+
+    const headingMatch = line.match(/^#{2,3}\s+(.+)$/);
+    if (headingMatch) {
+      const subCategory = headingMatch[1].trim();
+      const anchor = slugifyHeading(subCategory);
+      currentSubCategory = subCategory;
+      currentTopDomainForSection = anchorToTopDomain.get(anchor) || currentTopDomain;
+
+      if (currentTopDomainForSection) {
+        const entry = {
+          topDomain: currentTopDomainForSection,
+          subCategory,
+        };
+        bySubCategory.set(normalizeTaxonomyKey(subCategory), entry);
+        bySubCategory.set(anchor, entry);
+      }
+      continue;
+    }
+
+    if (!currentSubCategory || !currentTopDomainForSection) {
+      continue;
+    }
+
+    if (!line.startsWith('|') || line.includes('---')) {
+      continue;
+    }
+
+    const cells = line.split('|').map((cell) => cell.trim());
+    if (cells.length < 3 || /^title$/i.test(cells[1])) {
+      continue;
+    }
+
+    const rawTitle = cells[1];
+    const linked = rawTitle.match(/\[([^\]]+)\]/);
+    const plain = rawTitle.replace(/\[([^\]]+)\]\([^)]*\)/g, '$1').trim();
+    const paperTitle = (linked ? linked[1] : plain).trim();
+
+    if (!paperTitle || paperTitle === 'Title') {
+      continue;
+    }
+
+    byPaperTitle.set(normalizeTaxonomyKey(paperTitle), {
+      topDomain: currentTopDomainForSection,
+      subCategory: currentSubCategory,
+    });
+  }
+
+  return { bySubCategory, byPaperTitle };
+}
+
+let taxonomyCache = null;
+let taxonomyCacheKey = null;
+
+function loadPaperWithCodeTaxonomy(hexo) {
+  const listPath = resolvePaperWithCodeListPath(hexo);
+  if (!fs.existsSync(listPath)) {
+    hexo.log.warn(`paper-reading: taxonomy list not found: ${listPath}`);
+    return { bySubCategory: new Map(), byPaperTitle: new Map() };
+  }
+
+  const mtime = fs.statSync(listPath).mtimeMs;
+  if (taxonomyCache && taxonomyCacheKey === mtime) {
+    return taxonomyCache;
+  }
+
+  taxonomyCache = buildPaperWithCodeTaxonomy(fs.readFileSync(listPath, 'utf8'));
+  taxonomyCacheKey = mtime;
+  return taxonomyCache;
+}
+
+function parseMetaSubCategory(metaLine) {
   if (!metaLine) {
-    return [...tags];
+    return null;
   }
 
-  if (/deeplearning/i.test(metaLine)) {
-    tags.add('DL');
+  const parts = metaLine.split('·').map((segment) => segment.trim()).filter(Boolean);
+  if (parts.length < 2) {
+    return null;
   }
 
-  for (const part of metaLine.split('·').map((segment) => segment.trim()).filter(Boolean)) {
-    if (/^arxiv\(/i.test(part)) {
-      continue;
-    }
-    if (/neurips|iccv|cvpr|iclr|icml|eccv/i.test(part) && /\(\d{4}\)/.test(part)) {
-      continue;
-    }
-    if (part === 'DeepLearning-Paper-with-Code') {
-      continue;
-    }
-    tags.add(part);
+  const subCategory = parts[1];
+  if (/^arxiv\(/i.test(subCategory)) {
+    return null;
   }
 
-  return [...tags];
+  return subCategory;
+}
+
+function resolveTaxonomyEntry(taxonomy, metaLine, title, slug) {
+  const subCategoryFromMeta = parseMetaSubCategory(metaLine);
+  if (subCategoryFromMeta) {
+    const fromMeta = taxonomy.bySubCategory.get(normalizeTaxonomyKey(subCategoryFromMeta));
+    if (fromMeta) {
+      return fromMeta;
+    }
+  }
+
+  const acronym = extractAcronym(title, slug);
+  const fromPaper = taxonomy.byPaperTitle.get(normalizeTaxonomyKey(acronym));
+  if (fromPaper) {
+    return fromPaper;
+  }
+
+  if (subCategoryFromMeta) {
+    return {
+      topDomain: 'Paper',
+      subCategory: subCategoryFromMeta,
+    };
+  }
+
+  return {
+    topDomain: 'Paper Reading',
+    subCategory: acronym || slug.toUpperCase(),
+  };
+}
+
+function parseCategories(metaLine, title, slug, taxonomy) {
+  const { topDomain, subCategory } = resolveTaxonomyEntry(taxonomy, metaLine, title, slug);
+  return [topDomain, subCategory];
+}
+
+function parseTags(categories) {
+  const tags = ['DL'];
+
+  if (categories[0]) {
+    tags.push(categories[0]);
+  }
+
+  if (categories[1]) {
+    tags.push(subCategoryTagAbbr(categories[1]));
+  }
+
+  return tags;
 }
 
 function parseFeynmanExcerpt(html) {
@@ -197,13 +348,15 @@ function parsePaperMetadata(hexo, filePath, slug) {
   const title = parseTitleFromHtmlContent(html, cfg.titleSuffix) || slug;
   const metaMatch = html.match(/<div class="meta">([^<]*)<\/div>/i);
   const metaLine = metaMatch ? metaMatch[1].trim() : '';
+  const taxonomy = loadPaperWithCodeTaxonomy(hexo);
+  const categories = parseCategories(metaLine, title, slug, taxonomy);
 
   return {
     slug,
     title,
     date: formatHexoDate(stat.mtime),
-    categories: parseCategories(metaLine, title, slug),
-    tags: parseTags(metaLine),
+    categories,
+    tags: parseTags(categories),
     link: `/${cfg.urlPath}/${slug}.html`,
     excerpt: parseFeynmanExcerpt(html),
     thumbnail: findThumbnail(hexo, slug, cfg.urlPath),

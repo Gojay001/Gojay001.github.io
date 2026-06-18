@@ -3,7 +3,7 @@ title: GlobalTrack
 thumbnail: /gallery/thumbnails/GlobalTrack.png
 date: 2020-01-04 08:15:20
 categories:
-    - DeepLearning
+    - CV
     - Object Tracking
     - GlobalTrack
 tags: [DL, Tracking, VOT]

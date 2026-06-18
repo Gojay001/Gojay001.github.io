@@ -90,6 +90,90 @@ npx hexo s
 | Thumbnail cropped | `thumbnail_fit: contain` on `paper_reading` posts (auto-set by sync) |
 | Deploy auth fails | GitHub SSH/key for `hexo-deployer-git` |
 
+## Bridge post taxonomy (`source/_posts/paper-reading/`)
+
+Each `{slug}.md` is **auto-generated** by `scripts/paper-reading.js`. Taxonomy follows **`submodule/paper-with-code-skills/paper-with-code-list.md`** (same tree as the Paper-with-Code list). Re-run sync after HTML `.meta` or list structure changes — do not hand-edit front matter unless overriding a one-off case.
+
+### Inputs
+
+| Source | Field | Example (ddpm) |
+|--------|-------|----------------|
+| HTML `<div class="meta">` | Subcategory hint (2nd ` · ` segment) | `Diffusion Model` |
+| HTML `<title>` | Paper title / acronym | `DDPM — Denoising Diffusion Probabilistic Models` |
+| `paper-with-code-list.md` | Top domain + section + paper table | `AIGC` → `## Diffusion Model` → row `DDPM` |
+
+Meta line format (segment 1 is boilerplate, segment 3+ is venue — ignored for taxonomy):
+
+```html
+<div class="meta">DeepLearning-Paper-with-Code · Diffusion Model · arXiv(2020) / NeurIPS(2020)</div>
+```
+
+### Categories (2 levels)
+
+| Level | Rule | ddpm |
+|-------|------|------|
+| 1 — top domain | Lookup subcategory in `paper-with-code-list.md` TOC (`**AIGC**`, `**CV**`, `**LLM / VLM**`, …) | `AIGC` |
+| 2 — subcategory | HTML meta segment 2, matched to `##` / `###` heading in the list | `Diffusion Model` |
+
+**Lookup order**
+
+1. Meta segment 2 → list section name (case-insensitive)
+2. Else title acronym / slug → first column of list table (e.g. `DDPM`)
+3. Fallback: `[Paper, {meta segment 2}]` or `[Paper Reading, {ACRONYM}]`
+
+**Top domains** (from list TOC): `AIGC`, `LLM / VLM`, `CV`
+
+**ddpm example:** `[AIGC, Diffusion Model]`
+
+### Tags (3 tokens)
+
+Always derived from resolved categories — **not** copied verbatim from meta venues:
+
+| Tag | Rule | ddpm |
+|-----|------|------|
+| `DL` | Fixed (Paper-with-Code domain) | `DL` |
+| `{topDomain}` | Same as categories[0] | `AIGC` |
+| `{abbr}` | Subcategory abbreviation | `DM` |
+
+**Subcategory abbreviations** (explicit map first, else word initials):
+
+| Subcategory | Abbr |
+|-------------|------|
+| Diffusion Model | `DM` |
+| Generative Adversarial Network | `GAN` |
+| Variational Auto-Encoder | `VAE` |
+| Vision Transformer | `ViT` |
+| Few-Shot Segmentation | `FSS` |
+| Few-Shot Learning | `FSL` |
+| Multiple Object Tracking | `MOT` |
+| Visual Object Tracking | `VOT` |
+| Object Detection | `OD` |
+| Object Segmentation | `OS` |
+| Object Tracking | `OT` |
+| … | initials fallback |
+
+**ddpm example:** `[DL, AIGC, DM]`
+
+### Other front matter (auto)
+
+| Field | Source |
+|-------|--------|
+| `link` | `/paper-reading/{slug}.html` |
+| `paper_reading` | `true` |
+| `excerpt` | First `<p>` in `#feynman` section (≤300 chars) |
+| `thumbnail` | First image under `assets/{slug}/` |
+| `thumbnail_fit` | `contain` |
+| `date` | HTML file mtime |
+
+### Re-sync after rule or list change
+
+```bash
+rm source/_posts/paper-reading/.sync-state.json
+npx hexo g
+```
+
+Incremental sync only rewrites md when submodule commit changes **and** that slug's HTML changed.
+
 ## Reference
 
 - Design spec: [docs/superpowers/specs/2026-06-17-paper-reading-deploy-design.md](../../docs/superpowers/specs/2026-06-17-paper-reading-deploy-design.md)

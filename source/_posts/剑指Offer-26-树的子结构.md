@@ -3,7 +3,7 @@ title: 剑指Offer-26-树的子结构
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-09-23 14:47:18
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 26
 tags: [Algorithm, Offer, 树, 递归, DFS]

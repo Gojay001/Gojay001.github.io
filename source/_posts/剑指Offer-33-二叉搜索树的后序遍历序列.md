@@ -3,7 +3,7 @@ title: 剑指Offer-33-二叉搜索树的后序遍历序列
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-10-20 20:42:34
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 33
 tags: [Algorithm, Offer, 递归, 栈]

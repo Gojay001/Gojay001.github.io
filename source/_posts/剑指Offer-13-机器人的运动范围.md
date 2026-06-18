@@ -3,7 +3,7 @@ title: 剑指Offer-13-机器人的运动范围
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-09-03 15:22:22
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 13
 tags: [Algorithm, Offer, DFS, BFS, 回溯]

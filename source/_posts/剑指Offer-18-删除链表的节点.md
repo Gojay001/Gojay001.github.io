@@ -3,7 +3,7 @@ title: 剑指Offer-18-删除链表的节点
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-09-14 10:46:16
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 18
 tags: [Algorithm, Offer, 链表, 递归]

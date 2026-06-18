@@ -3,7 +3,7 @@ title: co-FCN
 thumbnail: /gallery/thumbnails/co-FCN.png
 date: 2020-10-19 22:03:52
 categories:
-    - DeepLearning  
+    - CV
     - Few-Shot Segmentation  
     - co-FCN
 tags: [DL, FSS, co-FCN]

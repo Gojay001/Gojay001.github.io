@@ -3,7 +3,7 @@ title: Faster R-CNN
 thumbnail: /gallery/thumbnails/Faster R-CNN.png  
 date: 2019-10-19 23:47:35
 categories:
-    - DeepLearning  
+    - CV
     - Object Detection  
     - Faster R-CNN  
 tags: [DL, Detection, Faster R-CNN]

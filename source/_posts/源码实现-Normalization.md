@@ -3,8 +3,8 @@ title: 源码实现-Normalization
 thumbnail: /gallery/thumbnails/normalization.png
 date: 2026-05-08 12:00:00
 categories:
-    - DeepLearning
-    - PyTorch
+    - Coding
+    - source-code
 
 tags: [pytorch, source_code, normalization]
 ---

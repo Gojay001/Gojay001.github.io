@@ -3,7 +3,7 @@ title: PPNet
 thumbnail: /gallery/thumbnails/PPNet.png
 date: 2020-12-02 16:16:39
 categories:
-    - DeepLearning  
+    - CV
     - Few-Shot Segmentation  
     - PPNet
 tags: [DL, FSS, PPNet]

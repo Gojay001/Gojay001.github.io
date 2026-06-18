@@ -3,7 +3,7 @@ title: 剑指Offer-48-最长不含重复字符的子字符串
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-12-15 11:28:49
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 48
 tags: [Algorithm, Offer, 滑动窗口]

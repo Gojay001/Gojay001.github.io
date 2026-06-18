@@ -3,7 +3,7 @@ title: 剑指Offer-12-矩阵中的路径
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-08-31 20:53:18
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 12
 tags: [Algorithm, Offer, DFS, 回溯]

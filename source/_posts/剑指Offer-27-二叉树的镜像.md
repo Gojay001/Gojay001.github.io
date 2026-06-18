@@ -3,7 +3,7 @@ title: 剑指Offer-27-二叉树的镜像
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-09-23 16:59:16
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 27
 tags: [Algorithm, Offer, 二叉树, 递归, 栈, 队列]

@@ -3,7 +3,7 @@ title: PAMCC-AOT
 thumbnail: /gallery/thumbnails/PAMCC-AOT.png
 date: 2020-02-25 17:23:40
 categories:
-    - DeepLearning
+    - CV
     - Object Tracking
     - PAMCC-AOT
 tags: [DL, Tracking, AOT]

@@ -3,7 +3,7 @@ title: Tracklet
 thumbnail: /gallery/thumbnails/Tracklet.png
 date: 2020-03-26 16:41:56
 categories:
-    - DeepLearning
+    - CV
     - Object Tracking
     - Tracklet
 tags: [DL, Tracking, MOT]

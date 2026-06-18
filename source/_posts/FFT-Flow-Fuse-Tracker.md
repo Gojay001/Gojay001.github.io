@@ -3,7 +3,7 @@ title: FFT(Flow-Fuse Tracker)
 thumbnail: /gallery/thumbnails/FFT.png
 date: 2020-03-05 11:13:26
 categories:
-    - DeepLearning
+    - CV
     - Object Tracking
     - FFT
 tags: [DL, Tracking, MOT]

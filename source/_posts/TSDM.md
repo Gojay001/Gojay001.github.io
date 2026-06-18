@@ -3,7 +3,7 @@ title: TSDM
 thumbnail: /gallery/thumbnails/TSDM.png
 date: 2020-05-23 11:09:01
 categories:
-    - DeepLearning
+    - CV
     - Object Tracking
     - TSDM
 tags: [DL, Tracking, VOT]

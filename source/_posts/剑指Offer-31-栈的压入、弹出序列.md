@@ -3,7 +3,7 @@ title: 剑指Offer-31-栈的压入、弹出序列
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-10-16 14:52:51
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 31
 tags: [Algorithm, Offer, 栈]

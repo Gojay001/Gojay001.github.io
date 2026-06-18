@@ -17,10 +17,12 @@
 
 ## 2. 分支管理
 
-| 分支 | 用途 |
-|------|------|
+
+| 分支           | 用途                                                                                      |
+| ------------ | --------------------------------------------------------------------------------------- |
 | **hexo**（默认） | Hexo **源码**：文章、`source/`、主题、`_config.yml`、`package.json`、子模块指针、`skills/` 等。日常写作与构建在此分支。 |
-| **master** | **发布分支**：`hexo deploy`（`hexo d -g`）将 `public/` 推送到此分支，供 GitHub Pages 展示。 |
+| **master**   | **发布分支**：`hexo deploy`（`hexo d -g`）将 `public/` 推送到此分支，供 GitHub Pages 展示。                |
+
 
 `_config.yml` 中 `deploy.branch` 已设为 `master`。
 
@@ -124,12 +126,14 @@ thumbnail: /gallery/thumbnails/DeepSORT.png
 
 **构建时自动完成**
 
-| 步骤 | 说明 |
-|------|------|
-| 增量同步 md | 对比 submodule commit 差异，仅更新有变动的 HTML 对应桥接 md |
-| 桥接博文 | 写入 `source/_posts/paper-reading/{slug}.md`（含 `link`、`excerpt`、`categories`、`tags`） |
-| 静态部署 | 复制 HTML + assets → `public/paper-reading/` |
-| 专题索引 | 生成 `/paper-reading/` 列表页 |
+
+| 步骤      | 说明                                                                                 |
+| ------- | ---------------------------------------------------------------------------------- |
+| 增量同步 md | 对比 submodule commit 差异，仅更新有变动的 HTML 对应桥接 md                                        |
+| 桥接博文    | 写入 `source/_posts/paper-reading/{slug}.md`（含 `link`、`excerpt`、`categories`、`tags`） |
+| 静态部署    | 复制 HTML + assets → `public/paper-reading/`                                         |
+| 专题索引    | 生成 `/paper-reading/` 列表页                                                           |
+
 
 **访问路径**
 
@@ -210,24 +214,28 @@ skills/hexo-paper-reading-deploy/scripts/deploy.sh --local-only
 skills/hexo-paper-reading-deploy/scripts/deploy.sh --pull-submodule --no-commit
 ```
 
-| 参数 | 作用 |
-|------|------|
+
+| 参数                 | 作用                                      |
+| ------------------ | --------------------------------------- |
 | `--pull-submodule` | 拉取 `paper-with-code-skills` 远程最新 commit |
-| `--local-only` | 只执行 `hexo g` 与输出校验 |
-| `--no-commit` | 跳过自动 commit，仍执行 `hexo d -g` |
+| `--local-only`     | 只执行 `hexo g` 与输出校验                      |
+| `--no-commit`      | 跳过自动 commit，仍执行 `hexo d -g`             |
+
 
 典型场景：子模块已 push 新 HTML → 调用 skill → 自动增量同步 md、提交、部署。
 
 ## 6. 常用命令速查
 
-| 命令 | 说明 |
-|------|------|
-| `npx hexo s` | 本地预览（可先 `hexo g`） |
-| `npx hexo g` | 生成静态站到 `public/` |
-| `npx hexo d -g` | 生成并部署到 `master` |
-| `npx hexo new <title>` | 新建 Markdown 博文 |
-| `git submodule update --init` | 初始化子模块 |
-| `skills/.../deploy.sh --local-only` | 精读相关本地构建验证 |
+
+| 命令                                  | 说明                |
+| ----------------------------------- | ----------------- |
+| `npx hexo s`                        | 本地预览（可先 `hexo g`） |
+| `npx hexo g`                        | 生成静态站到 `public/`  |
+| `npx hexo d -g`                     | 生成并部署到 `master`   |
+| `npx hexo new <title>`              | 新建 Markdown 博文    |
+| `git submodule update --init`       | 初始化子模块            |
+| `skills/.../deploy.sh --local-only` | 精读相关本地构建验证        |
+
 
 更详细的 Hexo 安装、主题与域名说明见站内文章：[source/_posts/Hexo-Blog-Pages.md](source/_posts/Hexo-Blog-Pages.md)。  
 更多命令与排错以 [Hexo 官方文档](https://hexo.io/docs/) 为准。

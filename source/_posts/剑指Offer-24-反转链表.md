@@ -3,7 +3,7 @@ title: 剑指Offer-24-反转链表
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-09-20 21:38:09
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 24
 tags: [Algorithm, Offer, 递归, 链表, 指针]

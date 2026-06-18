@@ -3,7 +3,7 @@ title: 剑指Offer-14-剪绳子
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-09-04 15:40:16
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 14
 tags: [Algorithm, Offer, 动态规划, 贪心]

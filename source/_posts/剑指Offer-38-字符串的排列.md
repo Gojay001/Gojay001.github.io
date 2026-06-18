@@ -3,7 +3,7 @@ title: 剑指Offer-38-字符串的排列
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-11-02 23:32:56
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 38
 tags: [Algorithm, Offer, DFS, 递归]

@@ -3,7 +3,7 @@ title: 剑指Offer-42-连续子数组的最大和
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-11-18 16:08:24
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 42
 tags: [Algorithm, Offer, 动态规划]

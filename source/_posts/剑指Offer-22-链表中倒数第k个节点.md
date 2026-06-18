@@ -3,7 +3,7 @@ title: 剑指Offer-22-链表中倒数第k个节点
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-09-20 17:54:12
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 22
 tags: [Algorithm, Offer, 链表, 指针]

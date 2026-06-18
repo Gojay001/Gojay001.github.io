@@ -3,7 +3,7 @@ title: SiamRPN++
 thumbnail: /gallery/thumbnails/SiamRPN++.png
 date: 2020-05-09 16:44:57
 categories:
-    - DeepLearning
+    - CV
     - Object Tracking
     - SiamRPN++
 tags: [DL, Tracking, VOT]

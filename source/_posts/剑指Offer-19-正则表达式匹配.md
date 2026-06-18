@@ -3,7 +3,7 @@ title: 剑指Offer-19-正则表达式匹配
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-09-14 22:17:01
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 19
 tags: [Algorithm, Offer, 递归, 动态规划, 字符串]

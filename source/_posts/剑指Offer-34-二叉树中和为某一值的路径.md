@@ -3,7 +3,7 @@ title: 剑指Offer-34-二叉树中和为某一值的路径
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-10-22 16:12:14
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 34
 tags: [Algorithm, Offer, DFS, 递归, 二叉树]

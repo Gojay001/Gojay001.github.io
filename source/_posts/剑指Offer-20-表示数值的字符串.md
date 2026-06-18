@@ -3,7 +3,7 @@ title: 剑指Offer-20-表示数值的字符串
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-09-18 15:45:50
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 20
 tags: [Algorithm, Offer, 字符串, 有限状态自动机]

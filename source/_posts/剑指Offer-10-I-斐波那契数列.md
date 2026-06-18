@@ -3,7 +3,7 @@ title: 剑指Offer-10-I.斐波那契数列
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-08-27 15:01:45
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 10
 tags: [Algorithm, Offer, 递归, 动态规划]

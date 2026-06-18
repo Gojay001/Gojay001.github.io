@@ -3,7 +3,7 @@ title: FSL-Survey-2019
 thumbnail: /gallery/thumbnails/FSL-Survey-2019.png
 date: 2020-07-07 15:23:44
 categories:
-    - DeepLearning
+    - CV
     - Few-Shot Learning
     - FSL Survey
 tags: [DL, FSL, Survey]

@@ -3,7 +3,7 @@ title: 剑指Offer-09-用两个栈实现队列
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-08-26 14:59:35
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 09
 tags: [Algorithm, Offer, 栈, 队列]

@@ -3,7 +3,7 @@ title: 剑指Offer-35-复杂链表的复制
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-10-22 17:08:34
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 35
 tags: [Algorithm, Offer, DFS, 递归, 二叉树]

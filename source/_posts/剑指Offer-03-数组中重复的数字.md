@@ -3,7 +3,7 @@ title: 剑指Offer-03-数组中重复的数字
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-08-21 09:46:07
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 03  
 tags: [Algorithm, Offer, 数组, 字典]

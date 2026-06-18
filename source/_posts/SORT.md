@@ -3,7 +3,7 @@ title: SORT
 thumbnail: /gallery/thumbnails/SORT.png
 date: 2020-06-14 12:47:54
 categories:
-    - DeepLearning
+    - CV
     - Object Tracking
     - SORT
 tags: [DL, Tracking, MOT]

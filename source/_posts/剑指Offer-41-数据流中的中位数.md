@@ -3,7 +3,7 @@ title: 剑指Offer-41-数据流中的中位数
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-11-14 22:34:18
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 41
 tags: [Algorithm, Offer, 堆]

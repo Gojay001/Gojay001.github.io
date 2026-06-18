@@ -3,7 +3,7 @@ title: 剑指Offer-16-数值的整数次方
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-09-07 22:32:28
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 16
 tags: [Algorithm, Offer, 递归, 分治]

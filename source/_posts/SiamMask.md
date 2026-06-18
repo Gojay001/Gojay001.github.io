@@ -3,7 +3,7 @@ title: SiamMask
 thumbnail: /gallery/thumbnails/SiamMask.png
 date: 2019-11-26 10:31:16
 categories:
-    - DeepLearning
+    - CV
     - Object Tracking
     - SiamMask
 tags: [DL, Tracking, VOT]

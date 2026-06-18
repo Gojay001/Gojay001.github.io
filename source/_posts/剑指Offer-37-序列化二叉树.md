@@ -3,7 +3,7 @@ title: 剑指Offer-37-序列化二叉树
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-10-27 19:11:10
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 37
 tags: [Algorithm, Offer, BFS, 二叉树, 队列]

@@ -3,8 +3,8 @@ title: 源码实现-MobileNet
 thumbnail: /gallery/thumbnails/mobilenet.png
 date: 2024-03-26 16:00:00
 categories:
-    - DeepLearning
-    - PyTorch
+    - Coding
+    - source-code
 
 tags: [pytorch, source_code, mobilenet]
 ---

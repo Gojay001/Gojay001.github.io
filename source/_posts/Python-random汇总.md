@@ -3,7 +3,7 @@ title: Python-random汇总
 thumbnail: /gallery/thumbnails/random.png
 date: 2023-06-11 15:12:32
 categories:
-    - DigitalImageProcessing
+    - API
     - Python API
 tags: [python, numpy, pytorch]
 ---

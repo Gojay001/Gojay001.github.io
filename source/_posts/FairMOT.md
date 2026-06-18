@@ -3,7 +3,7 @@ title: FairMOT
 thumbnail: /gallery/thumbnails/FairMOT.png
 date: 2020-05-25 19:31:14
 categories:
-    - DeepLearning
+    - CV
     - Object Tracking
     - FairMOT
 tags: [DL, Tracking, MOT]

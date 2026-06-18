@@ -3,7 +3,7 @@ title: PV-RCNN
 thumbnail: /gallery/thumbnails/PV-RCNN.png
 date: 2020-06-23 18:43:53
 categories:
-    - DeepLearning
+    - CV
     - 3D Object Dedection
     - PV-RCNN
 tags: [DL, Detection-3D, PV-RCNN]

@@ -37,7 +37,14 @@ module.exports = function (hexo) {
     });
 
     hexo.extend.helper.register('category_count', function () {
-        return this.site.categories.filter(category => category.length).length;
+        const rootIds = new Set(
+            this.site.categories
+                .filter(category => !category.parent)
+                .map(category => category._id)
+        );
+        return this.site.categories.filter(
+            category => category.parent && rootIds.has(category.parent)
+        ).length;
     });
 
     hexo.extend.helper.register('tag_count', function () {

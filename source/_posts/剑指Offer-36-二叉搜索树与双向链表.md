@@ -3,7 +3,7 @@ title: 剑指Offer-36-二叉搜索树与双向链表
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-10-26 21:33:38
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 36
 tags: [Algorithm, Offer, DFS, 二叉树]

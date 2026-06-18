@@ -3,7 +3,7 @@ title: Python-Image-API
 thumbnail: /gallery/thumbnails/Lenna.png
 date: 2022-04-01 16:52:23
 categories:
-    - DigitalImageProcessing
+    - API
     - Image API
 tags: [DIP, Image, API, python]
 ---

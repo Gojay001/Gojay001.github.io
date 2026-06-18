@@ -3,7 +3,7 @@ title: RN(Relation Network)
 thumbnail: /gallery/thumbnails/RN.png  
 date: 2019-08-21 15:51:05  
 categories:  
-    - DeepLearning  
+    - CV
     - Few-Shot Learning  
     - RN  
 tags: [DL, FSL, RN]

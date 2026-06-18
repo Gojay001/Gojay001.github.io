@@ -3,7 +3,7 @@ title: 剑指Offer-05-替换空格
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-08-24 14:35:47
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 05
 tags: [Algorithm, Offer, 字符串]

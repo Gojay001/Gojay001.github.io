@@ -3,7 +3,7 @@ title: 剑指Offer-30-包含min函数的栈
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-10-14 15:34:20
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 30
 tags: [Algorithm, Offer, 栈]

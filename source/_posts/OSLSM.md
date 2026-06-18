@@ -3,7 +3,7 @@ title: OSLSM
 thumbnail: /gallery/thumbnails/OSLSM.png
 date: 2020-10-19 20:53:47
 categories:
-    - DeepLearning  
+    - CV
     - Few-Shot Segmentation  
     - OSLSM
 tags: [DL, FSS, OSLSM]

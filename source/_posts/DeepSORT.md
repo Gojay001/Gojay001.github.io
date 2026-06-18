@@ -3,7 +3,7 @@ title: DeepSORT
 thumbnail: /gallery/thumbnails/DeepSORT.png
 date: 2020-06-20 10:35:15
 categories:
-    - DeepLearning
+    - CV
     - Object Tracking
     - DeepSORT
 tags: [DL, Tracking, MOT]

@@ -3,7 +3,7 @@ title: 剑指Offer-04-二维数组中的查找
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-08-21 16:02:19
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 04  
 tags: [Algorithm, Offer, 数组, 二叉搜索树]

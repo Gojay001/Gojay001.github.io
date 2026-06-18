@@ -3,7 +3,7 @@ title: 剑指Offer-49-丑数
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-12-15 15:49:51
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 49
 tags: [Algorithm, Offer, 动态规划]

@@ -3,7 +3,7 @@ title: 剑指Offer-21-调整数组顺序使奇数位于偶数前面
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-09-19 11:24:19
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 21
 tags: [Algorithm, Offer, 数组, 指针]

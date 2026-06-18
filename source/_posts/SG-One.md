@@ -3,7 +3,7 @@ title: SG-One
 thumbnail: /gallery/thumbnails/SG-One.png
 date: 2020-10-20 10:34:55
 categories:
-    - DeepLearning  
+    - CV
     - Few-Shot Segmentation  
     - SG-One
 tags: [DL, FSS, SG-One]

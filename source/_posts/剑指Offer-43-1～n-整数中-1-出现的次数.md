@@ -3,7 +3,7 @@ title: 剑指Offer-43-1～n 整数中 1 出现的次数
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-11-18 21:27:33
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 43
 tags: [Algorithm, Offer, 数学]

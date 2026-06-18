@@ -3,7 +3,7 @@ title: 剑指Offer-10-II.青蛙跳台阶问题
 thumbnail: /gallery/thumbnails/剑指Offer.jpg
 date: 2020-08-29 15:23:39
 categories:
-    - Algorithm  
+    - Coding
     - 剑指Offer  
     - 10
 tags: [Algorithm, Offer, 动态规划]
