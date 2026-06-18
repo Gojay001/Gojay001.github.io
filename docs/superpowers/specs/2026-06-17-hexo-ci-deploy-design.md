@@ -1,7 +1,7 @@
 # Hexo 博客 CI/CD 自动部署设计
 
 **日期：** 2026-06-17  
-**状态：** 待实现  
+**状态：** 已实现（博客仓库）；子模块 notify workflow 需单独 PR  
 **依赖：** [2026-06-17-paper-reading-deploy-design.md](./2026-06-17-paper-reading-deploy-design.md)（已实现）
 
 ## 背景

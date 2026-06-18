@@ -27,6 +27,22 @@ skills/hexo-paper-reading-deploy/scripts/deploy.sh --pull-submodule
 
 **Default full flow:** submodule init → (optional remote pull) → `hexo clean && hexo g` → verify → commit submodule + `source/_posts/paper-reading/` if changed → `hexo d -g`.
 
+## CI/CD (GitHub Actions)
+
+Workflow: `.github/workflows/hexo-deploy.yml`
+
+| Trigger | deploy.sh |
+|---------|-----------|
+| `paper-with-code-skills` push → `repository_dispatch` | `--pull-submodule` |
+| push to `hexo` (no `[skip ci]`) | pinned submodule |
+| manual `workflow_dispatch` | optional `--pull-submodule` |
+
+**Secrets (blog repo):** `HEXO_DEPLOY_KEY` (SSH deploy key, write); optional `SUBMODULE_PAT` if submodule private.
+
+**Secrets (submodule repo):** `BLOG_REPO_PAT` → copy workflow from `docs/superpowers/templates/notify-blog.yml`.
+
+Bot sync commits include `[skip ci]` to avoid redeploy loops. CI sets `PUSH_HEXO=true` and runs `git push origin hexo` after sync commit.
+
 ## Prerequisites
 
 - Branch: **hexo** (source); deploy pushes static site to **master**

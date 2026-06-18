@@ -236,6 +236,27 @@ skills/hexo-paper-reading-deploy/scripts/deploy.sh --pull-submodule --no-commit
 | `git submodule update --init`       | 初始化子模块            |
 | `skills/.../deploy.sh --local-only` | 精读相关本地构建验证        |
 
+## 7. CI/CD 自动部署
+
+推送 `hexo` 或子模块 `paper-reading/**` 更新后，GitHub Actions 自动构建并部署到 `master`。
+
+### 博客仓库 Secrets
+
+| Secret | 说明 |
+|--------|------|
+| `HEXO_DEPLOY_KEY` | SSH 私钥；Deploy key 勾选 Allow write access |
+| `SUBMODULE_PAT` | 仅子模块私有时需要 |
+
+### 子模块仓库
+
+1. 设置 Secret `BLOG_REPO_PAT`（对博客仓库 Contents + Actions write）
+2. 复制 `docs/superpowers/templates/notify-blog.yml` → `paper-with-code-skills/.github/workflows/notify-blog.yml`
+
+### 手动触发
+
+GitHub → Actions → Hexo deploy → Run workflow（可选 Pull submodule）。
+
+设计文档：`docs/superpowers/specs/2026-06-17-hexo-ci-deploy-design.md`
 
 更详细的 Hexo 安装、主题与域名说明见站内文章：[source/_posts/Hexo-Blog-Pages.md](source/_posts/Hexo-Blog-Pages.md)。  
 更多命令与排错以 [Hexo 官方文档](https://hexo.io/docs/) 为准。
