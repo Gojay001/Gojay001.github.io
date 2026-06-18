@@ -9,6 +9,12 @@ POSTS_DIR="source/_posts/paper-reading"
 PULL_SUBMODULE=false
 LOCAL_ONLY=false
 SKIP_COMMIT=false
+PUSH_HEXO=false
+
+# CI 默认 push hexo；本地默认不 push
+if [[ "${CI:-}" == "true" ]]; then
+  PUSH_HEXO=true
+fi
 
 usage() {
   cat <<'EOF'
@@ -18,6 +24,7 @@ Options:
   --pull-submodule   Fetch and checkout latest submodule remote (default: use pinned gitlink)
   --local-only       Generate and verify only; no commit or hexo deploy
   --no-commit        Deploy without auto-commit (still runs hexo d -g)
+  --push-hexo        Push hexo branch after commit (default when CI=true)
   -h, --help         Show this help
 EOF
 }
@@ -27,12 +34,18 @@ while [[ $# -gt 0 ]]; do
     --pull-submodule) PULL_SUBMODULE=true; shift ;;
     --local-only) LOCAL_ONLY=true; shift ;;
     --no-commit) SKIP_COMMIT=true; shift ;;
+    --push-hexo) PUSH_HEXO=true; shift ;;
     -h|--help) usage; exit 0 ;;
     *) echo "Unknown option: $1" >&2; usage; exit 1 ;;
   esac
 done
 
 cd "$ROOT"
+
+if [[ "${CI:-}" == "true" ]]; then
+  git config user.name "github-actions[bot]"
+  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+fi
 
 echo "==> Repo: $ROOT"
 BRANCH="$(git rev-parse --abbrev-ref HEAD)"
@@ -44,8 +57,15 @@ echo "==> Submodule init"
 git submodule update --init "$SUBMODULE_PATH"
 
 if [[ "$PULL_SUBMODULE" == true ]]; then
+  OLD_SHA="$(git rev-parse "$SUBMODULE_PATH")"
   echo "==> Submodule update --remote"
   git submodule update --remote "$SUBMODULE_PATH"
+  NEW_SHA="$(git rev-parse "$SUBMODULE_PATH")"
+
+  if [[ "${CI:-}" == "true" && "$OLD_SHA" == "$NEW_SHA" ]]; then
+    echo "==> Submodule unchanged ($OLD_SHA), skip build (CI early-exit)"
+    exit 0
+  fi
 fi
 
 if [[ ! -d node_modules ]]; then
@@ -87,12 +107,16 @@ if [[ "$SKIP_COMMIT" == false ]]; then
   else
     echo "==> Commit"
     git commit -m "$(cat <<'EOF'
-chore: sync paper-reading submodule and bridge posts
+chore: sync paper-reading submodule and bridge posts [skip ci]
 
 Update submodule pointer and/or generated _posts/paper-reading bridge md
 after incremental HTML sync.
 EOF
 )"
+    if [[ "$PUSH_HEXO" == true ]]; then
+      echo "==> Push hexo branch"
+      git push origin hexo
+    fi
   fi
 fi
 
@@ -100,4 +124,8 @@ echo "==> hexo deploy (generate + push to master)"
 npx hexo d -g
 
 echo "==> Deploy complete"
-exit "$fail"
+if [[ "$fail" -ne 0 ]]; then
+  echo "FAIL: verification warnings treated as errors" >&2
+  exit 1
+fi
+exit 0
