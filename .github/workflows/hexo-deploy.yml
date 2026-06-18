@@ -1,0 +1,60 @@
+name: Hexo deploy
+
+on:
+  repository_dispatch:
+    types: [paper-reading-updated]
+  push:
+    branches: [hexo]
+  workflow_dispatch:
+    inputs:
+      pull_submodule:
+        description: Pull latest paper-with-code-skills remote
+        type: boolean
+        default: false
+
+concurrency:
+  group: hexo-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: >-
+      github.event_name != 'push' ||
+      !contains(github.event.head_commit.message, '[skip ci]')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout hexo branch with submodules
+        uses: actions/checkout@v4
+        with:
+          ref: hexo
+          submodules: recursive
+          token: ${{ secrets.SUBMODULE_PAT || github.token }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Setup SSH for hexo deploy
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.HEXO_DEPLOY_KEY }}
+
+      - name: Trust GitHub SSH host
+        run: ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts
+
+      - name: Run deploy script
+        env:
+          CI: true
+        run: |
+          EXTRA=""
+          if [[ "${{ github.event_name }}" == "repository_dispatch" ]]; then
+            EXTRA="--pull-submodule"
+          elif [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.pull_submodule }}" == "true" ]]; then
+            EXTRA="--pull-submodule"
+          fi
+          chmod +x skills/hexo-paper-reading-deploy/scripts/deploy.sh
+          skills/hexo-paper-reading-deploy/scripts/deploy.sh ${EXTRA}
