@@ -26,7 +26,9 @@ skills/hexo-paper-reading-deploy/scripts/deploy.sh --pull-submodule
 | `--no-commit` | Deploy without auto-commit staged changes |
 | `--push-hexo` | Push `hexo` after sync commit (default when `CI=true`) |
 
-**Default full flow:** submodule init → (optional remote pull) → `hexo clean && hexo g` → verify → commit submodule + `source/_posts/paper-reading/` if changed → (`git push origin hexo` in CI) → `hexo d -g`.
+**Default full flow:** submodule init → **Overview sync** → (optional remote pull) → `hexo clean && hexo g` → verify → commit submodule + `source/_posts/paper-reading/` + Overview if changed → (`git push origin hexo` in CI) → `hexo d -g`.
+
+Overview sync: [skills/sync-overview-from-list/SKILL.md](../sync-overview-from-list/SKILL.md) (runs automatically in `deploy.sh`).
 
 **Script path:** always invoke via `skills/hexo-paper-reading-deploy/scripts/deploy.sh` (repo root resolved with `git rev-parse --show-toplevel`, works from `skills/` and `.cursor/skills/`).
 
@@ -212,6 +214,8 @@ npx hexo g
 ```
 
 Incremental sync only rewrites md when submodule commit changes **and** that slug's HTML changed.
+
+For **Overview** ↔ `paper-with-code-list.md` sync, use [skills/sync-overview-from-list/SKILL.md](../sync-overview-from-list/SKILL.md).
 
 ## Reference
 

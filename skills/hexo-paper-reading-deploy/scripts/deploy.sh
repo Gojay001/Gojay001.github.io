@@ -69,6 +69,9 @@ if [[ "$PULL_SUBMODULE" == true ]]; then
   fi
 fi
 
+echo "==> Sync Overview from paper-with-code-list"
+python3 skills/sync-overview-from-list/scripts/sync-overview-from-list.py
+
 if [[ ! -d node_modules ]]; then
   echo "==> npm install"
   npm install
@@ -102,7 +105,7 @@ fi
 
 if [[ "$SKIP_COMMIT" == false ]]; then
   echo "==> Stage paper-reading changes"
-  git add "$SUBMODULE_PATH" "$POSTS_DIR" 2>/dev/null || true
+  git add "$SUBMODULE_PATH" "$POSTS_DIR" source/_posts/Overview.md source/_posts/.overview-sync-state.json 2>/dev/null || true
   if git diff --staged --quiet; then
     echo "    No staged changes to commit"
   else
@@ -110,8 +113,7 @@ if [[ "$SKIP_COMMIT" == false ]]; then
     git commit -m "$(cat <<'EOF'
 chore: sync paper-reading submodule and bridge posts [skip ci]
 
-Update submodule pointer and/or generated _posts/paper-reading bridge md
-after incremental HTML sync.
+Update submodule pointer, Overview from paper-with-code-list, and/or bridge md after incremental sync.
 EOF
 )"
     if [[ "$PUSH_HEXO" == true ]]; then
