@@ -44,8 +44,8 @@ done
 cd "$ROOT"
 
 if [[ "${CI:-}" == "true" ]]; then
-  git config user.name "github-actions[bot]"
-  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+  git config --global user.name "github-actions[bot]"
+  git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 fi
 
 echo "==> Repo: $ROOT"
@@ -76,7 +76,7 @@ fi
 
 echo "==> hexo clean && hexo generate"
 npx hexo clean
-npx hexo g 2>&1 | tee /tmp/hexo-paper-reading-build.log | rg "paper-reading|ERROR|error" || true
+npx hexo g 2>&1 | tee /tmp/hexo-paper-reading-build.log | grep -E "paper-reading|ERROR|error" || true
 
 echo "==> Verify outputs"
 fail=0
