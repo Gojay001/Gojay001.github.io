@@ -2,7 +2,8 @@
 # Paper-reading → Hexo bridge posts → generate → (commit) → deploy
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "$0")/../../../.." && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+ROOT="$(git -C "$SCRIPT_DIR" rev-parse --show-toplevel)"
 SUBMODULE_PATH="submodule/paper-with-code-skills"
 POSTS_DIR="source/_posts/paper-reading"
 
