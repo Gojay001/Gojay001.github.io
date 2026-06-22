@@ -34,7 +34,8 @@ python3 skills/sync-overview-from-list/scripts/sync-overview-from-list.py
    - Else reuse links already in Overview or list
    - Else if `paper-reading/{slug}.html` or bridge md exists → `[Title](https://gojay.top/paper-reading/{slug}.html)`
 2. **Incremental gate:** `.overview-sync-state.json` stores list content hash; skip if unchanged (unless `--force`)
-3. **Regenerate Overview:** keep front matter + `<!-- more -->`; rebuild `# Contents` (Overview anchor style) + all `##` sections from list
+3. **Normalize TOC anchors** in `paper-with-code-list.md` to Hexo heading ids (Title-Case, e.g. `#Diffusion-Model`, not `#diffusion-model`)
+4. **Regenerate Overview:** keep front matter + `<!-- more -->`; rebuild `# Contents` with the same Hexo anchors + all `##` sections from list
 
 Example Title link (paper-reading):
 
@@ -75,7 +76,7 @@ diff submodule/paper-with-code-skills/paper-with-code-list.md source/_posts/Over
 | Issue | Fix |
 |-------|-----|
 | Title not linked after new HTML | Slug must match Title (e.g. `DDPM` → `ddpm.html`); re-run without `--no-enrich-links` |
-| Overview TOC anchor 404 | Overview uses Title-Case anchors (`#Diffusion-Model`); do not copy lowercase list TOC verbatim |
+| Overview TOC anchor 404 | Run sync (or `--force`); TOC must use Hexo ids (`#Diffusion-Model`). Script upgrades legacy lowercase anchors in list + Overview |
 | Submodule list changed but hexo not updated | Commit list in submodule, bump pointer, run sync on hexo |
 | Script skips | Delete `source/_posts/.overview-sync-state.json` or use `--force` |
 

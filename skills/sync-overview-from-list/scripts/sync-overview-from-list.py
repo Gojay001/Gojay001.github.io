@@ -49,6 +49,8 @@ ANCHOR_MAP = {
 TITLE_LINK_RE = re.compile(r"^\[(?P<label>[^\]]+)\]\((?P<url>[^)]+)\)$")
 TABLE_ROW_RE = re.compile(r"^\|(.+)\|$")
 FRONT_MATTER_END = re.compile(r"(?s)^(---\n.*?\n---\n\n.*?<!-- more -->\n\n)")
+TOC_ANCHOR_RE = re.compile(r"\(#([a-zA-Z0-9-]+)\)")
+HEXO_ANCHOR_VALUES = frozenset(ANCHOR_MAP.values())
 
 
 def norm_title(text: str) -> str:
@@ -170,6 +172,34 @@ def enrich_list_tables(text: str, known_links: dict[str, str]) -> tuple[str, int
     return "\n".join(out), added
 
 
+def to_hexo_anchor(slug: str) -> str:
+    key = slug.lower()
+    if key in ANCHOR_MAP:
+        return ANCHOR_MAP[key]
+    if slug in HEXO_ANCHOR_VALUES:
+        return slug
+    return slug
+
+
+def upgrade_toc_anchors(line: str) -> str:
+    return TOC_ANCHOR_RE.sub(lambda m: f"(#{to_hexo_anchor(m.group(1))})", line)
+
+
+def normalize_list_toc_anchors(list_text: str) -> str:
+    lines = list_text.splitlines()
+    out: list[str] = []
+    in_toc = False
+    for line in lines:
+        if line.startswith("- **AIGC**"):
+            in_toc = True
+        if in_toc and line.startswith("## "):
+            in_toc = False
+        if in_toc:
+            line = upgrade_toc_anchors(line)
+        out.append(line)
+    return "\n".join(out)
+
+
 def extract_toc_lines(list_text: str) -> list[str]:
     toc: list[str] = []
     in_toc = False
@@ -184,12 +214,9 @@ def extract_toc_lines(list_text: str) -> list[str]:
 
 
 def toc_to_overview(toc_lines: list[str]) -> str:
-    def anchor_up(match: re.Match[str]) -> str:
-        slug = match.group(1)
-        return f"(#{ANCHOR_MAP.get(slug, slug)})"
-
     body: list[str] = []
     for line in toc_lines:
+        line = upgrade_toc_anchors(line)
         if line.startswith("- **"):
             body.append(line.replace("  ", "    ", 1) if line.startswith("- **") else line)
         elif line.startswith("  - ["):
@@ -199,7 +226,7 @@ def toc_to_overview(toc_lines: list[str]) -> str:
         elif line.strip() == "- Others" or line.startswith("  - Others"):
             body.append("    - Others")
         else:
-            body.append(re.sub(r"\(#([a-z0-9-]+)\)", anchor_up, line))
+            body.append(line)
     return "# Contents\n---\n" + "\n".join(body) + "\n\n"
 
 
@@ -265,7 +292,7 @@ def main() -> int:
         print(f"overview-sync: skip, overview not found: {OVERVIEW_PATH}", file=sys.stderr)
         return 0
 
-    list_text = LIST_PATH.read_text(encoding="utf-8")
+    list_text = normalize_list_toc_anchors(LIST_PATH.read_text(encoding="utf-8"))
     overview_text = OVERVIEW_PATH.read_text(encoding="utf-8")
     known_links = parse_title_links(overview_text)
     known_links.update(parse_title_links(list_text))

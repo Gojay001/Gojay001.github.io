@@ -134,7 +134,7 @@ function buildPaperWithCodeTaxonomy(content) {
 
     const tocLinkMatch = line.match(/^\s+- \[([^\]]+)\]\(#([^)]+)\)/);
     if (tocLinkMatch && currentTopDomain) {
-      anchorToTopDomain.set(tocLinkMatch[2].trim(), currentTopDomain);
+      anchorToTopDomain.set(tocLinkMatch[2].trim().toLowerCase(), currentTopDomain);
     }
 
     const headingMatch = line.match(/^#{2,3}\s+(.+)$/);

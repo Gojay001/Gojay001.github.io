@@ -28,7 +28,7 @@ skills/hexo-paper-reading-deploy/scripts/deploy.sh --pull-submodule
 
 **Default full flow:** submodule init → **Overview sync** → (optional remote pull) → `hexo clean && hexo g` → verify → commit submodule + `source/_posts/paper-reading/` + Overview if changed → (`git push origin hexo` in CI) → `hexo d -g`.
 
-Overview sync: [skills/sync-overview-from-list/SKILL.md](../sync-overview-from-list/SKILL.md) (runs automatically in `deploy.sh`).
+Overview sync: [skills/sync-overview-from-list/SKILL.md](../sync-overview-from-list/SKILL.md) (runs automatically in `deploy.sh`; normalizes TOC anchors to Hexo ids like `#Diffusion-Model`).
 
 **Script path:** always invoke via `skills/hexo-paper-reading-deploy/scripts/deploy.sh` (repo root resolved with `git rev-parse --show-toplevel`, works from `skills/` and `.cursor/skills/`).
 
