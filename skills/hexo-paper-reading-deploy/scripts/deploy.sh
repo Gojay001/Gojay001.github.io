@@ -116,6 +116,7 @@ EOF
 )"
     if [[ "$PUSH_HEXO" == true ]]; then
       echo "==> Push hexo branch"
+      git pull --rebase origin hexo
       git push origin hexo
     fi
   fi

@@ -126,6 +126,7 @@ npx hexo s
 | CI: `fatal: not in a git directory` | Invoke script via `skills/.../deploy.sh`, not `.cursor/skills/...` with wrong `ROOT` (fixed: `git rev-parse --show-toplevel`) |
 | CI: `Author identity unknown` / exit 2 on `hexo d -g` | CI must set `git config --global user.name/email` (`.deploy_git` is a separate repo) |
 | CI: dispatch succeeded but site unchanged | Early-exit must compare submodule **HEAD** (`git -C submodule rev-parse HEAD`), not parent gitlink |
+| CI: `git push origin hexo` rejected (fetch first) | Concurrent hexo pushes; deploy.sh rebases before push (`git pull --rebase origin hexo`) |
 | CI: `rg: command not found` | Harmless if build continues; deploy.sh uses `grep` on CI runners |
 
 ## Bridge post taxonomy (`source/_posts/paper-reading/`)
