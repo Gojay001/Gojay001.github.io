@@ -58,10 +58,10 @@ echo "==> Submodule init"
 git submodule update --init "$SUBMODULE_PATH"
 
 if [[ "$PULL_SUBMODULE" == true ]]; then
-  OLD_SHA="$(git rev-parse "$SUBMODULE_PATH")"
+  OLD_SHA="$(git -C "$SUBMODULE_PATH" rev-parse HEAD)"
   echo "==> Submodule update --remote"
   git submodule update --remote "$SUBMODULE_PATH"
-  NEW_SHA="$(git rev-parse "$SUBMODULE_PATH")"
+  NEW_SHA="$(git -C "$SUBMODULE_PATH" rev-parse HEAD)"
 
   if [[ "${CI:-}" == "true" && "$OLD_SHA" == "$NEW_SHA" ]]; then
     echo "==> Submodule unchanged ($OLD_SHA), skip build (CI early-exit)"

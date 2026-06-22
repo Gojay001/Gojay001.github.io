@@ -5,7 +5,7 @@ name: Notify blog deploy
 
 on:
   push:
-    branches: [main]
+    branches: [master]
     paths:
       - "paper-reading/**"
       - "paper-with-code-list.md"
