@@ -32,7 +32,9 @@ python3 skills/sync-overview-from-list/scripts/sync-overview-from-list.py
 1. **Enrich links** in `paper-with-code-list.md` Title column (unless `--no-enrich-links`):
    - Keep existing `[Title](url)` cells
    - Else reuse links already in Overview or list
-   - Else if `paper-reading/{slug}.html` or bridge md exists → `[Title](https://gojay.top/paper-reading/{slug}.html)`
+   - Else match `paper-reading/{slug}.html` by Title ↔ slug (e.g. `DDPM` → `ddpm`)
+   - Else match `paper-reading/slug-aliases.json` when list Title ≠ HTML slug (e.g. `SD 1.x` → `sd`)
+   - Else if bridge md exists → same URL pattern
 2. **Incremental gate:** `.overview-sync-state.json` stores list content hash; skip if unchanged (unless `--force`)
 3. **Normalize TOC anchors** in `paper-with-code-list.md` to Hexo heading ids (Title-Case, e.g. `#Diffusion-Model`, not `#diffusion-model`)
 4. **Regenerate Overview:** keep front matter + `<!-- more -->`; rebuild `# Contents` with the same Hexo anchors + all `##` sections from list
@@ -48,7 +50,7 @@ Example Title link (paper-reading):
 | Event | Action |
 |-------|--------|
 | Edit `paper-with-code-list.md` (TOC, rows, conf, code) | Run sync → commit list in **submodule** + Overview on **hexo** |
-| New `paper-reading/{slug}.html` + bridge md | Add row to list (or rely on enrich) → run sync |
+| New `paper-reading/{slug}.html` + bridge md | If list Title ≠ slug, add `paper-reading/slug-aliases.json` → run sync |
 | New Hexo blog post for a list paper | Add `[Title](https://gojay.top/...)` in list Title cell → run sync |
 | CI / deploy skill | `deploy.sh` runs sync after submodule init (before `hexo g`) |
 
@@ -57,6 +59,7 @@ Example Title link (paper-reading):
 | File | Repository |
 |------|------------|
 | `paper-with-code-list.md` | `paper-with-code-skills` |
+| `paper-reading/slug-aliases.json` | `paper-with-code-skills` (when Title ≠ slug) |
 | `source/_posts/Overview.md` | `Gojay001.github.io` (hexo) |
 | `source/_posts/.overview-sync-state.json` | hexo (optional, track for incremental) |
 
@@ -75,7 +78,7 @@ diff submodule/paper-with-code-skills/paper-with-code-list.md source/_posts/Over
 
 | Issue | Fix |
 |-------|-----|
-| Title not linked after new HTML | Slug must match Title (e.g. `DDPM` → `ddpm.html`); re-run without `--no-enrich-links` |
+| Title not linked after new HTML | Slug must match Title (e.g. `DDPM` → `ddpm.html`), or add `paper-reading/slug-aliases.json` (e.g. `"SD 1.x": "sd"`); re-run without `--no-enrich-links` |
 | Overview TOC anchor 404 | Run sync (or `--force`); TOC must use Hexo ids (`#Diffusion-Model`). Script upgrades legacy lowercase anchors in list + Overview |
 | Submodule list changed but hexo not updated | Commit list in submodule, bump pointer, run sync on hexo |
 | Script skips | Delete `source/_posts/.overview-sync-state.json` or use `--force` |

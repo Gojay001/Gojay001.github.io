@@ -17,6 +17,7 @@ OVERVIEW_PATH = ROOT / "source/_posts/Overview.md"
 STATE_PATH = ROOT / "source/_posts/.overview-sync-state.json"
 PAPER_READING_DIR = ROOT / "submodule/paper-with-code-skills/paper-reading"
 BRIDGE_POSTS_DIR = ROOT / "source/_posts/paper-reading"
+ALIASES_PATH = PAPER_READING_DIR / "slug-aliases.json"
 SITE_URL = "https://gojay.top"
 
 ANCHOR_MAP = {
@@ -97,21 +98,37 @@ def parse_title_links(markdown: str) -> dict[str, str]:
     return links
 
 
+def load_title_aliases() -> dict[str, str]:
+    """Map list Title labels (normalized) → paper-reading slug."""
+    if not ALIASES_PATH.is_file():
+        return {}
+    data = json.loads(ALIASES_PATH.read_text(encoding="utf-8"))
+    return {norm_title(k): str(v).strip() for k, v in data.items()}
+
+
 def paper_reading_slugs() -> dict[str, str]:
     slugs: dict[str, str] = {}
+    html_slugs: set[str] = set()
     if PAPER_READING_DIR.is_dir():
         for html in PAPER_READING_DIR.glob("*.html"):
             if html.name == "index.html":
                 continue
             slug = html.stem
-            slugs[norm_title(slug)] = f"{SITE_URL}/paper-reading/{slug}.html"
-            slugs[norm_title(slug.upper())] = slugs[norm_title(slug)]
-    if BRIDGE_POSTS_DIR.is_dir():
-        for md in BRIDGE_POSTS_DIR.glob("*.md"):
-            slug = md.stem
+            html_slugs.add(slug)
             url = f"{SITE_URL}/paper-reading/{slug}.html"
             slugs[norm_title(slug)] = url
             slugs[norm_title(slug.upper())] = url
+    if BRIDGE_POSTS_DIR.is_dir():
+        for md in BRIDGE_POSTS_DIR.glob("*.md"):
+            slug = md.stem
+            html_slugs.add(slug)
+            url = f"{SITE_URL}/paper-reading/{slug}.html"
+            slugs[norm_title(slug)] = url
+            slugs[norm_title(slug.upper())] = url
+    for title_key, slug in load_title_aliases().items():
+        if slug in html_slugs:
+            url = f"{SITE_URL}/paper-reading/{slug}.html"
+            slugs[title_key] = url
     return slugs
 
 
