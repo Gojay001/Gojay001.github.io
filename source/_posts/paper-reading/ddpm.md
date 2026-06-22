@@ -1,6 +1,6 @@
 ---
 title: DDPM — Denoising Diffusion Probabilistic Models
-date: '2026-06-19 09:50:36'
+date: '2026-06-22 12:03:13'
 categories:
   - AIGC
   - Diffusion Model
