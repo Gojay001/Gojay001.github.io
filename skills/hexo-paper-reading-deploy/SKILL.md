@@ -79,7 +79,7 @@ Bot sync commits use subject `... [skip ci]` to avoid redeploy loops. CI sets `g
 
 ## New paper workflow (before calling this skill)
 
-1. In `paper-with-code-skills` repo: generate `{slug}.html` + `assets/{slug}/` (paper-logic-reading skill)
+1. In `paper-with-code-skills` repo: generate `{slug}.html` + `assets/{slug}/` — see [submodule `skills/paper-logic-reading/SKILL.md`](../../submodule/paper-with-code-skills/skills/paper-logic-reading/SKILL.md) (figure extraction, lightbox)
 2. Commit & push submodule
 3. **Then invoke this skill** (with `--pull-submodule`)
 
