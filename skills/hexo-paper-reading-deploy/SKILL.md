@@ -24,12 +24,16 @@ skills/hexo-paper-reading-deploy/scripts/deploy.sh --pull-submodule
 | `--pull-submodule` | Submodule already pushed; pull latest into blog repo |
 | `--local-only` | User wants `hexo g` + verify only, no commit/deploy |
 | `--no-commit` | Deploy without auto-commit staged changes |
+| `--push-hexo` | Push `hexo` after sync commit (default when `CI=true`) |
 
-**Default full flow:** submodule init → (optional remote pull) → `hexo clean && hexo g` → verify → commit submodule + `source/_posts/paper-reading/` if changed → `hexo d -g`.
+**Default full flow:** submodule init → (optional remote pull) → `hexo clean && hexo g` → verify → commit submodule + `source/_posts/paper-reading/` if changed → (`git push origin hexo` in CI) → `hexo d -g`.
+
+**Script path:** always invoke via `skills/hexo-paper-reading-deploy/scripts/deploy.sh` (repo root resolved with `git rev-parse --show-toplevel`, works from `skills/` and `.cursor/skills/`).
 
 ## CI/CD (GitHub Actions)
 
-Workflow: `.github/workflows/hexo-deploy.yml`
+Workflow: `.github/workflows/hexo-deploy.yml`  
+Notify (submodule): `paper-with-code-skills/.github/workflows/notify-blog.yml` (template: `docs/superpowers/templates/notify-blog.yml`)
 
 | Trigger | deploy.sh |
 |---------|-----------|
@@ -37,11 +41,24 @@ Workflow: `.github/workflows/hexo-deploy.yml`
 | push to `hexo` (no `[skip ci]`) | pinned submodule |
 | manual `workflow_dispatch` | optional `--pull-submodule` |
 
-**Secrets (blog repo):** `HEXO_DEPLOY_KEY` (SSH deploy key, write); optional `SUBMODULE_PAT` if submodule private.
+**Secrets — blog repo (`Gojay001.github.io`):**
 
-**Secrets (submodule repo):** `BLOG_REPO_PAT` → copy workflow from `docs/superpowers/templates/notify-blog.yml`.
+| Secret | Where to put | Notes |
+|--------|--------------|-------|
+| `HEXO_DEPLOY_KEY` | Actions Secrets | **Private** key; pairs with Deploy keys (public key, **Allow write access**) |
+| `SUBMODULE_PAT` | Actions Secrets | Only if submodule repo is private |
 
-Bot sync commits include `[skip ci]` to avoid redeploy loops. CI sets `PUSH_HEXO=true` and runs `git push origin hexo` after sync commit.
+**Secrets — submodule repo (`paper-with-code-skills`):**
+
+| Secret | Notes |
+|--------|-------|
+| `BLOG_REPO_PAT` | Fine-grained PAT: target blog repo, **Actions: Read and write** |
+
+**Submodule default branch:** `master` (not `main`).
+
+Bot sync commits use subject `... [skip ci]` to avoid redeploy loops. CI sets `git config --global user.*` (required by `hexo-deployer-git` in `.deploy_git`) and `PUSH_HEXO=true`.
+
+**CI early-exit:** on `--pull-submodule`, compares `git -C submodule rev-parse HEAD` before/after `--remote`; skips build only when submodule HEAD unchanged.
 
 ## Prerequisites
 
@@ -84,7 +101,7 @@ Stage only:
 - `submodule/paper-with-code-skills`
 - `source/_posts/paper-reading/`
 
-Message: `chore: sync paper-reading submodule and bridge posts`
+Message: `chore: sync paper-reading submodule and bridge posts` (CI adds `[skip ci]` to subject)
 
 **Do not commit** unless user asked or this skill's full deploy path runs.
 
@@ -104,7 +121,12 @@ npx hexo s
 | `skip post sync, source not found` | `git submodule update --init` |
 | No new md after submodule update | Check `.sync-state.json` commit; ensure HTML under `paper-reading/` changed |
 | Thumbnail cropped | `thumbnail_fit: contain` on `paper_reading` posts (auto-set by sync) |
-| Deploy auth fails | GitHub SSH/key for `hexo-deployer-git` |
+| Deploy auth fails (local) | GitHub SSH/key for `hexo-deployer-git` |
+| CI: `ssh-private-key argument is empty` | Add **Actions Secret** `HEXO_DEPLOY_KEY` (private key); Deploy keys page only holds public key |
+| CI: `fatal: not in a git directory` | Invoke script via `skills/.../deploy.sh`, not `.cursor/skills/...` with wrong `ROOT` (fixed: `git rev-parse --show-toplevel`) |
+| CI: `Author identity unknown` / exit 2 on `hexo d -g` | CI must set `git config --global user.name/email` (`.deploy_git` is a separate repo) |
+| CI: dispatch succeeded but site unchanged | Early-exit must compare submodule **HEAD** (`git -C submodule rev-parse HEAD`), not parent gitlink |
+| CI: `rg: command not found` | Harmless if build continues; deploy.sh uses `grep` on CI runners |
 
 ## Bridge post taxonomy (`source/_posts/paper-reading/`)
 
@@ -192,5 +214,6 @@ Incremental sync only rewrites md when submodule commit changes **and** that slu
 
 ## Reference
 
-- Design spec: [docs/superpowers/specs/2026-06-17-paper-reading-deploy-design.md](../../docs/superpowers/specs/2026-06-17-paper-reading-deploy-design.md)
+- Paper reading design: [docs/superpowers/specs/2026-06-17-paper-reading-deploy-design.md](../../docs/superpowers/specs/2026-06-17-paper-reading-deploy-design.md)
+- CI/CD design: [docs/superpowers/specs/2026-06-17-hexo-ci-deploy-design.md](../../docs/superpowers/specs/2026-06-17-hexo-ci-deploy-design.md)
 - Sync script: [scripts/paper-reading.js](../../scripts/paper-reading.js)
