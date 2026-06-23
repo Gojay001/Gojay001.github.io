@@ -1,6 +1,6 @@
 ---
 name: hexo-paper-reading-deploy
-description: Runs the full Gojay Hexo blog paper-reading pipeline—submodule sync, incremental bridge-md generation, hexo generate, verify, commit, and hexo deploy. Use when the user invokes this skill, asks to deploy the blog, sync paper-reading, 精读部署, 增量更新精读, 发布博客, or run npx hexo d -g after submodule HTML changes.
+description: Runs the full Gojay Hexo blog paper-reading pipeline—submodule sync, incremental bridge-md generation, hexo generate, verify, commit, and hexo deploy. Bridge post covers in source/_posts/paper-reading/ must use a user-specified thumbnail; if unspecified, ask before deploy. Use when the user invokes this skill, asks to deploy the blog, sync paper-reading, 精读部署, 增量更新精读, 发布博客, or run npx hexo d -g after submodule HTML changes.
 ---
 
 # Hexo Paper-Reading Deploy
@@ -81,7 +81,9 @@ Bot sync commits use subject `... [skip ci]` to avoid redeploy loops. CI sets `g
 
 1. In `paper-with-code-skills` repo: generate `{slug}.html` + `assets/{slug}/` — see [submodule `skills/paper-logic-reading/SKILL.md`](../../submodule/paper-with-code-skills/skills/paper-logic-reading/SKILL.md) (figure extraction, lightbox)
 2. Commit & push submodule
-3. **Then invoke this skill** (with `--pull-submodule`)
+3. Run `npx hexo g` (or invoke this skill with `--local-only`) to create/update `source/_posts/paper-reading/{slug}.md`
+4. **Set bridge post cover** — see [Bridge post cover (thumbnail)](#bridge-post-cover-thumbnail) below
+5. **Then invoke this skill** (with `--pull-submodule`) for full deploy
 
 ## Verify after generate
 
@@ -122,7 +124,9 @@ npx hexo s
 |-------|-----|
 | `skip post sync, source not found` | `git submodule update --init` |
 | No new md after submodule update | Check `.sync-state.json` commit; ensure HTML under `paper-reading/` changed |
-| Thumbnail cropped | `thumbnail_fit: contain` on `paper_reading` posts (auto-set by sync) |
+| Thumbnail cropped | `thumbnail_fit: contain` on `paper_reading` posts |
+| Wrong homepage cover | User must specify cover; see [Bridge post cover (thumbnail)](#bridge-post-cover-thumbnail) |
+| Sync overwrote my thumbnail | Re-apply user-chosen `thumbnail` after `hexo g`; confirm before commit/deploy |
 | Deploy auth fails (local) | GitHub SSH/key for `hexo-deployer-git` |
 | CI: `ssh-private-key argument is empty` | Add **Actions Secret** `HEXO_DEPLOY_KEY` (private key); Deploy keys page only holds public key |
 | CI: `fatal: not in a git directory` | Invoke script via `skills/.../deploy.sh`, not `.cursor/skills/...` with wrong `ROOT` (fixed: `git rev-parse --show-toplevel`) |
@@ -131,9 +135,42 @@ npx hexo s
 | CI: `git push origin hexo` rejected (fetch first) | Concurrent hexo pushes; deploy.sh rebases before push (`git pull --rebase origin hexo`) |
 | CI: `rg: command not found` | Harmless if build continues; deploy.sh uses `grep` on CI runners |
 
+## Bridge post cover (thumbnail)
+
+`source/_posts/paper-reading/{slug}.md` controls the **homepage card cover** via front matter `thumbnail`.
+
+### Rule (mandatory for agents)
+
+| Situation | Action |
+|-----------|--------|
+| User **explicitly** names a cover (e.g. 「deploy 时以 fig2 作为封面」, `thumbnail: .../fig2.png`) | Set that path in `{slug}.md` before commit/deploy |
+| User **does not** specify a cover | **Stop and ask** which image to use — do not guess, do not silently pick the first file in `assets/{slug}/` |
+| User confirms a choice after you list candidates | Write `thumbnail` + `thumbnail_fit: contain`, then proceed with deploy |
+
+### How to ask
+
+List images under `submodule/paper-with-code-skills/paper-reading/assets/{slug}/` (or synced `source/paper-reading/assets/{slug}/`) and prompt, for example:
+
+> 请选择首页封面图：`fig1.jpg` / `fig2.png` / …（默认 sync 会按文件名排序取第一张，**未经你确认不得采用**）
+
+### Front matter format
+
+```yaml
+thumbnail: /paper-reading/assets/{slug}/fig2.png
+thumbnail_fit: contain
+```
+
+Path is site-root URL (same as existing bridge posts like `ddpm.md`, `fm.md`).
+
+### Sync vs manual cover
+
+- `scripts/paper-reading.js` may auto-fill `thumbnail` from the **first image in alphabetical order** under `assets/{slug}/` when **creating** a new bridge md.
+- That default is **not** approval to deploy: treat it as a placeholder until the user confirms or specifies a cover.
+- If incremental/full sync regenerates md and drops a confirmed cover, **re-apply** the user-chosen `thumbnail` before commit/deploy.
+
 ## Bridge post taxonomy (`source/_posts/paper-reading/`)
 
-Each `{slug}.md` is **auto-generated** by `scripts/paper-reading.js`. Taxonomy follows **`submodule/paper-with-code-skills/paper-with-code-list.md`** (same tree as the Paper-with-Code list). Re-run sync after HTML `.meta` or list structure changes — do not hand-edit front matter unless overriding a one-off case.
+Each `{slug}.md` is **auto-generated** by `scripts/paper-reading.js`. Taxonomy follows **`submodule/paper-with-code-skills/paper-with-code-list.md`** (same tree as the Paper-with-Code list). Re-run sync after HTML `.meta` or list structure changes — do not hand-edit categories/tags unless overriding a one-off case. **`thumbnail` is the main hand-edited field** (user-specified cover).
 
 ### Inputs
 
@@ -202,8 +239,8 @@ Always derived from resolved categories — **not** copied verbatim from meta ve
 | `link` | `/paper-reading/{slug}.html` |
 | `paper_reading` | `true` |
 | `excerpt` | First `<p>` in `#feynman` section (≤300 chars) |
-| `thumbnail` | First image under `assets/{slug}/` |
-| `thumbnail_fit` | `contain` |
+| `thumbnail` | **User-specified** cover path; if unset, **ask user** (sync may placeholder: first image under `assets/{slug}/` by filename sort — not deploy-ready without confirmation) |
+| `thumbnail_fit` | `contain` (always with `thumbnail`) |
 | `date` | HTML file mtime |
 
 ### Re-sync after rule or list change
