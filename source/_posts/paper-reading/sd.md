@@ -1,6 +1,6 @@
 ---
 title: SD - Stable Diffusion
-date: '2026-06-23 11:00:38'
+date: '2026-06-19 11:00:38'
 categories:
   - AIGC
   - Diffusion Model

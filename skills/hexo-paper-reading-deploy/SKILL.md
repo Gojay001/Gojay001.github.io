@@ -1,6 +1,6 @@
 ---
 name: hexo-paper-reading-deploy
-description: Runs the full Gojay Hexo blog paper-reading pipeline—submodule sync, incremental bridge-md generation, hexo generate, verify, commit, and hexo deploy. Bridge post covers in source/_posts/paper-reading/ must use a user-specified thumbnail; if unspecified, ask before deploy. Use when the user invokes this skill, asks to deploy the blog, sync paper-reading, 精读部署, 增量更新精读, 发布博客, or run npx hexo d -g after submodule HTML changes.
+description: Runs the full Gojay Hexo blog paper-reading pipeline—submodule sync, incremental bridge-md generation, hexo generate, verify, commit, and hexo deploy. Bridge posts preserve user-set date/title/thumbnail on sync; cover must be user-specified if unset. Use when the user invokes this skill, asks to deploy the blog, sync paper-reading, 精读部署, 增量更新精读, 发布博客, or run npx hexo d -g after submodule HTML changes.
 ---
 
 # Hexo Paper-Reading Deploy
@@ -74,6 +74,8 @@ Bot sync commits use subject `... [skip ci]` to avoid redeploy loops. CI sets `g
 1. **`hexo.on('ready')`** — incremental md sync (`scripts/paper-reading.js`)
    - Submodule commit unchanged → skip (no HTML scan)
    - Commit changed → `git diff --name-status` on `paper-reading/` → only update changed slugs
+   - **Existing** `{slug}.md`: preserve `date`, `title`, `thumbnail`, `thumbnail_fit` (do not reset from HTML mtime)
+   - **New** `{slug}.md`: `date` from HTML file mtime
 2. **`hexo g`** — normal site + `/paper-reading/` index
 3. **`generateAfter`** — copy HTML + `assets/` → `public/paper-reading/`
 
@@ -126,7 +128,8 @@ npx hexo s
 | No new md after submodule update | Check `.sync-state.json` commit; ensure HTML under `paper-reading/` changed |
 | Thumbnail cropped | `thumbnail_fit: contain` on `paper_reading` posts |
 | Wrong homepage cover | User must specify cover; see [Bridge post cover (thumbnail)](#bridge-post-cover-thumbnail) |
-| Sync overwrote my thumbnail | Re-apply user-chosen `thumbnail` after `hexo g`; confirm before commit/deploy |
+| Sync overwrote my thumbnail | Re-apply user-chosen `thumbnail` after `hexo g`; sync now preserves it on existing md |
+| Homepage sort wrong after sync | Set distinct `date` on each bridge post once; incremental sync **must not** change existing `date` |
 | Deploy auth fails (local) | GitHub SSH/key for `hexo-deployer-git` |
 | CI: `ssh-private-key argument is empty` | Add **Actions Secret** `HEXO_DEPLOY_KEY` (private key); Deploy keys page only holds public key |
 | CI: `fatal: not in a git directory` | Invoke script via `skills/.../deploy.sh`, not `.cursor/skills/...` with wrong `ROOT` (fixed: `git rev-parse --show-toplevel`) |
@@ -166,11 +169,45 @@ Path is site-root URL (same as existing bridge posts like `ddpm.md`, `fm.md`).
 
 - `scripts/paper-reading.js` may auto-fill `thumbnail` from the **first image in alphabetical order** under `assets/{slug}/` when **creating** a new bridge md.
 - That default is **not** approval to deploy: treat it as a placeholder until the user confirms or specifies a cover.
-- If incremental/full sync regenerates md and drops a confirmed cover, **re-apply** the user-chosen `thumbnail` before commit/deploy.
+- If incremental/full sync regenerates md and drops a confirmed cover, **re-apply** the user-chosen `thumbnail` before commit/deploy (sync script now preserves `thumbnail` on existing files).
+
+## Bridge post publish date (`date`)
+
+`date` controls **homepage sort order** among same-day posts. Submodule/HTML updates must **not** bump it.
+
+### Rule (mandatory for agents and sync)
+
+| Situation | Action |
+|-----------|--------|
+| **New** bridge post (no `{slug}.md` yet) | Sync may set `date` from HTML file mtime; user may edit to stagger homepage order before deploy |
+| **Incremental / full sync** on **existing** `{slug}.md` | **Keep existing `date`** — `scripts/paper-reading.js` preserves it; agents must not rewrite |
+| Agent manually edits bridge md | Do not change `date` unless user explicitly asks to republish / resort |
+
+### Preserved fields on existing md (auto)
+
+When `{slug}.md` already exists, sync only refreshes taxonomy/excerpt/link from HTML and **retains**:
+
+| Field | Why preserved |
+|-------|----------------|
+| `date` | Homepage publish order |
+| `title` | User overrides (e.g. `SD - Stable Diffusion`) |
+| `thumbnail` / `thumbnail_fit` | User-specified cover |
+
+### First-time date setup (recommended)
+
+Assign intentional staggered times when adding a paper (example):
+
+```yaml
+date: '2026-06-22 16:54:00'   # SD3
+date: '2026-06-22 14:30:00'   # FM
+date: '2026-06-19 11:00:38'   # SD
+```
+
+Do **not** rely on CI/sync timestamps — they collapse to the same minute and scramble homepage order.
 
 ## Bridge post taxonomy (`source/_posts/paper-reading/`)
 
-Each `{slug}.md` is **auto-generated** by `scripts/paper-reading.js`. Taxonomy follows **`submodule/paper-with-code-skills/paper-with-code-list.md`** (same tree as the Paper-with-Code list). Re-run sync after HTML `.meta` or list structure changes — do not hand-edit categories/tags unless overriding a one-off case. **`thumbnail` is the main hand-edited field** (user-specified cover).
+Each `{slug}.md` is **auto-generated** by `scripts/paper-reading.js`. Taxonomy follows **`submodule/paper-with-code-skills/paper-with-code-list.md`** (same tree as the Paper-with-Code list). Re-run sync after HTML `.meta` or list structure changes — do not hand-edit categories/tags unless overriding a one-off case. **Hand-edited fields:** `date`, `title`, `thumbnail` (see sections above).
 
 ### Inputs
 
@@ -241,7 +278,7 @@ Always derived from resolved categories — **not** copied verbatim from meta ve
 | `excerpt` | First `<p>` in `#feynman` section (≤300 chars) |
 | `thumbnail` | **User-specified** cover path; if unset, **ask user** (sync may placeholder: first image under `assets/{slug}/` by filename sort — not deploy-ready without confirmation) |
 | `thumbnail_fit` | `contain` (always with `thumbnail`) |
-| `date` | HTML file mtime |
+| `date` | **New post:** HTML file mtime. **Existing post:** **unchanged** on incremental/full sync (user sets once for homepage order) |
 
 ### Re-sync after rule or list change
 

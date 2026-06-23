@@ -8,6 +8,9 @@ const yaml = require('js-yaml');
 
 const SYNC_STATE_FILE = '.sync-state.json';
 
+/** Existing bridge md: keep these fields on incremental/full sync (do not overwrite from HTML mtime). */
+const PRESERVED_POST_FIELDS = ['date', 'title', 'thumbnail', 'thumbnail_fit'];
+
 function getPaperReadingConfig(hexo) {
   const cfg = hexo.config.paper_reading || {};
   return {
@@ -371,6 +374,39 @@ function scanPapers(hexo) {
     .sort((a, b) => b.mtime.localeCompare(a.mtime));
 }
 
+function readExistingPostFrontMatter(outPath) {
+  if (!fs.existsSync(outPath)) {
+    return null;
+  }
+
+  try {
+    const raw = fs.readFileSync(outPath, 'utf8');
+    const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    if (!match) {
+      return null;
+    }
+    const data = yaml.load(match[1]);
+    return data && typeof data === 'object' ? data : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+function applyPreservedPostFields(paper, existing) {
+  if (!existing) {
+    return paper;
+  }
+
+  for (const key of PRESERVED_POST_FIELDS) {
+    const value = existing[key];
+    if (value != null && value !== '') {
+      paper[key] = value;
+    }
+  }
+
+  return paper;
+}
+
 function renderPostMarkdown(paper) {
   const frontMatter = {
     title: paper.title,
@@ -384,7 +420,7 @@ function renderPostMarkdown(paper) {
 
   if (paper.thumbnail) {
     frontMatter.thumbnail = paper.thumbnail;
-    frontMatter.thumbnail_fit = 'contain';
+    frontMatter.thumbnail_fit = paper.thumbnail_fit || 'contain';
   }
 
   const yamlBody = yaml.dump(frontMatter, { lineWidth: -1, noRefs: true }).trimEnd();
@@ -513,8 +549,10 @@ function writePostMd(hexo, slug) {
   }
 
   const paper = parsePaperMetadata(hexo, htmlPath, slug);
-  const content = renderPostMarkdown(paper);
   const outPath = path.join(postsDir, `${slug}.md`);
+  const existing = readExistingPostFrontMatter(outPath);
+  applyPreservedPostFields(paper, existing);
+  const content = renderPostMarkdown(paper);
 
   if (fs.existsSync(outPath) && fs.readFileSync(outPath, 'utf8') === content) {
     return false;

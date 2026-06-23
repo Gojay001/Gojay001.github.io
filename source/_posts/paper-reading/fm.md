@@ -1,6 +1,6 @@
 ---
 title: FM — Flow Matching for Generative Modeling
-date: '2026-06-23 11:00:38'
+date: '2026-06-22 11:00:38'
 categories:
   - AIGC
   - Diffusion Model
