@@ -99,6 +99,7 @@ tags: [DL, Overview]
 | FLUX.2 | [FLUX.2: Frontier Visual Intelligence](https://bfl.ai/blog/flux-2) | BFL(2025) | [PyTorch](https://github.com/black-forest-labs/flux2) |
 | GPT-Image-1.5 | [The new ChatGPT Images is here](https://openai.com/index/new-chatgpt-images-is-here/) | OpenAI(2025) | [code] |
 | Nano Banana Pro | [Introducing Nano Banana Pro](https://blog.google/innovation-and-ai/products/nano-banana-pro/) | Google(2025) | [code] |
+| [ChordEdit](https://gojay.top/paper-reading/chordedit.html) | [ChordEdit: One-Step Low-Energy Transport for Image Editing](https://arxiv.org/abs/2602.19083) | arXiv(2026) / CVPR(2026) | [PyTorch](https://github.com/ChordEdit/ChordEdit) |
 | Nano Banana 2 | [Nano Banana 2: Google's latest AI image generation model](https://blog.google/innovation-and-ai/technology/ai/nano-banana-2/) | Google(2026) | [code] |
 | Qwen-Image-2.0 | [Qwen-Image-2.0 Technical Report](https://arxiv.org/abs/2605.10730) | arXiv(2026) | [PyTorch](https://github.com/QwenLM/Qwen-Image) |
 | GPT-Image-2 | [Introducing ChatGPT Images 2.0](https://openai.com/index/introducing-chatgpt-images-2-0/) | OpenAI(2026) | [code] |
@@ -106,7 +107,7 @@ tags: [DL, Overview]
 | [i1](https://zlab-princeton.github.io/i1/) | [i1: A Simple and Fully Open Recipe for Strong Text-to-Image Models](https://arxiv.org/abs/2606.11289) | arXiv(2026) | [PyTorch](https://github.com/zlab-princeton/i1) |
 | [MiniT2I](https://peppaking8.github.io/#/post/minit2i) | [MiniT2I: A Minimalist Baseline for Text-to-Image Generation](https://peppaking8.github.io/#/post/minit2i) | blog(2026) | [PyTorch](https://github.com/Hope7Happiness/minit2i-torch) |
 
-> More implementation for Diffusion Models can be found in [Awesome-Diffusion-Models](https://github.com/diff-usion/Awesome-Diffusion-Models).
+> More leaderboard for AIGC can be found in [Artificial-Analysis](https://artificialanalysis.ai/image/leaderboard/text-to-image).
 
 ## AIGC-Applications
 
