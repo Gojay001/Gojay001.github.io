@@ -11,7 +11,7 @@ tags:
 link: /paper-reading/fancyvideo.html
 paper_reading: true
 excerpt: '痛点：AnimateDiff 等 T2V 把同一段 text embedding 复制到每一帧做 spatial cross-attention → [verb] 关注区几乎不变 → 动作弱、长视频更明显。'
-thumbnail: /paper-reading/assets/fancyvideo/fig1.jpg
+thumbnail: /paper-reading/assets/fancyvideo/fig2.png
 thumbnail_fit: contain
 ---
 
