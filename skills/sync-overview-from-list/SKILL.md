@@ -11,6 +11,8 @@ Cursor loads via symlink: `.cursor/skills` → `../skills`.
 **Single source of truth:** `submodule/paper-with-code-skills/paper-with-code-list.md`  
 **Blog mirror:** `source/_posts/Overview.md` (Hexo front matter preserved)
 
+**Row order:** within each list section table, rows with an arXiv link in the Paper column must be sorted by **arxiv_id ascending** (`YYYY.NNNNN`). Rows without arXiv stay after arxiv-linked rows. When editing the list, insert at the correct slot — do not append unless it is the newest arxiv_id in that section.
+
 Invoke this skill → **run the sync script immediately**.
 
 ## Auto-run
