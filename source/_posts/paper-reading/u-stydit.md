@@ -11,7 +11,7 @@ tags:
 link: /paper-reading/u-stydit.html
 paper_reading: true
 excerpt: 任务：给定内容图 + 风格图，生成超高画质艺术风格化结果——结构跟内容、笔触跟风格，且无伪影/不和谐纹理。
-thumbnail: /paper-reading/assets/u-stydit/fig1.jpg
+thumbnail: /paper-reading/assets/u-stydit/fig3.jpg
 thumbnail_fit: contain
 ---
 
