@@ -1,7 +1,7 @@
 ---
 title: Overview
 top: 10
-thumbnail: /gallery/thumbnails/DL.jpg
+thumbnail: /gallery/thumbnails/overview.png
 date: 2020-04-01 10:32:41
 categories:
     - CV
