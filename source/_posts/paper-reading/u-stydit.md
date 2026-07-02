@@ -1,5 +1,5 @@
 ---
-title: U-StyDiT — 超高画质 DiT 艺术风格迁移
+title: U-StyDiT — Ultra-high Quality Artistic Style Transfer Using Diffusion Transformers
 date: '2026-07-02 12:36:04'
 categories:
   - AIGC
