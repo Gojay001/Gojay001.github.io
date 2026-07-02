@@ -2,6 +2,7 @@
 title: Overview
 top: 10
 thumbnail: /gallery/thumbnails/overview.png
+thumbnail_fit: contain
 date: 2020-04-01 10:32:41
 categories:
     - CV
