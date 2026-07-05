@@ -1,5 +1,5 @@
 ---
-title: SD 3 — Scaling Rectified Flow Transformers
+title: SD 3 — Scaling Rectified Flow Transformers for High-Resolution Image Synthesis
 date: '2026-06-23 11:00:38'
 categories:
   - AIGC

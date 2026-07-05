@@ -11,7 +11,7 @@ tags:
 link: /paper-reading/mofu.html
 paper_reading: true
 excerpt: 任务：多主体视频生成——给定文本 + 多张参考图，生成多主体一致、尺度自然的视频。
-thumbnail: /paper-reading/assets/mofu/fig1.jpg
+thumbnail: /paper-reading/assets/mofu/fig2.jpg
 thumbnail_fit: contain
 ---
 

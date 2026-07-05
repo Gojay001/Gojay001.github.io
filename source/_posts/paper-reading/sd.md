@@ -1,5 +1,5 @@
 ---
-title: SD - Stable Diffusion
+title: Stable Diffusion / LDM — High-Resolution Image Synthesis with Latent Diffusion Models
 date: '2026-06-19 11:00:38'
 categories:
   - AIGC

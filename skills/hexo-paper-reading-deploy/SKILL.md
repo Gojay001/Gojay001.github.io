@@ -171,6 +171,16 @@ Path is site-root URL (same as existing bridge posts like `ddpm.md`, `fm.md`).
 - That default is **not** approval to deploy: treat it as a placeholder until the user confirms or specifies a cover.
 - If incremental/full sync regenerates md and drops a confirmed cover, **re-apply** the user-chosen `thumbnail` before commit/deploy (sync script now preserves `thumbnail` on existing files).
 
+## Bridge post title (`title`)
+
+Bridge `{slug}.md` **`title`** must match HTML **`<h1><a>`** — full **English** paper title (`{ShortName} — {arXiv title}`). No Chinese subtitles; no agent abbreviations.
+
+| Situation | Action |
+|-----------|--------|
+| **New** post | `paper-reading.js` reads `h1` first (fallback `<title>` minus suffix) |
+| **Existing** md | Sync preserves `title`; verify it still matches `h1` when publishing |
+| Mismatch | Fix md to match submodule `h1`; fix HTML `<title>`/`h1` if Chinese or shortened |
+
 ## Bridge post publish date (`date`)
 
 `date` controls **homepage sort order** among same-day posts. Submodule/HTML updates must **not** bump it.
@@ -190,7 +200,7 @@ When `{slug}.md` already exists, sync only refreshes taxonomy/excerpt/link from 
 | Field | Why preserved |
 |-------|----------------|
 | `date` | Homepage publish order |
-| `title` | User overrides (e.g. `SD - Stable Diffusion`) |
+| `title` | Full English paper title (must match HTML `h1`; preserved on sync) |
 | `thumbnail` / `thumbnail_fit` | User-specified cover |
 
 ### First-time date setup (recommended)
@@ -214,7 +224,8 @@ Each `{slug}.md` is **auto-generated** by `scripts/paper-reading.js`. Taxonomy f
 | Source | Field | Example (ddpm) |
 |--------|-------|----------------|
 | HTML `<div class="meta">` | Subcategory hint (2nd ` · ` segment) | `Diffusion Model` |
-| HTML `<title>` | Paper title / acronym | `DDPM — Denoising Diffusion Probabilistic Models` |
+| HTML `<h1><a>` | **Canonical bridge `title`** — full English paper title | `MoFu — Scale-Aware Modulation and Fourier Fusion for Multi-Subject Video Generation` |
+| HTML `<title>` | Same English as `h1` + ` · 逻辑精读` suffix | Must not use Chinese subtitles |
 | `paper-with-code-list.md` | Top domain + section + paper table | `AIGC` → `## Diffusion Model` → row `DDPM` |
 
 Meta line format (segment 1 is boilerplate, segment 3+ is venue — ignored for taxonomy):

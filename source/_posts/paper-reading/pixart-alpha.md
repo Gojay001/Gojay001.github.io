@@ -1,5 +1,5 @@
 ---
-title: PixArt-α — Fast Training DiT for T2I
+title: PixArt-α — Fast Training of Diffusion Transformer for Photorealistic Text-to-Image Synthesis
 date: '2026-06-30 10:00:00'
 categories:
   - AIGC

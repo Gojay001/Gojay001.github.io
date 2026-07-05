@@ -1,5 +1,5 @@
 ---
-title: PixArt-δ — Fast and Controllable Image Generation with LCM
+title: PixArt-δ — Fast and Controllable Image Generation with Latent Consistency Models
 date: '2026-06-30 10:30:00'
 categories:
   - AIGC

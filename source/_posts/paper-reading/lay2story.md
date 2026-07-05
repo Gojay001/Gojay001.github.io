@@ -1,5 +1,5 @@
 ---
-title: Lay2Story — Layout-Togglable Story Generation
+title: Lay2Story — Extending Diffusion Transformers for Layout-Togglable Story Generation
 date: '2026-07-03 08:41:03'
 categories:
   - AIGC

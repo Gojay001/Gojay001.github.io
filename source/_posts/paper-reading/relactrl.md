@@ -1,5 +1,5 @@
 ---
-title: RelaCtrl — Relevance-Guided Efficient Control for DiT
+title: RelaCtrl — Relevance-Guided Efficient Control for Diffusion Transformers
 date: '2026-07-01 12:10:57'
 categories:
   - AIGC

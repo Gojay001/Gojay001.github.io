@@ -1,5 +1,5 @@
 ---
-title: Qihoo-T2X — Proxy-Tokenized DiT for Text-to-Any-Task
+title: Qihoo-T2X — An Efficient Proxy-Tokenized Diffusion Transformer for Text-to-Any-Task
 date: '2026-07-03 07:16:05'
 categories:
   - AIGC

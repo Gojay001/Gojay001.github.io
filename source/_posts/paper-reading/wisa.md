@@ -1,5 +1,5 @@
 ---
-title: WISA — World Simulator Assistant
+title: WISA — World Simulator Assistant for Physics-Aware Text-to-Video Generation
 date: '2026-07-01 11:30:36'
 categories:
   - AIGC

@@ -1,5 +1,5 @@
 ---
-title: Wan2.1 — Open and Advanced Large-Scale Video Generative Models
+title: Wan — Open and Advanced Large-Scale Video Generative Models (Wan2.1)
 date: '2026-06-23 18:00:00'
 categories:
   - AIGC

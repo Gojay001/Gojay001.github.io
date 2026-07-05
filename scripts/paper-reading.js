@@ -45,6 +45,11 @@ function resolveSyncStatePath(hexo) {
 }
 
 function parseTitleFromHtmlContent(html, titleSuffix) {
+  const h1Match = html.match(/<h1[^>]*>\s*<a[^>]*>([^<]*)<\/a>/is);
+  if (h1Match) {
+    return h1Match[1].trim();
+  }
+
   const match = html.match(/<title[^>]*>([^<]*)<\/title>/i);
   if (!match) {
     return '';

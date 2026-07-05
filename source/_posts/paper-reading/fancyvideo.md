@@ -1,5 +1,5 @@
 ---
-title: FancyVideo — Cross-frame Textual Guidance
+title: FancyVideo — Towards Dynamic and Consistent Video Generation via Cross-frame Textual Guidance
 date: '2026-07-01 10:24:45'
 categories:
   - AIGC
