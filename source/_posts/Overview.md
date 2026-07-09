@@ -25,6 +25,8 @@ tags: [DL, Overview]
     - [Applications](#AIGC-Applications)
         - [Face Editing](#Face-Editing)
         - [Face Swapping](#Face-Swapping)
+- **Agent**
+    - [Agentic Image Generation](#Agentic-Image-Generation)
 - **LLM / VLM** (Large Language Model / Vision-Language Model)
     - [Transformer](#Attention-or-Transformer)
     - [ViT](#Vision-Transformer)
@@ -169,6 +171,14 @@ tags: [DL, Overview]
 | DiffFace | [DiffFace: Diffusion-based Face Swapping with Facial Guidance](https://arxiv.org/abs/2212.13344) | arXiv(2022) / PR(2025) | [PyTorch](https://github.com/hxngiee/DiffFace) |
 | DiffSwap | [DiffSwap: High-Fidelity and Controllable Face Swapping via 3D-Aware Masked Diffusion](https://openaccess.thecvf.com/content/CVPR2023/papers/Zhao_DiffSwap_High-Fidelity_and_Controllable_Face_Swapping_via_3D-Aware_Masked_Diffusion_CVPR_2023_paper.pdf) | CVPR(2023) | [PyTorch](https://github.com/wl-zhao/DiffSwap) |
 | DreamID | [DreamID: High-Fidelity and Fast diffusion-based Face Swapping via Triplet ID Group Learning](https://arxiv.org/abs/2504.14509) | SIGGRAPH Asia(2025) | [GitHub](https://github.com/superhero-7/DreamID) |
+
+---
+
+## Agentic Image Generation
+
+| Title | Paper | Conf | Code |
+|:--------|:--------:|:--------:|:--------:|
+| [Qwen-Image-Agent](https://gojay.top/paper-reading/qwen-image-agent.html) | [Qwen-Image-Agent: Bridging the Context Gap in Real-World Image Generation](https://arxiv.org/abs/2606.26907) | arXiv(2026) | [code] |
 
 ---
 
