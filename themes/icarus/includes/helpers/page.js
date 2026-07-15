@@ -100,7 +100,7 @@ module.exports = function (hexo) {
 
     hexo.extend.helper.register('get_thumbnail_class', function (post, ...extraClasses) {
         const classes = ['thumbnail'];
-        if (post.thumbnail_fit === 'contain' || post.paper_reading) {
+        if (post.thumbnail_fit === 'contain' || post.paper_reading || post.research) {
             classes.push('thumbnail-contain');
         }
         for (const extra of extraClasses) {

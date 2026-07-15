@@ -52,9 +52,9 @@
             </div>
         </div>
         <% } %>
-        <% if (!index && post.paper_reading && post.link) { %>
+        <% if (!index && post.link && (post.paper_reading || post.research)) { %>
         <div class="notification is-info is-light" style="margin-bottom: 1rem;">
-            <a href="<%- url_for(post.link) %>"><i class="fas fa-external-link-alt"></i>&nbsp;阅读完整精读页面 →</a>
+            <a href="<%- url_for(post.link) %>"><i class="fas fa-external-link-alt"></i>&nbsp;<%= post.research ? '阅读完整研究页 →' : '阅读完整精读页面 →' %></a>
         </div>
         <% } %>
         <div class="content">

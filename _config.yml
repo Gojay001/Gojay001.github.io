@@ -131,6 +131,16 @@ paper_reading:
   index_subtitle: Triple-column logic annotations · paper-logic-reading skill
   sync_posts: true
 
+# Research wiki (ARIS research HTML → static deploy)
+research_wiki:
+  source_dir: submodule/paper-with-code-skills/research/wiki
+  url_path: research
+  index_title: Research
+  index_subtitle: ARIS research wiki · literature maps & gap analysis
+  pages:
+    - file: ECOMMERCE_VIDEO.html
+      title: 电商视频生成：任务版图、技术路线与研究空白
+
 # Additional
 jsonContent:
   meta: false
