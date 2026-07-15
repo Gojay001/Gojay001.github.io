@@ -1,3 +1,4 @@
 [submodule "submodule/paper-with-code-skills"]
 	path = submodule/paper-with-code-skills
 	url = https://github.com/Gojay001/paper-with-code-skills
+	branch = master
