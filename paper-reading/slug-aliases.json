@@ -1,0 +1,14 @@
+{
+  "SD 1.x": "sd",
+  "SD 3": "sd3",
+  "ChordEdit": "chordedit",
+  "ControlNet": "controlnet",
+  "CogVideoX": "cogvideox",
+  "Wan2.1": "wan21",
+  "PixArt-α": "pixart-alpha",
+  "PixArt-δ": "pixart-delta",
+  "FancyVideo": "fancyvideo",
+  "Lay2Story": "lay2story",
+  "Qihoo-T2X": "qihoo-t2x",
+  "U-StyDiT": "u-stydit"
+}
