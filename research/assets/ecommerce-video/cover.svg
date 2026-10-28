@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="55%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0b3b4a"/>
+    </linearGradient>
+    <linearGradient id="head" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="48" y="48" width="1504" height="904" rx="20" fill="#111827" stroke="#334155" stroke-width="2"/>
+  <text x="80" y="110" fill="#e2e8f0" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">电商视频生成 · 可复用机制</text>
+  <text x="80" y="148" fill="#94a3b8" font-family="Arial, Helvetica, sans-serif" font-size="18">Reusable Mechanisms for E-Commerce Video Generation</text>
+
+  <!-- header -->
+  <rect x="72" y="180" width="1456" height="56" rx="8" fill="url(#head)"/>
+  <text x="92" y="216" fill="#041016" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">机制</text>
+  <text x="320" y="216" fill="#041016" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">来源</text>
+  <text x="680" y="216" fill="#041016" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">面向电商的迁移方式</text>
+  <text x="1200" y="216" fill="#041016" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">主要风险</text>
+
+  <!-- rows -->
+  <g font-family="Arial, Helvetica, sans-serif" font-size="15">
+    <!-- row 1 -->
+    <rect x="72" y="244" width="1456" height="88" fill="#1e293b"/>
+    <text x="92" y="278" fill="#f8fafc" font-weight="700">身份分频</text>
+    <text x="320" y="278" fill="#cbd5e1">ConsisID / InnoAds / ProductConsistency</text>
+    <text x="680" y="278" fill="#e2e8f0">低频几何 · 中频材质 · 高频 Logo/OCR</text>
+    <text x="680" y="302" fill="#e2e8f0">分路编码、注入与评价</text>
+    <text x="1200" y="278" fill="#fca5a5">频率≠语义属性一一对应</text>
+
+    <!-- row 2 -->
+    <rect x="72" y="332" width="1456" height="88" fill="#162032"/>
+    <text x="92" y="366" fill="#f8fafc" font-weight="700">多视图参考银行</text>
+    <text x="320" y="366" fill="#cbd5e1">ConsID-Gen / 3DreamBooth</text>
+    <text x="680" y="366" fill="#e2e8f0">大视角查询最近真实参考</text>
+    <text x="680" y="390" fill="#e2e8f0">减少虚构背面</text>
+    <text x="1200" y="366" fill="#fca5a5">详情图无标定 · 光照不一致</text>
+
+    <!-- row 3 -->
+    <rect x="72" y="420" width="1456" height="88" fill="#1e293b"/>
+    <text x="92" y="454" fill="#f8fafc" font-weight="700">身份—动作—相机解耦</text>
+    <text x="320" y="454" fill="#cbd5e1">MotionCtrl / CameraCtrl / DreamActor-H1</text>
+    <text x="680" y="454" fill="#e2e8f0">分开控制真实性、运动与镜头</text>
+    <text x="1200" y="454" fill="#fca5a5">三路条件在 DiT 中竞争</text>
+
+    <!-- row 4 -->
+    <rect x="72" y="508" width="1456" height="88" fill="#162032"/>
+    <text x="92" y="542" fill="#f8fafc" font-weight="700">时空区域路由</text>
+    <text x="320" y="542" fill="#cbd5e1">DreamActor-H1 / HunyuanCustom / PLACID</text>
+    <text x="680" y="542" fill="#e2e8f0">商品/人物/Logo/背景绑定时空 tube</text>
+    <text x="1200" y="542" fill="#fca5a5">遮挡形变使 mask 不稳</text>
+
+    <!-- row 5 -->
+    <rect x="72" y="596" width="1456" height="88" fill="#1e293b"/>
+    <text x="92" y="630" fill="#f8fafc" font-weight="700">Cross-pair 数据</text>
+    <text x="320" y="630" fill="#cbd5e1">OpenS2V / Phantom-Data / Saber</text>
+    <text x="680" y="630" fill="#e2e8f0">同 SKU 跨背景/视角配对</text>
+    <text x="680" y="654" fill="#e2e8f0">打破白底图与场景纠缠</text>
+    <text x="1200" y="630" fill="#fca5a5">相似 SKU 可能错误合并</text>
+
+    <!-- row 6 -->
+    <rect x="72" y="684" width="1456" height="88" fill="#162032"/>
+    <text x="92" y="718" fill="#f8fafc" font-weight="700">生成后商业 critic</text>
+    <text x="320" y="718" fill="#cbd5e1">E-VAds / AD-MIR / ProductConsistency</text>
+    <text x="680" y="718" fill="#e2e8f0">检查卖点、OCR、SKU、品牌、自然度</text>
+    <text x="1200" y="718" fill="#fca5a5">reward hacking · 评价偏差</text>
+
+    <!-- row 7 -->
+    <rect x="72" y="772" width="1456" height="88" fill="#1e293b"/>
+    <text x="92" y="806" fill="#f8fafc" font-weight="700">真实—生成混合</text>
+    <text x="320" y="806" fill="#cbd5e1">AutoCut / InsertAnywhere / SimInsert</text>
+    <text x="680" y="806" fill="#e2e8f0">高风险区保真 · 背景/转场生成</text>
+    <text x="1200" y="806" fill="#fca5a5">易成贡献不清的工程系统</text>
+  </g>
+
+  <text x="80" y="920" fill="#64748b" font-family="Arial, Helvetica, sans-serif" font-size="14">Source: research/wiki/ECOMMERCE_VIDEO · §3 可复用机制</text>
+</svg>
