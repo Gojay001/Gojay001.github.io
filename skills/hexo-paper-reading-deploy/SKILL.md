@@ -6,7 +6,7 @@ description: Runs the full Gojay Hexo blog paper-reading pipeline—submodule sy
 # Hexo Paper-Reading Deploy
 
 Canonical path: `skills/hexo-paper-reading-deploy/` (agent-agnostic).  
-Cursor loads via symlink: `.cursor/skills` → `../skills`.
+Agents load via `.agents/skills/` (per-skill links to `skills/` and the submodule).
 
 Invoke this skill → **run the deploy script immediately** (do not only describe steps).
 
@@ -30,7 +30,7 @@ skills/hexo-paper-reading-deploy/scripts/deploy.sh --pull-submodule
 
 Overview sync: [skills/sync-overview-from-list/SKILL.md](../sync-overview-from-list/SKILL.md) (runs automatically in `deploy.sh`; normalizes TOC anchors to Hexo ids like `#Diffusion-Model`).
 
-**Script path:** always invoke via `skills/hexo-paper-reading-deploy/scripts/deploy.sh` (repo root resolved with `git rev-parse --show-toplevel`, works from `skills/` and `.cursor/skills/`).
+**Script path:** always invoke via `skills/hexo-paper-reading-deploy/scripts/deploy.sh` (repo root resolved with `git rev-parse --show-toplevel`, works from `skills/` and `.agents/skills/`).
 
 ## CI/CD (GitHub Actions)
 
@@ -132,7 +132,7 @@ npx hexo s
 | Homepage sort wrong after sync | Set distinct `date` on each bridge post once; incremental sync **must not** change existing `date` |
 | Deploy auth fails (local) | GitHub SSH/key for `hexo-deployer-git` |
 | CI: `ssh-private-key argument is empty` | Add **Actions Secret** `HEXO_DEPLOY_KEY` (private key); Deploy keys page only holds public key |
-| CI: `fatal: not in a git directory` | Invoke script via `skills/.../deploy.sh`, not `.cursor/skills/...` with wrong `ROOT` (fixed: `git rev-parse --show-toplevel`) |
+| CI: `fatal: not in a git directory` | Invoke script via `skills/.../deploy.sh`, not `.agents/skills/...` with wrong `ROOT` (fixed: `git rev-parse --show-toplevel`) |
 | CI: `Author identity unknown` / exit 2 on `hexo d -g` | CI must set `git config --global user.name/email` (`.deploy_git` is a separate repo) |
 | CI: dispatch succeeded but site unchanged | Early-exit must compare submodule **HEAD** (`git -C submodule rev-parse HEAD`), not parent gitlink |
 | CI: `git push origin hexo` rejected (fetch first) | Concurrent hexo pushes; deploy.sh rebases before push (`git pull --rebase origin hexo`) |

@@ -6,7 +6,7 @@ description: Keeps paper-with-code-list.md and Overview.md in sync—TOC, catego
 # Sync Overview from List
 
 Canonical path: `skills/sync-overview-from-list/`  
-Cursor loads via symlink: `.cursor/skills` → `../skills`.
+Agents load via `.agents/skills/` (per-skill links to `skills/` and the submodule).
 
 **Single source of truth:** `submodule/paper-with-code-skills/paper-with-code-list.md`  
 **Blog mirror:** `source/_posts/Overview.md` (Hexo front matter preserved)

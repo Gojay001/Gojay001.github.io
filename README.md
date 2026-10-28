@@ -44,8 +44,8 @@
 │   └── hexo-paper-reading-deploy/
 │       ├── SKILL.md
 │       └── scripts/deploy.sh      # 一键同步 + 构建 + 部署
-├── .cursor/
-│   └── skills -> ../skills        # Cursor 软链接
+├── .agents/
+│   └── skills/                    # 多 agent 统一 skill 入口（本仓库 + 子模块逐 skill 软链）
 ├── docs/
 │   └── superpowers/specs/
 │       └── 2026-06-17-paper-reading-deploy-design.md
@@ -197,9 +197,9 @@ npx hexo s
 
 ### 5.2 通过 Skill 一键部署
 
-Skill 路径：`skills/hexo-paper-reading-deploy/`（Cursor 通过 `.cursor/skills` 软链接加载）。
+Skill 路径：`skills/hexo-paper-reading-deploy/`（各 agent 通过 `.agents/skills` 软链接加载）。
 
-在 Cursor 中调用该 skill，或手动执行：
+在任意 agent 中调用该 skill，或手动执行：
 
 ```bash
 chmod +x skills/hexo-paper-reading-deploy/scripts/deploy.sh
