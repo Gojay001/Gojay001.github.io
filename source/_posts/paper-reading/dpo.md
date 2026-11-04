@@ -1,6 +1,6 @@
 ---
 title: 'DPO — Direct Preference Optimization: Your Language Model is Secretly a Reward Model'
-date: '2026-11-04 13:09:32'
+date: '2026-11-04 13:09:34'
 categories:
   - Agent
   - Agentic RL
