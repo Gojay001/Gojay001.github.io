@@ -55,6 +55,7 @@ Example Title link (paper-reading):
 | New `paper-reading/{slug}.html` + bridge md | If list Title ≠ slug, add `paper-reading/slug-aliases.json` → run sync |
 | New Hexo blog post for a list paper | Add `[Title](https://gojay.top/...)` in list Title cell → run sync |
 | CI / deploy skill | `deploy.sh` runs sync after submodule init (before `hexo g`) |
+| Submodule pushed to `master` | Wait for `notify-blog` → parent `hexo-deploy.yml`; then `git pull --rebase origin hexo` before local edits |
 
 ## Commit rules
 
@@ -65,7 +66,7 @@ Example Title link (paper-reading):
 | `source/_posts/Overview.md` | `Gojay001.github.io` (hexo) |
 | `source/_posts/.overview-sync-state.json` | hexo (optional, track for incremental) |
 
-If enrich modifies the list inside submodule, **commit & push submodule first**, then update gitlink on hexo.
+If enrich modifies the list inside submodule, **commit & push submodule first**. The submodule push triggers the parent workflow, which updates the gitlink, bridge posts, and Overview automatically. Pull the parent before committing further parent changes; do not duplicate the bot commit.
 
 ## Verify
 

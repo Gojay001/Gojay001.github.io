@@ -62,6 +62,25 @@ Bot sync commits use subject `... [skip ci]` to avoid redeploy loops. CI sets `g
 
 **CI early-exit:** on `--pull-submodule`, compares `git -C submodule rev-parse HEAD` before/after `--remote`; skips build only when submodule HEAD unchanged.
 
+## Submodule push → parent auto-update
+
+Pushing `paper-with-code-skills` to `master` with changes under `paper-reading/**` or `paper-with-code-list.md` triggers this chain:
+
+1. `notify-blog.yml` sends `repository_dispatch` (`paper-reading-updated`) to the blog repo.
+2. `hexo-deploy.yml` runs `deploy.sh --pull-submodule`.
+3. The workflow updates the submodule pointer, `source/_posts/paper-reading/*.md`, `Overview.md`, and sync state, commits with `[skip ci]`, pushes `hexo`, then deploys `master`.
+
+After the workflow finishes, the **local** blog repo is behind. Before making further parent changes:
+
+```bash
+git fetch origin
+git status -sb                  # expect "behind N"
+git pull --rebase origin hexo
+git submodule update --init
+```
+
+If local uncommitted `Overview.md`, `.overview-sync-state.json`, or the submodule pointer duplicate the workflow output, discard or stash them before pulling. Do not commit the same pointer/Overview again; only commit parent-specific changes that the workflow does not generate (for example `_config.yml`, theme, `scripts/`, or `skills/`).
+
 ## Prerequisites
 
 - Branch: **hexo** (source); deploy pushes static site to **master**
@@ -79,13 +98,14 @@ Bot sync commits use subject `... [skip ci]` to avoid redeploy loops. CI sets `g
 2. **`hexo g`** — normal site + `/paper-reading/` index
 3. **`generateAfter`** — copy HTML + `assets/` → `public/paper-reading/`
 
-## New paper workflow (before calling this skill)
+## New paper workflow
 
-1. In `paper-with-code-skills` repo: generate `{slug}.html` + `assets/{slug}/` — see [submodule `skills/paper-logic-reading/SKILL.md`](../../submodule/paper-with-code-skills/skills/paper-logic-reading/SKILL.md) (figure extraction, lightbox)
-2. Commit & push submodule
-3. Run `npx hexo g` (or invoke this skill with `--local-only`) to create/update `source/_posts/paper-reading/{slug}.md`
-4. **Set bridge post cover** — see [Bridge post cover (thumbnail)](#bridge-post-cover-thumbnail) below
-5. **Then invoke this skill** (with `--pull-submodule`) for full deploy
+1. In `paper-with-code-skills`: generate `{slug}.html` + `assets/{slug}/` — see [submodule `skills/paper-logic-reading/SKILL.md`](../../submodule/paper-with-code-skills/skills/paper-logic-reading/SKILL.md) (figure extraction, lightbox)
+2. Commit & push the submodule to `master`
+3. The push triggers `notify-blog` → parent `hexo-deploy.yml`; it updates the pointer, bridge md, Overview, commits `[skip ci]`, and deploys
+4. Pull the parent before further edits: `git pull --rebase origin hexo && git submodule update --init`
+5. If the bridge post needs a custom cover/date/title, edit `source/_posts/paper-reading/{slug}.md` and commit that parent-specific change — see [Bridge post cover (thumbnail)](#bridge-post-cover-thumbnail)
+6. If Actions are unavailable, run this skill manually with `--pull-submodule`
 
 ## Verify after generate
 
