@@ -7,7 +7,7 @@ categories:
 tags:
   - DL
   - Agent
-  - AIGC
+  - AIG
 link: /paper-reading/qwen-image-agent.html
 paper_reading: true
 excerpt: 痛点：用户说「做张海报」往往缺细节——隐含意图、实时知识、历史对话。T2I 模型训练时吃「完整 prompt」，部署时吃「残缺 context」→ 作者称 Context Gap（用户 context ≠ 生成所需 context）。
