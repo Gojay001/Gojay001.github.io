@@ -109,6 +109,7 @@ const SUBCATEGORY_TAG_ABBR = {
   'Object Tracking': 'OT',
   '3D Object Detection': '3D-Det',
   'Salient Object Detection': 'SOD',
+  'Agentic Image Generation': 'AIGC',
 };
 
 function subCategoryTagAbbr(subCategory) {
